@@ -17,3 +17,10 @@ dependencyResolutionManagement {
 rootProject.name = "SSUPlector"
 
 include(":app")
+include(":domain")
+include(":data")
+include(":core")
+include(":feature")
+include(":feature:devInfo")
+include(":feature:mypage")
+include(":feature:projects")
