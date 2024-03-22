@@ -90,6 +90,7 @@ dependencies {
         implementation(hilt)
         implementation(workManager)
         implementation(hiltWorkManager)
+        implementation(constraintLayout)
     }
 
     KaptDependencies.run {
