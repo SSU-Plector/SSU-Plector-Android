@@ -1,43 +1,65 @@
+import com.zucchini.buildsrc.Constants
+
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    kotlin("kapt")
+    kotlin("plugin.serialization") version Versions.kotlinVersion
 }
 
 android {
     namespace = "com.zucchini.data"
-    compileSdk = 34
+    compileSdk = Constants.compileSdk
 
     defaultConfig {
-        minSdk = 28
+        minSdk = Constants.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Versions.javaVersion
+        targetCompatibility = Versions.javaVersion
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.jvmVersion
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
 dependencies {
+    implementation(project(":domain"))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    AndroidXDependencies.run {
+        implementation(hilt)
+        implementation(security)
+        implementation(coreKtx)
+    }
+
+    KotlinDependencies.run {
+        implementation(kotlin)
+        implementation(jsonSerialization)
+        implementation(coroutines)
+        implementation(dateTime)
+    }
+
+    ThirdPartyDependencies.run {
+        implementation(retrofit)
+        implementation(okHttp)
+        implementation(okHttpBom)
+        implementation(okHttpLoggingInterceptor)
+        implementation(retrofitJsonConverter)
+        implementation(timber)
+    }
+
+    TestDependencies.run {
+        testImplementation(jUnit)
+        androidTestImplementation(androidTest)
+        androidTestImplementation(espresso)
+    }
 }

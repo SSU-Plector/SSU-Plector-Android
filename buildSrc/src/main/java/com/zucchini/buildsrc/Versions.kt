@@ -48,9 +48,9 @@ object Versions {
     const val jvmVersion = "17"
 
     // Compose Version
-    const val composeVersion = "1.1.0"
-    const val composeCompilerVersion = "1.2.1"
+    const val composeVersion = "1.3.2"
+    const val composeCompilerVersion = "1.3.2"
     const val activityComposeVersion = "1.4.0"
-    const val material3Version = "1.0.0-alpha06"
-    const val composeToolingVersion = "1.0.0-alpha06"
+    const val material3Version = "1.2.1"
+    const val composeToolingVersion = "1.6.4"
 }

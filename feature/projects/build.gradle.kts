@@ -1,43 +1,92 @@
+import com.zucchini.buildsrc.Constants
+
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    kotlin("kapt")
+    id("kotlin-parcelize")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
-    namespace = "com.zucchini.projects"
-    compileSdk = 34
+    namespace = "com.zucchini.feature.projects"
+    compileSdk = Constants.compileSdk
 
     defaultConfig {
-        minSdk = 28
+        minSdk = Constants.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Versions.javaVersion
+        targetCompatibility = Versions.javaVersion
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.jvmVersion
+    }
+
+    buildFeatures {
+        buildConfig = true
+        dataBinding = true
+        viewBinding = true
+        compose = true
     }
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(project(":domain"))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    KotlinDependencies.run {
+        implementation(kotlin)
+        implementation(coroutines)
+        implementation(jsonSerialization)
+        implementation(dateTime)
+    }
+
+    AndroidXDependencies.run {
+        implementation(coreKtx)
+        implementation(appCompat)
+        implementation(constraintLayout)
+        implementation(fragment)
+        implementation(startup)
+        implementation(legacy)
+        implementation(security)
+        implementation(hilt)
+        implementation(lifeCycleKtx)
+        implementation(lifecycleJava8)
+        implementation(splashScreen)
+        implementation(pagingRuntime)
+        implementation(workManager)
+        implementation(hiltWorkManager)
+    }
+
+    KaptDependencies.run {
+        kapt(hiltCompiler)
+        kapt(hiltWorkManagerCompiler)
+    }
+
+    implementation(MaterialDesignDependencies.materialDesign)
+
+    TestDependencies.run {
+        testImplementation(jUnit)
+        androidTestImplementation(androidTest)
+        androidTestImplementation(espresso)
+    }
+
+    ThirdPartyDependencies.run {
+        implementation(coil)
+        implementation(timber)
+        implementation(ossLicense)
+    }
+
+    ComposeDependencies.run {
+        implementation(composeUi)
+        implementation(composeActivity)
+        implementation(composeMaterial3)
+        implementation(composeTooling)
+    }
 }

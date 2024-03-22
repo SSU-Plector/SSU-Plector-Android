@@ -1,4 +1,3 @@
-import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.zucchini.buildsrc.Constants
 
 plugins {
@@ -72,10 +71,12 @@ android {
 }
 
 dependencies {
-//    implementation(project(":core-ui"))
-//    implementation(project(":data"))
-//    implementation(project(":domain"))
-//    implementation(project(":presentation"))
+    implementation(project(":core"))
+    implementation(project(":data"))
+    implementation(project(":domain"))
+    implementation(project(":feature:projects"))
+    implementation(project(":feature:devInfo"))
+    implementation(project(":feature:mypage"))
 
     KotlinDependencies.run {
         implementation(kotlin)
@@ -112,16 +113,10 @@ dependencies {
         implementation(ossLicense)
     }
 
-//    KakaoDependencies.run {
-//        implementation(user)
-//        implementation(share)
-//    }
-
     ComposeDependencies.run {
         implementation(composeUi)
-        implementation(composeMaterial)
-        implementation(activityCompose)
-        implementation(material3)
+        implementation(composeActivity)
+        implementation(composeMaterial3)
         implementation(composeTooling)
     }
 }

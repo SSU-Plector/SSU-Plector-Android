@@ -83,11 +83,6 @@ object ThirdPartyDependencies {
     const val circleIndicator = "me.relex:circleindicator:${Versions.circleIndicatorVersion}"
     const val shimmer = "com.facebook.shimmer:shimmer:${Versions.shimmerVersion}"
 
-//    const val kakaoLogin = "com.kakao.sdk:v2-user:${Versions.kakaoVersion}"
-//    const val kakaoAuth = "com.kakao.sdk:v2-auth:${Versions.kakaoVersion}"
-//    const val kakaoTalk = "com.kakao.sdk:v2-talk:${Versions.kakaoVersion}"
-//    const val kakaoShare = "com.kakao.sdk:v2-share:${Versions.kakaoVersion}"
-
     const val amplitude = "com.amplitude:android-sdk:${Versions.amplitudeVersion}"
 
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexboxVersion}"
@@ -99,27 +94,11 @@ object ClassPathPlugins {
     const val kotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinVersion}"
     const val hilt = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
     const val oss = "com.google.android.gms:oss-licenses-plugin:${Versions.ossPluginVersion}"
-    const val compose = "org.jetbrains.compose:compose-gradle-plugin:${Versions.composeVersion}"
 }
-
-object FirebaseDependencies {
-    const val bom = "com.google.firebase:firebase-bom:32.2.0"
-    const val messaging = "com.google.firebase:firebase-messaging-ktx"
-    const val crashlytics = "com.google.firebase:firebase-crashlytics-ktx"
-    const val analytics = "com.google.firebase:firebase-analytics-ktx"
-    const val remoteConfig = "com.google.firebase:firebase-config-ktx"
-}
-
-//object KakaoDependencies {
-//    const val user = "com.kakao.sdk:v2-user:${Versions.kakaoVersion}"
-//    const val share = "com.kakao.sdk:v2-share:${Versions.kakaoVersion}"
-//}
 
 object ComposeDependencies {
     const val composeUi = "androidx.compose.ui:ui:${Versions.composeCompilerVersion}"
-    const val composeMaterial =
-        "androidx.compose.material3:material3:${Versions.composeCompilerVersion}"
-    const val activityCompose = "androidx.activity:activity-compose:${Versions.activityComposeVersion}"
-    const val material3 = "androidx.compose.material3:material3:${Versions.material3Version}"
+    const val composeActivity = "androidx.activity:activity-compose:${Versions.activityComposeVersion}"
+    const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3Version}"
     const val composeTooling = "androidx.compose.ui:ui-tooling:${Versions.composeToolingVersion}"
 }
