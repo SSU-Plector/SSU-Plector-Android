@@ -1,6 +1,8 @@
 name: SSU-Plector Android PR Builder
 
 on:
+  push:
+    branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
 
