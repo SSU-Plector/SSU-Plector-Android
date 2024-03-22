@@ -1,69 +1,127 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import com.zucchini.buildsrc.Constants
+
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    kotlin("android")
+    kotlin("kapt")
+    id("kotlin-parcelize")
+    id("dagger.hilt.android.plugin")
+    id("com.google.android.gms.oss-licenses-plugin")
 }
 
 android {
-    namespace = "com.zucchini.ssuplector"
-    compileSdk = 34
+    namespace = Constants.packageName
+    compileSdk = Constants.compileSdk
 
     defaultConfig {
-        applicationId = "com.zucchini.ssuplector"
-        minSdk = 28
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = Constants.packageName
+        minSdk = Constants.minSdk
+        targetSdk = Constants.targetSdk
+        versionCode = Constants.versionCode
+        versionName = Constants.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+
+//        buildConfigField(
+//            "String",
+//            "NATIVE_APP_KEY",
+//            gradleLocalProperties(rootDir).getProperty("native.app.key"),
+//        )
+//        manifestPlaceholders["NATIVE_APP_KEY"] =
+//            gradleLocalProperties(rootDir).getProperty("nativeAppKey")
     }
 
     buildTypes {
+        debug {
+//            buildConfigField(
+//                "String",
+//                "BASE_URL",
+//                gradleLocalProperties(rootDir).getProperty("test.base.url")
+//            )
+        }
         release {
+//            buildConfigField(
+//                "String",
+//                "BASE_URL",
+//                gradleLocalProperties(rootDir).getProperty("base.url")
+//            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = Versions.javaVersion
+        targetCompatibility = Versions.javaVersion
     }
+
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Versions.jvmVersion
     }
+
     buildFeatures {
+        buildConfig = true
+        dataBinding = true
+        viewBinding = true
         compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
+//    implementation(project(":core-ui"))
+//    implementation(project(":data"))
+//    implementation(project(":domain"))
+//    implementation(project(":presentation"))
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
-    implementation("androidx.activity:activity-compose:1.8.2")
-    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    KotlinDependencies.run {
+        implementation(kotlin)
+        implementation(coroutines)
+        implementation(jsonSerialization)
+    }
+
+    AndroidXDependencies.run {
+        implementation(coreKtx)
+        implementation(appCompat)
+        implementation(hilt)
+        implementation(workManager)
+        implementation(hiltWorkManager)
+    }
+
+    KaptDependencies.run {
+        kapt(hiltCompiler)
+        kapt(hiltWorkManagerCompiler)
+    }
+
+    TestDependencies.run {
+        testImplementation(jUnit)
+        androidTestImplementation(androidTest)
+        androidTestImplementation(espresso)
+    }
+
+    ThirdPartyDependencies.run {
+        implementation(platform(okHttpBom))
+        implementation(okHttp)
+        implementation(okHttpLoggingInterceptor)
+        implementation(retrofit)
+        implementation(retrofitJsonConverter)
+        implementation(timber)
+        implementation(ossLicense)
+    }
+
+//    KakaoDependencies.run {
+//        implementation(user)
+//        implementation(share)
+//    }
+
+    ComposeDependencies.run {
+        implementation(composeUi)
+        implementation(composeMaterial)
+        implementation(activityCompose)
+        implementation(material3)
+        implementation(composeTooling)
+    }
 }
