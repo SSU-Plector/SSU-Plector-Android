@@ -5,6 +5,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -13,6 +14,13 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SSUPlector-Android"
+rootProject.name = "SSUPlector"
+
 include(":app")
- 
+include(":domain")
+include(":data")
+include(":core")
+include(":feature")
+include(":feature:devInfo")
+include(":feature:mypage")
+include(":feature:projects")
