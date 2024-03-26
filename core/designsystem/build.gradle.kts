@@ -3,18 +3,15 @@ import com.zucchini.buildsrc.Constants
 plugins {
     id("com.android.library")
     kotlin("android")
-    kotlin("kapt")
 }
 
 android {
-    namespace = "com.zucchini.feature.designsystem"
+    namespace = "com.zucchini.core.designsystem"
     compileSdk = Constants.compileSdk
 
     defaultConfig {
         minSdk = Constants.minSdk
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
     }
 
     compileOptions {
@@ -22,20 +19,10 @@ android {
         targetCompatibility = Versions.javaVersion
     }
 
-    kotlinOptions {
-        jvmTarget = Versions.jvmVersion
-    }
-
     buildFeatures {
         buildConfig = true
-        dataBinding = true
-        viewBinding = true
-        compose = true
     }
 }
 
 dependencies {
-    KotlinDependencies.run {
-        implementation(kotlin)
-    }
 }
