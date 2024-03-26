@@ -1,15 +1,13 @@
 import com.zucchini.buildsrc.Constants
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 android {
-    namespace = "com.zucchini.core"
+    namespace = "com.zucchini.feature.designsystem"
     compileSdk = Constants.compileSdk
 
     defaultConfig {
@@ -18,15 +16,18 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
+
     compileOptions {
         sourceCompatibility = Versions.javaVersion
         targetCompatibility = Versions.javaVersion
     }
+
     kotlinOptions {
         jvmTarget = Versions.jvmVersion
     }
 
     buildFeatures {
+        buildConfig = true
         dataBinding = true
         viewBinding = true
         compose = true
@@ -34,21 +35,7 @@ android {
 }
 
 dependencies {
-    // Kotlin
-    implementation(KotlinDependencies.kotlin)
-
-    // Lifecycle Ktx
-    implementation(AndroidXDependencies.lifeCycleKtx)
-
-    // Material Design
-    implementation(MaterialDesignDependencies.materialDesign)
-
-    // Hilt
-    implementation(AndroidXDependencies.hilt)
-    kapt(KaptDependencies.hiltAndroidCompiler)
-
-    // Test Dependency
-    testImplementation(TestDependencies.jUnit)
-    androidTestImplementation(TestDependencies.androidTest)
-    androidTestImplementation(TestDependencies.espresso)
+    KotlinDependencies.run {
+        implementation(kotlin)
+    }
 }

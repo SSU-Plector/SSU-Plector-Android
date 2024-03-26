@@ -37,8 +37,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
     implementation(project(":domain"))
+    implementation(project(":core"))
+    implementation(project(":core:designsystem"))
 
     KotlinDependencies.run {
         implementation(kotlin)
