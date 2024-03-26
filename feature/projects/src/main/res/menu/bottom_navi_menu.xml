@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/devinfo_dest"
+        android:fontFamily="@font/pretendardbold"
+        android:icon="@drawable/devinfo_navi_24"
+        android:title="개발자" />
+    <item
+        android:id="@+id/projects_dest"
+        android:fontFamily="@font/pretendardbold"
+        android:icon="@drawable/projects_navi_24"
+        android:title="프로젝트" />
+    <item
+        android:id="@+id/mypage_dest"
+        android:fontFamily="@font/pretendardbold"
+        android:icon="@drawable/apply_navi_24"
+        android:title="신청하기" />
+</menu>

@@ -39,6 +39,9 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":core:designsystem"))
+    implementation(project(":core:common"))
+    implementation(project(":feature:devInfo"))
+    implementation(project(":feature:mypage"))
 
     KotlinDependencies.run {
         implementation(kotlin)
@@ -70,6 +73,8 @@ dependencies {
     }
 
     implementation(MaterialDesignDependencies.materialDesign)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     TestDependencies.run {
         testImplementation(jUnit)
