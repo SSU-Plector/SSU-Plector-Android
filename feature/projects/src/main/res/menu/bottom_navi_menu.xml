@@ -3,15 +3,15 @@
         android:id="@+id/devinfo_dest"
         android:fontFamily="@font/pretendardbold"
         android:icon="@drawable/devinfo_navi_24"
-        android:title="개발자" />
+        android:title="@string/developer" />
     <item
         android:id="@+id/projects_dest"
         android:fontFamily="@font/pretendardbold"
         android:icon="@drawable/projects_navi_24"
-        android:title="프로젝트" />
+        android:title="@string/project" />
     <item
         android:id="@+id/mypage_dest"
         android:fontFamily="@font/pretendardbold"
         android:icon="@drawable/apply_navi_24"
-        android:title="신청하기" />
+        android:title="@string/apply" />
 </menu>
