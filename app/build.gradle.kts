@@ -71,9 +71,9 @@ android {
 }
 
 dependencies {
-    implementation(project(":core"))
     implementation(project(":data"))
     implementation(project(":domain"))
+    implementation(project(":core:designsystem"))
     implementation(project(":feature:projects"))
     implementation(project(":feature:devInfo"))
     implementation(project(":feature:mypage"))

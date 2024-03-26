@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="main_black">#1A1716</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Olive Green Colors -->
+    <color name="background_olive">#EDF6EA</color>
+    <color name="bright_olive">#E1F1DD</color>
+    <color name="main_olive">#90BD83</color>
+    <color name="blue_olive">#246D67</color>
+    <color name="dark_olive">#163735</color>
+
+    <!-- Olive Other Colors -->
+    <color name="olive_black">#423B39</color>
+    <color name="olive_gray">#9F9592</color>
+    <color name="olive_light_gray">#EDE4E1</color>
+
+    <!-- Other Colors -->
+</resources>
