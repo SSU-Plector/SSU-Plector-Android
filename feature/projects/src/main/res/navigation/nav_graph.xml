@@ -1,0 +1,18 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/projects_dest">
+
+    <fragment
+        android:id="@+id/devinfo_dest"
+        android:name="com.zucchini.feature.devInfo.DevInfoFragment"
+        android:label="DevInfo Fragment" />
+    <fragment
+        android:id="@+id/projects_dest"
+        android:name="com.zucchini.projects.ProjectsFragment"
+        android:label="Projects Fragment" />
+    <fragment
+        android:id="@+id/mypage_dest"
+        android:name="com.zucchini.mypage.MypageFragment"
+        android:label="MyPage Fragment" />
+</navigation>

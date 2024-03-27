@@ -15,6 +15,7 @@
     <color name="olive_black">#423B39</color>
     <color name="olive_gray">#9F9592</color>
     <color name="olive_light_gray">#EDE4E1</color>
+    <color name="gray1">#C1C1C1</color>
 
     <!-- Other Colors -->
 </resources>
