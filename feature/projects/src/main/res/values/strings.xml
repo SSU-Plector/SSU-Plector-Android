@@ -3,4 +3,6 @@
     <string name="developer">개발자</string>
     <string name="project">프로젝트</string>
     <string name="apply">신청하기</string>
+    <string name="searchbar_hint">궁금한 프로젝트를 검색해주세요</string>
+    <string name="top_app_bar_projects">프로젝트 찾기</string>
 </resources>
