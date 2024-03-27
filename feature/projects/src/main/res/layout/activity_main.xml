@@ -33,6 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fcv_main"
         app:menu="@menu/bottom_navi_menu"
-        app:itemIconSize="35dp"
-        />
+        app:itemIconSize="35dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
