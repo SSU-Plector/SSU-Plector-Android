@@ -4,5 +4,4 @@
     <string name="apply">신청하기</string>
     <string name="searchbar_hint">궁금한 프로젝트를 검색해주세요</string>
     <string name="top_app_bar_projects">프로젝트 찾기</string>
-    <string name="tv_project_clicked">조회수 +%s</string>
 </resources>

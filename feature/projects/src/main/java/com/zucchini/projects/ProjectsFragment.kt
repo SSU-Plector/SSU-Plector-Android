@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
+import com.zucchini.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.adapter.SearchKeywordAdapter
 
 class ProjectsFragment : Fragment() {
@@ -25,6 +26,11 @@ class ProjectsFragment : Fragment() {
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
         searchKeywordAdapter.submitList(KeywordList.searchKeyword.map { Keyword(it) })
 
+        val projectsAdapter = ProjectsAdapter()
+        binding.rvProjects.layoutManager =
+            LinearLayoutManager(context)
+        binding.rvProjects.adapter = projectsAdapter
+        projectsAdapter.submitList(ProjectDummyList.projectDummyList)
         return binding.root
     }
 
