@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
+import com.zucchini.projects.adapter.SearchKeywordAdapter
 
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null
