@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.view
 
 import android.graphics.Rect
 import android.view.View

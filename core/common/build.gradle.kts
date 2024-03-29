@@ -35,9 +35,9 @@ dependencies {
     implementation(project(":core:designsystem"))
 
     AndroidXDependencies.run {
-        implementation(hilt)
-        implementation(security)
         implementation(coreKtx)
+        implementation(appCompat)
+        implementation(pagingRuntime)
     }
 
     KotlinDependencies.run {
