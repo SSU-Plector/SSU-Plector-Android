@@ -1,5 +1,7 @@
 package com.zucchini.feature.devInfo
 
+import com.zucchini.domain.model.DeveloperInfo
+
 object DeveloperInfoDummy {
     val developerInfoList = listOf(
         DeveloperInfo(

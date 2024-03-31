@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.feature.devInfo.DeveloperInfo
+import com.zucchini.domain.model.DeveloperInfo
 import com.zucchini.feature.devInfo.R
 import com.zucchini.feature.devInfo.databinding.ItemDeveloperBinding
 

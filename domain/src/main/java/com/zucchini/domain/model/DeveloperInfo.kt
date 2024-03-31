@@ -1,4 +1,4 @@
-package com.zucchini.feature.devInfo
+package com.zucchini.domain.model
 
 data class DeveloperInfo(
 
