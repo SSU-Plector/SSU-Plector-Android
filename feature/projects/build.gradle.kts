@@ -65,6 +65,8 @@ dependencies {
         implementation(pagingRuntime)
         implementation(workManager)
         implementation(hiltWorkManager)
+        implementation(navigationFragment)
+        implementation(navigationUi)
     }
 
     KaptDependencies.run {
@@ -73,8 +75,6 @@ dependencies {
     }
 
     implementation(MaterialDesignDependencies.materialDesign)
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
     TestDependencies.run {
         testImplementation(jUnit)
