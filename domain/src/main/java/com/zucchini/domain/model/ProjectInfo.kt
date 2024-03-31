@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.domain.model
 
 data class ProjectInfo(
     val image: Int? = null,

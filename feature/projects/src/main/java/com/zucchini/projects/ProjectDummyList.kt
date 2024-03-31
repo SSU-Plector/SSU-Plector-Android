@@ -1,5 +1,6 @@
 package com.zucchini.projects
 
+import com.zucchini.domain.model.ProjectInfo
 import com.zucchini.feature.projects.R
 
 object ProjectDummyList {

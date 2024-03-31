@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.domain.model
 
 object KeywordList {
     val searchKeyword = listOf(

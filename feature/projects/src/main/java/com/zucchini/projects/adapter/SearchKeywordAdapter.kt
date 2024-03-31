@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.feature.projects.databinding.ItemSearchKeywordBinding
 import com.zucchini.view.ItemDiffCallback
-import com.zucchini.projects.Keyword
+import com.zucchini.domain.model.Keyword
 
 class SearchKeywordAdapter : ListAdapter<Keyword, SearchKeywordAdapter.SearchKeywordViewHolder>(
     ItemDiffCallback<Keyword>(

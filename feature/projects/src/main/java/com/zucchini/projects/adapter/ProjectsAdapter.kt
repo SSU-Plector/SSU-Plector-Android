@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemProjectsBinding
-import com.zucchini.projects.ProjectInfo
+import com.zucchini.domain.model.ProjectInfo
 import com.zucchini.view.ItemDiffCallback
 
 class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHolder>(
