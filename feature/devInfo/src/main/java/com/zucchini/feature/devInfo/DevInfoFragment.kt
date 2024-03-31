@@ -20,12 +20,16 @@ class DevInfoFragment : Fragment() {
     ): View {
         _binding = FragmentDevInfoBinding.inflate(inflater, container, false)
 
+        initDeveloperAdapter()
+
+        return binding.root
+    }
+
+    private fun initDeveloperAdapter() {
         val developerInfoAdapter = DeveloperInfoAdapter()
         binding.rvDevinfo.adapter = developerInfoAdapter
         binding.rvDevinfo.layoutManager = GridLayoutManager(context, 2)
         developerInfoAdapter.submitList(DeveloperInfoDummy.developerInfoList)
-
-        return binding.root
     }
 
     override fun onDestroyView() {
