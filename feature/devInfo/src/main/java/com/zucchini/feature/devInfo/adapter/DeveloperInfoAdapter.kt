@@ -2,12 +2,12 @@ package com.zucchini.feature.devInfo.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.DeveloperInfo
 import com.zucchini.feature.devInfo.R
 import com.zucchini.feature.devInfo.databinding.ItemDeveloperBinding
+import com.zucchini.view.ItemDiffCallback
 
 class DeveloperInfoAdapter :
     ListAdapter<DeveloperInfo, DeveloperInfoAdapter.DeveloperInfoViewHolder>(
@@ -42,19 +42,4 @@ class DeveloperInfoAdapter :
             binding.tvDeveloperClicked.text = "조회수 +${developerInfo.clicked}"
         }
     }
-}
-
-class ItemDiffCallback<T : Any>(
-    val onItemsTheSame: (T, T) -> Boolean,
-    val onContentsTheSame: (T, T) -> Boolean,
-) : DiffUtil.ItemCallback<T>() {
-    override fun areItemsTheSame(
-        oldItem: T,
-        newItem: T,
-    ): Boolean = onItemsTheSame(oldItem, newItem)
-
-    override fun areContentsTheSame(
-        oldItem: T,
-        newItem: T,
-    ): Boolean = onContentsTheSame(oldItem, newItem)
 }
