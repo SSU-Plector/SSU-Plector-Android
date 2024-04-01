@@ -1,10 +1,10 @@
-package com.zucchini.feature.devInfo
+package com.zucchini.projects
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zucchini.feature.devInfo.adapter.DevDetailProjectAdapter
-import com.zucchini.feature.devInfo.databinding.ActivityDevDetailBinding
+import com.zucchini.feature.projects.databinding.ActivityDevDetailBinding
+import com.zucchini.projects.adapter.DevDetailProjectAdapter
 
 class DevDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDevDetailBinding

@@ -1,4 +1,4 @@
-package com.zucchini.feature.devInfo.adapter
+package com.zucchini.projects.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,9 +7,9 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.DevDetailProjectInfo
-import com.zucchini.feature.devInfo.DevDetailActivity
-import com.zucchini.feature.devInfo.R
-import com.zucchini.feature.devInfo.databinding.ItemDevDetailProjectsBinding
+import com.zucchini.feature.projects.R
+import com.zucchini.feature.projects.databinding.ItemDevDetailProjectsBinding
+import com.zucchini.projects.DevDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class DevDetailProjectAdapter :

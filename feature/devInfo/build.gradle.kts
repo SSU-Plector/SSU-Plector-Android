@@ -40,7 +40,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
-    implementation(project(":feature:projects"))
 
 
     KotlinDependencies.run {
@@ -73,9 +72,6 @@ dependencies {
     }
 
     implementation(MaterialDesignDependencies.materialDesign)
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     TestDependencies.run {
         testImplementation(jUnit)

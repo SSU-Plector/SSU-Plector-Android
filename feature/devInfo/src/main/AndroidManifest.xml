@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name=".DevDetailActivity"
+            android:name="com.zucchini.projects.DevDetailActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>

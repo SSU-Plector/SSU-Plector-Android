@@ -1,6 +1,7 @@
-package com.zucchini.feature.devInfo
+package com.zucchini.projects
 
 import com.zucchini.domain.model.DevDetailProjectInfo
+import com.zucchini.feature.projects.R
 
 object DevProjectsDummy {
     val devProjectsInfoList = listOf(
