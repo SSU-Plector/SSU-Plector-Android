@@ -6,8 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.zucchini.common.NavigationProvider
 import com.zucchini.feature.devInfo.adapter.DeveloperInfoAdapter
 import com.zucchini.feature.devInfo.databinding.FragmentDevInfoBinding
+import javax.inject.Inject
 
 class DevInfoFragment : Fragment() {
     private var _binding: FragmentDevInfoBinding? = null

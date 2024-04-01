@@ -1,10 +1,13 @@
 package com.zucchini.feature.devInfo.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.DeveloperInfo
+import com.zucchini.feature.devInfo.DevDetailActivity
 import com.zucchini.feature.devInfo.R
 import com.zucchini.feature.devInfo.databinding.ItemDeveloperBinding
 import com.zucchini.view.ItemDiffCallback
@@ -40,6 +43,11 @@ class DeveloperInfoAdapter :
             binding.tvDeveloperField.text = developerInfo.field
             binding.tvDeveloperGithub.text = "Github: ${developerInfo.githubId}"
             binding.tvDeveloperClicked.text = "조회수 +${developerInfo.clicked}"
+
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, DevDetailActivity::class.java)
+                startActivity(binding.root.context, intent, null)
+            }
         }
     }
 }
