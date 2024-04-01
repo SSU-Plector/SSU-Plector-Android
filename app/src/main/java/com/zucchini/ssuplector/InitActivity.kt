@@ -8,7 +8,6 @@ import com.zucchini.ssuplector.databinding.ActivityInitBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-
 class InitActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInitBinding
 

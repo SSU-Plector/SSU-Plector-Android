@@ -32,7 +32,7 @@ class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHol
         RecyclerView.ViewHolder(binding.root) {
         fun bind(projectInfo: ProjectInfo) {
             binding.ivProjectProfile.setImageResource(
-                projectInfo.image ?: R.drawable.project_profile_default,
+                projectInfo.image ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
             )
             binding.tvProjectName.text = projectInfo.name
             binding.tvProjectDescription.text = projectInfo.description

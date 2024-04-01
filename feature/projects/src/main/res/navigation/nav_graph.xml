@@ -5,7 +5,7 @@
 
     <fragment
         android:id="@+id/devinfo_dest"
-        android:name="com.zucchini.feature.devInfo.DevInfoFragment"
+        android:name="com.zucchini.projects.DevInfoFragment"
         android:label="DevInfo Fragment" />
     <fragment
         android:id="@+id/projects_dest"

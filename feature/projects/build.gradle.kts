@@ -40,7 +40,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
-    implementation(project(":feature:devInfo"))
     implementation(project(":feature:mypage"))
 
     KotlinDependencies.run {

@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
 
+
     KotlinDependencies.run {
         implementation(kotlin)
         implementation(coroutines)

@@ -76,7 +76,6 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
     implementation(project(":feature:projects"))
-    implementation(project(":feature:devInfo"))
     implementation(project(":feature:mypage"))
 
     KotlinDependencies.run {
