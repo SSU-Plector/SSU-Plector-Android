@@ -36,17 +36,19 @@ class DeveloperInfoAdapter :
     inner class DeveloperInfoViewHolder(private val binding: ItemDeveloperBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(developerInfo: DeveloperInfo) {
-            binding.ivProjectProfile.setImageResource(
-                developerInfo.image ?: R.drawable.developer_default_image,
-            )
-            binding.tvDeveloperName.text = developerInfo.name
-            binding.tvDeveloperField.text = developerInfo.field
-            binding.tvDeveloperGithub.text = "Github: ${developerInfo.githubId}"
-            binding.tvDeveloperClicked.text = "조회수 +${developerInfo.clicked}"
+            binding.run {
+                ivProjectProfile.setImageResource(
+                    developerInfo.image ?: R.drawable.developer_default_image,
+                )
+                tvDeveloperName.text = developerInfo.name
+                tvDeveloperField.text = developerInfo.field
+                tvDeveloperGithub.text = "Github: ${developerInfo.githubId}"
+                tvDeveloperClicked.text = "조회수 +${developerInfo.clicked}"
 
-            binding.root.setOnClickListener {
-                val intent = Intent(binding.root.context, DevDetailActivity::class.java)
-                startActivity(binding.root.context, intent, null)
+                root.setOnClickListener {
+                    val intent = Intent(binding.root.context, DevDetailActivity::class.java)
+                    startActivity(binding.root.context, intent, null)
+                }
             }
         }
     }
