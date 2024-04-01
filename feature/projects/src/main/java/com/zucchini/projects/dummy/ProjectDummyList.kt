@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.projects.dummy
 
 import com.zucchini.domain.model.ProjectInfo
 import com.zucchini.feature.projects.R

@@ -10,6 +10,7 @@ import com.zucchini.domain.model.DevDetailProjectInfo
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemDevDetailProjectsBinding
 import com.zucchini.projects.DevDetailActivity
+import com.zucchini.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class DevDetailProjectAdapter :
@@ -44,7 +45,7 @@ class DevDetailProjectAdapter :
                 tvProjectDescription.text = devDetailProjectInfo.description
                 tvSortedProject.text = devDetailProjectInfo.sorted
                 tvNavigateToProject.setOnClickListener {
-                    val intent = Intent(binding.root.context, DevDetailActivity::class.java)
+                    val intent = Intent(binding.root.context, ProjectDetailActivity::class.java)
                     startActivity(binding.root.context, intent, null)
                 }
             }

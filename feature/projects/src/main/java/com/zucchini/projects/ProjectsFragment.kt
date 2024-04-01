@@ -11,6 +11,7 @@ import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
 import com.zucchini.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.adapter.SearchKeywordAdapter
+import com.zucchini.projects.dummy.ProjectDummyList
 
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null

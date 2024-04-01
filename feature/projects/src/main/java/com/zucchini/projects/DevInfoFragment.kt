@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
 import com.zucchini.projects.adapter.DeveloperInfoAdapter
+import com.zucchini.projects.dummy.DeveloperInfoDummy
 
 class DevInfoFragment : Fragment() {
     private var _binding: FragmentDevInfoBinding? = null
