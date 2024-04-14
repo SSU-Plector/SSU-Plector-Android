@@ -3,6 +3,7 @@ import org.gradle.api.JavaVersion
 object Versions {
     const val gradleVersion = "8.0.2"
 
+    // test
     const val buildToolsVersion = "30.0.3"
     const val kotlinVersion = "1.7.20"
     const val kotlinSerializationJsonVersion = "1.5.1"
