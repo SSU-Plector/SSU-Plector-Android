@@ -29,4 +29,6 @@
     <string name="tv_terms_of_use">이용약관</string>
     <string name="tv_privacy_policy">개인정보 처리방침</string>
     <string name="tv_complaint">신고하기</string>
+    <string name="service_docs_uri">https://coordinated-muskmelon-1dd.notion.site/c2d326eb516f48a48633bffa5df05936?pvs=4</string>
+    <string name="tv_complaint_link">https://open.kakao.com/o/sDP9VYRb</string>
 </resources>
