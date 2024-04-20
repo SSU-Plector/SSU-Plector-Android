@@ -32,6 +32,7 @@ class DeveloperInfoAdapter :
     override fun onBindViewHolder(holder: DeveloperInfoViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+    override fun getItemCount(): Int = 8
 
     inner class DeveloperInfoViewHolder(private val binding: ItemDeveloperBinding) :
         RecyclerView.ViewHolder(binding.root) {

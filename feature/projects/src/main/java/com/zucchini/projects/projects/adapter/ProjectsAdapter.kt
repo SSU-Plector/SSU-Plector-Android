@@ -30,6 +30,8 @@ class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHol
         holder.bind(getItem(position))
     }
 
+    override fun getItemCount(): Int = 4
+
     inner class ProjectsViewHolder(private val binding: ItemProjectsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(projectInfo: ProjectInfo) {
