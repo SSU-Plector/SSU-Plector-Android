@@ -30,8 +30,9 @@ class IntroduceActivity : AppCompatActivity() {
     private fun navigateToMain() {
         binding.root.setOnClickListener {
             intent = Intent(this, MainActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -41,7 +42,7 @@ class IntroduceActivity : AppCompatActivity() {
             R.drawable.project_introduction_2,
             R.drawable.project_introduction_3,
             R.drawable.project_introduction_4,
-            R.drawable.project_introduction_5
+            R.drawable.project_introduction_5,
         )
 
         introduceViewPagerAdapter = IntroducePagerAdapter(loginViewImageList)
