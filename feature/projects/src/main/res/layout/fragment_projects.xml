@@ -37,9 +37,8 @@
         android:layout_marginHorizontal="20dp"
         android:background="@drawable/search_background"
         android:cursorVisible="true"
-        android:drawableStart="@drawable/ic_search_24"
         android:drawablePadding="7dp"
-        android:fontFamily="@font/pretendardblack"
+        android:fontFamily="@font/pretendardmedium"
         android:hint="@string/searchbar_hint"
         android:inputType="text"
         android:paddingStart="20dp"
@@ -50,6 +49,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_search_24"
+        app:layout_constraintEnd_toEndOf="@+id/et_searchbar"
+        app:layout_constraintTop_toTopOf="@+id/et_searchbar"
+        app:layout_constraintBottom_toBottomOf="@+id/et_searchbar"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_search_keyword"
