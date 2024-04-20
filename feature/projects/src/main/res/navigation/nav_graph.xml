@@ -5,14 +5,14 @@
 
     <fragment
         android:id="@+id/devinfo_dest"
-        android:name="com.zucchini.projects.DevInfoFragment"
+        android:name="com.zucchini.projects.developer.DevInfoFragment"
         android:label="DevInfo Fragment" />
     <fragment
         android:id="@+id/projects_dest"
-        android:name="com.zucchini.projects.ProjectsFragment"
+        android:name="com.zucchini.projects.projects.ProjectsFragment"
         android:label="Projects Fragment" />
     <fragment
         android:id="@+id/mypage_dest"
-        android:name="com.zucchini.projects.MypageFragment"
+        android:name="com.zucchini.projects.mypage.MypageFragment"
         android:label="MyPage Fragment" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.projects.projects
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
-import com.zucchini.projects.adapter.ProjectsAdapter
-import com.zucchini.projects.adapter.SearchKeywordAdapter
+import com.zucchini.projects.projects.adapter.ProjectsAdapter
+import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import com.zucchini.projects.dummy.ProjectDummyList
 
 class ProjectsFragment : Fragment() {

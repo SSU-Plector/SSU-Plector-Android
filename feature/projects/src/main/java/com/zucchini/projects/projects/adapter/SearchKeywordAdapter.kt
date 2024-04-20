@@ -1,4 +1,4 @@
-package com.zucchini.projects.adapter
+package com.zucchini.projects.projects.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

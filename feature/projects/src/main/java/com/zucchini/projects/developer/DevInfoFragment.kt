@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.projects.developer
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
-import com.zucchini.projects.adapter.DeveloperInfoAdapter
+import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
 import com.zucchini.projects.dummy.DeveloperInfoDummy
 
 class DevInfoFragment : Fragment() {
