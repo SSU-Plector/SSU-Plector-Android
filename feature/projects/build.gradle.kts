@@ -40,7 +40,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
-    implementation(project(":feature:mypage"))
 
     KotlinDependencies.run {
         implementation(kotlin)
@@ -85,6 +84,7 @@ dependencies {
         implementation(coil)
         implementation(timber)
         implementation(ossLicense)
+        implementation(dotIndicator)
     }
 
     ComposeDependencies.run {

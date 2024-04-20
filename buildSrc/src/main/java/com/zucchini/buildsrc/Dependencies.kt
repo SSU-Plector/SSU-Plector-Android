@@ -87,6 +87,7 @@ object ThirdPartyDependencies {
 
     const val flexbox = "com.google.android.flexbox:flexbox:${Versions.flexboxVersion}"
     const val circleImageView = "de.hdodenhof:circleimageview:${Versions.circleImageViewVersion}"
+    const val dotIndicator = "com.tbuonomo:dotsindicator:${Versions.dotIndicatorVersion}"
 }
 
 object ClassPathPlugins {

@@ -13,6 +13,6 @@
         android:label="Projects Fragment" />
     <fragment
         android:id="@+id/mypage_dest"
-        android:name="com.zucchini.mypage.MypageFragment"
+        android:name="com.zucchini.projects.MypageFragment"
         android:label="MyPage Fragment" />
 </navigation>
