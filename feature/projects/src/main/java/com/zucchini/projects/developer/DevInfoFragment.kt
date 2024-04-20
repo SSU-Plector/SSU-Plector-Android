@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
-import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
 import com.zucchini.projects.adapter.PageIndicatorAdapter
+import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
 import com.zucchini.projects.dummy.DeveloperInfoDummy
 
 class DevInfoFragment : Fragment() {
@@ -42,9 +42,9 @@ class DevInfoFragment : Fragment() {
     private fun initPageIndicator() {
         pageIndicatorAdapter = PageIndicatorAdapter(requireContext())
         binding.rvPageIndicator.adapter = pageIndicatorAdapter
-        binding.rvPageIndicator.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvPageIndicator.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

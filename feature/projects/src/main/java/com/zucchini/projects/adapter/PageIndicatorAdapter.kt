@@ -34,11 +34,22 @@ class PageIndicatorAdapter(private val context: Context) :
         fun bind(position: Int) {
             binding.pageNumber.text = (position + 1).toString()
 
+            binding.pageNumber.setOnClickListener {
+                currentPage = position
+                notifyDataSetChanged()
+            }
             if (position == currentPage) {
                 binding.pageNumber.setTextColor(
                     ContextCompat.getColor(
                         context,
                         com.zucchini.core.designsystem.R.color.olive_black,
+                    ),
+                )
+            } else {
+                binding.pageNumber.setTextColor(
+                    ContextCompat.getColor(
+                        context,
+                        com.zucchini.core.designsystem.R.color.gray1,
                     ),
                 )
             }
