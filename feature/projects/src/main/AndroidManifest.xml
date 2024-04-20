@@ -3,10 +3,15 @@
 
     <application>
         <activity
-            android:name="com.zucchini.projects.ProjectDetailActivity"
+            android:name="com.zucchini.projects.IntroduceActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
+        <activity
+            android:name="com.zucchini.projects.ProjectDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name="com.zucchini.projects.MainActivity"
             android:exported="false"

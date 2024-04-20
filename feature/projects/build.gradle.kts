@@ -85,6 +85,7 @@ dependencies {
         implementation(coil)
         implementation(timber)
         implementation(ossLicense)
+        implementation(dotIndicator)
     }
 
     ComposeDependencies.run {

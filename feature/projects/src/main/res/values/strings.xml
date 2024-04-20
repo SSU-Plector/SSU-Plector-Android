@@ -19,4 +19,5 @@
     <string name="tv_project_intro_title">프로젝트 소개</string>
     <string name="tv_project_link_title">관련 링크</string>
     <string name="tv_introduce_dev_title">개발자 정보</string>
+    <string name="tv_introduce">화면 터치 시 슈플렉터를 시작할 수 있어요!</string>
 </resources>
