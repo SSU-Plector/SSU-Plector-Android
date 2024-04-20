@@ -20,6 +20,7 @@ class ProjectsFragment : Fragment() {
 
     private lateinit var pageIndicatorAdapter: PageIndicatorAdapter
 
+    private val totalPage = 4
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,7 +50,7 @@ class ProjectsFragment : Fragment() {
         searchKeywordAdapter.submitList(KeywordList.searchKeyword.map { Keyword(it) })
     }
     private fun initPageIndicator() {
-        pageIndicatorAdapter = PageIndicatorAdapter(requireContext())
+        pageIndicatorAdapter = PageIndicatorAdapter(requireContext(), totalPage)
         binding.rvPageIndicator.adapter = pageIndicatorAdapter
         binding.rvPageIndicator.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }

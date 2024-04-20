@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.feature.projects.databinding.ItemPageIndicatorBinding
 
-class PageIndicatorAdapter(private val context: Context) :
+class PageIndicatorAdapter(private val context: Context, private val totalPage: Int) :
     RecyclerView.Adapter<PageIndicatorAdapter.PageIndicatorViewHolder>() {
     private var currentPage = 0
 
@@ -21,7 +21,7 @@ class PageIndicatorAdapter(private val context: Context) :
         holder.bind(position)
     }
 
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = totalPage
 
     fun setCurrentPage(page: Int) {
         currentPage = page
