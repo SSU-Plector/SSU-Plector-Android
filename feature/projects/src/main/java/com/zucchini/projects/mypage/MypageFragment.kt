@@ -1,4 +1,4 @@
-package com.zucchini.projects
+package com.zucchini.projects.mypage
 
 import android.content.Intent
 import android.net.Uri

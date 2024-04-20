@@ -1,4 +1,4 @@
-package com.zucchini.projects.adapter
+package com.zucchini.projects.projects.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.ProjectInfo
 import com.zucchini.feature.projects.databinding.ItemProjectsBinding
-import com.zucchini.projects.ProjectDetailActivity
+import com.zucchini.projects.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHolder>(
@@ -29,6 +29,8 @@ class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHol
     override fun onBindViewHolder(holder: ProjectsViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+
+    override fun getItemCount(): Int = 4
 
     inner class ProjectsViewHolder(private val binding: ItemProjectsBinding) :
         RecyclerView.ViewHolder(binding.root) {

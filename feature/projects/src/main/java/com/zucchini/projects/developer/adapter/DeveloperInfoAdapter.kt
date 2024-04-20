@@ -1,4 +1,4 @@
-package com.zucchini.projects.adapter
+package com.zucchini.projects.developer.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.DeveloperInfo
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemDeveloperBinding
-import com.zucchini.projects.DevDetailActivity
+import com.zucchini.projects.developer.DevDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class DeveloperInfoAdapter :
@@ -32,6 +32,7 @@ class DeveloperInfoAdapter :
     override fun onBindViewHolder(holder: DeveloperInfoViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
+    override fun getItemCount(): Int = 8
 
     inner class DeveloperInfoViewHolder(private val binding: ItemDeveloperBinding) :
         RecyclerView.ViewHolder(binding.root) {
