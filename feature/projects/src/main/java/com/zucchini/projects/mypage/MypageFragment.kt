@@ -22,6 +22,8 @@ class MypageFragment : Fragment() {
 
         navigateToWebDocs()
         navigateToKakaoOpenChat()
+        navigateToSubmitForms()
+
         return binding.root
     }
 
@@ -42,6 +44,19 @@ class MypageFragment : Fragment() {
         binding.tvComplaint.setOnClickListener {
             val kakaoOpenChatUrl = getString(R.string.tv_complaint_link)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(kakaoOpenChatUrl))
+            startActivity(intent)
+        }
+    }
+
+    private fun navigateToSubmitForms() {
+        binding.btnApplyDeveloper.setOnClickListener {
+            val developerFormUri = getString(R.string.developer_form)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(developerFormUri))
+            startActivity(intent)
+        }
+        binding.btnApplyProject.setOnClickListener {
+            val projectFormUri = getString(R.string.project_form)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectFormUri))
             startActivity(intent)
         }
     }

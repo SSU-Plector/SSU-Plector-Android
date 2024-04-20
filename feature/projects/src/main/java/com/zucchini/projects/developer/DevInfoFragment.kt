@@ -1,5 +1,7 @@
 package com.zucchini.projects.developer
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
@@ -30,6 +33,7 @@ class DevInfoFragment : Fragment() {
 
         initDeveloperAdapter()
         initPageIndicator()
+        navigateToSubmitForms()
 
         return binding.root
     }
@@ -46,6 +50,14 @@ class DevInfoFragment : Fragment() {
         binding.rvPageIndicator.adapter = pageIndicatorAdapter
         binding.rvPageIndicator.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun navigateToSubmitForms() {
+        binding.floatingActionButton.setOnClickListener {
+            val developerFormUri = getString(R.string.developer_form)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(developerFormUri))
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

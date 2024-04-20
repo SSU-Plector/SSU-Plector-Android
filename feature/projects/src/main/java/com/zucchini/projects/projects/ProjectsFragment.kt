@@ -1,5 +1,7 @@
 package com.zucchini.projects.projects
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
+import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.dummy.ProjectDummyList
@@ -33,6 +36,8 @@ class ProjectsFragment : Fragment() {
         initProjectsAdapter()
         initPageIndicator()
         setSortingKeyword()
+        navigateToSubmitForms()
+
         return binding.root
     }
 
@@ -56,6 +61,14 @@ class ProjectsFragment : Fragment() {
         binding.rvPageIndicator.adapter = pageIndicatorAdapter
         binding.rvPageIndicator.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun navigateToSubmitForms() {
+        binding.floatingActionButton.setOnClickListener {
+            val projectFormUri = getString(R.string.project_form)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectFormUri))
+            startActivity(intent)
+        }
     }
 
     private fun setSortingKeyword() {
