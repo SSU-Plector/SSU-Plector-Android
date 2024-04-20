@@ -3,11 +3,15 @@ package com.zucchini.projects.projects
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
@@ -17,12 +21,14 @@ import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.dummy.ProjectDummyList
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
+import kotlinx.coroutines.launch
 
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null
     private val binding: FragmentProjectsBinding get() = _binding!!
 
     private lateinit var pageIndicatorAdapter: PageIndicatorAdapter
+    private val viewModel = ProjectsViewModel()
 
     private val totalPage = 4
     override fun onCreateView(
@@ -37,6 +43,8 @@ class ProjectsFragment : Fragment() {
         initPageIndicator()
         setSortingKeyword()
         navigateToSubmitForms()
+        // observeViewModel()
+        searchProject()
 
         return binding.root
     }
@@ -68,6 +76,19 @@ class ProjectsFragment : Fragment() {
             val projectFormUri = getString(R.string.project_form)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectFormUri))
             startActivity(intent)
+        }
+    }
+//    private fun observeViewModel() {
+//        lifecycleScope.launch {
+//            viewModel.searchQuery.collect { query ->
+//            }
+//        }
+//    }
+
+    private fun searchProject() {
+        binding.ivSearch.setOnClickListener {
+            val searchContents = binding.etSearchbar.text.toString()
+            viewModel.setSearchQuery(searchContents)
         }
     }
 
