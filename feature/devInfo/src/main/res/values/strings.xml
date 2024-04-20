@@ -1,8 +1,0 @@
-<resources>
-    <string name="top_app_bar_developer">개발자 찾기</string>
-    <string name="dev_detail_top_bar">개발자 상세 페이지</string>
-    <string name="github">Github</string>
-    <string name="kakao_id">카카오톡 아이디</string>
-    <string name="email">이메일</string>
-    <string name="tv_navigate_to_project"><u>프로젝트 보러가기&#8599;</u></string>
-</resources>

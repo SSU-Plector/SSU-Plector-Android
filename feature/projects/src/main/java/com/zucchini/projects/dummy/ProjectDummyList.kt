@@ -1,37 +1,36 @@
 package com.zucchini.projects.dummy
 
 import com.zucchini.domain.model.ProjectInfo
-import com.zucchini.feature.projects.R
 
 object ProjectDummyList {
     val projectDummyList = listOf(
         ProjectInfo(
-            image = R.drawable.devinfo_navi_24,
-            name = "프로젝트1",
-            description = "프로젝트1 설명",
+            image = null,
+            name = "ssu-plector",
+            description = "숭실대학교 IT대 학생을 위한 서비스",
             sorted = "서비스",
-            clicked = 0,
-        ),
-        ProjectInfo(
-            image = R.drawable.devinfo_navi_24,
-            name = "프로젝트2",
-            description = "프로젝트2 설명",
-            sorted = "임베디드",
-            clicked = 0,
+            clicked = 450,
         ),
         ProjectInfo(
             image = null,
-            name = "프로젝트3",
-            description = "프로젝트3 설명",
-            sorted = "IoT",
-            clicked = 0,
+            name = "하면함",
+            description = "도파민 탈출! 하면함",
+            sorted = "서비스",
+            clicked = 133,
         ),
         ProjectInfo(
-            image = R.drawable.devinfo_navi_24,
-            name = "프로젝트4",
-            description = "프로젝트4 설명",
-            sorted = "빅데이터",
-            clicked = 0,
+            image = null,
+            name = "오구오구",
+            description = "귀여운 아기 오구의 탈출 게임",
+            sorted = "게임",
+            clicked = 133,
+        ),
+        ProjectInfo(
+            image = null,
+            name = "아브아브",
+            description = "아이스브레이킹을 편하게!",
+            sorted = "서비스",
+            clicked = 142,
         ),
         ProjectInfo(
             image = null,
