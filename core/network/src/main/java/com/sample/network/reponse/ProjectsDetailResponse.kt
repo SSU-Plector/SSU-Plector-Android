@@ -5,58 +5,44 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class ProjectsDetailResponse(
-    @SerialName("devToolList")
-    val devToolList: List<String>,
-    @SerialName("developer")
-    val developer: Boolean,
-    @SerialName("email")
-    val email: String,
-    @SerialName("githubLink")
-    val githubLink: String,
-    @SerialName("hits")
-    val hits: Int,
     @SerialName("id")
     val id: Int,
-    @SerialName("imageLink")
-    val imageLink: String,
-    @SerialName("kakaoId")
-    val kakaoId: String,
-    @SerialName("languageList")
-    val languageList: List<String>,
-    @SerialName("linkList")
-    val linkList: List<String>,
-    @SerialName("major")
-    val major: String,
     @SerialName("name")
     val name: String,
-    @SerialName("part1")
-    val part1: String,
-    @SerialName("part2")
-    val part2: String,
-    @SerialName("projectList")
-    val projectList: List<Project>,
+    @SerialName("imageLink")
+    val imageLink: String,
+    @SerialName("developerList")
+    val developerList: List<DeveloperListInProjectDetail>,
     @SerialName("shortIntro")
     val shortIntro: String,
-    @SerialName("studentNumber")
-    val studentNumber: String,
+    @SerialName("longIntro")
+    val longIntro: String,
+    @SerialName("category")
+    val category: String,
+    @SerialName("hits")
+    val hits: Int,
+    @SerialName("githubLink")
+    val githubLink: String,
+    @SerialName("infoPageLink")
+    val infoPageLink: String,
+    @SerialName("webLink")
+    val webLink: String,
+    @SerialName("appLink")
+    val appLink: String,
+    @SerialName("languageList")
+    val languageList: List<String>,
+    @SerialName("devToolList")
+    val devToolList: List<String>,
     @SerialName("techStackList")
     val techStackList: List<String>,
-    @SerialName("university")
-    val university: String,
 ) {
     @Serializable
-    data class Project(
-        @SerialName("category")
-        val category: String,
-        @SerialName("hits")
-        val hits: Int,
+    data class DeveloperListInProjectDetail(
         @SerialName("id")
         val id: Int,
-        @SerialName("imageLink")
-        val imageLink: String,
         @SerialName("name")
         val name: String,
-        @SerialName("shortIntro")
-        val shortIntro: String,
+        @SerialName("partList")
+        val partList: List<String>,
     )
 }

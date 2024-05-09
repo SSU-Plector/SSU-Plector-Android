@@ -2,17 +2,22 @@ package com.sample.network.service
 
 import com.sample.network.model.BaseResponse
 import com.sample.network.reponse.ProjectsDetailResponse
-import com.sample.network.reponse.ProjectsListReponse
-import com.sample.network.request.ProjectsListRequest
-import retrofit2.http.Body
+import com.sample.network.reponse.ProjectsListResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ProjectsService {
     @GET("api/projects/list")
-    suspend fun getProjectsListData(@Body request: ProjectsListRequest): BaseResponse<ProjectsListReponse>
+    suspend fun getProjectsListData(
+        @Query("searchString") searchString: String? = "",
+        @Query("category") category: String,
+        @Query("sortType") sortType: String,
+        @Query("page") page: Int = 0,
+    ): BaseResponse<ProjectsListResponse>
 
     @GET("api/projects/{projectId}")
     suspend fun getProjectsDetailData(
-        projectId: Int,
+        @Path("projectId") projectId: Int,
     ): BaseResponse<ProjectsDetailResponse>
 }

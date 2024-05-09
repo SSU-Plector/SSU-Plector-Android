@@ -1,4 +1,4 @@
-package com.zucchini.projects.developer
+package com.zucchini.projects.developer.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

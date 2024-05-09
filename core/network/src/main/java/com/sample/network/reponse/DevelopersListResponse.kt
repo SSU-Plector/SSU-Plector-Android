@@ -12,10 +12,10 @@ data class DevelopersListResponse(
     @SerialName("totalPage")
     val totalPage: Int,
     @SerialName("developerResponseDTOList")
-    val developerResponseDTOListInList: List<DeveloperDetailInProjectInfo>,
+    val developerResponseDTOListInList: List<DeveloperDetailInDeveloperList>,
 ) {
     @Serializable
-    data class DeveloperDetailInProjectInfo(
+    data class DeveloperDetailInDeveloperList(
         @SerialName("id")
         val id: Int,
         @SerialName("name")

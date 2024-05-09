@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
@@ -17,7 +20,12 @@ import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.dummy.ProjectDummyList
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
+import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
+@AndroidEntryPoint
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null
     private val binding: FragmentProjectsBinding get() = _binding!!
@@ -25,6 +33,8 @@ class ProjectsFragment : Fragment() {
     private lateinit var pageIndicatorAdapter: PageIndicatorAdapter
 
     private val totalPage = 4
+
+    private val viewModel by viewModels<ProjectsListViewModel>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -37,8 +47,17 @@ class ProjectsFragment : Fragment() {
         initPageIndicator()
         setSortingKeyword()
         navigateToSubmitForms()
+        collectProjectList()
 
         return binding.root
+    }
+
+    private fun collectProjectList() {
+        viewModel.projectsList
+            .flowWithLifecycle(lifecycle)
+            .onEach {
+                // developerInfoAdapter.submitList(it.developersList)
+            }.launchIn(lifecycleScope)
     }
 
     private fun initProjectsAdapter() {

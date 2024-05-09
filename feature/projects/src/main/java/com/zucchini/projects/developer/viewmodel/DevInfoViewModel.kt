@@ -1,6 +1,5 @@
-package com.zucchini.projects.developer
+package com.zucchini.projects.developer.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.DevelopersListModel
@@ -33,15 +32,4 @@ class DevInfoViewModel @Inject constructor(
             }
         }
     }
-
-//    fun getDevelopersDetailData(developerId: Int) {
-//        viewModelScope.launch {
-//            developersRepository.getDevelopersDetailData(developerId).onSuccess {
-//                _developersDetail.value = it
-//                Timber.tag("DevInfoViewModel").d(it.toString())
-//            }.onFailure {
-//                Timber.tag("DevInfoViewModel").d(it.toString())
-//            }
-//        }
-//    }
 }

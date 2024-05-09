@@ -19,6 +19,7 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
+import com.zucchini.projects.developer.viewmodel.DevInfoViewModel
 import com.zucchini.projects.dummy.DeveloperInfoDummy
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import dagger.hilt.android.AndroidEntryPoint
