@@ -28,7 +28,7 @@ class DevDetailViewModel @Inject constructor(
                 _developersDetail.value = it
                 Timber.tag("DevDetailViewModel").d(it.toString())
             }.onFailure {
-                // handle error
+                Timber.tag("DevDetailViewModel Fail").d(it.toString())
             }
         }
     }

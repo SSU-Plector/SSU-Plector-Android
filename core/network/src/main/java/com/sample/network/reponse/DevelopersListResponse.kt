@@ -21,9 +21,9 @@ data class DevelopersListResponse(
         @SerialName("name")
         val name: String,
         @SerialName("part1")
-        val part1: String,
+        val part1: String?,
         @SerialName("part2")
-        val part2: String,
+        val part2: String?,
         @SerialName("githubLink")
         val githubLink: String,
         @SerialName("hits")

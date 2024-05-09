@@ -5,29 +5,34 @@ import com.zucchini.domain.model.DeveloperInfoInDetailModel
 import com.zucchini.domain.model.DevelopersDetailModel
 
 internal fun DevelopersDetailResponse.toDevelopersDetailModel(): DevelopersDetailModel {
-    val developerList = developerList.map { developerInfo ->
+    val projectsListInDevelopersDetail = projectsListInDevelopersDetail.map { developerInfo ->
         DeveloperInfoInDetailModel(
             id = developerInfo.id,
             name = developerInfo.name,
-            partList = developerInfo.partList,
+            imageLink = developerInfo.imageLink,
+            shortIntro = developerInfo.shortIntro,
+            category = developerInfo.category,
+            hits = developerInfo.hits,
         )
     }
 
     return DevelopersDetailModel(
         id = id,
         name = name,
-        imageLink = imageLink,
-        developerList = developerList,
         shortIntro = shortIntro,
-        longIntro = longIntro,
-        category = category,
+        university = university,
+        major = major,
+        studentNumber = studentNumber,
+        email = email,
         hits = hits,
+        kakaoId = kakaoId,
         githubLink = githubLink,
-        infoPageLink = infoPageLink,
-        webLink = webLink,
-        appLink = appLink,
+        projectList = projectsListInDevelopersDetail,
         languageList = languageList,
         devToolList = devToolList,
         techStackList = techStackList,
+        part1 = part1,
+        part2 = part2,
+        developer = developer,
     )
 }
