@@ -1,5 +1,6 @@
 import com.zucchini.buildsrc.Constants
 
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -21,36 +22,6 @@ android {
         versionName = Constants.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-//        buildConfigField(
-//            "String",
-//            "NATIVE_APP_KEY",
-//            gradleLocalProperties(rootDir).getProperty("native.app.key"),
-//        )
-//        manifestPlaceholders["NATIVE_APP_KEY"] =
-//            gradleLocalProperties(rootDir).getProperty("nativeAppKey")
-    }
-
-    buildTypes {
-        debug {
-//            buildConfigField(
-//                "String",
-//                "BASE_URL",
-//                gradleLocalProperties(rootDir).getProperty("test.base.url")
-//            )
-        }
-        release {
-//            buildConfigField(
-//                "String",
-//                "BASE_URL",
-//                gradleLocalProperties(rootDir).getProperty("base.url")
-//            )
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro",
-            )
-        }
     }
 
     compileOptions {
@@ -75,6 +46,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
+    implementation(project(":core:network"))
     implementation(project(":feature:projects"))
 
     KotlinDependencies.run {
@@ -95,6 +67,7 @@ dependencies {
     KaptDependencies.run {
         kapt(hiltCompiler)
         kapt(hiltWorkManagerCompiler)
+        kapt(hiltAndroidCompiler)
     }
 
     TestDependencies.run {

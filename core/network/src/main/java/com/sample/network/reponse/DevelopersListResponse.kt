@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class DevlopersListReponse(
+data class DevelopersListResponse(
     @SerialName("currentElement")
     val currentElement: Int,
     @SerialName("totalElement")
@@ -12,10 +12,10 @@ data class DevlopersListReponse(
     @SerialName("totalPage")
     val totalPage: Int,
     @SerialName("developerResponseDTOList")
-    val developerResponseDTOList: List<DeveloperDetailInfo>,
+    val developerResponseDTOListInList: List<DeveloperDetailInProjectInfo>,
 ) {
     @Serializable
-    data class DeveloperDetailInfo(
+    data class DeveloperDetailInProjectInfo(
         @SerialName("id")
         val id: Int,
         @SerialName("name")

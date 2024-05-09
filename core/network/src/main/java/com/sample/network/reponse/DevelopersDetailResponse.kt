@@ -12,7 +12,7 @@ data class DevelopersDetailResponse(
     @SerialName("imageLink")
     val imageLink: String,
     @SerialName("developerList")
-    val developerList: List<Developer>,
+    val developerList: List<DeveloperInfoInDevelopersDetail>,
     @SerialName("shortIntro")
     val shortIntro: String,
     @SerialName("longIntro")
@@ -37,7 +37,7 @@ data class DevelopersDetailResponse(
     val techStackList: List<String>,
 ) {
     @Serializable
-    data class Developer(
+    data class DeveloperInfoInDevelopersDetail(
         @SerialName("id")
         val id: Int,
         @SerialName("name")

@@ -34,6 +34,7 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(project(":core:network"))
 
     AndroidXDependencies.run {
         implementation(hilt)
@@ -61,5 +62,11 @@ dependencies {
         testImplementation(jUnit)
         androidTestImplementation(androidTest)
         androidTestImplementation(espresso)
+    }
+
+    KaptDependencies.run {
+        kapt(hiltCompiler)
+        kapt(hiltWorkManagerCompiler)
+        kapt(hiltAndroidCompiler)
     }
 }

@@ -7,11 +7,13 @@ import androidx.lifecycle.lifecycleScope
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityIntroduceBinding
 import com.zucchini.projects.adapter.IntroducePagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class IntroduceActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIntroduceBinding
 

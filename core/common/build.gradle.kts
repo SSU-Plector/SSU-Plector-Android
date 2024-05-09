@@ -48,9 +48,19 @@ dependencies {
         implementation(timber)
     }
 
+    AndroidXDependencies.run {
+        implementation(hilt)
+    }
+
     TestDependencies.run {
         testImplementation(jUnit)
         androidTestImplementation(androidTest)
         androidTestImplementation(espresso)
+    }
+
+    KaptDependencies.run {
+        kapt(hiltCompiler)
+        kapt(hiltWorkManagerCompiler)
+        kapt(hiltAndroidCompiler)
     }
 }

@@ -14,7 +14,8 @@
         android:roundIcon="@drawable/logo_olive_rotational"
         android:supportsRtl="true"
         android:theme="@style/Theme.SSUPlectorAndroid"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".InitActivity"
             android:exported="true"
