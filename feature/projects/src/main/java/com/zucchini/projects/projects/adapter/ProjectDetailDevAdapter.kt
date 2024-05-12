@@ -4,13 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.ProjectDetailDevInfo
+import com.zucchini.domain.model.ProjectsDetailModel
 import com.zucchini.feature.projects.databinding.ItemProjectDetailDevBinding
 import com.zucchini.view.ItemDiffCallback
 
 class ProjectDetailDevAdapter :
-    ListAdapter<ProjectDetailDevInfo, ProjectDetailDevAdapter.ProjectDetailDevViewHolder>(
-        ItemDiffCallback<ProjectDetailDevInfo>(
+    ListAdapter<ProjectsDetailModel.DeveloperListInProjectDetail, ProjectDetailDevAdapter.ProjectDetailDevViewHolder>(
+        ItemDiffCallback<ProjectsDetailModel.DeveloperListInProjectDetail>(
             onItemsTheSame = { old, new -> old == new },
             onContentsTheSame = { old, new -> old == new },
         ),
@@ -30,11 +30,12 @@ class ProjectDetailDevAdapter :
 
     inner class ProjectDetailDevViewHolder(private val binding: ItemProjectDetailDevBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(projectDetailDevInfo: ProjectDetailDevInfo) {
+        fun bind(developerListInProjectDetail: ProjectsDetailModel.DeveloperListInProjectDetail) {
             binding.run {
-                tvDeveloperName.text = projectDetailDevInfo.name
-                tvDeveloperInfo1.text = projectDetailDevInfo.role1
-                tvDeveloperInfo2.text = projectDetailDevInfo.role2
+                tvDeveloperName.text = developerListInProjectDetail.name
+                tvDeveloperInfo1?.text = developerListInProjectDetail.partList[0]
+                // TODO: 수정 필요
+                //tvDeveloperInfo2?.text = developerListInProjectDetail.partList[1]
             }
         }
     }

@@ -10,25 +10,25 @@ data class ProjectsDetailResponse(
     @SerialName("name")
     val name: String,
     @SerialName("imageLink")
-    val imageLink: String,
+    val imageLink: String?,
     @SerialName("developerList")
-    val developerList: List<DeveloperListInProjectDetail>,
+    val developerList: List<DeveloperListInProjectDetail>? = emptyList(),
     @SerialName("shortIntro")
-    val shortIntro: String,
+    val shortIntro: String?,
     @SerialName("longIntro")
-    val longIntro: String,
+    val longIntro: String?,
     @SerialName("category")
     val category: String,
     @SerialName("hits")
     val hits: Int,
     @SerialName("githubLink")
-    val githubLink: String,
+    val githubLink: String?,
     @SerialName("infoPageLink")
-    val infoPageLink: String,
+    val infoPageLink: String?,
     @SerialName("webLink")
-    val webLink: String,
+    val webLink: String?,
     @SerialName("appLink")
-    val appLink: String,
+    val appLink: String?,
     @SerialName("languageList")
     val languageList: List<String>,
     @SerialName("devToolList")
@@ -43,6 +43,6 @@ data class ProjectsDetailResponse(
         @SerialName("name")
         val name: String,
         @SerialName("partList")
-        val partList: List<String>,
+        val partList: List<String?>,
     )
 }

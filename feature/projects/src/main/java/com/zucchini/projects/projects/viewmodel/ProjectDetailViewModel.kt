@@ -18,6 +18,10 @@ class ProjectDetailViewModel @Inject constructor(
     private val _projectsDetail = MutableStateFlow<ProjectsDetailModel?>(null)
     val projectsDetail = _projectsDetail.asStateFlow()
 
+    private val _devListInProjectsDetail =
+        MutableStateFlow<List<ProjectsDetailModel.DeveloperListInProjectDetail?>>(emptyList())
+    val devListInProjectsDetail = _devListInProjectsDetail.asStateFlow()
+
     init {
         loadProjectsDetail(1)
     }
@@ -26,6 +30,7 @@ class ProjectDetailViewModel @Inject constructor(
         viewModelScope.launch {
             projectsRepository.getProjectsDetailData(projectId).onSuccess {
                 _projectsDetail.value = it
+                _devListInProjectsDetail.value = it.developerList
                 Timber.tag("ProjectDetailViewModel").d(it.toString())
             }.onFailure {
                 Timber.tag("ProjectDetailViewModel Fail").d(it.toString())
