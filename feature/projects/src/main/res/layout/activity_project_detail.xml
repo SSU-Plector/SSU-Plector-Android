@@ -524,6 +524,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/projects_background_olive"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
