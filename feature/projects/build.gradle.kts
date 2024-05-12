@@ -40,6 +40,7 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
+    implementation(project(":core:network"))
 
     KotlinDependencies.run {
         implementation(kotlin)
@@ -70,6 +71,7 @@ dependencies {
     KaptDependencies.run {
         kapt(hiltCompiler)
         kapt(hiltWorkManagerCompiler)
+        kapt(hiltAndroidCompiler)
     }
 
     implementation(MaterialDesignDependencies.materialDesign)
