@@ -17,7 +17,6 @@ import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
-import com.zucchini.projects.dummy.ProjectDummyList
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
@@ -35,6 +34,7 @@ class ProjectsFragment : Fragment() {
     private val totalPage = 4
 
     private val viewModel by viewModels<ProjectsListViewModel>()
+    private val projectsAdapter = ProjectsAdapter()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,16 +55,14 @@ class ProjectsFragment : Fragment() {
     private fun collectProjectList() {
         viewModel.projectsList
             .flowWithLifecycle(lifecycle)
-            .onEach {
-                // developerInfoAdapter.submitList(it.developersList)
+            .onEach { projectList ->
+                projectsAdapter.submitList(projectList)
             }.launchIn(lifecycleScope)
     }
 
     private fun initProjectsAdapter() {
-        val projectsAdapter = ProjectsAdapter()
         binding.rvProjects.layoutManager = LinearLayoutManager(context)
         binding.rvProjects.adapter = projectsAdapter
-        projectsAdapter.submitList(ProjectDummyList.projectDummyList)
     }
 
     private fun initKeywordAdapter() {

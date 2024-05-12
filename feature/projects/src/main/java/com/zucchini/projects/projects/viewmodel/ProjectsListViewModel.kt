@@ -2,7 +2,7 @@ package com.zucchini.projects.projects.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zucchini.domain.model.ProjectsListModel
+import com.zucchini.domain.model.ProjectListInfoInList
 import com.zucchini.domain.repository.ProjectsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class ProjectsListViewModel @Inject constructor(
     private val projectsRepository: ProjectsRepository,
 ) : ViewModel() {
-    private val _projectsList = MutableStateFlow<ProjectsListModel?>(null)
+    private val _projectsList = MutableStateFlow<List<ProjectListInfoInList?>>(emptyList())
     val projectsList = _projectsList.asStateFlow()
 
     init {
@@ -25,8 +25,8 @@ class ProjectsListViewModel @Inject constructor(
     fun getProjectsListData() {
         viewModelScope.launch {
             projectsRepository.getProjectsListData().onSuccess {
-                _projectsList.value = it
-                Timber.tag("ProjectsListViewModel Success").d(it.toString())
+                _projectsList.value = it.projectListInfoInList
+                Timber.tag("ProjectsListViewModel Success").d(_projectsList.value.toString())
             }.onFailure {
                 Timber.tag("ProjectsListViewModel").d(it.toString())
             }

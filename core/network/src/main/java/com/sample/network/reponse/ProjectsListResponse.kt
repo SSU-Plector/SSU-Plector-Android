@@ -21,7 +21,7 @@ data class ProjectsListResponse(
         @SerialName("name")
         val name: String,
         @SerialName("imagePath")
-        val imagePath: String,
+        val imagePath: String?,
         @SerialName("shortIntro")
         val shortIntro: String,
         @SerialName("category")

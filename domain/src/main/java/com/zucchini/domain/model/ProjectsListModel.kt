@@ -10,7 +10,7 @@ data class ProjectsListModel(
 data class ProjectListInfoInList(
     val id: Int,
     val name: String,
-    val imagePath: String,
+    val imagePath: String?,
     val shortIntro: String,
     val category: String,
     val hits: Int,
