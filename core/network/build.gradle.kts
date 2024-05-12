@@ -34,14 +34,14 @@ android {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                gradleLocalProperties(rootDir).getProperty("base.url"),
+                gradleLocalProperties(rootDir).getProperty("base.url") ?: "\"\"",
             )
         }
         release {
             buildConfigField(
                 "String",
                 "BASE_URL",
-                gradleLocalProperties(rootDir).getProperty("base.url"),
+                gradleLocalProperties(rootDir).getProperty("base.url") ?: "\"\"",
             )
             isMinifyEnabled = false
             proguardFiles(
