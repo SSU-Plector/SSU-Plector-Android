@@ -11,7 +11,8 @@ data class DevelopersDetailModel(
     val hits: Int,
     val kakaoId: String,
     val githubLink: String,
-    val projectList: List<DeveloperInfoInDetailModel>,
+    val imageLink: String,
+    val projectList: List<ProjectInfoInDevDetailModel>,
     val languageList: List<String>,
     val devToolList: List<String>,
     val techStackList: List<String>,
@@ -20,7 +21,7 @@ data class DevelopersDetailModel(
     val developer: Boolean,
 )
 
-data class DeveloperInfoInDetailModel(
+data class ProjectInfoInDevDetailModel(
     val id: Int,
     val name: String,
     val imageLink: String,

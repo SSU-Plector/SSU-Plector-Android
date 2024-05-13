@@ -25,6 +25,8 @@ data class DevelopersDetailResponse(
     val kakaoId: String,
     @SerialName("githubLink")
     val githubLink: String,
+    @SerialName("imageLink")
+    val imageLink: String,
     @SerialName("projectList")
     val projectsListInDevelopersDetail: List<ProjectsListInDevelopersDetail>,
     @SerialName("languageList")

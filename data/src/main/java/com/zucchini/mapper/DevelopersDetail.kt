@@ -1,12 +1,12 @@
 package com.zucchini.mapper
 
 import com.sample.network.reponse.DevelopersDetailResponse
-import com.zucchini.domain.model.DeveloperInfoInDetailModel
+import com.zucchini.domain.model.ProjectInfoInDevDetailModel
 import com.zucchini.domain.model.DevelopersDetailModel
 
 internal fun DevelopersDetailResponse.toDevelopersDetailModel(): DevelopersDetailModel {
     val projectsListInDevelopersDetail = projectsListInDevelopersDetail.map { developerInfo ->
-        DeveloperInfoInDetailModel(
+        ProjectInfoInDevDetailModel(
             id = developerInfo.id,
             name = developerInfo.name,
             imageLink = developerInfo.imageLink,
@@ -27,6 +27,7 @@ internal fun DevelopersDetailResponse.toDevelopersDetailModel(): DevelopersDetai
         hits = hits,
         kakaoId = kakaoId,
         githubLink = githubLink,
+        imageLink = imageLink,
         projectList = projectsListInDevelopersDetail,
         languageList = languageList,
         devToolList = devToolList,
