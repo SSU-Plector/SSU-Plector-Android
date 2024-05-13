@@ -47,37 +47,38 @@ class ProjectDetailActivity : AppCompatActivity() {
 
         viewModel.projectsDetail.flowWithLifecycle(lifecycle)
             .onEach {
-                binding.run {
-                    updateView(it)
-                }
+                bindProjectDetailView(it)
             }
             .launchIn(lifecycleScope)
     }
 
-    private fun ActivityProjectDetailBinding.updateView(it: ProjectsDetailModel?) {
-        ivProjectDetail.load(
-            it?.imageLink
-                ?: R.drawable.project_profile_default,
-        )
-        tvProjectName.text = it?.name
-        tvProjectSorted.text = it?.category
-        tvProjectClicked.text = "조회수 +${it?.hits}"
-        tvProjectIntroContent.text = it?.shortIntro
-        tvProjectIntroContentLong.text = it?.longIntro
-        tvGithub.text = it?.githubLink
-        tvAppLink.text = it?.appLink
-        tvLandingLink.text = it?.infoPageLink
-        tvWebLink.text = it?.webLink
-        tvDevStackLanguage1.text = it?.languageList?.get(0) ?: ""
-        // TODO: 수정 필요
+    private fun bindProjectDetailView(it: ProjectsDetailModel?) {
+        binding.run {
+            ivProjectDetail.load(
+                it?.imageLink
+                    ?: R.drawable.project_profile_default,
+            )
 
-        //tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
-        //tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
-        tvDevStackCooperation1.text = it?.devToolList?.get(0) ?: ""
-        //tvDevStackCooperation2.text = it?.devToolList?.get(1) ?: ""
-        //tvDevStackCooperation3.text = it?.devToolList?.get(2) ?: ""
-        tvDevStackTech1.text = it?.techStackList?.get(0) ?: ""
-        //tvDevStackTech2.text = it?.techStackList?.get(1) ?: ""
-        //tvDevStackTech3.text = it?.techStackList?.get(2) ?: ""
+            tvProjectName.text = it?.name
+            tvProjectSorted.text = it?.category
+            tvProjectClicked.text = "조회수 +${it?.hits}"
+            tvProjectIntroContent.text = it?.shortIntro
+            tvProjectIntroContentLong.text = it?.longIntro
+            tvGithub.text = it?.githubLink
+            tvAppLink.text = it?.appLink
+            tvLandingLink.text = it?.infoPageLink
+            tvWebLink.text = it?.webLink
+            tvDevStackLanguage1.text = it?.languageList?.get(0) ?: ""
+            // TODO: 수정 필요
+
+            // tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
+            // tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
+            tvDevStackCooperation1.text = it?.devToolList?.get(0) ?: ""
+            // tvDevStackCooperation2.text = it?.devToolList?.get(1) ?: ""
+            // tvDevStackCooperation3.text = it?.devToolList?.get(2) ?: ""
+            tvDevStackTech1.text = it?.techStackList?.get(0) ?: ""
+            // tvDevStackTech2.text = it?.techStackList?.get(1) ?: ""
+            // tvDevStackTech3.text = it?.techStackList?.get(2) ?: ""
+        }
     }
 }
