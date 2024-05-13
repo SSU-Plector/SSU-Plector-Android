@@ -58,7 +58,7 @@ class DevInfoFragment : Fragment() {
         viewModel.developersList
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach {
-                // developerInfoAdapter.submitList(it.developersList)
+                developerInfoAdapter.submitList(it)
                 Log.d("DevInfoFragment", it.toString())
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
@@ -76,7 +76,6 @@ class DevInfoFragment : Fragment() {
         developerInfoAdapter = DeveloperInfoAdapter()
         binding.rvDevinfo.adapter = developerInfoAdapter
         binding.rvDevinfo.layoutManager = GridLayoutManager(context, 2)
-        developerInfoAdapter.submitList(DeveloperInfoDummy.developerInfoList)
     }
 
     private fun initPageIndicator() {

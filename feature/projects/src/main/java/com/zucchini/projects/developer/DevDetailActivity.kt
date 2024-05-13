@@ -18,6 +18,8 @@ import kotlinx.coroutines.flow.onEach
 class DevDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDevDetailBinding
     private val viewModel: DevDetailViewModel by viewModels()
+    private val projectAdapter = DevDetailProjectAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDevDetailBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -28,17 +30,15 @@ class DevDetailActivity : AppCompatActivity() {
     }
 
     private fun initProjectAdapter() {
-        val projectAdapter = DevDetailProjectAdapter()
         binding.rvDevProject.layoutManager = LinearLayoutManager(this)
         binding.rvDevProject.adapter = projectAdapter
-        projectAdapter.submitList(DevProjectsDummy.devProjectsInfoList)
     }
 
     private fun collectDevelopersDetail() {
         viewModel.developersDetail
             .flowWithLifecycle(lifecycle)
             .onEach {
-                // developerInfoAdapter.submitList(it.developersList)
+                projectAdapter.submitList(DevProjectsDummy.devProjectsInfoList)
             }
             .launchIn(lifecycleScope)
     }

@@ -13,5 +13,6 @@ data class DeveloperDetailInfoInListModel(
     val part1: String?,
     val part2: String?,
     val githubLink: String,
+    val imageLink: String?,
     val hits: Int,
 )

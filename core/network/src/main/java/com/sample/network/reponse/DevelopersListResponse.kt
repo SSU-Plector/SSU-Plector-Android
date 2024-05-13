@@ -28,6 +28,8 @@ data class DevelopersListResponse(
         val githubLink: String,
         @SerialName("hits")
         val hits: Int,
+        @SerialName("imageLink")
+        val imageLink: String?,
     )
 }
 

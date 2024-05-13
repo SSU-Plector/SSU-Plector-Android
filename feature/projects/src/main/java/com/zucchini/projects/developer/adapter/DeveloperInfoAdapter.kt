@@ -6,15 +6,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.DeveloperInfo
-import com.zucchini.feature.projects.R
+import com.zucchini.domain.model.DeveloperDetailInfoInListModel
 import com.zucchini.feature.projects.databinding.ItemDeveloperBinding
 import com.zucchini.projects.developer.DevDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class DeveloperInfoAdapter :
-    ListAdapter<DeveloperInfo, DeveloperInfoAdapter.DeveloperInfoViewHolder>(
-        ItemDiffCallback<DeveloperInfo>(
+    ListAdapter<DeveloperDetailInfoInListModel, DeveloperInfoAdapter.DeveloperInfoViewHolder>(
+        ItemDiffCallback<DeveloperDetailInfoInListModel>(
             onItemsTheSame = { old, new -> old == new },
             onContentsTheSame = { old, new -> old == new },
         ),
@@ -32,20 +31,20 @@ class DeveloperInfoAdapter :
     override fun onBindViewHolder(holder: DeveloperInfoViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-    override fun getItemCount(): Int = 8
 
     inner class DeveloperInfoViewHolder(private val binding: ItemDeveloperBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(developerInfo: DeveloperInfo) {
+        fun bind(developersInfoInList: DeveloperDetailInfoInListModel) {
             binding.run {
                 ivProjectProfile.setImageResource(
-                    developerInfo.image
-                        ?: R.drawable.developer_default_image,
+                    developersInfoInList.imageLink?.toIntOrNull()
+                        ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
                 )
-                tvDeveloperName.text = developerInfo.name
-                tvDeveloperField.text = developerInfo.field
-                tvDeveloperGithub.text = "Github: ${developerInfo.githubId}"
-                tvDeveloperClicked.text = "조회수 +${developerInfo.clicked}"
+                tvDeveloperName.text = developersInfoInList.name
+                tvDeveloperField.text =
+                    "${developersInfoInList.part1}\n${developersInfoInList.part2}"
+                tvDeveloperGithub.text = "Github: ${developersInfoInList.githubLink}"
+                tvDeveloperClicked.text = "조회수 +${developersInfoInList.hits}"
 
                 root.setOnClickListener {
                     val intent = Intent(binding.root.context, DevDetailActivity::class.java)

@@ -13,6 +13,7 @@ internal fun DevelopersListResponse.toDevelopersListModel(): DevelopersListModel
             part2 = dto.part2,
             githubLink = dto.githubLink,
             hits = dto.hits,
+            imageLink = dto.imageLink,
         )
     }
 
