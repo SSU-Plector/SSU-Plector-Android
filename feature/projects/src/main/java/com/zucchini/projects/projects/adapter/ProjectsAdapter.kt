@@ -46,6 +46,7 @@ class ProjectsAdapter : ListAdapter<ProjectListInfoInList, ProjectsAdapter.Proje
                 tvProjectClicked.text = "조회수 +${projectInfo.hits}"
                 root.setOnClickListener {
                     val intent = Intent(root.context, ProjectDetailActivity::class.java)
+                    intent.putExtra("projectId", projectInfo.id)
                     startActivity(root.context, intent, null)
                 }
             }

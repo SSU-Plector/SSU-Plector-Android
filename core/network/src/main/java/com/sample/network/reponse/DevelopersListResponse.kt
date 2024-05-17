@@ -19,15 +19,15 @@ data class DevelopersListResponse(
         @SerialName("id")
         val id: Int,
         @SerialName("name")
-        val name: String,
+        val name: String?,
         @SerialName("part1")
         val part1: String?,
         @SerialName("part2")
         val part2: String?,
         @SerialName("githubLink")
-        val githubLink: String,
+        val githubLink: String?,
         @SerialName("hits")
-        val hits: Int,
+        val hits: Int = 0,
         @SerialName("imageLink")
         val imageLink: String?,
     )

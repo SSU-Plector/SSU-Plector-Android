@@ -22,6 +22,13 @@ class ProjectDetailActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<ProjectDetailViewModel>()
     private val adapter = ProjectDetailDevAdapter()
+    private var projectId: Int = 0
+
+    override fun onResume() {
+        projectId = intent.getIntExtra("projectId", 0)
+        initProjectId(projectId)
+        super.onResume()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityProjectDetailBinding.inflate(layoutInflater)
@@ -30,6 +37,10 @@ class ProjectDetailActivity : AppCompatActivity() {
 
         initDevInfoAdapter()
         collectProjectDetailData()
+    }
+
+    private fun initProjectId(projectId: Int) {
+        viewModel.loadProjectsDetail(projectId)
     }
 
     private fun initDevInfoAdapter() {

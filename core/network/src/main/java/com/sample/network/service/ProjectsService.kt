@@ -10,10 +10,10 @@ import retrofit2.http.Query
 interface ProjectsService {
     @GET("api/projects/list")
     suspend fun getProjectsListData(
-        @Query("searchString") searchString: String? = "",
+        @Query("searchString") searchString: String?,
         @Query("category") category: String,
         @Query("sortType") sortType: String,
-        @Query("page") page: Int = 0,
+        @Query("page") page: Int,
     ): BaseResponse<ProjectsListResponse>
 
     @GET("api/projects/{projectId}")
