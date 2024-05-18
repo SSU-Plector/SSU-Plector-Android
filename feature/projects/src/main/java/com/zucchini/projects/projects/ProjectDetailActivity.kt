@@ -37,6 +37,13 @@ class ProjectDetailActivity : AppCompatActivity() {
 
         initDevInfoAdapter()
         collectProjectDetailData()
+        backClickListner()
+    }
+
+    private fun backClickListner() {
+        binding.ivBackButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initProjectId(projectId: Int) {

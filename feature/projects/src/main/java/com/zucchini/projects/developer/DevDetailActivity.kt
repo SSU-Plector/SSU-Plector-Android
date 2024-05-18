@@ -30,6 +30,13 @@ class DevDetailActivity : AppCompatActivity() {
         collectProjectList()
         collectDevDetail()
         initProjectAdapter()
+        backClickListner()
+    }
+
+    private fun backClickListner() {
+        binding.ivBackButton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initProjectAdapter() {

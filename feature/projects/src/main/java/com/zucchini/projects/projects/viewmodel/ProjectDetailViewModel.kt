@@ -22,10 +22,6 @@ class ProjectDetailViewModel @Inject constructor(
         MutableStateFlow<List<ProjectsDetailModel.DeveloperListInProjectDetail?>>(emptyList())
     val devListInProjectsDetail = _devListInProjectsDetail.asStateFlow()
 
-    init {
-        loadProjectsDetail(1)
-    }
-
     fun loadProjectsDetail(projectId: Int) {
         viewModelScope.launch {
             projectsRepository.getProjectsDetailData(projectId).onSuccess {
