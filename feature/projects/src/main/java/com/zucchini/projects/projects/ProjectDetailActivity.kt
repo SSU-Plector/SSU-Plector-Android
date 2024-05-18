@@ -1,5 +1,7 @@
 package com.zucchini.projects.projects
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -76,13 +78,14 @@ class ProjectDetailActivity : AppCompatActivity() {
                 it?.imageLink
                     ?: R.drawable.project_profile_default,
             )
+            val projectGithubLink = it?.githubLink ?: getString(com.zucchini.feature.projects.R.string.github_default_link)
 
             tvProjectName.text = it?.name
             tvProjectSorted.text = it?.category
             tvProjectClicked.text = "조회수 +${it?.hits}"
             tvProjectIntroContent.text = it?.shortIntro
             tvProjectIntroContentLong.text = it?.longIntro
-            tvGithub.text = it?.githubLink
+            tvGithub.text = projectGithubLink
             tvAppLink.text = it?.appLink
             tvLandingLink.text = it?.infoPageLink
             tvWebLink.text = it?.webLink
@@ -97,6 +100,18 @@ class ProjectDetailActivity : AppCompatActivity() {
             tvDevStackTech1.text = it?.techStackList?.get(0) ?: ""
             // tvDevStackTech2.text = it?.techStackList?.get(1) ?: ""
             // tvDevStackTech3.text = it?.techStackList?.get(2) ?: ""
+
+            navigateToProjectGithubLink(projectGithubLink)
+        }
+    }
+
+    private fun ActivityProjectDetailBinding.navigateToProjectGithubLink(
+        projectGithubLink: String?,
+    ) {
+        tvGithub.setOnClickListener {
+            // TODO : Github 링크 형식이 올바르지 않는 경우는 어떻게 할지?
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectGithubLink))
+            startActivity(intent)
         }
     }
 }

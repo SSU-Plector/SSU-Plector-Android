@@ -33,5 +33,6 @@
     <string name="tv_complaint_link">https://open.kakao.com/o/sDP9VYRb</string>
     <string name="developer_form">https://forms.gle/UsAn9zX74vrJYxG37</string>
     <string name="project_form">https://forms.gle/3rsgKP3UFLPySJBFA</string>
+    <string name="github_default_link">https://github.com/</string>
 
 </resources>
