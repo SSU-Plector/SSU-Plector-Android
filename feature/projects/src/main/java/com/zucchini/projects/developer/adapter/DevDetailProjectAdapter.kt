@@ -40,11 +40,11 @@ class DevDetailProjectAdapter :
         fun bind(projectList: ProjectInfoInDevDetailModel) {
             binding.run {
                 ivProjectProfile.setImageResource(
-                    projectList.imageLink.toIntOrNull() ?: R.drawable.developer_default_image,
+                    projectList.imageLink?.toIntOrNull() ?: R.drawable.developer_default_image,
                 )
-                tvProjectName.text = projectList.name
-                tvProjectDescription.text = projectList.shortIntro
-                tvSortedProject.text = projectList.category
+                tvProjectName.text = projectList.name ?: ""
+                tvProjectDescription.text = projectList.shortIntro ?: ""
+                tvSortedProject.text = projectList.category ?: "SERVICE"
                 tvNavigateToProject.setOnClickListener {
                     val intent = Intent(binding.root.context, ProjectDetailActivity::class.java)
                     startActivity(binding.root.context, intent, null)

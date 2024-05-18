@@ -48,6 +48,7 @@ class DeveloperInfoAdapter :
 
                 root.setOnClickListener {
                     val intent = Intent(binding.root.context, DevDetailActivity::class.java)
+                    intent.putExtra("developerId", developersInfoInList.id)
                     startActivity(binding.root.context, intent, null)
                 }
             }

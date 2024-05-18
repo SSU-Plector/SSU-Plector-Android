@@ -22,6 +22,12 @@ class DevDetailActivity : AppCompatActivity() {
     private val viewModel: DevDetailViewModel by viewModels()
     private val projectAdapter = DevDetailProjectAdapter()
 
+    override fun onResume() {
+        val developerId = intent.getIntExtra("developerId", 0)
+        loadDevDetail(developerId)
+        super.onResume()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDevDetailBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -31,6 +37,10 @@ class DevDetailActivity : AppCompatActivity() {
         collectDevDetail()
         initProjectAdapter()
         backClickListner()
+    }
+
+    private fun loadDevDetail(projectId: Int) {
+        viewModel.loadDevelopersDetail(projectId)
     }
 
     private fun backClickListner() {
@@ -57,12 +67,12 @@ class DevDetailActivity : AppCompatActivity() {
         viewModel.developersDetail
             .flowWithLifecycle(lifecycle)
             .onEach {
-                bindDevDetialView(it)
+                bindDevDetailView(it)
             }
             .launchIn(lifecycleScope)
     }
 
-    private fun bindDevDetialView(it: DevelopersDetailModel?) {
+    private fun bindDevDetailView(it: DevelopersDetailModel?) {
         binding.run {
             ivProjectDetail.load(
                 it?.imageLink?.toIntOrNull()

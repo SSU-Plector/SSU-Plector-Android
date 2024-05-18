@@ -24,15 +24,11 @@ class DevDetailViewModel @Inject constructor(
         MutableStateFlow<List<ProjectInfoInDevDetailModel?>>(emptyList())
     val projectListInDevDetail = _projectListInDevDetail.asStateFlow()
 
-    init {
-        loadDevelopersDetail(1)
-    }
-
     fun loadDevelopersDetail(developerId: Int) {
         viewModelScope.launch {
             developersRepository.getDevelopersDetailData(developerId).onSuccess {
                 _developersDetail.value = it
-                _projectListInDevDetail.value = it.projectList
+                _projectListInDevDetail.value = it.projectList ?: emptyList()
                 Timber.tag("DevDetailViewModel").d(it.toString())
             }.onFailure {
                 Timber.tag("DevDetailViewModel Fail").d(it.toString())
