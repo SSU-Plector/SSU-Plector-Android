@@ -90,16 +90,14 @@ class ProjectDetailActivity : AppCompatActivity() {
             tvLandingLink.text = it?.infoPageLink
             tvWebLink.text = it?.webLink
             tvDevStackLanguage1.text = it?.languageList?.get(0) ?: ""
-            // TODO: 수정 필요
-
-            // tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
-            // tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
+            tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
+            tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
             tvDevStackCooperation1.text = it?.devToolList?.get(0) ?: ""
-            // tvDevStackCooperation2.text = it?.devToolList?.get(1) ?: ""
-            // tvDevStackCooperation3.text = it?.devToolList?.get(2) ?: ""
+            tvDevStackCooperation2.text = it?.devToolList?.get(1) ?: ""
+            tvDevStackCooperation3.text = it?.devToolList?.get(2) ?: ""
             tvDevStackTech1.text = it?.techStackList?.get(0) ?: ""
-            // tvDevStackTech2.text = it?.techStackList?.get(1) ?: ""
-            // tvDevStackTech3.text = it?.techStackList?.get(2) ?: ""
+            tvDevStackTech2.text = it?.techStackList?.get(1) ?: ""
+            tvDevStackTech3.text = it?.techStackList?.get(2) ?: ""
 
             navigateToProjectGithubLink(projectGithubLink)
         }
