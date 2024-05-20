@@ -14,9 +14,9 @@ class ProjectsRepositoryImpl @Inject constructor(
     override suspend fun getProjectsListData(searchString: String, category: String, sortType: String, page: Int): Result<ProjectsListModel> {
         return runCatching {
             projectsService.getProjectsListData(
-                searchString = "",
-                category = "SERVICE", // TODO : 디폴트값 어떻게 할지?
-                sortType = "recent",
+                searchString = searchString,
+                category = category, // TODO : 디폴트값 어떻게 할지?
+                sortType = sortType,
                 page = page,
             ).data.toProjectsListModel()
         }

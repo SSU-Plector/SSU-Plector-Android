@@ -3,6 +3,7 @@ package com.zucchini.projects.projects.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.ProjectListInfoInList
+import com.zucchini.domain.model.SortOption
 import com.zucchini.domain.repository.ProjectsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,16 +25,34 @@ class ProjectsListViewModel @Inject constructor(
     private val _category = MutableStateFlow("SERVICE")
     val category = _category.asStateFlow()
 
-    private val _sortType = MutableStateFlow("recent")
-    val sortType = _sortType.asStateFlow()
+    private val _sortOption = MutableStateFlow(SortOption.RECENT)
+    val sortOption = _sortOption.asStateFlow()
+
+    private val _page = MutableStateFlow(0)
+    val page = _page.asStateFlow()
 
     init {
-        getProjectsListData(_searchString.toString(), _category.toString(), _sortType.toString(), 1)
+        getProjectsListData(
+            _searchString.value,
+            _category.value,
+            _sortOption.value,
+            _page.value,
+        )
     }
 
-    fun getProjectsListData(searchString: String, category: String, sortType: String, page: Int) {
+    private fun getProjectsListData(
+        searchString: String,
+        category: String,
+        sortOption: SortOption,
+        page: Int,
+    ) {
         viewModelScope.launch {
-            projectsRepository.getProjectsListData(searchString, category, sortType, page)
+            projectsRepository.getProjectsListData(
+                searchString,
+                category,
+                sortOption.displayName,
+                page,
+            )
                 .onSuccess {
                     _projectsList.value = it.projectListInfoInList
                     Timber.tag("ProjectsListViewModel Success").d(_projectsList.value.toString())
@@ -41,5 +60,26 @@ class ProjectsListViewModel @Inject constructor(
                     Timber.tag("ProjectsListViewModel").d(it.toString())
                 }
         }
+    }
+
+    fun updateSortOption(option: SortOption) {
+        _sortOption.value = option
+        getProjectsListData(
+            _searchString.value,
+            _category.value,
+            _sortOption.value,
+            _page.value,
+        )
+    }
+
+    fun updateSearchString(newSearchString: String) {
+        _searchString.value = newSearchString
+
+        getProjectsListData(
+            _searchString.value,
+            _category.value,
+            _sortOption.value,
+            _page.value,
+        )
     }
 }

@@ -58,7 +58,6 @@ class DevInfoFragment : Fragment() {
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach {
                 developerInfoAdapter.submitList(it)
-                Log.d("DevInfoFragment", it.toString())
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
