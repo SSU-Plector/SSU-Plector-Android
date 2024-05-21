@@ -7,8 +7,12 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.feature.projects.databinding.ItemPageIndicatorBinding
 
-class PageIndicatorAdapter(private val context: Context, private val totalPage: Int) :
-    RecyclerView.Adapter<PageIndicatorAdapter.PageIndicatorViewHolder>() {
+class PageIndicatorAdapter(
+    private val context: Context,
+    private val totalPage: Int,
+    private val onPageSelected: (Int) -> Unit
+) : RecyclerView.Adapter<PageIndicatorAdapter.PageIndicatorViewHolder>() {
+
     private var currentPage = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageIndicatorViewHolder {
@@ -37,7 +41,9 @@ class PageIndicatorAdapter(private val context: Context, private val totalPage: 
             binding.pageNumber.setOnClickListener {
                 currentPage = position
                 notifyDataSetChanged()
+                onPageSelected(position)
             }
+
             if (position == currentPage) {
                 binding.pageNumber.setTextColor(
                     ContextCompat.getColor(

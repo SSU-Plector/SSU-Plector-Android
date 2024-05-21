@@ -11,12 +11,12 @@ import javax.inject.Inject
 class DevelopersRepositoryImpl @Inject constructor(
     private val developersService: DevelopersService,
 ) : DevelopersRepository {
-    override suspend fun getDevelopersListData(): Result<DevelopersListModel> {
+    override suspend fun getDevelopersListData(page: Int, part: String?): Result<DevelopersListModel> {
         return runCatching {
             developersService.getDevelopersListData(
                 sortType = null,
-                part = null,
-                page = 0,
+                part = part,
+                page = page,
             ).data.toDevelopersListModel()
         }
     }

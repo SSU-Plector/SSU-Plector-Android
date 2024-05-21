@@ -3,7 +3,6 @@ package com.zucchini.projects.developer
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,8 +32,6 @@ class DevInfoFragment : Fragment() {
     private lateinit var developerInfoAdapter: DeveloperInfoAdapter
     private lateinit var pageIndicatorAdapter: PageIndicatorAdapter
 
-    private val totalPage = 4
-
     private val viewModel by viewModels<DevInfoViewModel>()
 
     override fun onCreateView(
@@ -49,6 +46,7 @@ class DevInfoFragment : Fragment() {
         initPageIndicator()
         navigateToSubmitForms()
         collectDevelopersList()
+        observePageChanges()
 
         return binding.root
     }
@@ -72,12 +70,27 @@ class DevInfoFragment : Fragment() {
 
     private fun initDeveloperAdapter() {
         developerInfoAdapter = DeveloperInfoAdapter()
-        binding.rvDevinfo.adapter = developerInfoAdapter
-        binding.rvDevinfo.layoutManager = GridLayoutManager(context, 2)
+        binding.run{
+            rvDevinfo.layoutManager = GridLayoutManager(context, 2)
+            rvDevinfo.adapter = developerInfoAdapter
+            rvDevinfo.isNestedScrollingEnabled = false
+        }
+    }
+
+    private fun observePageChanges() {
+        viewModel.page
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { page ->
+                pageIndicatorAdapter.setCurrentPage(page)
+                viewModel.getDevelopersListData(page, null)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun initPageIndicator() {
-        pageIndicatorAdapter = PageIndicatorAdapter(requireContext(), totalPage)
+        pageIndicatorAdapter = PageIndicatorAdapter(requireContext(), 4) { page ->
+            viewModel.updatePage(page)
+        }
         binding.rvPageIndicator.adapter = pageIndicatorAdapter
         binding.rvPageIndicator.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

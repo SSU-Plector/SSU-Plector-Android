@@ -50,8 +50,11 @@ class DevDetailActivity : AppCompatActivity() {
     }
 
     private fun initProjectAdapter() {
-        binding.rvDevProject.layoutManager = LinearLayoutManager(this)
-        binding.rvDevProject.adapter = projectAdapter
+        binding.run {
+            rvDevProject.layoutManager = LinearLayoutManager(this@DevDetailActivity)
+            rvDevProject.adapter = projectAdapter
+            rvDevProject.isNestedScrollingEnabled = false
+        }
     }
 
     private fun collectProjectList() {

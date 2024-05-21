@@ -31,6 +31,9 @@ class ProjectsListViewModel @Inject constructor(
     private val _page = MutableStateFlow(0)
     val page = _page.asStateFlow()
 
+    private val _totalPage = MutableStateFlow(0)
+    val totalPage = _totalPage.asStateFlow()
+
     init {
         getProjectsListData(
             _searchString.value,
@@ -40,11 +43,11 @@ class ProjectsListViewModel @Inject constructor(
         )
     }
 
-    private fun getProjectsListData(
-        searchString: String,
-        category: String,
-        sortOption: SortOption,
-        page: Int,
+    fun getProjectsListData(
+        searchString: String = _searchString.value,
+        category: String = _category.value,
+        sortOption: SortOption = _sortOption.value,
+        page: Int = _page.value,
     ) {
         viewModelScope.launch {
             projectsRepository.getProjectsListData(
@@ -55,6 +58,7 @@ class ProjectsListViewModel @Inject constructor(
             )
                 .onSuccess {
                     _projectsList.value = it.projectListInfoInList
+                    _totalPage.value = it.totalPage
                     Timber.tag("ProjectsListViewModel Success").d(_projectsList.value.toString())
                 }.onFailure {
                     Timber.tag("ProjectsListViewModel").d(it.toString())
@@ -81,5 +85,10 @@ class ProjectsListViewModel @Inject constructor(
             _sortOption.value,
             _page.value,
         )
+    }
+
+    fun updatePage(page: Int) {
+        _page.value = page
+        getProjectsListData(page = page)
     }
 }

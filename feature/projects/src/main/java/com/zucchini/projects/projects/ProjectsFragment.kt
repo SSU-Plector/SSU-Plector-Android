@@ -1,7 +1,6 @@
 package com.zucchini.projects.projects
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.domain.model.SortOption
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
+import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +26,7 @@ class ProjectsFragment : Fragment() {
 
     private val viewModel by viewModels<ProjectsListViewModel>()
     private val projectsAdapter = ProjectsAdapter()
+    private lateinit var pageIndicatorAdapter: PageIndicatorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +39,8 @@ class ProjectsFragment : Fragment() {
         initSortingKeywords()
         collectProjectList()
         searchWithSearchString()
+        observePageChanges()
+        initPageIndicator()
 
         return binding.root
     }
@@ -53,6 +56,7 @@ class ProjectsFragment : Fragment() {
     private fun initProjectsAdapter() {
         binding.rvProjects.layoutManager = LinearLayoutManager(context)
         binding.rvProjects.adapter = projectsAdapter
+        binding.rvProjects.isNestedScrollingEnabled = false
     }
 
     private fun initSortingKeywords() {
@@ -87,8 +91,27 @@ class ProjectsFragment : Fragment() {
         binding.ivSearch.setOnClickListener {
             val searchString = binding.etSearchbar.text.toString()
             viewModel.updateSearchString(searchString)
-            Log.d("ProjectsFragment", "searchWithSearchString: $searchString")
         }
+    }
+
+    private fun observePageChanges() {
+        viewModel.page
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { page ->
+                pageIndicatorAdapter.setCurrentPage(page)
+                viewModel.getProjectsListData(page = page)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun initPageIndicator() {
+        pageIndicatorAdapter =
+            PageIndicatorAdapter(requireContext(), viewModel.totalPage.value) { page ->
+                viewModel.updatePage(page)
+            }
+        binding.rvPageIndicator.adapter = pageIndicatorAdapter
+        binding.rvPageIndicator.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     override fun onDestroyView() {

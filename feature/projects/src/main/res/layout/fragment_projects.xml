@@ -141,10 +141,12 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_page_indicator"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/rv_projects"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
