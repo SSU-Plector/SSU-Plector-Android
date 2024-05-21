@@ -44,9 +44,10 @@ class DevDetailProjectAdapter :
                 )
                 tvProjectName.text = projectList.name ?: ""
                 tvProjectDescription.text = projectList.shortIntro ?: ""
-                tvSortedProject.text = projectList.category ?: "SERVICE"
+                tvSortedProject.text = projectList.category ?: ""
                 tvNavigateToProject.setOnClickListener {
                     val intent = Intent(binding.root.context, ProjectDetailActivity::class.java)
+                    intent.putExtra("projectId", projectList.id)
                     startActivity(binding.root.context, intent, null)
                 }
             }

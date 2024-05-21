@@ -54,9 +54,11 @@ class ProjectsFragment : Fragment() {
     }
 
     private fun initProjectsAdapter() {
-        binding.rvProjects.layoutManager = LinearLayoutManager(context)
-        binding.rvProjects.adapter = projectsAdapter
-        binding.rvProjects.isNestedScrollingEnabled = false
+        binding.run {
+            rvProjects.layoutManager = LinearLayoutManager(context)
+            rvProjects.adapter = projectsAdapter
+            rvProjects.isNestedScrollingEnabled = false
+        }
     }
 
     private fun initSortingKeywords() {

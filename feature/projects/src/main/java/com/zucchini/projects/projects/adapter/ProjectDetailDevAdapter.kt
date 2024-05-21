@@ -1,14 +1,10 @@
 package com.zucchini.projects.projects.adapter
 
-import android.content.Intent
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getString
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.ProjectsDetailModel
-import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemProjectDetailDevBinding
 import com.zucchini.view.ItemDiffCallback
 
@@ -37,9 +33,13 @@ class ProjectDetailDevAdapter :
         fun bind(developerListInProjectDetail: ProjectsDetailModel.DeveloperListInProjectDetail) {
             binding.run {
                 tvDeveloperName.text = developerListInProjectDetail.name
-                tvDeveloperInfo1.text = developerListInProjectDetail.partList[0] ?: ""
-                // TODO: 수정 필요
-                // tvDeveloperInfo2.text = developerListInProjectDetail.partList[1] ?: ""
+                if (developerListInProjectDetail.partList.size == 1) {
+                    tvDeveloperInfo1.text = developerListInProjectDetail.partList[0] ?: ""
+                    tvDeveloperInfo2.visibility = android.view.View.GONE
+                } else {
+                    tvDeveloperInfo1.text = developerListInProjectDetail.partList[0] ?: ""
+                    tvDeveloperInfo2.text = developerListInProjectDetail.partList[1] ?: ""
+                }
             }
         }
     }

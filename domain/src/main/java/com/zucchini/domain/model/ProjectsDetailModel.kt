@@ -13,9 +13,9 @@ data class ProjectsDetailModel(
     val infoPageLink: String?,
     val webLink: String?,
     val appLink: String?,
-    val languageList: List<String?>,
-    val devToolList: List<String?>,
-    val techStackList: List<String?>,
+    val languageList: List<String?>?,
+    val devToolList: List<String?>?,
+    val techStackList: List<String?>?,
 ) {
     data class DeveloperListInProjectDetail(
         val id: Int,

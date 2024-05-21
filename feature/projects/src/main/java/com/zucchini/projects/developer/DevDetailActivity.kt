@@ -89,15 +89,15 @@ class DevDetailActivity : AppCompatActivity() {
             tvKakaoid.text = it?.kakaoId
             tvEmail.text = it?.email
             tvProjectIntroContentLong.text = it?.shortIntro
-            tvDevStackTech1.text = it?.techStackList?.getOrNull(0)
-            tvDevStackTech2.text = it?.techStackList?.getOrNull(1)
-            tvDevStackTech3.text = it?.techStackList?.getOrNull(2)
-            tvDevStackLanguage1.text = it?.languageList?.getOrNull(0)
-            tvDevStackLanguage2.text = it?.languageList?.getOrNull(1)
-            tvDevStackLanguage3.text = it?.languageList?.getOrNull(2)
-            tvDevStackCooperation1.text = it?.devToolList?.getOrNull(0)
-            tvDevStackCooperation2.text = it?.devToolList?.getOrNull(1)
-            tvDevStackCooperation3.text = it?.devToolList?.getOrNull(2)
+            tvDevStackTech1.text = it?.techStackList?.getOrNull(0) ?: ""
+            tvDevStackTech2.text = it?.techStackList?.getOrNull(1) ?: ""
+            tvDevStackTech3.text = it?.techStackList?.getOrNull(2) ?: ""
+            tvDevStackLanguage1.text = it?.languageList?.getOrNull(0) ?: ""
+            tvDevStackLanguage2.text = it?.languageList?.getOrNull(1) ?: ""
+            tvDevStackLanguage3.text = it?.languageList?.getOrNull(2) ?: ""
+            tvDevStackCooperation1.text = it?.devToolList?.getOrNull(0) ?: ""
+            tvDevStackCooperation2.text = it?.devToolList?.getOrNull(1) ?: ""
+            tvDevStackCooperation3.text = it?.devToolList?.getOrNull(2) ?: ""
         }
     }
 }

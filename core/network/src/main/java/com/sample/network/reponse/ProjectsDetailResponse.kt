@@ -30,11 +30,11 @@ data class ProjectsDetailResponse(
     @SerialName("appLink")
     val appLink: String?,
     @SerialName("languageList")
-    val languageList: List<String>,
+    val languageList: List<String?>?,
     @SerialName("devToolList")
-    val devToolList: List<String>,
+    val devToolList: List<String?>?,
     @SerialName("techStackList")
-    val techStackList: List<String>,
+    val techStackList: List<String?>?,
 ) {
     @Serializable
     data class DeveloperListInProjectDetail(
