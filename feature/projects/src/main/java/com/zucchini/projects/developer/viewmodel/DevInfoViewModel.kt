@@ -26,14 +26,18 @@ class DevInfoViewModel @Inject constructor(
     private val _part = MutableStateFlow("")
     val part = _part.asStateFlow()
 
+    private val _totalPage = MutableStateFlow(0)
+    val totalPage = _totalPage.asStateFlow()
+
     init {
         getDevelopersListData(_page.value, null)
     }
 
-    fun getDevelopersListData(page: Int, part: String?) {
+    fun getDevelopersListData(page: Int = _page.value, part: String? = _part.value) {
         viewModelScope.launch {
             developersRepository.getDevelopersListData(page, part).onSuccess {
                 _developersList.value = it.developerDetailList
+                _totalPage.value = it.totalPage
             }.onFailure {
                 Timber.tag("DevInfoViewModel Timber").d(it.toString())
             }

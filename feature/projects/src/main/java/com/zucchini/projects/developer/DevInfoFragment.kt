@@ -82,18 +82,33 @@ class DevInfoFragment : Fragment() {
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { page ->
                 pageIndicatorAdapter.setCurrentPage(page)
-                viewModel.getDevelopersListData(page, null)
+                viewModel.getDevelopersListData(page = page)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        viewModel.totalPage
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { totalPage ->
+                if (::pageIndicatorAdapter.isInitialized) {
+                    pageIndicatorAdapter.updateTotalPages(totalPage)
+                } else {
+                    initPageIndicator(totalPage)
+                }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun initPageIndicator() {
-        pageIndicatorAdapter = PageIndicatorAdapter(requireContext(), 4) { page ->
-            viewModel.updatePage(page)
+    private fun initPageIndicator(totalPages: Int = 0) {
+        pageIndicatorAdapter =
+            PageIndicatorAdapter(requireContext(), totalPages) { page ->
+                viewModel.updatePage(page)
+            }
+        binding.run {
+            rvPageIndicator.adapter = pageIndicatorAdapter
+            rvPageIndicator.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            rvDevinfo.isNestedScrollingEnabled = false
         }
-        binding.rvPageIndicator.adapter = pageIndicatorAdapter
-        binding.rvPageIndicator.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     private fun navigateToSubmitForms() {
