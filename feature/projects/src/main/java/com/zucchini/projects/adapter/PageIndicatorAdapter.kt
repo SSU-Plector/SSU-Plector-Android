@@ -9,10 +9,9 @@ import com.zucchini.feature.projects.databinding.ItemPageIndicatorBinding
 
 class PageIndicatorAdapter(
     private val context: Context,
-    private val totalPage: Int,
-    private val onPageSelected: (Int) -> Unit
+    private var totalPage: Int,
+    private val onPageClick: (Int) -> Unit,
 ) : RecyclerView.Adapter<PageIndicatorAdapter.PageIndicatorViewHolder>() {
-
     private var currentPage = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageIndicatorViewHolder {
@@ -32,6 +31,11 @@ class PageIndicatorAdapter(
         notifyDataSetChanged()
     }
 
+    fun updateTotalPages(newTotalPage: Int) {
+        totalPage = newTotalPage
+        notifyDataSetChanged()
+    }
+
     inner class PageIndicatorViewHolder(private val binding: ItemPageIndicatorBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -39,26 +43,19 @@ class PageIndicatorAdapter(
             binding.pageNumber.text = (position + 1).toString()
 
             binding.pageNumber.setOnClickListener {
-                currentPage = position
-                notifyDataSetChanged()
-                onPageSelected(position)
+                onPageClick(position)
             }
 
-            if (position == currentPage) {
-                binding.pageNumber.setTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        com.zucchini.core.designsystem.R.color.olive_black,
-                    ),
-                )
-            } else {
-                binding.pageNumber.setTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        com.zucchini.core.designsystem.R.color.gray1,
-                    ),
-                )
-            }
+            binding.pageNumber.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    if (position == currentPage) {
+                        com.zucchini.core.designsystem.R.color.olive_black
+                    } else {
+                        com.zucchini.core.designsystem.R.color.gray1
+                    },
+                ),
+            )
         }
     }
 }

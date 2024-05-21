@@ -70,7 +70,7 @@ class DevInfoFragment : Fragment() {
 
     private fun initDeveloperAdapter() {
         developerInfoAdapter = DeveloperInfoAdapter()
-        binding.run{
+        binding.run {
             rvDevinfo.layoutManager = GridLayoutManager(context, 2)
             rvDevinfo.adapter = developerInfoAdapter
             rvDevinfo.isNestedScrollingEnabled = false

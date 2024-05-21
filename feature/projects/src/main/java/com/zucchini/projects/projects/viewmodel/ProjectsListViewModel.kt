@@ -35,12 +35,7 @@ class ProjectsListViewModel @Inject constructor(
     val totalPage = _totalPage.asStateFlow()
 
     init {
-        getProjectsListData(
-            _searchString.value,
-            _category.value,
-            _sortOption.value,
-            _page.value,
-        )
+        getProjectsListData()
     }
 
     fun getProjectsListData(

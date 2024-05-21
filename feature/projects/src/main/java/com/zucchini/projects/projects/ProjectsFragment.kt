@@ -18,7 +18,6 @@ import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-
 @AndroidEntryPoint
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null
@@ -37,20 +36,20 @@ class ProjectsFragment : Fragment() {
 
         initProjectsAdapter()
         initSortingKeywords()
-        collectProjectList()
-        searchWithSearchString()
         observePageChanges()
         initPageIndicator()
+        collectProjectList()
+        searchWithSearchString()
 
         return binding.root
     }
 
     private fun collectProjectList() {
         viewModel.projectsList
-            .flowWithLifecycle(lifecycle)
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { projectList ->
                 projectsAdapter.submitList(projectList)
-            }.launchIn(lifecycleScope)
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun initProjectsAdapter() {
@@ -104,16 +103,30 @@ class ProjectsFragment : Fragment() {
                 viewModel.getProjectsListData(page = page)
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        viewModel.totalPage
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { totalPage ->
+                if (::pageIndicatorAdapter.isInitialized) {
+                    pageIndicatorAdapter.updateTotalPages(totalPage)
+                } else {
+                    initPageIndicator(totalPage)
+                }
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun initPageIndicator() {
+    private fun initPageIndicator(totalPages: Int = 0) {
         pageIndicatorAdapter =
-            PageIndicatorAdapter(requireContext(), viewModel.totalPage.value) { page ->
+            PageIndicatorAdapter(requireContext(), totalPages) { page ->
                 viewModel.updatePage(page)
             }
-        binding.rvPageIndicator.adapter = pageIndicatorAdapter
-        binding.rvPageIndicator.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.run {
+            rvPageIndicator.adapter = pageIndicatorAdapter
+            rvPageIndicator.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            rvProjects.isNestedScrollingEnabled = false
+        }
     }
 
     override fun onDestroyView() {
