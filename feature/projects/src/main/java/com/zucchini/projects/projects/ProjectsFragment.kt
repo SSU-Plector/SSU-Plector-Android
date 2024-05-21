@@ -10,14 +10,18 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zucchini.domain.model.Keyword
+import com.zucchini.domain.model.KeywordList
 import com.zucchini.domain.model.SortOption
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
+import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+
 @AndroidEntryPoint
 class ProjectsFragment : Fragment() {
     private var _binding: FragmentProjectsBinding? = null
@@ -36,8 +40,9 @@ class ProjectsFragment : Fragment() {
 
         initProjectsAdapter()
         initSortingKeywords()
-        observePageChanges()
+        initKeywordAdapter()
         initPageIndicator()
+        observePageChanges()
         collectProjectList()
         searchWithSearchString()
 
@@ -83,9 +88,11 @@ class ProjectsFragment : Fragment() {
         val inactiveColor =
             ContextCompat.getColor(requireContext(), com.zucchini.core.designsystem.R.color.gray1)
 
-        binding.tvSortRecent.setTextColor(if (selectedOption == SortOption.RECENT) activeColor else inactiveColor)
-        binding.tvSortHighCheck.setTextColor(if (selectedOption == SortOption.HIGH) activeColor else inactiveColor)
-        binding.tvSortLowCheck.setTextColor(if (selectedOption == SortOption.LOW) activeColor else inactiveColor)
+        binding.run {
+            tvSortRecent.setTextColor(if (selectedOption == SortOption.RECENT) activeColor else inactiveColor)
+            tvSortHighCheck.setTextColor(if (selectedOption == SortOption.HIGH) activeColor else inactiveColor)
+            tvSortLowCheck.setTextColor(if (selectedOption == SortOption.LOW) activeColor else inactiveColor)
+        }
     }
 
     private fun searchWithSearchString() {
@@ -127,6 +134,14 @@ class ProjectsFragment : Fragment() {
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             rvProjects.isNestedScrollingEnabled = false
         }
+    }
+
+    private fun initKeywordAdapter() {
+        val searchKeywordAdapter = SearchKeywordAdapter()
+        binding.rvSearchKeyword.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvSearchKeyword.adapter = searchKeywordAdapter
+        searchKeywordAdapter.submitList(KeywordList.searchKeyword.map { Keyword(it) })
     }
 
     override fun onDestroyView() {
