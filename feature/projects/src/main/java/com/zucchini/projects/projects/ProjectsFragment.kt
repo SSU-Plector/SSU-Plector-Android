@@ -39,6 +39,10 @@ class ProjectsFragment : Fragment() {
     ): View {
         _binding = FragmentProjectsBinding.inflate(inflater, container, false)
 
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
+
         initProjectsAdapter()
         initSortingKeywords()
         initKeywordAdapter()
