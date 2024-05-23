@@ -8,7 +8,7 @@ import com.zucchini.domain.model.Keyword
 import com.zucchini.feature.projects.databinding.ItemSearchKeywordBinding
 import com.zucchini.view.ItemDiffCallback
 
-class SearchKeywordAdapter(private val onKeywordClick: (Keyword) -> Unit) :
+class SearchKeywordAdapter(private val onKeywordClick: (Keyword) -> Unit,) :
     ListAdapter<Keyword, SearchKeywordAdapter.SearchKeywordViewHolder>(
         ItemDiffCallback<Keyword>(
             onItemsTheSame = { old, new -> old == new },

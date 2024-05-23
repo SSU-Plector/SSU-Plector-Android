@@ -29,4 +29,24 @@ object KeywordList {
         Keyword(keywordEnglish = "ROBOTICS", keywordKorean = "로봇"),
         Keyword(keywordEnglish = "OTHER", keywordKorean = "기타"),
     )
+
+    val partList = listOf(
+        Keyword(keywordEnglish = "FRONTEND", keywordKorean = "프론트엔드"),
+        Keyword(keywordEnglish = "BACKEND", keywordKorean = "백엔드"),
+        Keyword(keywordEnglish = "FULLSTACK", keywordKorean = "풀스택"),
+        Keyword(keywordEnglish = "MIDDLE_TIER", keywordKorean = "미들웨어"),
+        Keyword(keywordEnglish = "WEB", keywordKorean = "웹"),
+        Keyword(keywordEnglish = "DESKTOP", keywordKorean = "데스크탑"),
+        Keyword(keywordEnglish = "MOBILE", keywordKorean = "모바일"),
+        Keyword(keywordEnglish = "GRAPHICS", keywordKorean = "그래픽"),
+        Keyword(keywordEnglish = "GAME", keywordKorean = "게임"),
+        Keyword(keywordEnglish = "DATA_SCIENTIST", keywordKorean = "데이터 과학자"),
+        Keyword(keywordEnglish = "BIG_DATA", keywordKorean = "빅데이터"),
+        Keyword(keywordEnglish = "DEVOPS", keywordKorean = "데브옵스"),
+        Keyword(keywordEnglish = "CRM", keywordKorean = "CRM"),
+        Keyword(keywordEnglish = "SOFTWARE_TEST", keywordKorean = "테스트"),
+        Keyword(keywordEnglish = "EMBEDDED_SOFTWARE", keywordKorean = "임베디드"),
+        Keyword(keywordEnglish = "WORDPRESS", keywordKorean = "워드프레스"),
+        Keyword(keywordEnglish = "SECURITY", keywordKorean = "보안"),
+    )
 }

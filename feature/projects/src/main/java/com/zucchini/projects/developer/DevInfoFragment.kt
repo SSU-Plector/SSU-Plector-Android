@@ -62,14 +62,14 @@ class DevInfoFragment : Fragment() {
 
     private fun initKeywordAdapter() {
         val searchKeywordAdapter = SearchKeywordAdapter(
-            onKeywordClick = { keyword ->
-                viewModel.updatePart(keyword.keywordKorean)
+            onKeywordClick = { part ->
+                viewModel.updatePart(part.keywordEnglish)
             }
         )
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
-        searchKeywordAdapter.submitList(KeywordList.searchKeyword.map { Keyword(it.keywordKorean) })
+        searchKeywordAdapter.submitList(KeywordList.partList)
     }
 
     private fun initDeveloperAdapter() {
