@@ -10,7 +10,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
 import com.zucchini.domain.model.SortOption
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
@@ -144,7 +143,7 @@ class ProjectsFragment : Fragment() {
 
     private fun initKeywordAdapter() {
         val searchKeywordAdapter = SearchKeywordAdapter {
-            viewModel.updateCategory(it.keywordEnglish)
+            viewModel.updateCategory(it?.keywordEnglish)
         }
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

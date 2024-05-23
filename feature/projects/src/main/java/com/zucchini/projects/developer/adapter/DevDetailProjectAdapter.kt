@@ -6,8 +6,6 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.DevDetailProjectInfo
-import com.zucchini.domain.model.ProjectInfo
 import com.zucchini.domain.model.ProjectInfoInDevDetailModel
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemDevDetailProjectsBinding

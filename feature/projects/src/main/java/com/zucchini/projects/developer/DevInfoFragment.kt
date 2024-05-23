@@ -12,7 +12,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
@@ -63,8 +62,8 @@ class DevInfoFragment : Fragment() {
     private fun initKeywordAdapter() {
         val searchKeywordAdapter = SearchKeywordAdapter(
             onKeywordClick = { part ->
-                viewModel.updatePart(part.keywordEnglish)
-            }
+                viewModel.updatePart(part?.keywordEnglish)
+            },
         )
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

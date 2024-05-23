@@ -49,8 +49,8 @@ class DevInfoViewModel @Inject constructor(
         getDevelopersListData(page, _part.value)
     }
 
-    fun updatePart(part: String) {
-        _part.value = part
+    fun updatePart(part: String?) {
+        _part.value = part ?: ""
         getDevelopersListData(_page.value, part)
     }
 }
