@@ -8,12 +8,13 @@ import com.zucchini.domain.model.Keyword
 import com.zucchini.feature.projects.databinding.ItemSearchKeywordBinding
 import com.zucchini.view.ItemDiffCallback
 
-class SearchKeywordAdapter : ListAdapter<Keyword, SearchKeywordAdapter.SearchKeywordViewHolder>(
-    ItemDiffCallback<Keyword>(
-        onItemsTheSame = { old, new -> old == new },
-        onContentsTheSame = { old, new -> old == new },
-    ),
-) {
+class SearchKeywordAdapter(private val onKeywordClick: (Keyword) -> Unit) :
+    ListAdapter<Keyword, SearchKeywordAdapter.SearchKeywordViewHolder>(
+        ItemDiffCallback<Keyword>(
+            onItemsTheSame = { old, new -> old == new },
+            onContentsTheSame = { old, new -> old == new },
+        ),
+    ) {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -30,7 +31,10 @@ class SearchKeywordAdapter : ListAdapter<Keyword, SearchKeywordAdapter.SearchKey
     inner class SearchKeywordViewHolder(private val binding: ItemSearchKeywordBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(keyword: Keyword) {
-            binding.tvSearchKeyword.text = keyword.keyword
+            binding.tvSearchKeyword.text = keyword.keywordKorean
+            binding.tvSearchKeyword.setOnClickListener {
+                onKeywordClick(keyword)
+            }
         }
     }
 }

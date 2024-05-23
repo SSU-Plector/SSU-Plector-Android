@@ -47,7 +47,7 @@ class ProjectsFragment : Fragment() {
         initSortingKeywords()
         initKeywordAdapter()
         initPageIndicator()
-        observePageChanges()
+        collectPageState()
         collectProjectList()
         searchWithSearchString()
 
@@ -108,7 +108,7 @@ class ProjectsFragment : Fragment() {
         }
     }
 
-    private fun observePageChanges() {
+    private fun collectPageState() {
         viewModel.page
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { page ->
@@ -143,11 +143,13 @@ class ProjectsFragment : Fragment() {
     }
 
     private fun initKeywordAdapter() {
-        val searchKeywordAdapter = SearchKeywordAdapter()
+        val searchKeywordAdapter = SearchKeywordAdapter {
+            viewModel.updateCategory(it.keywordEnglish)
+        }
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
-        searchKeywordAdapter.submitList(KeywordList.searchKeyword.map { Keyword(it) })
+        searchKeywordAdapter.submitList(KeywordList.searchKeyword)
     }
 
     override fun onDestroyView() {

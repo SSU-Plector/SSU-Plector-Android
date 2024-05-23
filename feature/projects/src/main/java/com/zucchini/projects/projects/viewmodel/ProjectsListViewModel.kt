@@ -22,7 +22,7 @@ class ProjectsListViewModel @Inject constructor(
     private val _searchString = MutableStateFlow("")
     val searchString = _searchString.asStateFlow()
 
-    private val _category = MutableStateFlow("SERVICE")
+    private val _category = MutableStateFlow("")
     val category = _category.asStateFlow()
 
     private val _sortOption = MutableStateFlow(SortOption.RECENT)
@@ -39,8 +39,8 @@ class ProjectsListViewModel @Inject constructor(
     }
 
     fun getProjectsListData(
-        searchString: String = _searchString.value,
-        category: String = _category.value,
+        searchString: String? = _searchString.value,
+        category: String? = _category.value,
         sortOption: SortOption = _sortOption.value,
         page: Int = _page.value,
     ) {
@@ -85,5 +85,10 @@ class ProjectsListViewModel @Inject constructor(
     fun updatePage(page: Int) {
         _page.value = page
         getProjectsListData(page = page)
+    }
+
+    fun updateCategory(category: String?) {
+        _category.value = category ?: ""
+        getProjectsListData(category = _category.value)
     }
 }

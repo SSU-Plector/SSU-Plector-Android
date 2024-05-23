@@ -14,6 +14,7 @@
         android:fontFamily="@font/pretendardbold"
         android:gravity="center"
         android:minWidth="0dp"
+        android:enabled="true"
         android:minHeight="0dp"
         android:paddingHorizontal="15dp"
         android:paddingVertical="10dp"

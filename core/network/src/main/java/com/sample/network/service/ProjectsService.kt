@@ -11,7 +11,7 @@ interface ProjectsService {
     @GET("api/projects/list")
     suspend fun getProjectsListData(
         @Query("searchString") searchString: String?,
-        @Query("category") category: String,
+        @Query("category") category: String?,
         @Query("sortType") sortType: String,
         @Query("page") page: Int,
     ): BaseResponse<ProjectsListResponse>
