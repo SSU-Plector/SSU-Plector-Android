@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.Keyword
 import com.zucchini.feature.projects.databinding.ItemSearchKeywordBinding
 import com.zucchini.view.ItemDiffCallback
-
-class SearchKeywordAdapter(private val onKeywordClick: (Keyword) -> Unit,) :
+class SearchKeywordAdapter(private val onKeywordClick: (Keyword) -> Unit) :
     ListAdapter<Keyword, SearchKeywordAdapter.SearchKeywordViewHolder>(
         ItemDiffCallback<Keyword>(
-            onItemsTheSame = { old, new -> old == new },
+            onItemsTheSame = { old, new -> old.keywordKorean == new.keywordKorean },
             onContentsTheSame = { old, new -> old == new },
         ),
     ) {
+
+    private var selectedPosition: Int? = null
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
@@ -25,14 +27,25 @@ class SearchKeywordAdapter(private val onKeywordClick: (Keyword) -> Unit,) :
     }
 
     override fun onBindViewHolder(holder: SearchKeywordViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), position)
     }
 
     inner class SearchKeywordViewHolder(private val binding: ItemSearchKeywordBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(keyword: Keyword) {
+        fun bind(keyword: Keyword, position: Int) {
             binding.tvSearchKeyword.text = keyword.keywordKorean
+            binding.tvSearchKeyword.isSelected = position == selectedPosition
+
             binding.tvSearchKeyword.setOnClickListener {
+                val previousPosition = selectedPosition
+                if (previousPosition != position) {
+                    selectedPosition = position
+                    notifyItemChanged(previousPosition ?: -1)
+                    notifyItemChanged(position)
+                } else {
+                    selectedPosition = null
+                    notifyItemChanged(position)
+                }
                 onKeywordClick(keyword)
             }
         }
