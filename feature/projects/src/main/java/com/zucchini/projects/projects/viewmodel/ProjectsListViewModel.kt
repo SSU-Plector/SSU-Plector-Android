@@ -90,5 +90,6 @@ class ProjectsListViewModel @Inject constructor(
     fun updateCategory(category: String?) {
         _category.value = category ?: ""
         getProjectsListData(category = _category.value)
+        _category.value = ""
     }
 }
