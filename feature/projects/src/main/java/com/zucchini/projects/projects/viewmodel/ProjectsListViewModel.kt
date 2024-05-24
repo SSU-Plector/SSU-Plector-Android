@@ -20,13 +20,10 @@ class ProjectsListViewModel @Inject constructor(
     val projectsList = _projectsList.asStateFlow()
 
     private val _searchString = MutableStateFlow("")
-    val searchString = _searchString.asStateFlow()
 
     private val _category = MutableStateFlow("")
-    val category = _category.asStateFlow()
 
     private val _sortOption = MutableStateFlow(SortOption.RECENT)
-    val sortOption = _sortOption.asStateFlow()
 
     private val _page = MutableStateFlow(0)
     val page = _page.asStateFlow()

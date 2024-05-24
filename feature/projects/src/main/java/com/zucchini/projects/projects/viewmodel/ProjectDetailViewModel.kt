@@ -27,7 +27,6 @@ class ProjectDetailViewModel @Inject constructor(
             projectsRepository.getProjectsDetailData(projectId).onSuccess {
                 _projectsDetail.value = it
                 _devListInProjectsDetail.value = it.developerList
-                Timber.tag("ProjectDetailViewModel").d(it.toString())
             }.onFailure {
                 Timber.tag("ProjectDetailViewModel Fail").d(it.toString())
             }

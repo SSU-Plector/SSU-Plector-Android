@@ -24,7 +24,6 @@ class DevInfoViewModel @Inject constructor(
     val page = _page.asStateFlow()
 
     private val _part = MutableStateFlow("")
-    val part = _part.asStateFlow()
 
     private val _totalPage = MutableStateFlow(0)
     val totalPage = _totalPage.asStateFlow()
