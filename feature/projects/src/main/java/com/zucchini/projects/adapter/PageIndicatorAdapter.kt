@@ -58,10 +58,7 @@ class PageIndicatorAdapter(
             )
 
             // TODO : 4페이지 이상인 경우 로직 추가
-            if (totalPage > 4) {
-                binding.arrowLeft.visibility = RecyclerView.VISIBLE
-                binding.arrowRight.visibility = RecyclerView.VISIBLE
-            }
+
         }
     }
 }
