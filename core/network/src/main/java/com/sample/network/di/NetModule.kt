@@ -5,7 +5,9 @@ import com.hmh.hamyeonham.common.qualifier.Log
 import com.hmh.hamyeonham.common.qualifier.Secured
 import com.hmh.hamyeonham.common.qualifier.Unsecured
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.sample.network.AuthInterceptor
 import com.zucchini.core.network.BuildConfig
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -51,10 +53,10 @@ object NetModule {
             },
         )
 
-//    @Singleton
-//    @Provides
-//    @Auth
-//    fun provideAuthInterceptor(interceptor: AuthInterceptor): Interceptor = interceptor
+    @Singleton
+    @Provides
+    @Auth
+    fun provideAuthInterceptor(interceptor: AuthInterceptor): Interceptor = interceptor
 
     @Singleton
     @Provides
@@ -108,11 +110,11 @@ object NetModule {
         .addConverterFactory(converterFactory)
         .build()
 
-//    @Module
-//    @InstallIn(SingletonComponent::class)
-//    interface Binder {
-//        @Binds
-//        @Singleton
-//        fun provideAuthenticator(authenticator: Authenticator): Authenticator
-//    }
+    @Module
+    @InstallIn(SingletonComponent::class)
+    interface Binder {
+        @Binds
+        @Singleton
+        fun provideAuthenticator(authenticator: Authenticator): Authenticator
+    }
 }

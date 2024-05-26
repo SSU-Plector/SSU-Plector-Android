@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_olive"
-    tools:context=".IntroduceActivity">
+    tools:context=".LoginActivity">
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_introduce"
@@ -37,12 +37,12 @@
         app:progressMode="true"
         app:selectedDotColor="@color/white" />
 
-    <TextView
-        android:id="@+id/tv_touch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/iv_kakao_login"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="50dp"
-        android:text="@string/tv_introduce"
+        android:src = "@drawable/kakao_login_medium_wide"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

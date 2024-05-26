@@ -1,41 +1,72 @@
-package com.zucchini.projects
+package com.zucchini.auth
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityIntroduceBinding
+import com.zucchini.projects.MainActivity
 import com.zucchini.projects.adapter.IntroducePagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
-class IntroduceActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityIntroduceBinding
 
     private lateinit var autoScrollJob: Job
     private lateinit var introduceViewPagerAdapter: IntroducePagerAdapter
+    private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityIntroduceBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        navigateToMain()
+        kakaoLogin()
+        collectKakaoLogin()
+        collectLoginState()
         setLoginViewPager()
     }
 
-    private fun navigateToMain() {
-        binding.root.setOnClickListener {
-            intent = Intent(this, MainActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-            startActivity(intent)
-            finish()
+    private fun kakaoLogin() {
+        binding.ivKakaoLogin.setOnClickListener {
+            viewModel.loginWithKakaoApp(this)
         }
+    }
+
+    private fun collectKakaoLogin() {
+        viewModel.kakaoLoginSuccess.flowWithLifecycle(lifecycle).onEach { success ->
+
+            when {
+                success -> navigateToMain()
+                else -> Timber.d(getString(R.string.fail_kakao_login))
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun collectLoginState() {
+        viewModel.isLogin.flowWithLifecycle(lifecycle).onEach { isLogin ->
+            if (!isLogin) {
+                // TODO: navigate to 개발자 등록 페이지
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun navigateToMain() {
+        intent = Intent(this, MainActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        startActivity(intent)
+        finish()
     }
 
     private fun setLoginViewPager() {

@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import com.zucchini.buildsrc.Constants
 
 
@@ -22,6 +23,31 @@ android {
         versionName = Constants.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        manifestPlaceholders["kakaoApiKey"] =
+            gradleLocalProperties(rootDir).getProperty("kakao.native.app.key")
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField(
+                "String",
+                "KAKAO_NATIVE_APP_KEY",
+                gradleLocalProperties(rootDir).getProperty("kakao.native.app.key") ?: "\"\"",
+            )
+        }
+        release {
+            buildConfigField(
+                "String",
+                "KAKAO_NATIVE_APP_KEY",
+                gradleLocalProperties(rootDir).getProperty("kakao.native.app.key") ?: "\"\"",
+            )
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
+            )
+        }
     }
 
     compileOptions {
@@ -84,6 +110,7 @@ dependencies {
         implementation(retrofitJsonConverter)
         implementation(timber)
         implementation(ossLicense)
+        implementation(kakaoLogin)
     }
 
     ComposeDependencies.run {
