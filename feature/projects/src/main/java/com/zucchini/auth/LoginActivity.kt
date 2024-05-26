@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.zucchini.feature.projects.R
-import com.zucchini.feature.projects.databinding.ActivityIntroduceBinding
+import com.zucchini.feature.projects.databinding.ActivityLoginBinding
 import com.zucchini.projects.MainActivity
 import com.zucchini.projects.adapter.IntroducePagerAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,14 +21,14 @@ import timber.log.Timber
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityIntroduceBinding
+    private lateinit var binding: ActivityLoginBinding
 
     private lateinit var autoScrollJob: Job
     private lateinit var introduceViewPagerAdapter: IntroducePagerAdapter
     private val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityIntroduceBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.kakaoLoginSuccess.flowWithLifecycle(lifecycle).onEach { success ->
 
             when {
-                success -> navigateToMain()
+                success -> Timber.d(getString(R.string.kakao_login_success))
                 else -> Timber.d(getString(R.string.fail_kakao_login))
             }
         }.launchIn(lifecycleScope)
@@ -56,8 +56,12 @@ class LoginActivity : AppCompatActivity() {
 
     private fun collectLoginState() {
         viewModel.isLogin.flowWithLifecycle(lifecycle).onEach { isLogin ->
-            if (!isLogin) {
+            if (!isLogin && viewModel.kakaoLoginSuccess.value) {
+                // 회원가입
                 // TODO: navigate to 개발자 등록 페이지
+            } else if (isLogin && viewModel.kakaoLoginSuccess.value) {
+                // 로그인
+                navigateToMain()
             }
         }.launchIn(lifecycleScope)
     }
