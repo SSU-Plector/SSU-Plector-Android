@@ -6,15 +6,15 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.DevDetailProjectInfo
+import com.zucchini.domain.model.ProjectInfoInDevDetailModel
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemDevDetailProjectsBinding
 import com.zucchini.projects.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class DevDetailProjectAdapter :
-    ListAdapter<DevDetailProjectInfo, DevDetailProjectAdapter.DevDetailProjectInfoViewHolder>(
-        ItemDiffCallback<DevDetailProjectInfo>(
+    ListAdapter<ProjectInfoInDevDetailModel, DevDetailProjectAdapter.DevDetailProjectInfoViewHolder>(
+        ItemDiffCallback<ProjectInfoInDevDetailModel>(
             onItemsTheSame = { old, new -> old == new },
             onContentsTheSame = { old, new -> old == new },
         ),
@@ -35,16 +35,17 @@ class DevDetailProjectAdapter :
 
     inner class DevDetailProjectInfoViewHolder(private val binding: ItemDevDetailProjectsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(devDetailProjectInfo: DevDetailProjectInfo) {
+        fun bind(projectList: ProjectInfoInDevDetailModel) {
             binding.run {
                 ivProjectProfile.setImageResource(
-                    devDetailProjectInfo.image ?: R.drawable.developer_default_image,
+                    projectList.imageLink?.toIntOrNull() ?: R.drawable.developer_default_image,
                 )
-                tvProjectName.text = devDetailProjectInfo.name
-                tvProjectDescription.text = devDetailProjectInfo.description
-                tvSortedProject.text = devDetailProjectInfo.sorted
+                tvProjectName.text = projectList.name ?: ""
+                tvProjectDescription.text = projectList.shortIntro ?: ""
+                tvSortedProject.text = projectList.category ?: ""
                 tvNavigateToProject.setOnClickListener {
                     val intent = Intent(binding.root.context, ProjectDetailActivity::class.java)
+                    intent.putExtra("projectId", projectList.id)
                     startActivity(binding.root.context, intent, null)
                 }
             }

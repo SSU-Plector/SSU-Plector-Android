@@ -11,13 +11,13 @@ import javax.inject.Inject
 class ProjectsRepositoryImpl @Inject constructor(
     private val projectsService: ProjectsService,
 ) : ProjectsRepository {
-    override suspend fun getProjectsListData(): Result<ProjectsListModel> {
+    override suspend fun getProjectsListData(searchString: String?, category: String?, sortType: String, page: Int): Result<ProjectsListModel> {
         return runCatching {
             projectsService.getProjectsListData(
-                searchString = "",
-                category = "SERVICE",
-                sortType = "recent",
-                page = 0,
+                searchString = searchString,
+                category = category,
+                sortType = sortType,
+                page = page,
             ).data.toProjectsListModel()
         }
     }

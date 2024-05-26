@@ -7,8 +7,11 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.feature.projects.databinding.ItemPageIndicatorBinding
 
-class PageIndicatorAdapter(private val context: Context, private val totalPage: Int) :
-    RecyclerView.Adapter<PageIndicatorAdapter.PageIndicatorViewHolder>() {
+class PageIndicatorAdapter(
+    private val context: Context,
+    private var totalPage: Int,
+    private val onPageClick: (Int) -> Unit,
+) : RecyclerView.Adapter<PageIndicatorAdapter.PageIndicatorViewHolder>() {
     private var currentPage = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PageIndicatorViewHolder {
@@ -28,6 +31,11 @@ class PageIndicatorAdapter(private val context: Context, private val totalPage: 
         notifyDataSetChanged()
     }
 
+    fun updateTotalPages(newTotalPage: Int) {
+        totalPage = newTotalPage
+        notifyDataSetChanged()
+    }
+
     inner class PageIndicatorViewHolder(private val binding: ItemPageIndicatorBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
@@ -35,24 +43,22 @@ class PageIndicatorAdapter(private val context: Context, private val totalPage: 
             binding.pageNumber.text = (position + 1).toString()
 
             binding.pageNumber.setOnClickListener {
-                currentPage = position
-                notifyDataSetChanged()
+                onPageClick(position)
             }
-            if (position == currentPage) {
-                binding.pageNumber.setTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        com.zucchini.core.designsystem.R.color.olive_black,
-                    ),
-                )
-            } else {
-                binding.pageNumber.setTextColor(
-                    ContextCompat.getColor(
-                        context,
-                        com.zucchini.core.designsystem.R.color.gray1,
-                    ),
-                )
-            }
+
+            binding.pageNumber.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    if (position == currentPage) {
+                        com.zucchini.core.designsystem.R.color.olive_black
+                    } else {
+                        com.zucchini.core.designsystem.R.color.gray1
+                    },
+                ),
+            )
+
+            // TODO : 4페이지 이상인 경우 로직 추가
+
         }
     }
 }

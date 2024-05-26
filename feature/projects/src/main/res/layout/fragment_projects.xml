@@ -51,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
 
     <ImageView
+        android:id="@+id/iv_search"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginVertical="10dp"
@@ -67,18 +68,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_searchbar"
-        tools:listitem="@layout/item_search_keyword"/>
+        app:layout_constraintTop_toBottomOf="@id/et_searchbar" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_sort"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/rv_projects"
         android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_search_keyword">
@@ -132,43 +132,24 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="25dp"
         android:layout_marginTop="15dp"
+        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/rv_page_indicator"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cl_sort" />
-<!--
-    <ImageView
-        android:id="@+id/left_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/arrow_left_24_gray"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/rv_page_indicator"
-        app:layout_constraintEnd_toStartOf="@id/rv_page_indicator"
-        app:layout_constraintTop_toTopOf="@id/rv_page_indicator" />
 
-    <ImageView
-        android:id="@+id/right_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:src="@drawable/arrow_right_24_gray"
-        app:layout_constraintBottom_toBottomOf="@id/rv_page_indicator"
-        app:layout_constraintStart_toEndOf="@id/rv_page_indicator"
-        app:layout_constraintTop_toTopOf="@id/rv_page_indicator" />
--->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_page_indicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="50dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/rv_projects"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rv_projects" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_action_button"

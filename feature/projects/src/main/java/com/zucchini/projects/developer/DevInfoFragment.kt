@@ -3,7 +3,6 @@ package com.zucchini.projects.developer
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,14 +12,12 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zucchini.domain.model.Keyword
 import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
 import com.zucchini.projects.developer.viewmodel.DevInfoViewModel
-import com.zucchini.projects.dummy.DeveloperInfoDummy
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -33,8 +30,6 @@ class DevInfoFragment : Fragment() {
 
     private lateinit var developerInfoAdapter: DeveloperInfoAdapter
     private lateinit var pageIndicatorAdapter: PageIndicatorAdapter
-
-    private val totalPage = 4
 
     private val viewModel by viewModels<DevInfoViewModel>()
 
@@ -50,6 +45,7 @@ class DevInfoFragment : Fragment() {
         initPageIndicator()
         navigateToSubmitForms()
         collectDevelopersList()
+        observePageChanges()
 
         return binding.root
     }
@@ -58,32 +54,64 @@ class DevInfoFragment : Fragment() {
         viewModel.developersList
             .flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach {
-                // developerInfoAdapter.submitList(it.developersList)
-                Log.d("DevInfoFragment", it.toString())
+                developerInfoAdapter.submitList(it)
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun initKeywordAdapter() {
-        val searchKeywordAdapter = SearchKeywordAdapter()
+        val searchKeywordAdapter = SearchKeywordAdapter(
+            onKeywordClick = { part ->
+                viewModel.updatePart(part?.keywordEnglish)
+            },
+        )
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
-        searchKeywordAdapter.submitList(KeywordList.searchKeyword.map { Keyword(it) })
+        searchKeywordAdapter.submitList(KeywordList.partList)
     }
 
     private fun initDeveloperAdapter() {
         developerInfoAdapter = DeveloperInfoAdapter()
-        binding.rvDevinfo.adapter = developerInfoAdapter
-        binding.rvDevinfo.layoutManager = GridLayoutManager(context, 2)
-        developerInfoAdapter.submitList(DeveloperInfoDummy.developerInfoList)
+        binding.run {
+            rvDevinfo.layoutManager = GridLayoutManager(context, 2)
+            rvDevinfo.adapter = developerInfoAdapter
+            rvDevinfo.isNestedScrollingEnabled = false
+        }
     }
 
-    private fun initPageIndicator() {
-        pageIndicatorAdapter = PageIndicatorAdapter(requireContext(), totalPage)
-        binding.rvPageIndicator.adapter = pageIndicatorAdapter
-        binding.rvPageIndicator.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+    private fun observePageChanges() {
+        viewModel.page
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { page ->
+                pageIndicatorAdapter.setCurrentPage(page)
+                viewModel.getDevelopersListData(page = page)
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        viewModel.totalPage
+            .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { totalPage ->
+                if (::pageIndicatorAdapter.isInitialized) {
+                    pageIndicatorAdapter.updateTotalPages(totalPage)
+                } else {
+                    initPageIndicator(totalPage)
+                }
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun initPageIndicator(totalPages: Int = 0) {
+        pageIndicatorAdapter =
+            PageIndicatorAdapter(requireContext(), totalPages) { page ->
+                viewModel.updatePage(page)
+            }
+        binding.run {
+            rvPageIndicator.adapter = pageIndicatorAdapter
+            rvPageIndicator.layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            rvDevinfo.isNestedScrollingEnabled = false
+        }
     }
 
     private fun navigateToSubmitForms() {

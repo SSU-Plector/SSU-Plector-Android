@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.ProjectInfo
+import com.zucchini.domain.model.ProjectListInfoInList
 import com.zucchini.feature.projects.databinding.ItemProjectsBinding
 import com.zucchini.projects.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
-class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHolder>(
-    ItemDiffCallback<ProjectInfo>(
+class ProjectsAdapter : ListAdapter<ProjectListInfoInList, ProjectsAdapter.ProjectsViewHolder>(
+    ItemDiffCallback<ProjectListInfoInList>(
         onItemsTheSame = { old, new -> old == new },
         onContentsTheSame = { old, new -> old == new },
     ),
@@ -30,22 +30,21 @@ class ProjectsAdapter : ListAdapter<ProjectInfo, ProjectsAdapter.ProjectsViewHol
         holder.bind(getItem(position))
     }
 
-    override fun getItemCount(): Int = 4
-
     inner class ProjectsViewHolder(private val binding: ItemProjectsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(projectInfo: ProjectInfo) {
+        fun bind(projectInfo: ProjectListInfoInList) {
             binding.run {
                 ivProjectProfile.setImageResource(
-                    projectInfo.image
+                    projectInfo.imagePath?.toIntOrNull()
                         ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
                 )
                 tvProjectName.text = projectInfo.name
-                tvProjectDescription.text = projectInfo.description
-                tvProjectSorted.text = projectInfo.sorted
-                tvProjectClicked.text = "조회수 +${projectInfo.clicked}"
+                tvProjectDescription.text = projectInfo.shortIntro
+                tvProjectSorted.text = projectInfo.category
+                tvProjectClicked.text = "조회수 +${projectInfo.hits}"
                 root.setOnClickListener {
                     val intent = Intent(root.context, ProjectDetailActivity::class.java)
+                    intent.putExtra("projectId", projectInfo.id)
                     startActivity(root.context, intent, null)
                 }
             }
