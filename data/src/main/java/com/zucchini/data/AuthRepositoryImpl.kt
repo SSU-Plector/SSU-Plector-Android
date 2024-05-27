@@ -11,9 +11,8 @@ class AuthRepositoryImpl @Inject constructor(
 ) : AuthRepository {
 
     override suspend fun login(accessToken: String): Result<Login> {
-        val bearerToken = "Bearer $accessToken"
         return runCatching {
-            authService.kakaoLogin(bearerToken).data.toLogin()
+            authService.kakaoLogin(accessToken).data.toLogin()
         }
     }
 

@@ -75,12 +75,10 @@ class LoginViewModel @Inject constructor(
                         _kakaoLoginSuccess.value = true
                         Timber.d("Login Success")
                         Timber.d("Login Success ${it.accessToken}")
-
                     }.onFailure {
                         _kakaoLoginSuccess.value = false
                         Timber.d("Login Fail")
                         Timber.d("Login token ${token.accessToken}")
-
                     }
                 }
             }

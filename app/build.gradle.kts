@@ -24,8 +24,8 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        manifestPlaceholders["kakaoApiKey"] =
-            gradleLocalProperties(rootDir).getProperty("kakao.native.app.key")
+        manifestPlaceholders["KAKAO_NATIVE_APP_KEY"] =
+            gradleLocalProperties(rootDir).getProperty("kakao.native.app.key.mani") as String
     }
 
     buildTypes {
