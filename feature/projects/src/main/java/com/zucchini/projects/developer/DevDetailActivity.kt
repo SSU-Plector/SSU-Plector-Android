@@ -89,15 +89,60 @@ class DevDetailActivity : AppCompatActivity() {
             tvKakaoid.text = it?.kakaoId
             tvEmail.text = it?.email
             tvProjectIntroContentLong.text = it?.shortIntro
-            tvDevStackTech1.text = it?.techStackList?.getOrNull(0) ?: ""
-            tvDevStackTech2.text = it?.techStackList?.getOrNull(1) ?: ""
-            tvDevStackTech3.text = it?.techStackList?.getOrNull(2) ?: ""
-            tvDevStackLanguage1.text = it?.languageList?.getOrNull(0) ?: ""
-            tvDevStackLanguage2.text = it?.languageList?.getOrNull(1) ?: ""
-            tvDevStackLanguage3.text = it?.languageList?.getOrNull(2) ?: ""
-            tvDevStackCooperation1.text = it?.devToolList?.getOrNull(0) ?: ""
-            tvDevStackCooperation2.text = it?.devToolList?.getOrNull(1) ?: ""
-            tvDevStackCooperation3.text = it?.devToolList?.getOrNull(2) ?: ""
+
+            if (it?.devToolList?.size == 0 || it?.techStackList == null) {
+                tvDevStackCooperation1.visibility = android.view.View.INVISIBLE
+                tvDevStackCooperation2.visibility = android.view.View.INVISIBLE
+                tvDevStackCooperation3.visibility = android.view.View.INVISIBLE
+            } else if (it.devToolList?.size == 1) {
+                tvDevStackCooperation1.text = it.devToolList?.get(0) ?: ""
+                tvDevStackCooperation2.visibility = android.view.View.INVISIBLE
+                tvDevStackCooperation3.visibility = android.view.View.INVISIBLE
+            } else if (it.devToolList?.size == 2) {
+                tvDevStackCooperation1.text = it.devToolList?.get(0) ?: ""
+                tvDevStackCooperation2.text = it.devToolList?.get(1) ?: ""
+                tvDevStackCooperation3.visibility = android.view.View.INVISIBLE
+            } else if (it.devToolList?.size == 3) {
+                tvDevStackCooperation1.text = it.devToolList?.get(0) ?: ""
+                tvDevStackCooperation2.text = it.devToolList?.get(1) ?: ""
+                tvDevStackCooperation3.text = it.devToolList?.get(2) ?: ""
+            }
+
+            if (it?.languageList?.size == 0 || it?.techStackList == null) {
+                tvDevStackLanguage1.visibility = android.view.View.INVISIBLE
+                tvDevStackLanguage2.visibility = android.view.View.INVISIBLE
+                tvDevStackLanguage3.visibility = android.view.View.INVISIBLE
+            } else if (it.languageList?.size == 1) {
+                tvDevStackLanguage1.text = it.languageList?.get(0) ?: ""
+                tvDevStackLanguage2.visibility = android.view.View.INVISIBLE
+                tvDevStackLanguage3.visibility = android.view.View.INVISIBLE
+            } else if (it.languageList?.size == 2) {
+                tvDevStackLanguage1.text = it.languageList?.get(0) ?: ""
+                tvDevStackLanguage2.text = it.languageList?.get(1) ?: ""
+                tvDevStackLanguage3.visibility = android.view.View.INVISIBLE
+            } else if (it.languageList?.size == 3) {
+                tvDevStackLanguage1.text = it.languageList?.get(0) ?: ""
+                tvDevStackLanguage2.text = it.languageList?.get(1) ?: ""
+                tvDevStackLanguage3.text = it.languageList?.get(2) ?: ""
+            }
+
+            if (it?.techStackList?.size == 0 || it?.techStackList == null) {
+                tvDevStackTech1.visibility = android.view.View.INVISIBLE
+                tvDevStackTech2.visibility = android.view.View.INVISIBLE
+                tvDevStackTech3.visibility = android.view.View.INVISIBLE
+            } else if (it.techStackList?.size == 1) {
+                tvDevStackTech1.text = it.techStackList?.get(0) ?: ""
+                tvDevStackTech2.visibility = android.view.View.INVISIBLE
+                tvDevStackTech3.visibility = android.view.View.INVISIBLE
+            } else if (it.techStackList?.size == 2) {
+                tvDevStackTech1.text = it.techStackList?.get(0) ?: ""
+                tvDevStackTech2.text = it.techStackList?.get(1) ?: ""
+                tvDevStackTech3.visibility = android.view.View.INVISIBLE
+            } else if (it.techStackList?.size == 3) {
+                tvDevStackTech1.text = it.techStackList?.get(0) ?: ""
+                tvDevStackTech2.text = it.techStackList?.get(1) ?: ""
+                tvDevStackTech3.text = it.techStackList?.get(2) ?: ""
+            }
         }
     }
 }
