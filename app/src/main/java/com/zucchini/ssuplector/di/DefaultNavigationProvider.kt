@@ -21,4 +21,8 @@ class DefaultNavigationProvider @Inject constructor(
     override fun toMyPage(): Intent {
         TODO("Not yet implemented")
     }
+
+    override fun toLogin(): Intent {
+        TODO("Not yet implemented")
+    }
 }

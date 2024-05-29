@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name="com.zucchini.projects.IntroduceActivity"
+            android:name="com.zucchini.auth.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />

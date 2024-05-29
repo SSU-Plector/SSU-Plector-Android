@@ -3,7 +3,7 @@ package com.zucchini.ssuplector
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.zucchini.projects.IntroduceActivity
+import com.zucchini.auth.LoginActivity
 import com.zucchini.ssuplector.databinding.ActivityInitBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -15,7 +15,7 @@ class InitActivity : AppCompatActivity() {
         binding = ActivityInitBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        startActivity(Intent(this, IntroduceActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
         finish()
     }
 }

@@ -33,7 +33,7 @@ object Versions {
     const val balloonVersion = "1.4.5"
     const val lottieVersion = "6.0.0"
     const val circularProgressBar = "3.1.0"
-    // const val kakaoVersion = "2.19.0"
+    const val kakaoVersion = "2.20.1"
     const val circleIndicatorVersion = "2.1.6"
     const val shimmerVersion = "0.5.0"
     const val navigationVersion = "2.6.0"
@@ -44,6 +44,7 @@ object Versions {
     const val flexboxVersion = "3.0.0"
     const val circleImageViewVersion = "3.1.0"
     const val dotIndicatorVersion = "5.0"
+    const val processPhoenixVersion = "2.1.2"
 
     val javaVersion = JavaVersion.VERSION_17
     const val jvmVersion = "17"

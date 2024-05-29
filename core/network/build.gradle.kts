@@ -69,6 +69,8 @@ dependencies {
         implementation(retrofitJsonConverter)
         implementation(timber)
         implementation(ossLicense)
+        implementation(kakaoLogin)
+        implementation(processPhoenix)
     }
 
     AndroidXDependencies.run {

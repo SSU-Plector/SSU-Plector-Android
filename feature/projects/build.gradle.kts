@@ -87,6 +87,7 @@ dependencies {
         implementation(timber)
         implementation(ossLicense)
         implementation(dotIndicator)
+        implementation(kakaoLogin)
     }
 
     ComposeDependencies.run {
