@@ -146,6 +146,9 @@ class ProjectDetailActivity : AppCompatActivity() {
             }
 
             navigateToProjectGithubLink(projectGithubLink)
+            navigateToProjectLandingPageLink(it?.infoPageLink)
+            navigateToProjectAppLink(it?.appLink)
+            navigateToProjectWebLink(it?.webLink)
         }
     }
 
@@ -155,6 +158,33 @@ class ProjectDetailActivity : AppCompatActivity() {
         tvGithub.setOnClickListener {
             // TODO : Github 링크 형식이 올바르지 않는 경우는 어떻게 할지?
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectGithubLink))
+            startActivity(intent)
+        }
+    }
+
+    private fun ActivityProjectDetailBinding.navigateToProjectLandingPageLink(
+        projectLandingPageLink: String?,
+    ) {
+        tvLandingLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectLandingPageLink))
+            startActivity(intent)
+        }
+    }
+
+    private fun ActivityProjectDetailBinding.navigateToProjectAppLink(
+        projectAppLink: String?,
+    ) {
+        tvAppLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectAppLink))
+            startActivity(intent)
+        }
+    }
+
+    private fun ActivityProjectDetailBinding.navigateToProjectWebLink(
+        projectWebLink: String?,
+    ) {
+        tvWebLink.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectWebLink))
             startActivity(intent)
         }
     }
