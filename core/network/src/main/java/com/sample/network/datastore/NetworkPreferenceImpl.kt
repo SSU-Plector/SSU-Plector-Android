@@ -25,10 +25,10 @@ class NetworkPreferenceImpl @Inject constructor(
             }
         }
     override var developerId: Int
-        get() = preferences.getInt("user_id", -1)
+        get() = preferences.getInt("developer_id", -1)
         set(value) {
             preferences.edit(commit = true) {
-                putInt("user_id", value)
+                putInt("developer_id", value)
             }
         }
     override var autoLoginConfigured: Boolean

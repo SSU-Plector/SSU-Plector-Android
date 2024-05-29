@@ -6,8 +6,8 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class RefreshResponse(
     @SerialName("accessToken")
-    val developerName: String?,
+    val accessToken: String?,
 
     @SerialName("refreshToken")
-    val developerEmail: String?,
+    val refreshToken: String?,
 )

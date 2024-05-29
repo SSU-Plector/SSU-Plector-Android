@@ -1,6 +1,7 @@
 package com.zucchini.auth
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kakao.sdk.common.model.ClientError
@@ -27,6 +28,13 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
+    private val _isAutoLoginState = MutableStateFlow<Boolean>(false)
+    val isAutoLoginState = _isAutoLoginState.asStateFlow()
+
+    init {
+        updateAutoLoginState()
+    }
+
     fun loginWithKakaoApp(context: Context) {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
             UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
@@ -44,6 +52,10 @@ class LoginViewModel @Inject constructor(
                                 developerId = it.developerId
                                 autoLoginConfigured = true
                             }
+                            Log.d(
+                                "networkPreference",
+                                "accessToken: ${networkPreference.accessToken} refreshToken: ${networkPreference.refreshToken} developerId: ${networkPreference.developerId} autoLoginConfigured: ${networkPreference.autoLoginConfigured}"
+                            )
                             _isLogin.value = it.isLogin
                             _kakaoLoginSuccess.value = true
                             Timber.d("Login Success ${it.accessToken}")
@@ -75,6 +87,7 @@ class LoginViewModel @Inject constructor(
                         _kakaoLoginSuccess.value = true
                         Timber.d("Login Success")
                         Timber.d("Login Success ${it.accessToken}")
+                        Timber.d("autoLoginValue : ${networkPreference.autoLoginConfigured}")
                     }.onFailure {
                         _kakaoLoginSuccess.value = false
                         Timber.d("Login Fail")
@@ -83,5 +96,9 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    private fun updateAutoLoginState() {
+        _isAutoLoginState.value = networkPreference.autoLoginConfigured
     }
 }

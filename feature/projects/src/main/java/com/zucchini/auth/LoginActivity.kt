@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.zucchini.common.NavigationProvider
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityLoginBinding
 import com.zucchini.projects.MainActivity
@@ -18,9 +19,12 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginActivity : AppCompatActivity() {
+class LoginActivity @Inject constructor(
+    // private val navigationProvider: NavigationProvider,
+) : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private lateinit var autoScrollJob: Job
@@ -36,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
         collectKakaoLogin()
         collectLoginState()
         setLoginViewPager()
+        collectAutoLoginState()
     }
 
     private fun kakaoLogin() {
@@ -66,6 +71,16 @@ class LoginActivity : AppCompatActivity() {
         }.launchIn(lifecycleScope)
     }
 
+
+    private fun collectAutoLoginState() {
+        viewModel.isAutoLoginState.flowWithLifecycle(lifecycle).onEach { isAutoLogin ->
+            if (!isAutoLogin) {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }.launchIn(lifecycleScope)
+    }
     private fun navigateToMain() {
         intent = Intent(this, MainActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)

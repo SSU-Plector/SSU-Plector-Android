@@ -44,6 +44,7 @@ object Versions {
     const val flexboxVersion = "3.0.0"
     const val circleImageViewVersion = "3.1.0"
     const val dotIndicatorVersion = "5.0"
+    const val processPhoenixVersion = "2.1.2"
 
     val javaVersion = JavaVersion.VERSION_17
     const val jvmVersion = "17"

@@ -6,4 +6,6 @@ interface NavigationProvider {
     fun toDevInfo(): Intent
     fun toProjects(): Intent
     fun toMyPage(): Intent
+
+    fun toLogin(): Intent
 }

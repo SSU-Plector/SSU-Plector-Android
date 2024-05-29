@@ -15,7 +15,7 @@ interface AuthService {
     ): BaseResponse<LoginResponse>
 
     @GET("/api/auth/kakao/refresh")
-    suspend fun kakaoRefresh(
+    suspend fun refreshToken(
         @Body refreshToken: String = "",
     ): BaseResponse<RefreshResponse>
 }

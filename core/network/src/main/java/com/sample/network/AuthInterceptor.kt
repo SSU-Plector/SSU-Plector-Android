@@ -9,7 +9,7 @@ class AuthInterceptor @Inject constructor(
     private val dataStore: NetworkPreference,
 ) : Interceptor {
     private val encodedToken: String
-        get() = "Bearer ${dataStore.accessToken}"
+        get() = dataStore.accessToken
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
