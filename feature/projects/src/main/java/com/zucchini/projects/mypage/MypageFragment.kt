@@ -29,12 +29,12 @@ class MypageFragment : Fragment() {
 
     private fun navigateToWebDocs() {
         binding.tvTermsOfUse.setOnClickListener {
-            val privacyRuleUrl = getString(R.string.service_docs_uri)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(privacyRuleUrl))
+            val serviceUsePolicy = getString(R.string.service_use_docs_uri)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(serviceUsePolicy))
             startActivity(intent)
         }
         binding.tvPrivacyPolicy.setOnClickListener {
-            val privacyRuleUrl = getString(R.string.service_docs_uri)
+            val privacyRuleUrl = getString(R.string.privacy_docs_uri)
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(privacyRuleUrl))
             startActivity(intent)
         }

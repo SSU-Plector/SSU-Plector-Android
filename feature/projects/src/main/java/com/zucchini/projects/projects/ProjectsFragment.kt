@@ -1,5 +1,7 @@
 package com.zucchini.projects.projects
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zucchini.core.designsystem.R
 import com.zucchini.domain.model.KeywordList
 import com.zucchini.domain.model.SortOption
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
@@ -49,6 +52,7 @@ class ProjectsFragment : Fragment() {
         collectPageState()
         collectProjectList()
         searchWithSearchString()
+        initSubmitProjectButton()
 
         return binding.root
     }
@@ -149,6 +153,15 @@ class ProjectsFragment : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
         searchKeywordAdapter.submitList(KeywordList.searchKeyword)
+    }
+
+
+    private fun initSubmitProjectButton() {
+        binding.floatingActionButton.setOnClickListener {
+            val projectFormUri = getString(com.zucchini.feature.projects.R.string.project_form)
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectFormUri))
+            startActivity(intent)
+        }
     }
 
     override fun onDestroyView() {

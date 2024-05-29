@@ -1,11 +1,14 @@
 package com.zucchini.projects.projects.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.ProjectsDetailModel
 import com.zucchini.feature.projects.databinding.ItemProjectDetailDevBinding
+import com.zucchini.projects.developer.DevDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class ProjectDetailDevAdapter :
@@ -39,6 +42,12 @@ class ProjectDetailDevAdapter :
                 } else {
                     tvDeveloperInfo1.text = developerListInProjectDetail.partList[0] ?: ""
                     tvDeveloperInfo2.text = developerListInProjectDetail.partList[1] ?: ""
+                }
+
+                root.setOnClickListener {
+                    val intent = Intent(binding.root.context, DevDetailActivity::class.java)
+                    intent.putExtra("developerId", developerListInProjectDetail.id)
+                    ContextCompat.startActivity(binding.root.context, intent, null)
                 }
             }
         }

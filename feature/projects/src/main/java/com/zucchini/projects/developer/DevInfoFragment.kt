@@ -1,7 +1,5 @@
 package com.zucchini.projects.developer
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.domain.model.KeywordList
-import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter
@@ -43,7 +40,6 @@ class DevInfoFragment : Fragment() {
         initKeywordAdapter()
         initDeveloperAdapter()
         initPageIndicator()
-        navigateToSubmitForms()
         collectDevelopersList()
         observePageChanges()
 
@@ -111,14 +107,6 @@ class DevInfoFragment : Fragment() {
             rvPageIndicator.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             rvDevinfo.isNestedScrollingEnabled = false
-        }
-    }
-
-    private fun navigateToSubmitForms() {
-        binding.floatingActionButton.setOnClickListener {
-            val developerFormUri = getString(R.string.developer_form)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(developerFormUri))
-            startActivity(intent)
         }
     }
 
