@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.ProjectsDetailModel
 import com.zucchini.feature.projects.databinding.ItemProjectDetailDevBinding
 import com.zucchini.projects.developer.DevDetailActivity
-import com.zucchini.projects.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback
 
 class ProjectDetailDevAdapter :

@@ -63,15 +63,4 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/item_page_indicator" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:contentDescription="@string/floating_btn"
-        app:backgroundTint="@color/olive_black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_plus_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
