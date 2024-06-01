@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.zucchini.common.NavigationProvider
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityLoginBinding
 import com.zucchini.projects.MainActivity
@@ -38,7 +37,6 @@ class LoginActivity @Inject constructor(
 
         kakaoLogin()
         collectKakaoLogin()
-        collectLoginState()
         setLoginViewPager()
         collectAutoLoginState()
     }
@@ -51,26 +49,16 @@ class LoginActivity @Inject constructor(
 
     private fun collectKakaoLogin() {
         viewModel.kakaoLoginSuccess.flowWithLifecycle(lifecycle).onEach { success ->
-
             when {
-                success -> Timber.d(getString(R.string.kakao_login_success))
+                success -> if (viewModel.isLogin.value) {
+                    navigateToMain()
+                } else {
+                    // TODO 회원가입
+                }
                 else -> Timber.d(getString(R.string.fail_kakao_login))
             }
         }.launchIn(lifecycleScope)
     }
-
-    private fun collectLoginState() {
-        viewModel.isLogin.flowWithLifecycle(lifecycle).onEach { isLogin ->
-            if (!isLogin && viewModel.kakaoLoginSuccess.value) {
-                // 회원가입
-                // TODO: navigate to 개발자 등록 페이지
-            } else if (isLogin && viewModel.kakaoLoginSuccess.value) {
-                // 로그인
-                navigateToMain()
-            }
-        }.launchIn(lifecycleScope)
-    }
-
 
     private fun collectAutoLoginState() {
         viewModel.isAutoLoginState.flowWithLifecycle(lifecycle).onEach { isAutoLogin ->
@@ -81,6 +69,7 @@ class LoginActivity @Inject constructor(
             }
         }.launchIn(lifecycleScope)
     }
+
     private fun navigateToMain() {
         intent = Intent(this, MainActivity::class.java)
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
