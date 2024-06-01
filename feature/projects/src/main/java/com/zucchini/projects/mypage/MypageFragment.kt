@@ -7,12 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import coil.load
+import coil.transform.RoundedCornersTransformation
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMypageBinding
+import com.zucchini.projects.MainViewModel
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 class MypageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
     private val binding: FragmentMypageBinding get() = _binding!!
+
+    private val mainViewModel by activityViewModels<MainViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -22,7 +33,8 @@ class MypageFragment : Fragment() {
 
         navigateToWebDocs()
         navigateToKakaoOpenChat()
-        navigateToSubmitForms()
+        navigateToMyDevInfo()
+        loadMyKakaoInfo()
 
         return binding.root
     }
@@ -48,16 +60,33 @@ class MypageFragment : Fragment() {
         }
     }
 
-    private fun navigateToSubmitForms() {
-        binding.btnApplyDeveloper.setOnClickListener {
-            val developerFormUri = getString(R.string.developer_form)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(developerFormUri))
-            startActivity(intent)
+    private fun navigateToMyDevInfo() {
+        binding.tvNavigateToMyInfo.setOnClickListener {
+            // TODO 개발자 상세정보로 이동
         }
-        binding.btnApplyProject.setOnClickListener {
-            val projectFormUri = getString(R.string.project_form)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectFormUri))
-            startActivity(intent)
-        }
+    }
+
+    private fun loadMyKakaoInfo() {
+        mainViewModel.userEmail.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { email ->
+                binding.tvUserEmail.text = email
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        mainViewModel.userNickname.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { nickname ->
+                binding.tvUserName.text = nickname
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
+
+        mainViewModel.userProfile.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { image ->
+                binding.ivDeveloperImage.load(image) {
+                    crossfade(true)
+                    placeholder(R.drawable.developer_default_image)
+                    transformations(RoundedCornersTransformation())
+                }
+            }
+            .launchIn(viewLifecycleOwner.lifecycleScope)
     }
 }

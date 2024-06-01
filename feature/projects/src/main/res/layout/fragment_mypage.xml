@@ -29,65 +29,56 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/tv_apply_content_project"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/pretendardextrabold"
-        android:text="@string/tv_apply_content_project"
-        android:textColor="@color/olive_gray"
-        android:textSize="10sp"
+    <ImageView
+        android:id="@+id/iv_developer_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/developer_default_image"
+        app:cardCornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
 
     <TextView
-        android:id="@+id/btn_apply_project"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/apply_button_background"
-        android:fontFamily="@font/pretendardbold"
-        android:gravity="center"
-        android:text="@string/btn_apply_project"
-        android:textColor="@color/olive_black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_apply_content_developer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_apply_content_project" />
-
-    <TextView
-        android:id="@+id/tv_apply_content_developer"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_user_name"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/pretendardextrabold"
-        android:text="@string/tv_apply_content_developer"
-        android:textColor="@color/olive_gray"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_apply_project"
-        app:layout_goneMarginTop="10dp" />
-
-    <TextView
-        android:id="@+id/btn_apply_developer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/apply_button_background"
-        android:fontFamily="@font/pretendardbold"
-        android:gravity="center"
-        android:text="@string/btn_apply_developer"
-        android:textColor="@color/olive_black"
+        android:fontFamily="@font/pretendardmedium"
+        android:textColor="@color/dark_olive"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_apply_content_developer" />
+        app:layout_constraintStart_toEndOf="@+id/iv_developer_image"
+        app:layout_constraintTop_toTopOf="@+id/iv_developer_image"
+        tools:text="이름" />
+
+    <TextView
+        android:id="@+id/tv_user_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:textColor="@color/dark_olive"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_developer_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_developer_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_name"
+        tools:text="yuri696@naver.com" />
+
+    <TextView
+        android:id="@+id/tv_navigate_to_my_info"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendardbold"
+        android:text="@string/navigateToMyInfo"
+        android:textColor="@color/main_olive"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_developer_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_email" />
 
     <TextView
         android:id="@+id/tv_terms_of_use"
@@ -150,7 +141,47 @@
         android:text="@string/tv_complaint"
         android:textColor="@color/olive_gray"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/v_divider"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="19dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="@string/logout"
+        android:textColor="@color/olive_gray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_divider"
+        app:layout_constraintEnd_toStartOf="@id/v_divider"
+        app:layout_constraintTop_toTopOf="@id/v_divider" />
+
+    <View
+        android:id="@+id/v_divider"
+        android:layout_width="1dp"
+        android:layout_height="16dp"
+        android:layout_marginHorizontal="19dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="30dp"
+        android:textColor="@color/olive_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_goneMarginTop="49dp" />
+
+    <TextView
+        android:id="@+id/tv_withdrawal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="@string/withdraw"
+        android:textColor="@color/olive_gray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@id/v_divider"
+        app:layout_constraintStart_toEndOf="@id/v_divider"
+        app:layout_constraintTop_toTopOf="@id/v_divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

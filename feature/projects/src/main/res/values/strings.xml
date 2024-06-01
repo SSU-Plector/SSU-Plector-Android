@@ -20,7 +20,7 @@
     <string name="tv_project_link_title">관련 링크</string>
     <string name="tv_introduce_dev_title">개발자 정보</string>
     <string name="tv_introduce">화면 터치 시 슈플렉터를 시작할 수 있어요!</string>
-    <string name="top_app_bar_mypage">신청 페이지</string>
+    <string name="top_app_bar_mypage">내 정보</string>
     <string name="tv_apply_title">신청하러 가기</string>
     <string name="tv_apply_content_project">카카오톡 오픈 채팅을 통해 프로젝트 업로드 신청을 해보세요!\n슈플렉터에 우리 팀 프로젝트를 공유하고 다양한 숭실대 학우들과 소통할 수 있어요</string>
     <string name="btn_apply_project">내 프로젝트 신청하러 가기</string>
@@ -37,5 +37,8 @@
     <string name="github_default_link">https://github.com/</string>
     <string name="fail_kakao_login">카카오 로그인에 실패했습니다. 다시 시도해주세요.</string>
     <string name="kakao_login_success">카카오 로그인 성공</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdraw">회원탈퇴</string>
+    <string name="navigateToMyInfo">내 개발자 정보 보러가기</string>
 
 </resources>
