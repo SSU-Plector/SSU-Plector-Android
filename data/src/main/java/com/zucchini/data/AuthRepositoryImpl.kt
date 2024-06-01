@@ -17,10 +17,16 @@ class AuthRepositoryImpl @Inject constructor(
     }
 
     override suspend fun logout(accessToken: String): Result<Unit> {
-        TODO("Not yet implemented")
+        val bearerToken = "Bearer $accessToken"
+        return runCatching {
+            authService.logout(bearerToken)
+        }
     }
 
     override suspend fun withdrawal(accessToken: String): Result<Unit> {
-        TODO("Not yet implemented")
+        val bearerToken = "Bearer $accessToken"
+        return runCatching {
+            authService.withdrawal(bearerToken)
+        }
     }
 }

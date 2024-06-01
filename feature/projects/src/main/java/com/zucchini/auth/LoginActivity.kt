@@ -54,8 +54,9 @@ class LoginActivity @Inject constructor(
                     navigateToMain()
                 } else {
                     // TODO 회원가입
+                    navigateToMain()
                 }
-                else -> Timber.d(getString(R.string.fail_kakao_login))
+                else -> Timber.e("Kakao Login Failed")
             }
         }.launchIn(lifecycleScope)
     }

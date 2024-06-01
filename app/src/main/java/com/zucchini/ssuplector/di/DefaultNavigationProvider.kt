@@ -2,6 +2,7 @@ package com.zucchini.ssuplector.di
 
 import android.content.Context
 import android.content.Intent
+import com.zucchini.auth.LoginActivity
 import com.zucchini.common.NavigationProvider
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject

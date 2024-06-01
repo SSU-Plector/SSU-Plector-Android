@@ -8,21 +8,31 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.zucchini.common.NavigationProvider
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMypageBinding
 import com.zucchini.projects.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MypageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
     private val binding: FragmentMypageBinding get() = _binding!!
 
     private val mainViewModel by activityViewModels<MainViewModel>()
+    private val viewModel by viewModels<MypageViewModel>()
+
+    @Inject
+    lateinit var navigationProvider: NavigationProvider
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +45,10 @@ class MypageFragment : Fragment() {
         navigateToKakaoOpenChat()
         navigateToMyDevInfo()
         loadMyKakaoInfo()
+        collectLogoutState()
+        collectWithdrawalState()
+        clickLogout()
+        clickWithdrawal()
 
         return binding.root
     }
@@ -66,6 +80,13 @@ class MypageFragment : Fragment() {
         }
     }
 
+    private fun navigateToLoginActivity() {
+        val intent = navigationProvider.toLogin()
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        startActivity(intent)
+        activity?.finish()
+    }
+
     private fun loadMyKakaoInfo() {
         mainViewModel.userEmail.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach { email ->
@@ -88,5 +109,33 @@ class MypageFragment : Fragment() {
                 }
             }
             .launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun collectLogoutState() {
+        viewModel.logoutSuccess.flowWithLifecycle(lifecycle).onEach { success ->
+            if (success) {
+                navigateToLoginActivity()
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun collectWithdrawalState() {
+        viewModel.withdrawalSuccess.flowWithLifecycle(lifecycle).onEach { success ->
+            if (success) {
+                navigateToLoginActivity()
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun clickLogout() {
+        binding.tvLogout.setOnClickListener {
+            viewModel.logout()
+        }
+    }
+
+    private fun clickWithdrawal() {
+        binding.tvWithdrawal.setOnClickListener {
+            viewModel.withdrawal()
+        }
     }
 }
