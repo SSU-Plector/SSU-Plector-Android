@@ -2,6 +2,7 @@ package com.zucchini.ssuplector.di
 
 import android.content.Context
 import android.content.Intent
+import com.zucchini.auth.LoginActivity
 import com.zucchini.common.NavigationProvider
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -23,6 +24,6 @@ class DefaultNavigationProvider @Inject constructor(
     }
 
     override fun toLogin(): Intent {
-        TODO("Not yet implemented")
+        return Intent(context, LoginActivity::class.java)
     }
 }

@@ -28,12 +28,6 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
-    private val _isAutoLoginState = MutableStateFlow<Boolean>(false)
-    val isAutoLoginState = _isAutoLoginState.asStateFlow()
-
-    init {
-        updateAutoLoginState()
-    }
 
     fun loginWithKakaoApp(context: Context) {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
@@ -54,7 +48,7 @@ class LoginViewModel @Inject constructor(
                             }
                             Log.d(
                                 "networkPreference",
-                                "accessToken: ${networkPreference.accessToken} refreshToken: ${networkPreference.refreshToken} developerId: ${networkPreference.developerId} autoLoginConfigured: ${networkPreference.autoLoginConfigured}"
+                                "accessToken: ${networkPreference.accessToken} refreshToken: ${networkPreference.refreshToken} developerId: ${networkPreference.developerId} autoLoginConfigured: ${networkPreference.autoLoginConfigured}",
                             )
                             _isLogin.value = it.isLogin
                             _kakaoLoginSuccess.value = true
@@ -96,9 +90,5 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    private fun updateAutoLoginState() {
-        _isAutoLoginState.value = networkPreference.autoLoginConfigured
     }
 }
