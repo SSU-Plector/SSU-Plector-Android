@@ -26,7 +26,7 @@ interface AuthService {
         @Header("Authorization") accessToken: String,
     ): BaseResponse<Unit>
 
-    @DELETE("api/auth/kakao/user")
+    @DELETE("api/auth/withdraw")
     suspend fun withdrawal(
         @Header("Authorization") accessToken: String,
     ): BaseResponse<Unit>

@@ -28,8 +28,6 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
-    private val _isAutoLoginState = MutableStateFlow<Boolean>(false)
-    val isAutoLoginState = _isAutoLoginState.asStateFlow()
 
     fun loginWithKakaoApp(context: Context) {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {

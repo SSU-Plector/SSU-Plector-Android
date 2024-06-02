@@ -38,7 +38,6 @@ class LoginActivity @Inject constructor(
         kakaoLogin()
         collectKakaoLogin()
         setLoginViewPager()
-        collectAutoLoginState()
     }
 
     private fun kakaoLogin() {
@@ -56,17 +55,8 @@ class LoginActivity @Inject constructor(
                     // TODO 회원가입
                     navigateToMain()
                 }
-                else -> Timber.e("Kakao Login Failed")
-            }
-        }.launchIn(lifecycleScope)
-    }
 
-    private fun collectAutoLoginState() {
-        viewModel.isAutoLoginState.flowWithLifecycle(lifecycle).onEach { isAutoLogin ->
-            if (!isAutoLogin) {
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
+                else -> Timber.e("Kakao Login Failed")
             }
         }.launchIn(lifecycleScope)
     }

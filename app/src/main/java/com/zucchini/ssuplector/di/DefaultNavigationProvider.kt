@@ -24,6 +24,6 @@ class DefaultNavigationProvider @Inject constructor(
     }
 
     override fun toLogin(): Intent {
-        TODO("Not yet implemented")
+        return Intent(context, LoginActivity::class.java)
     }
 }
