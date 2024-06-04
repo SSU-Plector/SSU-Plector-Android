@@ -39,6 +39,14 @@ class NetworkPreferenceImpl @Inject constructor(
             }
         }
 
+    override var email: String
+        get() = preferences.getString("email", "").orEmpty()
+        set(value) {
+            preferences.edit(commit = true) {
+                putString("email", value)
+            }
+        }
+
     override fun clear() {
         preferences.edit(commit = true) {
             clear()

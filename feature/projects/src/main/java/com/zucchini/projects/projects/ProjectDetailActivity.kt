@@ -91,7 +91,7 @@ class ProjectDetailActivity : AppCompatActivity() {
             tvLandingLink.text = it?.infoPageLink
             tvWebLink.text = it?.webLink
 
-            if (it?.languageList?.size == 0 ||  it?.techStackList == null) {
+            if (it?.languageList?.size == 0 || it?.techStackList == null) {
                 tvDevStackLanguage1.visibility = android.view.View.INVISIBLE
                 tvDevStackLanguage2.visibility = android.view.View.INVISIBLE
                 tvDevStackLanguage3.visibility = android.view.View.INVISIBLE

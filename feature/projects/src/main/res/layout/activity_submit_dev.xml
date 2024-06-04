@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zucchini.submit.SubmitDevActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_top_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/back_button_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/top_app_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardextrabold"
+                android:gravity="center"
+                android:paddingVertical="20dp"
+                android:text="@string/dev_submit_top_bar"
+                android:textColor="@color/dark_olive"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_project_detail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/developer_default_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_project_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_project_detail"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar">
+
+            <TextView
+                android:id="@+id/tv_dev_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pretendardblack"
+                android:text="@string/tv_dev_name_title"
+                android:textColor="@color/olive_black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_github_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/pretendardblack"
+                android:gravity="start"
+                android:text="@string/github"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_dev_name" />
+
+            <EditText
+                android:id="@+id/et_github"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/pretendardregular"
+                android:gravity="start"
+                android:hint="@string/tv_github"
+                android:textColor="@color/gray2"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_github_title" />
+
+            <TextView
+                android:id="@+id/tv_university_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/pretendardblack"
+                android:gravity="start"
+                android:text="@string/tv_university_title"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_github" />
+
+            <EditText
+                android:id="@+id/et_university"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/pretendardregular"
+                android:gravity="start"
+                android:hint="@string/et_university_hint"
+                android:textColor="@color/gray2"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_university_title" />
+
+            <TextView
+                android:id="@+id/tv_major_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/pretendardblack"
+                android:gravity="start"
+                android:text="@string/tv_major_title"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_university" />
+
+            <EditText
+                android:id="@+id/et_major"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/pretendardregular"
+                android:gravity="start"
+                android:hint="@string/et_major_hint"
+                android:textColor="@color/gray2"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_major_title" />
+
+            <TextView
+                android:id="@+id/tv_student_number_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/pretendardblack"
+                android:gravity="start"
+                android:text="@string/tv_student_number_title"
+                android:textColor="@color/gray2"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_major" />
+
+            <EditText
+                android:id="@+id/et_student_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/pretendardregular"
+                android:gravity="start"
+                android:hint="@string/et_student_number"
+                android:textColor="@color/gray2"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_student_number_title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_dev_submit_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="@string/tv_dev_submit_title"
+            android:textColor="@color/olive_black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_project_info" />
+
+        <EditText
+            android:id="@+id/et_dev_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/contents_background"
+            android:fontFamily="@font/pretendardregular"
+            android:gravity="center"
+            android:hint="@string/tv_dev_submit_hint"
+            android:maxLength="80"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_submit_title" />
+
+        <TextView
+            android:id="@+id/tv_part_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="@string/tv_part_title"
+            android:textColor="@color/olive_black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_dev_intro" />
+
+        <EditText
+            android:id="@+id/et_part_title_1"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/pretendardregular"
+            android:gravity="center"
+            android:hint="Android"
+            android:maxLength="10"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_part_title" />
+
+        <EditText
+            android:id="@+id/et_part_title_2"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/pretendardregular"
+            android:gravity="center"
+            android:hint="Spring"
+            android:maxLength="10"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/et_part_title_1"
+            app:layout_constraintTop_toTopOf="@+id/et_part_title_1" />
+
+        <TextView
+            android:id="@+id/tv_dev_stack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="@string/tv_dev_stack_title"
+            android:textColor="@color/olive_black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_part_title_1" />
+
+        <TextView
+            android:id="@+id/tv_dev_stack_language_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="언어"
+            android:textColor="@color/olive_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_language1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Java"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_language2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Kotlin"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/et_dev_stack_language1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_language3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="MySql"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/et_dev_stack_language2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title" />
+
+        <TextView
+            android:id="@+id/tv_dev_stack_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="기술 스택"
+            android:textColor="@color/olive_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_dev_stack_language1" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_tech1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Android"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_tech2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Crawling"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/et_dev_stack_tech1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_tech3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Spring"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/et_dev_stack_tech2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title" />
+
+        <TextView
+            android:id="@+id/tv_dev_cooperation_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pretendardmedium"
+            android:text="협업 툴"
+            android:textColor="@color/olive_black"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_dev_stack_tech1" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_cooperation1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Discord"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_cooperation2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Github"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/et_dev_stack_cooperation1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title" />
+
+        <EditText
+            android:id="@+id/et_dev_stack_cooperation3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/stack_background"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:hint="Slack"
+            android:padding="5dp"
+            android:textColor="@color/olive_black"
+            android:textSize="10sp"
+            app:layout_constraintStart_toEndOf="@+id/et_dev_stack_cooperation2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title" />
+
+        <TextView
+            android:id="@+id/btn_submit"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/submit_button_background"
+            android:fontFamily="@font/pretendardblack"
+            android:gravity="center"
+            android:text="등록하기"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_dev_stack_cooperation1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
+

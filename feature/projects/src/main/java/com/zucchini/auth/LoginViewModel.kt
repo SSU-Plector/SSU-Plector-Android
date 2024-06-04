@@ -28,7 +28,6 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
-
     fun loginWithKakaoApp(context: Context) {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
             UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
@@ -46,6 +45,7 @@ class LoginViewModel @Inject constructor(
                                 developerId = it.developerId
                                 autoLoginConfigured = true
                             }
+                            loadUserEmail()
                             Log.d(
                                 "networkPreference",
                                 "accessToken: ${networkPreference.accessToken} refreshToken: ${networkPreference.refreshToken} developerId: ${networkPreference.developerId} autoLoginConfigured: ${networkPreference.autoLoginConfigured}",
@@ -77,6 +77,7 @@ class LoginViewModel @Inject constructor(
                             developerId = it.developerId
                             autoLoginConfigured = true
                         }
+                        loadUserEmail()
                         _isLogin.value = it.isLogin
                         _kakaoLoginSuccess.value = true
                         Timber.d("Login Success")
@@ -88,6 +89,16 @@ class LoginViewModel @Inject constructor(
                         Timber.d("Login token ${token.accessToken}")
                     }
                 }
+            }
+        }
+    }
+
+    private fun loadUserEmail() {
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Log.e("KAKAO_API", "사용자 정보 요청 실패", error)
+            } else if (user != null) {
+                networkPreference.email = user.kakaoAccount?.email ?: ""
             }
         }
     }
