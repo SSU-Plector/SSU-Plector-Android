@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.zucchini.common.NavigationProvider
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityLoginBinding
 import com.zucchini.projects.MainActivity
@@ -24,7 +23,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity @Inject constructor(
-    //private val navigationProvider: NavigationProvider,
+    // private val navigationProvider: NavigationProvider,
 ) : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 

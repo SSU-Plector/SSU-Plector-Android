@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.zucchini.domain.model.DeveloperDetailInfoInListModel
 import com.zucchini.feature.projects.databinding.ItemDeveloperBinding
 import com.zucchini.projects.developer.DevDetailActivity
@@ -36,10 +37,13 @@ class DeveloperInfoAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(developersInfoInList: DeveloperDetailInfoInListModel) {
             binding.run {
-                ivProjectProfile.setImageResource(
-                    developersInfoInList.imageLink?.toIntOrNull()
+                ivProjectProfile.load(
+                    developersInfoInList.imageLink
                         ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
-                )
+                ) {
+                    crossfade(true)
+                    placeholder(com.zucchini.core.designsystem.R.drawable.project_profile_default)
+                }
                 tvDeveloperName.text = developersInfoInList.name
                 tvDeveloperField.text =
                     "${developersInfoInList.part1}\n${developersInfoInList.part2}"

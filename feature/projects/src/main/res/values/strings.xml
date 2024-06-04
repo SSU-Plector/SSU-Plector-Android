@@ -42,16 +42,25 @@
     <string name="navigateToMyInfo">내 개발자 정보 보러가기</string>
     <string name="dev_submit_top_bar">내 개발자 프로필 등록하기</string>
     <string name="tv_dev_submit_hint">저는 안드로이드 개발에 관심이 있어요. 함께 하실 분 연락주세요</string>
-    <string name="tv_github">깃허브 링크를 입력해주세요.</string>
+    <string name="tv_github">깃허브 아이디를 입력해주세요.</string>
     <string name="tv_university_title">학교</string>
     <string name="tv_major_title">전공</string>
     <string name="et_university_hint">학교 이름을 입력해주세요.</string>
     <string name="et_major_hint">전공을 입력해주세요.</string>
     <string name="tv_student_number_title">학번</string>
-    <string name="et_student_number">학번을 입력해주세요.(ex. 21학번)</string>
+    <string name="et_student_number">학번을 입력해주세요.(ex. 21)</string>
     <string name="tv_dev_submit_title">나에 대한 소개 문구를 작성해주세요!</string>
     <string name="tv_part_title">가장 자신있는 개발 분야 최대 2개를 입력해주세요!</string>
     <string name="tv_dev_name_title">이름</string>
     <string name="tv_dev_stack_title">가장 자신있는 기술 스택 최대 3개를 입력해주세요!</string>
+    <string name="success_login">로그인에 성공하였습니다.</string>
+    <string name="need_signup">회원가입이 필요합니다.</string>
+    <string name="fail_login">로그인에 실패하였습니다.</string>
+    <string name="success_logout">로그아웃 되었습니다.</string>
+    <string name="fail_logout">로그아웃에 실패하였습니다.</string>
+    <string name="success_withdrwal">탈퇴 되었습니다.</string>
+    <string name="fail_withdrawal">회원탈퇴에 실패하였습니다.</string>
+    <string name="kakao_id_hint">연락이 가능한 카카오 아이디를 입력해주세요</string>
+    <string name="kakao_id_title">카카오톡 아이디</string>
 
 </resources>

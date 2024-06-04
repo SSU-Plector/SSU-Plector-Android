@@ -39,6 +39,8 @@ class SubmitDevViewModel @Inject constructor(
 
     private val _devTechStackList = MutableStateFlow<List<String>>(emptyList())
 
+    private val _kakaoId = MutableStateFlow<String>("")
+
     private val _submitDevInfoSuccess = MutableStateFlow<Boolean>(false)
     val submitDevInfoSuccess = _submitDevInfoSuccess.asStateFlow()
 
@@ -63,6 +65,7 @@ class SubmitDevViewModel @Inject constructor(
         _devTechStackList.value = submitDevInfo.devTechStackList
         _devLanguageList.value = submitDevInfo.devLanguageList
         _devToolList.value = submitDevInfo.devCooperationList
+        _kakaoId.value = submitDevInfo.kakaoId
     }
 
     fun createDeveloperInfo() {
@@ -76,6 +79,7 @@ class SubmitDevViewModel @Inject constructor(
                     devMajor = _devMajor.value,
                     devIntro = _devIntro.value,
                     devStudentNumber = _devStudentNumber.value,
+                    kakaoId = _kakaoId.value,
                     devPart1 = _devPart1.value,
                     devPart2 = _devPart2.value,
                     devTechStackList = _devTechStackList.value,

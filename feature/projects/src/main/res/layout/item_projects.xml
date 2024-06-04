@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/iv_project_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
+        android:layout_marginVertical="5dp"
         android:layout_marginStart="20dp"
         android:src="@drawable/project_profile_default"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,52 +23,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/pretendardextrabold"
         android:textColor="@color/olive_black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/tv_project_description"
         app:layout_constraintStart_toEndOf="@id/iv_project_profile"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_project_profile"
         tools:text="Project Name" />
 
     <TextView
         android:id="@+id/tv_project_description"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
         android:fontFamily="@font/pretendardmedium"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/iv_project_profile"
         app:layout_constraintTop_toBottomOf="@id/tv_project_name"
         tools:text="Project Description" />
 
     <TextView
         android:id="@+id/tv_project_sorted"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:fontFamily="@font/pretendardblack"
+        android:layout_marginEnd="3dp"
+        android:fontFamily="@font/pretendardbold"
         android:textColor="@color/gray2"
-        android:textSize="12sp"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="@id/tv_project_name"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tv_project_name"
         tools:text="서비스" />
 
 
     <TextView
         android:id="@+id/tv_project_clicked"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/pretendardmedium"
-        android:textColor="@color/olive_black"
+        android:gravity="end"
+        android:textColor="@color/gray2"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iv_project_profile"
+        app:layout_constraintTop_toBottomOf="@+id/tv_project_description"
         tools:text="조회수 +100" />
 </androidx.constraintlayout.widget.ConstraintLayout>

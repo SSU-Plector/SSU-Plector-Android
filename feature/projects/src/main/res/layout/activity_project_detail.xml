@@ -60,7 +60,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             android:fontFamily="@font/pretendardbold"
-            android:text="조회수 +12"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintBottom_toTopOf="@+id/cl_project_info"
@@ -83,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pretendardblack"
-                android:text="슈플렉터"
+                tools:text="슈플렉터"
                 android:textColor="@color/olive_black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,17 +92,17 @@
                 android:id="@+id/tv_project_sorted"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
                 android:layout_marginEnd="5dp"
-                android:fontFamily="@font/pretendardblack"
+                android:fontFamily="@font/pretendardbold"
                 android:gravity="left|center_horizontal"
-                android:text="안드로이드 앱 서비스"
-                android:textColor="@color/gray2"
-                android:textSize="10sp"
+                tools:text="안드로이드 앱 서비스"
+                android:textColor="@color/main_olive"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_project_name"
-                app:layout_constraintTop_toTopOf="@+id/tv_project_name" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_project_name" />
 
             <TextView
                 android:id="@+id/tv_github_title"
@@ -117,7 +116,7 @@
                 android:textColor="@color/gray2"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_project_name" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_project_sorted" />
 
             <TextView
                 android:id="@+id/tv_github"
@@ -128,7 +127,6 @@
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/pretendardregular"
                 android:gravity="start"
-                android:text="https://github.com/ssu-plector"
                 android:textColor="@color/gray2"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +156,6 @@
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/pretendardregular"
                 android:gravity="start"
-                android:text="우리 프로젝트는 말이죠 봐야 압니다! 관심있으면 연락주세요★"
                 android:textColor="@color/gray2"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -191,7 +188,6 @@
             android:fontFamily="@font/pretendardregular"
             android:gravity="center"
             android:padding="5dp"
-            android:text="우리 프로젝트는 말이죠 그니까 그게 그래가지고 그냥 엄청난! 굉장해 엄청나! 언블리버블일까나요"
             android:textColor="@color/olive_black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -235,11 +231,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="JAVA"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title"
+            tools:text="JAVA" />
 
         <TextView
             android:id="@+id/tv_dev_stack_language2"
@@ -252,11 +248,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Kotlin"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dev_stack_language1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title"
+            tools:text="Kotlin" />
 
         <TextView
             android:id="@+id/tv_dev_stack_language3"
@@ -269,11 +265,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="MYSQL"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dev_stack_language2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_language_title"
+            tools:text="MYSQL" />
 
         <TextView
             android:id="@+id/tv_dev_stack_title"
@@ -299,11 +295,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Android"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title"
+            tools:text="Android" />
 
         <TextView
             android:id="@+id/tv_dev_stack_tech2"
@@ -316,11 +312,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Crawling"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dev_stack_tech1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title"
+            tools:text="Crawling" />
 
         <TextView
             android:id="@+id/tv_dev_stack_tech3"
@@ -333,11 +329,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Spring"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dev_stack_tech2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_stack_title"
+            tools:text="Spring" />
 
         <TextView
             android:id="@+id/tv_dev_cooperation_title"
@@ -363,11 +359,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Discord"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title"
+            tools:text="Discord" />
 
         <TextView
             android:id="@+id/tv_dev_stack_cooperation2"
@@ -380,11 +376,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Github"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dev_stack_cooperation1"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title"
+            tools:text="Github" />
 
         <TextView
             android:id="@+id/tv_dev_stack_cooperation3"
@@ -397,11 +393,11 @@
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
             android:padding="5dp"
-            tools:text="Slack"
             android:textColor="@color/olive_black"
             android:textSize="10sp"
             app:layout_constraintStart_toEndOf="@+id/tv_dev_stack_cooperation2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dev_cooperation_title"
+            tools:text="Slack" />
 
         <TextView
             android:id="@+id/tv_project_link_title"
@@ -526,9 +522,9 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="50dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@drawable/projects_background_olive"
             android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_introduce_dev_title">

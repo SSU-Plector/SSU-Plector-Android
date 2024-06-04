@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.zucchini.domain.model.ProjectListInfoInList
 import com.zucchini.feature.projects.databinding.ItemProjectsBinding
 import com.zucchini.projects.projects.ProjectDetailActivity
@@ -34,8 +35,8 @@ class ProjectsAdapter : ListAdapter<ProjectListInfoInList, ProjectsAdapter.Proje
         RecyclerView.ViewHolder(binding.root) {
         fun bind(projectInfo: ProjectListInfoInList) {
             binding.run {
-                ivProjectProfile.setImageResource(
-                    projectInfo.imagePath?.toIntOrNull()
+                ivProjectProfile.load(
+                    projectInfo.imagePath
                         ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
                 )
                 tvProjectName.text = projectInfo.name

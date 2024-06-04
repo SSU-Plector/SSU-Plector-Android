@@ -16,6 +16,7 @@ import com.sample.network.datastore.NetworkPreference
 import com.zucchini.common.NavigationProvider
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMypageBinding
+import com.zucchini.projects.developer.DevDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -75,7 +76,9 @@ class MypageFragment : Fragment() {
 
     private fun navigateToMyDevInfo() {
         binding.tvNavigateToMyInfo.setOnClickListener {
-            // TODO 개발자 상세정보로 이동
+            val intent = Intent(context, DevDetailActivity::class.java)
+            intent.putExtra("developerId", networkPreference.developerId)
+            startActivity(intent)
         }
     }
 

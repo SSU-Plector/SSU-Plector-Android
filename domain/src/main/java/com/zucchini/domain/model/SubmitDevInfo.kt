@@ -5,6 +5,7 @@ data class SubmitDevInfo(
     val devUniversity: String,
     val devMajor: String,
     val devIntro: String,
+    val kakaoId: String,
     val devStudentNumber: String,
     val devPart1: String,
     val devPart2: String,

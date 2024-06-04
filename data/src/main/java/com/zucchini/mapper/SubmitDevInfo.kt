@@ -9,7 +9,7 @@ internal fun SubmitDevInfo.toCreateDevelopersRequest(): CreateDevelopersRequest 
         university = devUniversity,
         major = devMajor,
         studentNumber = devStudentNumber,
-        kakaoId = "",
+        kakaoId = kakaoId,
         githubLink = devGithub,
         part1 = devPart1,
         part2 = devPart2,

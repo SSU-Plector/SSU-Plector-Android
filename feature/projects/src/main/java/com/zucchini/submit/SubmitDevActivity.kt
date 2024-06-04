@@ -70,6 +70,7 @@ class SubmitDevActivity @Inject constructor() : AppCompatActivity() {
             val devStudentNumber = binding.etStudentNumber.text.toString()
             val devPart1 = binding.etPartTitle1.text.toString()
             val devPart2 = binding.etPartTitle2.text.toString()
+            val kakaoId = binding.etKakaoId.text.toString()
             val devTechStack1 = binding.etDevStackTech1.text.toString()
             val devTechStack2 = binding.etDevStackTech2.text.toString()
             val devTechStack3 = binding.etDevStackTech3.text.toString()
@@ -84,16 +85,17 @@ class SubmitDevActivity @Inject constructor() : AppCompatActivity() {
             val devCooperationList = listOf(devCooperation1, devCooperation2, devCooperation3)
 
             val submitDevInfo = SubmitDevInfo(
-                devGithub,
-                devUniversity,
-                devMajor,
-                devIntro,
-                devStudentNumber,
-                devPart1,
-                devPart2,
-                devTechStackList,
-                devLanguageList,
-                devCooperationList,
+                devGithub = devGithub,
+                devUniversity = devUniversity,
+                devMajor = devMajor,
+                devIntro = devIntro,
+                kakaoId = kakaoId,
+                devStudentNumber = devStudentNumber,
+                devPart1 = devPart1,
+                devPart2 = devPart2,
+                devTechStackList = devTechStackList,
+                devLanguageList = devLanguageList,
+                devCooperationList = devCooperationList,
             )
 
             viewModel.submitDev(submitDevInfo)
