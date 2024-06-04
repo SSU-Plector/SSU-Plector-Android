@@ -2,12 +2,15 @@ package com.zucchini.submit
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.kakao.sdk.user.UserApiClient
 import com.sample.network.datastore.NetworkPreference
 import com.zucchini.domain.model.SubmitDevInfo
 import com.zucchini.domain.repository.DevelopersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,6 +39,19 @@ class SubmitDevViewModel @Inject constructor(
 
     private val _devTechStackList = MutableStateFlow<List<String>>(emptyList())
 
+    private val _submitDevInfoSuccess = MutableStateFlow<Boolean>(false)
+    val submitDevInfoSuccess = _submitDevInfoSuccess.asStateFlow()
+
+    private val _kakaoNickname = MutableStateFlow<String>("")
+    val kakaoNickname = _kakaoNickname.asStateFlow()
+
+    private val _kakaoImage = MutableStateFlow<String>("")
+    val kakaoImage = _kakaoImage.asStateFlow()
+
+    init {
+        getKakaoUserInfo()
+    }
+
     fun submitDev(submitDevInfo: SubmitDevInfo) {
         _devGithub.value = submitDevInfo.devGithub
         _devUniversity.value = submitDevInfo.devUniversity
@@ -53,7 +69,7 @@ class SubmitDevViewModel @Inject constructor(
         viewModelScope.launch {
             developersRepository.createDeveloperInfo(
                 accessToken = networkPreference.accessToken,
-                email = networkPreference.email,
+                email = networkPreference.kakaoEmail,
                 submitDevInfo = SubmitDevInfo(
                     devGithub = _devGithub.value,
                     devUniversity = _devUniversity.value,
@@ -66,7 +82,24 @@ class SubmitDevViewModel @Inject constructor(
                     devLanguageList = _devLanguageList.value,
                     devCooperationList = _devToolList.value,
                 ),
-            )
+            ).onSuccess {
+                _submitDevInfoSuccess.value = true
+            }.onFailure {
+                _submitDevInfoSuccess.value = false
+                Timber.e(it)
+            }
+        }
+    }
+
+    private fun getKakaoUserInfo() {
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Timber.e(this.toString())
+            } else if (user != null) {
+                _kakaoImage.value =
+                    user.kakaoAccount?.profile?.thumbnailImageUrl ?: ""
+                _kakaoNickname.value = user.kakaoAccount?.profile?.nickname ?: "쥬키니"
+            }
         }
     }
 }

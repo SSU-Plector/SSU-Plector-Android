@@ -1,30 +1,64 @@
 package com.zucchini.submit
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import coil.load
+import coil.transform.RoundedCornersTransformation
+import com.sample.network.datastore.NetworkPreference
 import com.zucchini.domain.model.SubmitDevInfo
+import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitDevBinding
+import com.zucchini.projects.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class SubmitDevActivity : AppCompatActivity() {
+class SubmitDevActivity @Inject constructor() : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitDevBinding
     private val viewModel by viewModels<SubmitDevViewModel>()
+
+    @Inject
+    lateinit var networkPreference: NetworkPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySubmitDevBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        getUserDefaultInfo()
         backToLogin()
         collectSubmitDevInfo()
+        collectSubmitDevInfoSuccess()
     }
 
     private fun backToLogin() {
         binding.ivBackButton.setOnClickListener {
             finish()
         }
+    }
+
+    private fun getUserDefaultInfo() {
+        viewModel.kakaoNickname.flowWithLifecycle(lifecycle).onEach { nickname ->
+            if (nickname.isNotEmpty()) {
+                binding.tvDevSubmitName.text = viewModel.kakaoNickname.value
+            }
+        }.launchIn(lifecycleScope)
+
+        viewModel.kakaoImage.flowWithLifecycle(lifecycle).onEach { image ->
+            if (image.isNotEmpty()) {
+                binding.ivDevSubmitProfile.load(viewModel.kakaoImage.value) {
+                    crossfade(true)
+                    placeholder(R.drawable.developer_default_image)
+                    transformations(RoundedCornersTransformation())
+                }
+            }
+        }.launchIn(lifecycleScope)
     }
 
     private fun collectSubmitDevInfo() {
@@ -65,5 +99,21 @@ class SubmitDevActivity : AppCompatActivity() {
             viewModel.submitDev(submitDevInfo)
             viewModel.createDeveloperInfo()
         }
+    }
+
+    private fun collectSubmitDevInfoSuccess() {
+        viewModel.submitDevInfoSuccess.flowWithLifecycle(lifecycle).onEach { success ->
+            if (success) {
+                navigateToMain()
+                finish()
+            }
+        }.launchIn(lifecycleScope)
+    }
+
+    private fun navigateToMain() {
+        intent = Intent(this, MainActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        startActivity(intent)
+        finish()
     }
 }

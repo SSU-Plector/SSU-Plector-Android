@@ -1,7 +1,6 @@
 package com.zucchini.auth
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kakao.sdk.common.model.ClientError
@@ -28,6 +27,10 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
+    init {
+        //getKakaoUserInfo()
+    }
+
     fun loginWithKakaoApp(context: Context) {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
             UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
@@ -45,11 +48,7 @@ class LoginViewModel @Inject constructor(
                                 developerId = it.developerId
                                 autoLoginConfigured = true
                             }
-                            loadUserEmail()
-                            Log.d(
-                                "networkPreference",
-                                "accessToken: ${networkPreference.accessToken} refreshToken: ${networkPreference.refreshToken} developerId: ${networkPreference.developerId} autoLoginConfigured: ${networkPreference.autoLoginConfigured}",
-                            )
+                            getKakaoUserInfo()
                             _isLogin.value = it.isLogin
                             _kakaoLoginSuccess.value = true
                             Timber.d("Login Success ${it.accessToken}")
@@ -77,7 +76,7 @@ class LoginViewModel @Inject constructor(
                             developerId = it.developerId
                             autoLoginConfigured = true
                         }
-                        loadUserEmail()
+                        getKakaoUserInfo()
                         _isLogin.value = it.isLogin
                         _kakaoLoginSuccess.value = true
                         Timber.d("Login Success")
@@ -93,12 +92,15 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    private fun loadUserEmail() {
+    private fun getKakaoUserInfo() {
         UserApiClient.instance.me { user, error ->
             if (error != null) {
-                Log.e("KAKAO_API", "사용자 정보 요청 실패", error)
+                Timber.e(this.toString())
             } else if (user != null) {
-                networkPreference.email = user.kakaoAccount?.email ?: ""
+                networkPreference.kakaoEmail = user.kakaoAccount?.email ?: ""
+                networkPreference.kakaoProfileImage =
+                    user.kakaoAccount?.profile?.thumbnailImageUrl ?: ""
+                networkPreference.kakaoNickname = user.kakaoAccount?.profile?.nickname ?: "쥬키니"
             }
         }
     }

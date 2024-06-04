@@ -39,11 +39,26 @@ class NetworkPreferenceImpl @Inject constructor(
             }
         }
 
-    override var email: String
-        get() = preferences.getString("email", "").orEmpty()
+    override var kakaoEmail: String
+        get() = preferences.getString("kakao_email", "").orEmpty()
         set(value) {
             preferences.edit(commit = true) {
-                putString("email", value)
+                putString("kakao_email", value)
+            }
+        }
+
+    override var kakaoNickname: String
+        get() = preferences.getString("kakao_nickname", "").orEmpty()
+        set(value) {
+            preferences.edit(commit = true) {
+                putString("kakao_nickname", value)
+            }
+        }
+    override var kakaoProfileImage: String
+        get() = preferences.getString("kakao_profile_image", "").orEmpty()
+        set(value) {
+            preferences.edit(commit = true) {
+                putString("kakao_profile_image", value)
             }
         }
 
