@@ -83,6 +83,9 @@ class ProjectDetailActivity : AppCompatActivity() {
                 ?: getString(com.zucchini.feature.projects.R.string.github_default_link)
 
             tvGithub.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tvAppLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tvLandingLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tvWebLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
             tvProjectName.text = it?.name
             tvProjectSorted.text = it?.category
