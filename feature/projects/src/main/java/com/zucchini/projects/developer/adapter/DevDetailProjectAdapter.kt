@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.zucchini.domain.model.ProjectInfoInDevDetailModel
-import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ItemDevDetailProjectsBinding
 import com.zucchini.projects.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback
@@ -37,8 +37,9 @@ class DevDetailProjectAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(projectList: ProjectInfoInDevDetailModel) {
             binding.run {
-                ivProjectProfile.setImageResource(
-                    projectList.imageLink?.toIntOrNull() ?: R.drawable.developer_default_image,
+                ivProjectProfile.load(
+                    projectList.imageLink
+                        ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
                 )
                 tvProjectName.text = projectList.name ?: ""
                 tvProjectDescription.text = projectList.shortIntro ?: ""
