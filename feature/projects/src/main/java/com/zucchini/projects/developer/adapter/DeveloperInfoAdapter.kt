@@ -43,6 +43,7 @@ class DeveloperInfoAdapter :
                 ) {
                     crossfade(true)
                     placeholder(com.zucchini.core.designsystem.R.drawable.project_profile_default)
+                    size(60, 60)
                 }
                 tvDeveloperName.text = developersInfoInList.name
                 tvDeveloperField.text =

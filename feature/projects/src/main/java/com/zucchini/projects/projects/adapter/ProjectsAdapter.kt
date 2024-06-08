@@ -38,7 +38,9 @@ class ProjectsAdapter : ListAdapter<ProjectListInfoInList, ProjectsAdapter.Proje
                 ivProjectProfile.load(
                     projectInfo.imagePath
                         ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
-                )
+                ) {
+                    size(120, 120)
+                }
                 tvProjectName.text = projectInfo.name
                 tvProjectDescription.text = projectInfo.shortIntro
                 tvProjectSorted.text = projectInfo.category

@@ -40,7 +40,9 @@ class DevDetailProjectAdapter :
                 ivProjectProfile.load(
                     projectList.imageLink
                         ?: com.zucchini.core.designsystem.R.drawable.project_profile_default,
-                )
+                ) {
+                    size(120, 120)
+                }
                 tvProjectName.text = projectList.name ?: ""
                 tvProjectDescription.text = projectList.shortIntro ?: ""
                 tvSortedProject.text = projectList.category ?: ""

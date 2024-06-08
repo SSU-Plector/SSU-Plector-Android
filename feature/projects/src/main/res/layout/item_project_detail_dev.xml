@@ -13,8 +13,8 @@
         android:id="@+id/tv_developer_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="15dp"
         android:fontFamily="@font/pretendardbold"
         android:textColor="@color/olive_black"
         android:textSize="10sp"
@@ -27,11 +27,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_developer_name"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintVertical_bias="0.5">
 
         <TextView
             android:id="@+id/tv_developer_info1"
@@ -39,27 +39,28 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="left"
-            tools:text="안드로이드"
             android:textColor="@color/gray2"
             android:textSize="8sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="안드로이드" />
 
 
         <TextView
             android:id="@+id/tv_developer_info2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="left"
-            tools:text="안드로이드"
             android:textColor="@color/gray2"
             android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_developer_info1" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer_info1"
+            tools:text="안드로이드" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

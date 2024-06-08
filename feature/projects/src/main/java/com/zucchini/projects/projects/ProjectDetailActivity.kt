@@ -78,7 +78,9 @@ class ProjectDetailActivity : AppCompatActivity() {
             ivProjectDetail.load(
                 it?.imageLink
                     ?: R.drawable.project_profile_default,
-            )
+            ) {
+                size(180, 180)
+            }
             val projectGithubLink = it?.githubLink
                 ?: getString(com.zucchini.feature.projects.R.string.github_default_link)
 
@@ -93,9 +95,21 @@ class ProjectDetailActivity : AppCompatActivity() {
             tvProjectIntroContent.text = it?.shortIntro
             tvProjectIntroContentLong.text = it?.longIntro
             tvGithub.text = projectGithubLink
-            tvAppLink.text = it?.appLink ?: "아직 출시되지 않았어요!"
-            tvLandingLink.text = it?.infoPageLink ?: "준비 중입니다 :)"
-            tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
+            if (it?.appLink == "string") {
+                tvAppLink.text = "아직 출시되지 않았어요!"
+            } else {
+                tvAppLink.text = it?.appLink ?: "아직 출시되지 않았어요!"
+            }
+            if (it?.infoPageLink == "string") {
+                tvLandingLink.text = "준비 중입니다 :)"
+            } else {
+                tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
+            }
+            if (it?.webLink == "string") {
+                tvWebLink.text = "준비 중입니다 :)"
+            } else {
+                tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
+            }
             tvDevStackLanguage1.text = it?.languageList?.get(0) ?: ""
             tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
             tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
