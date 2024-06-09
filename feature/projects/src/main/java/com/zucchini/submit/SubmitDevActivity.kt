@@ -107,14 +107,12 @@ class SubmitDevActivity @Inject constructor() : AppCompatActivity() {
         viewModel.submitDevInfoSuccess.flowWithLifecycle(lifecycle).onEach { success ->
             if (success) {
                 navigateToMain()
-                finish()
             }
         }.launchIn(lifecycleScope)
     }
 
     private fun navigateToMain() {
         intent = Intent(this, MainActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         startActivity(intent)
         finish()
     }

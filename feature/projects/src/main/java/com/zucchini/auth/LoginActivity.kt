@@ -70,8 +70,8 @@ class LoginActivity @Inject constructor(
 
     private fun navigateToSubmitDev() {
         intent = Intent(this, SubmitDevActivity::class.java)
-            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         startActivity(intent)
+        finish()
     }
 
     private fun setLoginViewPager() {
