@@ -91,10 +91,10 @@ class ProjectsFragment : Fragment() {
     private fun updateSortKeywordColors(selectedOption: SortOption) {
         val activeColor = ContextCompat.getColor(
             requireContext(),
-            com.zucchini.core.designsystem.R.color.olive_black,
+            R.color.olive_black,
         )
         val inactiveColor =
-            ContextCompat.getColor(requireContext(), com.zucchini.core.designsystem.R.color.gray1)
+            ContextCompat.getColor(requireContext(), R.color.gray1)
 
         binding.run {
             tvSortRecent.setTextColor(if (selectedOption == SortOption.RECENT) activeColor else inactiveColor)

@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import com.zucchini.auth.LoginActivity
 import com.zucchini.common.NavigationProvider
+import com.zucchini.projects.MainActivity
+import com.zucchini.submit.SubmitDevActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -25,5 +27,13 @@ class DefaultNavigationProvider @Inject constructor(
 
     override fun toLogin(): Intent {
         return Intent(context, LoginActivity::class.java)
+    }
+
+    override fun toSubmitDev(): Intent {
+        return Intent(context, SubmitDevActivity::class.java)
+    }
+
+    override fun toMain(): Intent {
+        return Intent(context, MainActivity::class.java)
     }
 }

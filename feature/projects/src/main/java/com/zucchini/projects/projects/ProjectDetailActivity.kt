@@ -1,6 +1,7 @@
 package com.zucchini.projects.projects
 
 import android.content.Intent
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -77,9 +78,16 @@ class ProjectDetailActivity : AppCompatActivity() {
             ivProjectDetail.load(
                 it?.imageLink
                     ?: R.drawable.project_profile_default,
-            )
+            ) {
+                size(180, 180)
+            }
             val projectGithubLink = it?.githubLink
                 ?: getString(com.zucchini.feature.projects.R.string.github_default_link)
+
+            tvGithub.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tvAppLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tvLandingLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+            tvWebLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
             tvProjectName.text = it?.name
             tvProjectSorted.text = it?.category
@@ -87,63 +95,30 @@ class ProjectDetailActivity : AppCompatActivity() {
             tvProjectIntroContent.text = it?.shortIntro
             tvProjectIntroContentLong.text = it?.longIntro
             tvGithub.text = projectGithubLink
-            tvAppLink.text = it?.appLink
-            tvLandingLink.text = it?.infoPageLink
-            tvWebLink.text = it?.webLink
-
-            if (it?.languageList?.size == 0 ||  it?.techStackList == null) {
-                tvDevStackLanguage1.visibility = android.view.View.INVISIBLE
-                tvDevStackLanguage2.visibility = android.view.View.INVISIBLE
-                tvDevStackLanguage3.visibility = android.view.View.INVISIBLE
-            } else if (it.languageList?.size == 1) {
-                tvDevStackLanguage1.text = it.languageList?.get(0) ?: ""
-                tvDevStackLanguage2.visibility = android.view.View.INVISIBLE
-                tvDevStackLanguage3.visibility = android.view.View.INVISIBLE
-            } else if (it.languageList?.size == 2) {
-                tvDevStackLanguage1.text = it.languageList?.get(0) ?: ""
-                tvDevStackLanguage2.text = it.languageList?.get(1) ?: ""
-                tvDevStackLanguage3.visibility = android.view.View.INVISIBLE
-            } else if (it.languageList?.size == 3) {
-                tvDevStackLanguage1.text = it.languageList?.get(0) ?: ""
-                tvDevStackLanguage2.text = it.languageList?.get(1) ?: ""
-                tvDevStackLanguage3.text = it.languageList?.get(2) ?: ""
+            if (it?.appLink == "string") {
+                tvAppLink.text = "아직 출시되지 않았어요!"
+            } else {
+                tvAppLink.text = it?.appLink ?: "아직 출시되지 않았어요!"
             }
-
-            if (it?.devToolList?.size == 0 || it?.techStackList == null) {
-                tvDevStackCooperation1.visibility = android.view.View.INVISIBLE
-                tvDevStackCooperation2.visibility = android.view.View.INVISIBLE
-                tvDevStackCooperation3.visibility = android.view.View.INVISIBLE
-            } else if (it.devToolList?.size == 1) {
-                tvDevStackCooperation1.text = it.devToolList?.get(0) ?: ""
-                tvDevStackCooperation2.visibility = android.view.View.INVISIBLE
-                tvDevStackCooperation3.visibility = android.view.View.INVISIBLE
-            } else if (it.devToolList?.size == 2) {
-                tvDevStackCooperation1.text = it.devToolList?.get(0) ?: ""
-                tvDevStackCooperation2.text = it.devToolList?.get(1) ?: ""
-                tvDevStackCooperation3.visibility = android.view.View.INVISIBLE
-            } else if (it.devToolList?.size == 3) {
-                tvDevStackCooperation1.text = it.devToolList?.get(0) ?: ""
-                tvDevStackCooperation2.text = it.devToolList?.get(1) ?: ""
-                tvDevStackCooperation3.text = it.devToolList?.get(2) ?: ""
+            if (it?.infoPageLink == "string") {
+                tvLandingLink.text = "준비 중입니다 :)"
+            } else {
+                tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
             }
-
-            if (it?.techStackList?.size == 0 || it?.techStackList == null) {
-                tvDevStackTech1.visibility = android.view.View.INVISIBLE
-                tvDevStackTech2.visibility = android.view.View.INVISIBLE
-                tvDevStackTech3.visibility = android.view.View.INVISIBLE
-            } else if (it.techStackList?.size == 1) {
-                tvDevStackTech1.text = it.techStackList?.get(0) ?: ""
-                tvDevStackTech2.visibility = android.view.View.INVISIBLE
-                tvDevStackTech3.visibility = android.view.View.INVISIBLE
-            } else if (it.techStackList?.size == 2) {
-                tvDevStackTech1.text = it.techStackList?.get(0) ?: ""
-                tvDevStackTech2.text = it.techStackList?.get(1) ?: ""
-                tvDevStackTech3.visibility = android.view.View.INVISIBLE
-            } else if (it.techStackList?.size == 3) {
-                tvDevStackTech1.text = it.techStackList?.get(0) ?: ""
-                tvDevStackTech2.text = it.techStackList?.get(1) ?: ""
-                tvDevStackTech3.text = it.techStackList?.get(2) ?: ""
+            if (it?.webLink == "string") {
+                tvWebLink.text = "준비 중입니다 :)"
+            } else {
+                tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
             }
+            tvDevStackLanguage1.text = it?.languageList?.get(0) ?: ""
+            tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
+            tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
+            tvDevStackCooperation1.text = it?.devToolList?.get(0) ?: ""
+            tvDevStackCooperation2.text = it?.devToolList?.get(1) ?: ""
+            tvDevStackCooperation3.text = it?.devToolList?.get(2) ?: ""
+            tvDevStackTech1.text = it?.techStackList?.get(0) ?: ""
+            tvDevStackTech2.text = it?.techStackList?.get(1) ?: ""
+            tvDevStackTech3.text = it?.techStackList?.get(2) ?: ""
 
             navigateToProjectGithubLink(projectGithubLink)
             navigateToProjectLandingPageLink(it?.infoPageLink)

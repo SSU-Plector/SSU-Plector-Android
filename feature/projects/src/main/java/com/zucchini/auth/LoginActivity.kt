@@ -10,6 +10,7 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityLoginBinding
 import com.zucchini.projects.MainActivity
 import com.zucchini.projects.adapter.IntroducePagerAdapter
+import com.zucchini.submit.SubmitDevActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -52,8 +53,7 @@ class LoginActivity @Inject constructor(
                 success -> if (viewModel.isLogin.value) {
                     navigateToMain()
                 } else {
-                    // TODO 회원가입
-                    navigateToMain()
+                    navigateToSubmitDev()
                 }
 
                 else -> Timber.e("Kakao Login Failed")
@@ -66,6 +66,12 @@ class LoginActivity @Inject constructor(
             .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
         startActivity(intent)
         finish()
+    }
+
+    private fun navigateToSubmitDev() {
+        intent = Intent(this, SubmitDevActivity::class.java)
+            .addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        startActivity(intent)
     }
 
     private fun setLoginViewPager() {

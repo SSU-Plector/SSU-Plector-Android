@@ -8,4 +8,6 @@ interface NavigationProvider {
     fun toMyPage(): Intent
 
     fun toLogin(): Intent
+    fun toSubmitDev(): Intent
+    fun toMain(): Intent
 }

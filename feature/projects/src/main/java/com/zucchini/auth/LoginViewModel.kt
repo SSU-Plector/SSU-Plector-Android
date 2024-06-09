@@ -1,7 +1,6 @@
 package com.zucchini.auth
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kakao.sdk.common.model.ClientError
@@ -28,6 +27,9 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
+    init {
+        //getKakaoUserInfo()
+    }
 
     fun loginWithKakaoApp(context: Context) {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
@@ -46,10 +48,7 @@ class LoginViewModel @Inject constructor(
                                 developerId = it.developerId
                                 autoLoginConfigured = true
                             }
-                            Log.d(
-                                "networkPreference",
-                                "accessToken: ${networkPreference.accessToken} refreshToken: ${networkPreference.refreshToken} developerId: ${networkPreference.developerId} autoLoginConfigured: ${networkPreference.autoLoginConfigured}",
-                            )
+                            getKakaoUserInfo()
                             _isLogin.value = it.isLogin
                             _kakaoLoginSuccess.value = true
                             Timber.d("Login Success ${it.accessToken}")
@@ -77,6 +76,7 @@ class LoginViewModel @Inject constructor(
                             developerId = it.developerId
                             autoLoginConfigured = true
                         }
+                        getKakaoUserInfo()
                         _isLogin.value = it.isLogin
                         _kakaoLoginSuccess.value = true
                         Timber.d("Login Success")
@@ -88,6 +88,19 @@ class LoginViewModel @Inject constructor(
                         Timber.d("Login token ${token.accessToken}")
                     }
                 }
+            }
+        }
+    }
+
+    private fun getKakaoUserInfo() {
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Timber.e(this.toString())
+            } else if (user != null) {
+                networkPreference.kakaoEmail = user.kakaoAccount?.email ?: ""
+                networkPreference.kakaoProfileImage =
+                    user.kakaoAccount?.profile?.thumbnailImageUrl ?: ""
+                networkPreference.kakaoNickname = user.kakaoAccount?.profile?.nickname ?: "쥬키니"
             }
         }
     }
