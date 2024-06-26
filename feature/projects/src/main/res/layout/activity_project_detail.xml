@@ -82,27 +82,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pretendardblack"
-                tools:text="슈플렉터"
                 android:textColor="@color/olive_black"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="슈플렉터" />
 
             <TextView
                 android:id="@+id/tv_project_sorted"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="5dp"
                 android:fontFamily="@font/pretendardbold"
                 android:gravity="left|center_horizontal"
-                tools:text="안드로이드 앱 서비스"
                 android:textColor="@color/main_olive"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_project_name" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_project_name"
+                tools:text="안드로이드 앱 서비스" />
 
             <TextView
                 android:id="@+id/tv_github_title"
@@ -188,6 +188,7 @@
             android:fontFamily="@font/pretendardregular"
             android:gravity="center"
             android:padding="5dp"
+            android:paddingHorizontal="2dp"
             android:textColor="@color/olive_black"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -442,12 +443,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/pretendardregular"
-                android:text="https:.//fshkgjhkw/dmfskdjhsgdagafsdasdgsgfs"
                 android:textColor="@color/olive_black"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_web_link_title" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_web_link_title"
+                tools:text="https:.//fshkgjhkw/dmfskdjhsgdagafsdasdgsgfs" />
 
 
             <TextView
@@ -469,12 +470,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/pretendardregular"
-                android:text="https:.//fshkgjhkw/dmfskdjhsgdagafsdasdgsgfs"
                 android:textColor="@color/olive_black"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_app_link_title" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_app_link_title"
+                tools:text="https:.//fshkgjhkw/dmfskdjhsgdagafsdasdgsgfs" />
 
             <TextView
                 android:id="@+id/tv_landing_link_title"
@@ -495,12 +496,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/pretendardregular"
-                android:text="https:.//fshkgjhkw/dmfskdjhsgdagafsdasdgsgfs"
                 android:textColor="@color/olive_black"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_landing_link_title" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_landing_link_title"
+                tools:text="https:.//fshkgjhkw/dmfskdjhsgdagafsdasdgsgfs" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView

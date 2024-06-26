@@ -95,21 +95,20 @@ class ProjectDetailActivity : AppCompatActivity() {
             tvProjectIntroContent.text = it?.shortIntro
             tvProjectIntroContentLong.text = it?.longIntro
             tvGithub.text = projectGithubLink
-            if (it?.appLink == "string") {
-                tvAppLink.text = "아직 출시되지 않았어요!"
-            } else {
-                tvAppLink.text = it?.appLink ?: "아직 출시되지 않았어요!"
+            tvAppLink.text = it?.appLink
+            tvLandingLink.text = it?.infoPageLink
+            tvWebLink.text = it?.webLink
+
+            if (it?.appLink.isNullOrBlank()) {
+                tvAppLink.text = getString(com.zucchini.feature.projects.R.string.default_app_link)
             }
-            if (it?.infoPageLink == "string") {
-                tvLandingLink.text = "준비 중입니다 :)"
-            } else {
-                tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
+            if (it?.infoPageLink.isNullOrEmpty()) {
+                tvLandingLink.text = getString(com.zucchini.feature.projects.R.string.default_link)
             }
-            if (it?.webLink == "string") {
-                tvWebLink.text = "준비 중입니다 :)"
-            } else {
-                tvWebLink.text = it?.webLink ?: "준비 중입니다 :)"
+            if (it?.webLink.isNullOrEmpty()) {
+                tvWebLink.text = getString(com.zucchini.feature.projects.R.string.default_link)
             }
+
             tvDevStackLanguage1.text = it?.languageList?.get(0) ?: ""
             tvDevStackLanguage2.text = it?.languageList?.get(1) ?: ""
             tvDevStackLanguage3.text = it?.languageList?.get(2) ?: ""
