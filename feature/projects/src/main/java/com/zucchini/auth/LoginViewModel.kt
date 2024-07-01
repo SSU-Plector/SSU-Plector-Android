@@ -27,8 +27,11 @@ class LoginViewModel @Inject constructor(
     private val _isLogin = MutableStateFlow(false)
     val isLogin = _isLogin.asStateFlow()
 
+    private val _autoLoginConfigured = MutableStateFlow(networkPreference.autoLoginConfigured)
+    val autoLoginConfigured = _autoLoginConfigured.asStateFlow()
+
     init {
-        //getKakaoUserInfo()
+        _autoLoginConfigured.value = networkPreference.autoLoginConfigured
     }
 
     fun loginWithKakaoApp(context: Context) {

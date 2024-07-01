@@ -36,6 +36,7 @@ class LoginActivity @Inject constructor(
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        autoLogin()
         kakaoLogin()
         collectKakaoLogin()
         setLoginViewPager()
@@ -59,6 +60,14 @@ class LoginActivity @Inject constructor(
                 else -> Timber.e("Kakao Login Failed")
             }
         }.launchIn(lifecycleScope)
+    }
+
+    private fun autoLogin() {
+        if (viewModel.autoLoginConfigured.value) {
+            navigateToMain()
+        } else {
+            Timber.d("Auto Login Configured False")
+        }
     }
 
     private fun navigateToMain() {
