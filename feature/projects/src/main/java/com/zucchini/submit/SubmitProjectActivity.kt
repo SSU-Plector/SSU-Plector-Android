@@ -11,5 +11,13 @@ class SubmitProjectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySubmitProjectBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        backClickListner()
+    }
+
+    private fun backClickListner() {
+        binding.ivBackButton.setOnClickListener {
+            finish()
+        }
     }
 }
