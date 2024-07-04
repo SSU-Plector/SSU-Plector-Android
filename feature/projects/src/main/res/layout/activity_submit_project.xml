@@ -54,6 +54,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
 
+        <TextView
+            android:id="@+id/tv_project_submit_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pretendardmedium"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="6dp"
+            android:text="@string/tv_project_submit_image"
+            android:textColor="@color/gray2"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@+id/iv_project_submit"
+            app:layout_constraintStart_toStartOf="@+id/iv_project_submit"
+            app:layout_constraintEnd_toEndOf="@+id/iv_project_submit"
+            />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_project_submit_info"
             android:layout_width="0dp"
@@ -140,7 +156,7 @@
             android:textColor="@color/olive_black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_project_submit_info" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_project_submit_image" />
 
         <EditText
             android:id="@+id/tv_project_intro_content_short"

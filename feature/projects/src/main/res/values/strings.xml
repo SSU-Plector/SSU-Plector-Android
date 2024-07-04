@@ -90,5 +90,7 @@
     <string name="tv_dev_stack_dev_stack">기술 스택↗</string>
     <string name="tv_dev_stack_cooperation">협업툴↗</string>
     <string name="tv_submit_project_category">카테고리↗</string>
+    <string name="tv_project_submit_image"><u>이미지 업로드</u></string>
+    <string name="submit_image">이미지를 선택해주세요.</string>
 
 </resources>

@@ -41,6 +41,7 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:common"))
     implementation(project(":core:network"))
+    implementation(project(":data"))
 
     KotlinDependencies.run {
         implementation(kotlin)
