@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="20dp"
+    android:layout_marginVertical="20dp">
+
+    <TextView
+        android:id="@+id/tv_project_submit_developer_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="@string/tv_project_submit_developer_name"
+        android:textColor="@color/olive_black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_project_submit_developer_name"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/pretendardregular"
+        android:gravity="center"
+        android:padding="5dp"
+        android:paddingHorizontal="2dp"
+        android:textColor="@color/olive_black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_project_submit_developer_name" />
+
+    <TextView
+        android:id="@+id/tv_project_submit_developer_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="@string/tv_project_submit_developer_email"
+        android:textColor="@color/olive_black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_project_submit_developer_name" />
+
+    <EditText
+        android:id="@+id/et_project_submit_developer_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="@font/pretendardregular"
+        android:gravity="center"
+        android:padding="5dp"
+        android:paddingHorizontal="2dp"
+        android:textColor="@color/olive_black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_project_submit_developer_email" />
+
+    <TextView
+        android:id="@+id/tv_submit_project_developer_category_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="@string/tv_submit_project_developer_category_title"
+        android:textColor="@color/olive_black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_project_submit_developer_email" />
+
+
+    <TextView
+        android:id="@+id/tv_submit_project_developer_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/stack_background"
+        android:fontFamily="@font/pretendardmedium"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/tv_submit_project_category"
+        android:textColor="@color/olive_black"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_submit_project_developer_category_title" />
+
+
+    <TextView
+        android:id="@+id/tv_project_submit_developer_leader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginVertical="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/pretendardmedium"
+        android:text="@string/tv_project_submit_developer_leader"
+        android:textColor="@color/olive_black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_submit_project_developer_category" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:buttonTint="@color/olive_gray"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_project_submit_developer_leader"
+        app:layout_constraintStart_toEndOf="@+id/tv_project_submit_developer_leader"
+        app:layout_constraintTop_toTopOf="@+id/tv_project_submit_developer_leader" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
