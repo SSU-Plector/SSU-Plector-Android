@@ -4,7 +4,9 @@
     <application>
         <activity
             android:name="com.zucchini.submit.SubmitProjectActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name="com.zucchini.submit.SubmitDevActivity"
             android:exported="false"
