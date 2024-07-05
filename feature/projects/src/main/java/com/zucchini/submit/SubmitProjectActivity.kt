@@ -34,6 +34,11 @@ class SubmitProjectActivity : AppCompatActivity() {
 
         backClickListner()
         initImageSubmitView()
+        initDialogClickListener()
+    }
+
+    private fun initDialogClickListener() {
+        selectProjectCategory()
     }
 
     private fun backClickListner() {
@@ -48,11 +53,18 @@ class SubmitProjectActivity : AppCompatActivity() {
         }
     }
 
+    private fun selectProjectCategory() {
+        binding.tvSubmitProjectCategory.setOnClickListener {
+            // TODO: Implement category selection
+        }
+    }
+
     private fun processSelectedImage(uri: Uri) {
-        val requestBody = ContentUriRequestBody(
-            context = this,
-            uri = uri
-        ).toFormData()
+        val requestBody =
+            ContentUriRequestBody(
+                context = this,
+                uri = uri,
+            ).toFormData()
 
         Timber.d("Image Uri: $uri")
         Timber.d("Image Path: ${uri.path}")
