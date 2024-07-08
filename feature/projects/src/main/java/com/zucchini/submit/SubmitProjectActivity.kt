@@ -1,19 +1,14 @@
 package com.zucchini.submit
 
-import android.app.Activity
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.zucchini.data.ContentUriRequestBody
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
-import com.zucchini.dialog.SubmitProjectDevelopersDialog
 import com.zucchini.domain.model.KeywordList
-import com.zucchini.domain.model.SubmitDevInfo
 import com.zucchini.domain.model.SubmitProjectInfo
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitProjectBinding
@@ -46,12 +41,10 @@ class SubmitProjectActivity : AppCompatActivity() {
         initImageSubmitView()
         initDialogClickListener()
         clickSubmitButton()
-
     }
 
     private fun initDialogClickListener() {
         selectProjectCategory()
-        addDevelopersInfoClickListner()
         selectStack()
     }
 
@@ -71,16 +64,17 @@ class SubmitProjectActivity : AppCompatActivity() {
         val categoryKoreanList = KeywordList.categoryList.map { it.keywordKorean }
 
         binding.tvSubmitProjectCategory.setOnClickListener {
-            SelectCheckBoxCommonDialog.newInstance(
-                title = "프로젝트 카테고리",
-                description = "프로젝트 카테고리를 선택해주세요. (최대 2개)",
-                confirmButtonText = getString(R.string.all_check),
-                items = categoryKoreanList as ArrayList<String>,
-            ).apply {
-                setConfirmButtonClickListener {
-                    //
-                }
-            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+            SelectCheckBoxCommonDialog
+                .newInstance(
+                    title = "프로젝트 카테고리",
+                    description = "프로젝트 카테고리를 선택해주세요. (최대 2개)",
+                    confirmButtonText = getString(R.string.all_check),
+                    items = categoryKoreanList as ArrayList<String>,
+                ).apply {
+                    setConfirmButtonClickListener {
+                        //
+                    }
+                }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
     }
 
@@ -90,51 +84,43 @@ class SubmitProjectActivity : AppCompatActivity() {
         val cooperationTool = KeywordList.cooperationList.map { it.keywordKorean }
 
         binding.tvDevStackLanguage.setOnClickListener {
-            SelectCheckBoxCommonDialog.newInstance(
-                title = "사용 언어",
-                description = "프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)",
-                confirmButtonText = getString(R.string.all_check),
-                items = language as ArrayList<String>,
-            ).apply {
-                setConfirmButtonClickListener {
-                    //
-                }
-            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+            SelectCheckBoxCommonDialog
+                .newInstance(
+                    title = "사용 언어",
+                    description = "프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)",
+                    confirmButtonText = getString(R.string.all_check),
+                    items = language as ArrayList<String>,
+                ).apply {
+                    setConfirmButtonClickListener {
+                        //
+                    }
+                }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
         binding.tvDevStackDevStack.setOnClickListener {
-            SelectCheckBoxCommonDialog.newInstance(
-                title = "사용 기술 스택",
-                description = "프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)",
-                confirmButtonText = getString(R.string.all_check),
-                items = techStack as ArrayList<String>,
-            ).apply {
-                setConfirmButtonClickListener {
-                    //
-                }
-            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+            SelectCheckBoxCommonDialog
+                .newInstance(
+                    title = "사용 기술 스택",
+                    description = "프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)",
+                    confirmButtonText = getString(R.string.all_check),
+                    items = techStack as ArrayList<String>,
+                ).apply {
+                    setConfirmButtonClickListener {
+                        //
+                    }
+                }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
         binding.tvDevStackCooperation.setOnClickListener {
-            SelectCheckBoxCommonDialog.newInstance(
-                title = "사용 협업툴",
-                description = "프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)",
-                confirmButtonText = getString(R.string.all_check),
-                items = cooperationTool as ArrayList<String>,
-            ).apply {
-                setConfirmButtonClickListener {
-                    //
-                }
-            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
-        }
-    }
-
-    private fun addDevelopersInfoClickListner() {
-        binding.tvProjectSubmitDeveloper.setOnSingleClickListener {
-            SubmitProjectDevelopersDialog()
-                .apply {
+            SelectCheckBoxCommonDialog
+                .newInstance(
+                    title = "사용 협업툴",
+                    description = "프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)",
+                    confirmButtonText = getString(R.string.all_check),
+                    items = cooperationTool as ArrayList<String>,
+                ).apply {
                     setConfirmButtonClickListener {
-                        // 데이터로 저장
+                        //
                     }
-                }.show(supportFragmentManager, "SubmitProjectDevelopersDialog")
+                }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
     }
 
@@ -152,21 +138,22 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     private fun clickSubmitButton() {
         binding.btnSubmit.setOnSingleClickListener {
-            val submitProjectInfo = SubmitProjectInfo(
-                projectName = binding.etProjectName.text.toString(),
-                imagePath = imageUri.toString(),
-                projectGithub = binding.etGithub.text.toString(),
-                projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
-                projectLongIntro = binding.etProjectIntroContentLong.text.toString(),
-                //projectCategoryList =
-                //projectLanguageList = // 언어 리스트,
-                //projectTechStackList = // 기술 스택 리스트,
-                //projectCooperationToolList = // 협업툴 리스트,
-                projectWebLink = binding.etProjectWebLink.text.toString(),
-                projectAppLink = binding.etProjectAppLink.text.toString(),
-                projectLink = binding.etProjectInfoLink.text.toString(),
-                // developerList =
-            )
+            val submitProjectInfo =
+                SubmitProjectInfo(
+                    projectName = binding.etProjectName.text.toString(),
+                    imagePath = imageUri.toString(),
+                    projectGithub = binding.etGithub.text.toString(),
+                    projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
+                    projectLongIntro = binding.etProjectIntroContentLong.text.toString(),
+                    // projectCategoryList =
+                    // projectLanguageList = // 언어 리스트,
+                    // projectTechStackList = // 기술 스택 리스트,
+                    // projectCooperationToolList = // 협업툴 리스트,
+                    projectWebLink = binding.etProjectWebLink.text.toString(),
+                    projectAppLink = binding.etProjectAppLink.text.toString(),
+                    projectLink = binding.etProjectInfoLink.text.toString(),
+                    // developerList =
+                )
 
             Log.d("SubmitProjectActivity", "submitProjectInfo: $submitProjectInfo")
         }
