@@ -1,8 +1,11 @@
 package com.zucchini.submit
 
+import android.app.Activity
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
@@ -10,6 +13,8 @@ import com.zucchini.data.ContentUriRequestBody
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
 import com.zucchini.dialog.SubmitProjectDevelopersDialog
 import com.zucchini.domain.model.KeywordList
+import com.zucchini.domain.model.SubmitDevInfo
+import com.zucchini.domain.model.SubmitProjectInfo
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitProjectBinding
 import com.zucchini.view.setOnSingleClickListener
@@ -40,6 +45,8 @@ class SubmitProjectActivity : AppCompatActivity() {
         backClickListner()
         initImageSubmitView()
         initDialogClickListener()
+        clickSubmitButton()
+
     }
 
     private fun initDialogClickListener() {
@@ -125,7 +132,7 @@ class SubmitProjectActivity : AppCompatActivity() {
             SubmitProjectDevelopersDialog()
                 .apply {
                     setConfirmButtonClickListener {
-                        Log.d("SubmitProjectDevelopersDialog", "Confirm Button Clicked")
+                        // 데이터로 저장
                     }
                 }.show(supportFragmentManager, "SubmitProjectDevelopersDialog")
         }
@@ -141,5 +148,27 @@ class SubmitProjectActivity : AppCompatActivity() {
         Timber.d("Image Uri: $uri")
         Timber.d("Image Path: ${uri.path}")
         Timber.d("Request Body: $requestBody")
+    }
+
+    private fun clickSubmitButton() {
+        binding.btnSubmit.setOnSingleClickListener {
+            val submitProjectInfo = SubmitProjectInfo(
+                projectName = binding.etProjectName.text.toString(),
+                imagePath = imageUri.toString(),
+                projectGithub = binding.etGithub.text.toString(),
+                projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
+                projectLongIntro = binding.etProjectIntroContentLong.text.toString(),
+                //projectCategoryList =
+                //projectLanguageList = // 언어 리스트,
+                //projectTechStackList = // 기술 스택 리스트,
+                //projectCooperationToolList = // 협업툴 리스트,
+                projectWebLink = binding.etProjectWebLink.text.toString(),
+                projectAppLink = binding.etProjectAppLink.text.toString(),
+                projectLink = binding.etProjectInfoLink.text.toString(),
+                // developerList =
+            )
+
+            Log.d("SubmitProjectActivity", "submitProjectInfo: $submitProjectInfo")
+        }
     }
 }
