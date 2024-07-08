@@ -1,39 +1,24 @@
 package com.zucchini.domain.model
 
 object KeywordList {
-    val searchKeyword = listOf(
+    val categoryList = arrayListOf(
         Keyword(keywordEnglish = "SERVICE", keywordKorean = "서비스"),
         Keyword(keywordEnglish = "SECURITY", keywordKorean = "보안"),
-        Keyword(keywordEnglish = "FINANCE", keywordKorean = "금융"),
-        Keyword(keywordEnglish = "PLATFORM", keywordKorean = "플랫폼"),
         Keyword(keywordEnglish = "GAME", keywordKorean = "게임"),
         Keyword(keywordEnglish = "MOBILE_APP", keywordKorean = "모바일"),
         Keyword(keywordEnglish = "WEB_APPLICATION", keywordKorean = "웹"),
         Keyword(keywordEnglish = "DATA_ANALYTICS", keywordKorean = "데이터 분석"),
         Keyword(keywordEnglish = "AI", keywordKorean = "인공지능"),
-        Keyword(keywordEnglish = "ML", keywordKorean = "머신러닝"),
         Keyword(keywordEnglish = "IOT", keywordKorean = "IOT"),
         Keyword(keywordEnglish = "CLOUD_COMPUTING", keywordKorean = "클라우드"),
         Keyword(keywordEnglish = "BLOCKCHAIN", keywordKorean = "블록체인"),
-        Keyword(keywordEnglish = "E_COMMERCE", keywordKorean = "전자상거래"),
-        Keyword(keywordEnglish = "HEALTHCARE_IT", keywordKorean = "헬스케어"),
-        Keyword(keywordEnglish = "ED_TECH", keywordKorean = "교육"),
-        Keyword(keywordEnglish = "SOCIAL_MEDIA", keywordKorean = "소셜"),
-        Keyword(keywordEnglish = "CRM", keywordKorean = "CRM"),
-        Keyword(keywordEnglish = "ERP", keywordKorean = "ERP"),
-        Keyword(keywordEnglish = "BI", keywordKorean = "BI"),
-        Keyword(keywordEnglish = "CPS", keywordKorean = "CPS"),
-        Keyword(keywordEnglish = "AR", keywordKorean = "AR"),
-        Keyword("VR", keywordKorean = "VR"),
-        Keyword(keywordEnglish = "AUTOMATION", keywordKorean = "자동화"),
+        Keyword("VR", keywordKorean = "VR/AR"),
         Keyword(keywordEnglish = "ROBOTICS", keywordKorean = "로봇"),
         Keyword(keywordEnglish = "OTHER", keywordKorean = "기타"),
     )
 
-    val partList = listOf(
-        Keyword(keywordEnglish = "FRONTEND", keywordKorean = "프론트엔드"),
+    val partList = arrayListOf(
         Keyword(keywordEnglish = "BACKEND", keywordKorean = "백엔드"),
-        Keyword(keywordEnglish = "FULLSTACK", keywordKorean = "풀스택"),
         Keyword(keywordEnglish = "MIDDLE_TIER", keywordKorean = "미들웨어"),
         Keyword(keywordEnglish = "WEB", keywordKorean = "웹"),
         Keyword(keywordEnglish = "DESKTOP", keywordKorean = "데스크탑"),
@@ -43,10 +28,43 @@ object KeywordList {
         Keyword(keywordEnglish = "DATA_SCIENTIST", keywordKorean = "데이터 과학자"),
         Keyword(keywordEnglish = "BIG_DATA", keywordKorean = "빅데이터"),
         Keyword(keywordEnglish = "DEVOPS", keywordKorean = "데브옵스"),
-        Keyword(keywordEnglish = "CRM", keywordKorean = "CRM"),
         Keyword(keywordEnglish = "SOFTWARE_TEST", keywordKorean = "테스트"),
         Keyword(keywordEnglish = "EMBEDDED_SOFTWARE", keywordKorean = "임베디드"),
-        Keyword(keywordEnglish = "WORDPRESS", keywordKorean = "워드프레스"),
         Keyword(keywordEnglish = "SECURITY", keywordKorean = "보안"),
+    )
+
+    val cooperationList = arrayListOf(
+        Keyword(keywordEnglish = "COOPERATION", keywordKorean = "Notion"),
+        Keyword(keywordEnglish = "INDIVIDUAL", keywordKorean = "Github"),
+        Keyword(keywordEnglish = "COOPERATION", keywordKorean = "Slack"),
+        Keyword(keywordEnglish = "INDIVIDUAL", keywordKorean = "Jira"),
+        Keyword(keywordEnglish = "COOPERATION", keywordKorean = "Trello"),
+        Keyword(keywordEnglish = "INDIVIDUAL", keywordKorean = "Figma"),
+    )
+
+    val techStackList = arrayListOf(
+        Keyword(keywordEnglish = "DJANGO", keywordKorean = "Django"),
+        Keyword(keywordEnglish = "SPRING", keywordKorean = "Spring"),
+        Keyword(keywordEnglish = "REACT", keywordKorean = "React"),
+        Keyword(keywordEnglish = "ANGULAR", keywordKorean = "Angular"),
+        Keyword(keywordEnglish = "AWS", keywordKorean = "AWS"),
+    )
+
+    val languageList = arrayListOf(
+        Keyword(keywordEnglish = "GO", keywordKorean = "Go"),
+        Keyword(keywordEnglish = "JAVA", keywordKorean = "Java"),
+        Keyword(keywordEnglish = "KOTLIN", keywordKorean = "Kotlin"),
+        Keyword(keywordEnglish = "JAVASCRIPT", keywordKorean = "JavaScript"),
+        Keyword(keywordEnglish = "TS", keywordKorean = "TypeScript"),
+        Keyword(keywordEnglish = "PYTHON", keywordKorean = "Python"),
+        Keyword(keywordEnglish = "C", keywordKorean = "C"),
+        Keyword(keywordEnglish = "CPP", keywordKorean = "C++"),
+        Keyword(keywordEnglish = "PHP", keywordKorean = "PHP"),
+        Keyword(keywordEnglish = "R", keywordKorean = "R"),
+        Keyword(keywordEnglish = "RUBY", keywordKorean = "RUBY"),
+        Keyword(keywordEnglish = "RUST", keywordKorean = "RUST"),
+        Keyword(keywordEnglish = "SQL", keywordKorean = "SQL"),
+        Keyword(keywordEnglish = "HTML", keywordKorean = "HTML"),
+        Keyword(keywordEnglish = "CSS", keywordKorean = "CSS"),
     )
 }

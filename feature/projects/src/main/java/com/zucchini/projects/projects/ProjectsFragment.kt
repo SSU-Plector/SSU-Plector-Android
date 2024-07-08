@@ -1,7 +1,6 @@
 package com.zucchini.projects.projects
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -153,7 +152,7 @@ class ProjectsFragment : Fragment() {
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
-        searchKeywordAdapter.submitList(KeywordList.searchKeyword)
+        searchKeywordAdapter.submitList(KeywordList.categoryList)
     }
 
 

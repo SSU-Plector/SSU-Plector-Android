@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zucchini.context.dialogWidthPercent
+import com.zucchini.context.dialogViewPercent
 import com.zucchini.core.common.databinding.DialogCommonSelectCheckboxButtonBinding
 import com.zucchini.view.setOnSingleClickListener
 
@@ -17,7 +17,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
     private lateinit var binding: DialogCommonSelectCheckboxButtonBinding
 
     private var confirmButtonClickListener: (() -> Unit)? = null
-    private var items: ArrayList<String> = ArrayList()
+    private var items: List<String> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +39,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-        context?.dialogWidthPercent(dialog)
+        context?.dialogViewPercent(dialog)
         dialog?.window?.run {
             setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
@@ -53,7 +53,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
         val title = arguments?.getString(TITLE, "")
         val description = arguments?.getString(DESCRIPTION)
         val confirmButtonText = arguments?.getString(CONFIRM_BUTTON_TEXT, "")
-        items = arguments?.getStringArrayList(ITEMS) ?: arrayListOf()
+        items = arguments?.getStringArrayList(ITEMS) ?: listOf()
 
         with(binding) {
             tvDialogTitle.text = title
@@ -94,7 +94,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
             title: String,
             description: String? = null,
             confirmButtonText: String,
-            items: ArrayList<String>
+            items: ArrayList<String>,
         ): SelectCheckBoxCommonDialog =
             SelectCheckBoxCommonDialog().apply {
                 arguments =

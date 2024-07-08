@@ -9,6 +9,7 @@ import coil.load
 import com.zucchini.data.ContentUriRequestBody
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
 import com.zucchini.dialog.SubmitProjectDevelopersDialog
+import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitProjectBinding
 import com.zucchini.view.setOnSingleClickListener
@@ -60,12 +61,14 @@ class SubmitProjectActivity : AppCompatActivity() {
     }
 
     private fun selectProjectCategory() {
+        val categoryKoreanList = KeywordList.categoryList.map { it.keywordKorean }
+
         binding.tvSubmitProjectCategory.setOnClickListener {
             SelectCheckBoxCommonDialog.newInstance(
                 title = "프로젝트 카테고리",
-                description = "프로젝트 카테고리를 선택해주세요. (최대 1개)",
+                description = "프로젝트 카테고리를 선택해주세요. (최대 2개)",
                 confirmButtonText = getString(R.string.all_check),
-                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+                items = categoryKoreanList as ArrayList<String>,
             ).apply {
                 setConfirmButtonClickListener {
                     //
@@ -75,12 +78,16 @@ class SubmitProjectActivity : AppCompatActivity() {
     }
 
     private fun selectStack() {
+        val language = KeywordList.languageList.map { it.keywordKorean }
+        val techStack = KeywordList.techStackList.map { it.keywordKorean }
+        val cooperationTool = KeywordList.cooperationList.map { it.keywordKorean }
+
         binding.tvDevStackLanguage.setOnClickListener {
             SelectCheckBoxCommonDialog.newInstance(
                 title = "사용 언어",
                 description = "프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)",
                 confirmButtonText = getString(R.string.all_check),
-                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+                items = language as ArrayList<String>,
             ).apply {
                 setConfirmButtonClickListener {
                     //
@@ -92,7 +99,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                 title = "사용 기술 스택",
                 description = "프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)",
                 confirmButtonText = getString(R.string.all_check),
-                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+                items = techStack as ArrayList<String>,
             ).apply {
                 setConfirmButtonClickListener {
                     //
@@ -104,7 +111,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                 title = "사용 협업툴",
                 description = "프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)",
                 confirmButtonText = getString(R.string.all_check),
-                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+                items = cooperationTool as ArrayList<String>,
             ).apply {
                 setConfirmButtonClickListener {
                     //

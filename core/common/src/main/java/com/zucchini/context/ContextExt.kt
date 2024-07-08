@@ -7,14 +7,28 @@ import android.os.Build
 import android.view.WindowInsets
 import android.view.WindowManager
 
-fun Context.dialogWidthPercent(
+fun Context.dialogViewPercent(
     dialog: Dialog?,
-    percent: Double = 0.8,
+    widthPercent: Double = 0.8,
+    heightPercent: Double = 0.8,
 ) {
     val deviceSize = getDeviceSize()
     dialog?.window?.run {
         val params = attributes
-        params.width = (deviceSize[0] * percent).toInt()
+        params.width = (deviceSize[0] * widthPercent).toInt()
+        params.height = (deviceSize[1] * heightPercent).toInt()
+        attributes = params
+    }
+}
+
+fun Context.dialogWidthPercent(
+    dialog: Dialog?,
+    widthPercent: Double = 0.8,
+) {
+    val deviceSize = getDeviceSize()
+    dialog?.window?.run {
+        val params = attributes
+        params.width = (deviceSize[0] * widthPercent).toInt()
         attributes = params
     }
 }
