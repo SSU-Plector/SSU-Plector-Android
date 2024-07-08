@@ -8,22 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.context.dialogWidthPercent
-import com.zucchini.core.common.databinding.DialogCommonTwoButtonBinding
+import com.zucchini.core.common.databinding.DialogCommonSelectCheckboxButtonBinding
 import com.zucchini.view.setOnSingleClickListener
 
-class TwoButtonCommonDialog : DialogFragment() {
-    private lateinit var binding: DialogCommonTwoButtonBinding
+class SelectCheckBoxCommonDialog : DialogFragment() {
+    private lateinit var binding: DialogCommonSelectCheckboxButtonBinding
 
     private var confirmButtonClickListener: (() -> Unit)? = null
-    private var dismissButtonClickListener: (() -> Unit)? = null
+    private var items: ArrayList<String> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        binding = DialogCommonTwoButtonBinding.inflate(inflater, container, false)
+        binding = DialogCommonSelectCheckboxButtonBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,31 +49,25 @@ class TwoButtonCommonDialog : DialogFragment() {
         this.confirmButtonClickListener = confirmButtonClickListener
     }
 
-    fun setDismissButtonClickListener(dismissButtonClickListener: () -> Unit) {
-        this.dismissButtonClickListener = dismissButtonClickListener
-    }
-
     private fun initViews() {
         val title = arguments?.getString(TITLE, "")
         val description = arguments?.getString(DESCRIPTION)
         val confirmButtonText = arguments?.getString(CONFIRM_BUTTON_TEXT, "")
-        val dismissButtonText = arguments?.getString(DISMISS_BUTTON_TEXT, "")
+        items = arguments?.getStringArrayList(ITEMS) ?: arrayListOf()
 
         with(binding) {
             tvDialogTitle.text = title
             tvDialogDescription.text = description
             tvConfirmButton.text = confirmButtonText
-            tvDismissButton.text = dismissButtonText
+
+            rvDialogContents.layoutManager = LinearLayoutManager(context)
+            rvDialogContents.adapter = CheckBoxListAdapter(items)
         }
     }
 
     private fun initButtonListener() {
         binding.tvConfirmButton.setOnSingleClickListener {
             confirmButtonClickListener?.invoke()
-            dismiss()
-        }
-        binding.tvDismissButton.setOnSingleClickListener {
-            dismissButtonClickListener?.invoke()
             dismiss()
         }
     }
@@ -88,26 +83,26 @@ class TwoButtonCommonDialog : DialogFragment() {
     }
 
     companion object {
-        const val TAG = "TwoButtonCommonDialog"
+        const val TAG = "SelectCheckBoxCommonDialog"
 
         const val TITLE = "title"
         const val DESCRIPTION = "description"
         const val CONFIRM_BUTTON_TEXT = "confirmButtonText"
-        const val DISMISS_BUTTON_TEXT = "dismissButtonText"
+        const val ITEMS = "items"
 
         fun newInstance(
             title: String,
             description: String? = null,
             confirmButtonText: String,
-            dismissButtonText: String,
-        ): TwoButtonCommonDialog =
-            TwoButtonCommonDialog().apply {
+            items: ArrayList<String>
+        ): SelectCheckBoxCommonDialog =
+            SelectCheckBoxCommonDialog().apply {
                 arguments =
                     Bundle().apply {
                         putString(TITLE, title)
                         putString(DESCRIPTION, description)
                         putString(CONFIRM_BUTTON_TEXT, confirmButtonText)
-                        putString(DISMISS_BUTTON_TEXT, dismissButtonText)
+                        putStringArrayList(ITEMS, items)
                     }
             }
     }

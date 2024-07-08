@@ -40,6 +40,7 @@ dependencies {
         implementation(appCompat)
         implementation(pagingRuntime)
         implementation(constraintLayout)
+        implementation(recyclerView)
     }
 
     KotlinDependencies.run {

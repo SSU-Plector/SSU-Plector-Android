@@ -25,12 +25,8 @@
     <string name="et_project_app_link_hint">앱을 다운받을 수 있는 곳의 링크를 입력해주세요</string>
     <string name="et_project_info_link_hint">프로젝트 소개 페이지 링크를 입력해주세요</string>
     <string name="tv_project_submit_web_link_title">웹 링크</string>
-    <string name="tv_project_submit_developer_name">개발자 이름</string>
-    <string name="tv_project_submit_developer_email">이메일</string>
-    <string name="tv_submit_project_developer_category_title">개발한 분야를 선택해주세요</string>
     <string name="tv_project_submit_app_link_title">앱 다운로드 링크</string>
     <string name="tv_project_submit_info_link_title">소개 페이지 링크</string>
-    <string name="tv_project_submit_developer_leader">팀 리더</string>
     <string name="tv_project_submit_developer_title">함께한 개발자를 정보를 입력해주세요!</string>
     <string name="tv_introduce_dev_title">개발자 정보</string>
     <string name="tv_introduce">화면 터치 시 슈플렉터를 시작할 수 있어요!</string>

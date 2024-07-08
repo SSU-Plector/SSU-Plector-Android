@@ -2,12 +2,16 @@ package com.zucchini.submit
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
 import com.zucchini.data.ContentUriRequestBody
+import com.zucchini.dialog.SelectCheckBoxCommonDialog
+import com.zucchini.dialog.SubmitProjectDevelopersDialog
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitProjectBinding
+import com.zucchini.view.setOnSingleClickListener
 import com.zucchini.view.showShortToast
 import timber.log.Timber
 
@@ -39,6 +43,8 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     private fun initDialogClickListener() {
         selectProjectCategory()
+        addDevelopersInfoClickListner()
+        selectStack()
     }
 
     private fun backClickListner() {
@@ -55,8 +61,66 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     private fun selectProjectCategory() {
         binding.tvSubmitProjectCategory.setOnClickListener {
-            // TODO: Implement category selection
-            
+            SelectCheckBoxCommonDialog.newInstance(
+                title = "프로젝트 카테고리",
+                description = "프로젝트 카테고리를 선택해주세요. (최대 1개)",
+                confirmButtonText = getString(R.string.all_check),
+                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+            ).apply {
+                setConfirmButtonClickListener {
+                    //
+                }
+            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+        }
+    }
+
+    private fun selectStack() {
+        binding.tvDevStackLanguage.setOnClickListener {
+            SelectCheckBoxCommonDialog.newInstance(
+                title = "사용 언어",
+                description = "프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)",
+                confirmButtonText = getString(R.string.all_check),
+                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+            ).apply {
+                setConfirmButtonClickListener {
+                    //
+                }
+            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+        }
+        binding.tvDevStackDevStack.setOnClickListener {
+            SelectCheckBoxCommonDialog.newInstance(
+                title = "사용 기술 스택",
+                description = "프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)",
+                confirmButtonText = getString(R.string.all_check),
+                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+            ).apply {
+                setConfirmButtonClickListener {
+                    //
+                }
+            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+        }
+        binding.tvDevStackCooperation.setOnClickListener {
+            SelectCheckBoxCommonDialog.newInstance(
+                title = "사용 협업툴",
+                description = "프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)",
+                confirmButtonText = getString(R.string.all_check),
+                items = arrayListOf("모바일", "웹", "서버", "데이터베이스", "기타"),
+            ).apply {
+                setConfirmButtonClickListener {
+                    //
+                }
+            }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
+        }
+    }
+
+    private fun addDevelopersInfoClickListner() {
+        binding.tvProjectSubmitDeveloper.setOnSingleClickListener {
+            SubmitProjectDevelopersDialog()
+                .apply {
+                    setConfirmButtonClickListener {
+                        Log.d("SubmitProjectDevelopersDialog", "Confirm Button Clicked")
+                    }
+                }.show(supportFragmentManager, "SubmitProjectDevelopersDialog")
         }
     }
 

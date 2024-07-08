@@ -14,6 +14,7 @@ object AndroidXDependencies {
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompatVersion}"
     const val constraintLayout =
         "androidx.constraintlayout:constraintlayout:${Versions.constraintLayoutVersion}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerViewVersion}"
     const val startup = "androidx.startup:startup-runtime:${Versions.appStartUpVersion}"
     const val activity = "androidx.activity:activity-ktx:${Versions.activityKtxVersion}"
     const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragmentKtxVersion}"

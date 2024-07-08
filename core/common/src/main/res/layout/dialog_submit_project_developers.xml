@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginHorizontal="20dp"
-    android:layout_marginVertical="20dp">
+    android:layout_marginVertical="20dp"
+    android:background="@drawable/button_olive_white_radius6">
 
     <TextView
         android:id="@+id/tv_project_submit_developer_name"
@@ -27,7 +29,6 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/pretendardregular"
         android:gravity="center"
-        android:padding="5dp"
         android:paddingHorizontal="2dp"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
@@ -55,8 +56,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="100dp"
         android:fontFamily="@font/pretendardregular"
-        android:gravity="center"
-        android:padding="5dp"
+        android:gravity="start"
+        android:hint="ssuplector@gmail.com"
         android:paddingHorizontal="2dp"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
@@ -85,7 +86,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/stack_background"
+        android:background="@drawable/dialog_button_background_main_olive"
         android:fontFamily="@font/pretendardmedium"
         android:gravity="center"
         android:padding="5dp"
@@ -101,8 +102,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginVertical="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/pretendardmedium"
         android:text="@string/tv_project_submit_developer_leader"
         android:textColor="@color/olive_black"
@@ -111,6 +111,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_submit_project_developer_category" />
 
     <CheckBox
+        android:id="@+id/cb_project_submit_developer_leader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -119,5 +120,20 @@
         app:layout_constraintStart_toEndOf="@+id/tv_project_submit_developer_leader"
         app:layout_constraintTop_toTopOf="@+id/tv_project_submit_developer_leader" />
 
-
+    <TextView
+        android:id="@+id/tv_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_bright_olive_radius6"
+        android:gravity="center"
+        android:layout_marginBottom="15dp"
+        android:textAppearance="@font/pretendardblack"
+        android:textColor="@color/olive_black"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cb_project_submit_developer_leader"
+        android:text="@string/all_done" />
 </androidx.constraintlayout.widget.ConstraintLayout>
