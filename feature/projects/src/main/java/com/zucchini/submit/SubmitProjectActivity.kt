@@ -56,6 +56,7 @@ class SubmitProjectActivity : AppCompatActivity() {
     private fun selectProjectCategory() {
         binding.tvSubmitProjectCategory.setOnClickListener {
             // TODO: Implement category selection
+            
         }
     }
 
