@@ -64,5 +64,8 @@
     <string name="kakao_id_title">카카오톡 아이디</string>
     <string name="default_app_link">아직 출시되지 않았어요!</string>
     <string name="default_link">준비 중입니다 :)</string>
+    <string name="ai_members_dest">AI 팀원</string>
+    <string name="ai_members">AI 팀원</string>
+    <string name="ai_members_description">버튼을 클릭하여 원하는 AI 팀원과 협업해요!</string>
 
 </resources>
