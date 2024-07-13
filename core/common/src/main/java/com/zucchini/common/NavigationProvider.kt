@@ -10,4 +10,7 @@ interface NavigationProvider {
     fun toLogin(): Intent
     fun toSubmitDev(): Intent
     fun toMain(): Intent
+
+    fun toAiPmMember(): Intent
+    fun toAiDesignerMembers(): Intent
 }
