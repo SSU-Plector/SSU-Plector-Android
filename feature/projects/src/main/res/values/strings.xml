@@ -67,5 +67,13 @@
     <string name="ai_members_dest">AI 팀원</string>
     <string name="ai_members">AI 팀원</string>
     <string name="ai_members_description">버튼을 클릭하여 원하는 AI 팀원과 협업해요!</string>
+    <string name="ai_pm">프로젝트 매니저 AI</string>
+    <string name="ai_designer">디자이너 AI</string>
+    <string name="ai_pm_summary_meeting_title">회의록 요약하기</string>
+    <string name="ai_pm_summary_meeting_description">회의를 녹음하고, 녹음 파일을 첨부하면 프로젝트 매니저 AI가 텍스트로 오늘의 회의를 요약해줘요!</string>
+    <string name="tv_file_upload">회의록 업로드</string>
+    <string name="iv_meeting_result">요약 결과 확인하기</string>
+    <string name="ai_pm_meeting_progress_title">회의 진행하기</string>
+    <string name="ai_pm_meeting_progress_description">회의 진행에 필요한 요소와 회의 시간을 선택하면 PM AI가 말하며 회의를 진행해줘요!</string>
 
 </resources>
