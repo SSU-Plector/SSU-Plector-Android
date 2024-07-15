@@ -109,8 +109,8 @@ class SubmitProjectActivity : AppCompatActivity() {
         binding.tvDevStackLanguage.setOnClickListener {
             SelectCheckBoxCommonDialog
                 .newInstance(
-                    title = "사용 언어",
-                    description = "프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)",
+                    title = getString(R.string.dialog_language_title),
+                    description = getString(R.string.dialog_language_description),
                     confirmButtonText = getString(R.string.all_check),
                     items = languageMap.keys.toList() as ArrayList<String>,
                     maxSelectionCount = 3,
@@ -134,8 +134,8 @@ class SubmitProjectActivity : AppCompatActivity() {
         binding.tvDevStackDevStack.setOnClickListener {
             SelectCheckBoxCommonDialog
                 .newInstance(
-                    title = "사용 기술 스택",
-                    description = "프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)",
+                    title = getString(R.string.dialog_techstack_title),
+                    description = getString(R.string.dialog_techstack_description),
                     confirmButtonText = getString(R.string.all_check),
                     items = techStackMap.keys.toList() as ArrayList<String>,
                     maxSelectionCount = 3,
@@ -159,8 +159,8 @@ class SubmitProjectActivity : AppCompatActivity() {
         binding.tvDevStackCooperation.setOnClickListener {
             SelectCheckBoxCommonDialog
                 .newInstance(
-                    title = "사용 협업툴",
-                    description = "프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)",
+                    title = getString(R.string.dialog_cooperation_title),
+                    description = getString(R.string.dialog_cooperation_description),
                     confirmButtonText = getString(R.string.all_check),
                     items = cooperationToolMap.keys.toList() as ArrayList<String>,
                     maxSelectionCount = 3,

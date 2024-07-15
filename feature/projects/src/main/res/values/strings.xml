@@ -97,5 +97,11 @@
     <string name="tv_find_dev_title">프로젝트를 함께한 개발자의 이름을 검색해서 찾아보세요!</string>
     <string name="tv_find_dev_description">슈플렉터에 등록되어 있는 개발자라면, 프로젝트를 함께 진행한 개발자로 등록할 수 있어요.</string>
     <string name="searchbar_hint_find_dev">개발자 이름을 검색해주세요</string>
+    <string name="dialog_language_title">사용 언어</string>
+    <string name="dialog_language_description">프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)</string>
+    <string name="dialog_techstack_title">사용 기술 스택</string>
+    <string name="dialog_techstack_description">프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)</string>
+    <string name="dialog_cooperation_title">사용 협업툴</string>
+    <string name="dialog_cooperation_description">프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)</string>
 
 </resources>
