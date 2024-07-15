@@ -10,9 +10,11 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.zucchini.common.NavigationProvider
+import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentSubmitProjectWithDevBinding
 import com.zucchini.submit.project.SubmitProjectViewModel
 import com.zucchini.submit.project.adapter.FindDevAdapter
+import com.zucchini.view.showShortToast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -63,6 +65,8 @@ class SubmitProjectWithDevFragment : Fragment() {
             viewModel.isSuccessSubmitProject.flowWithLifecycle(lifecycle).onEach { isSuccess ->
                 if (isSuccess) {
                     startActivity(navigationProvider.toMain())
+                } else {
+                    showShortToast(getString(R.string.fail_submit_project))
                 }
             }.launchIn(lifecycleScope)
         }

@@ -17,7 +17,11 @@ import com.zucchini.feature.projects.databinding.FragmentSubmitProjectBinding
 import com.zucchini.submit.project.SubmitProjectActivity
 import com.zucchini.submit.project.SubmitProjectViewModel
 import com.zucchini.view.showShortToast
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import timber.log.Timber
+import java.io.File
 
 class SubmitProjectFragment : Fragment() {
     private var _binding: FragmentSubmitProjectBinding? = null
@@ -172,7 +176,6 @@ class SubmitProjectFragment : Fragment() {
         binding.btnNext.setOnClickListener {
             viewModel.updateProjectInfo(
                 projectName = binding.etProjectName.text.toString(),
-                imagePath = imageUri.toString(),
                 projectGithub = binding.etGithub.text.toString(),
                 projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
                 projectLongIntro = binding.etProjectIntroContentLong.text.toString(),

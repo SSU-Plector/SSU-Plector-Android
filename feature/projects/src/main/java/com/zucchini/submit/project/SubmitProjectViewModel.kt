@@ -4,11 +4,15 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.FindDeveloperInfo
+import com.zucchini.domain.model.SubmitProjectInfo
 import com.zucchini.domain.repository.DevelopersRepository
+import com.zucchini.domain.repository.ProjectsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import okhttp3.MultipartBody
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -16,12 +20,11 @@ class SubmitProjectViewModel
     @Inject
     constructor(
         private val developersRepository: DevelopersRepository,
+        private val projectsRepository: ProjectsRepository,
     ) : ViewModel() {
         private val _projectName = MutableStateFlow("")
 
         private val _projectGithub = MutableStateFlow("")
-
-        private val _imagePath = MutableStateFlow("")
 
         private val _projectShortIntro = MutableStateFlow("")
 
@@ -46,13 +49,12 @@ class SubmitProjectViewModel
         private val _searchDeveloperResultList = MutableStateFlow(emptyList<FindDeveloperInfo>())
         val searchDeveloperResultList = _searchDeveloperResultList.asStateFlow()
 
-    private val _isSuccessSubmitProject = MutableStateFlow(false)
-    val isSuccessSubmitProject = _isSuccessSubmitProject.asStateFlow()
+        private val _isSuccessSubmitProject = MutableStateFlow(false)
+        val isSuccessSubmitProject = _isSuccessSubmitProject.asStateFlow()
 
         fun updateProjectInfo(
             projectName: String,
             projectGithub: String,
-            imagePath: String,
             projectShortIntro: String,
             projectLongIntro: String,
             projectWebLink: String,
@@ -61,13 +63,16 @@ class SubmitProjectViewModel
         ) {
             _projectName.value = projectName
             _projectGithub.value = projectGithub
-            _imagePath.value = imagePath
             _projectShortIntro.value = projectShortIntro
             _projectLongIntro.value = projectLongIntro
             _projectWebLink.value = projectWebLink
             _projectAppLink.value = projectAppLink
             _projectLink.value = projectLink
         }
+
+    fun updateImagePath(imagePath: MultipartBody.Part) {
+        //_imagePath.value = imagePath
+    }
 
         fun updateProjectCategory(projectCategoryList: List<String> = emptyList()) {
             _projectCategoryList.value = projectCategoryList
@@ -103,10 +108,26 @@ class SubmitProjectViewModel
 
         fun submitProject() {
             viewModelScope.launch {
-                Log.d( "SubmitProjectViewModel", "${_projectName.value}, ${_projectGithub.value}, ${_imagePath.value}, ${_projectShortIntro.value}, ${_projectLongIntro.value}, ${_projectWebLink.value}, ${_projectAppLink.value}, ${_projectLink.value}, ${_projectCategoryList.value}, ${_projectTechStackList.value}, ${_projectLanguageList.value}, ${_projectCooperationList.value}, ${_addProjectDeveloperList.value}")
-            }
-        }
+                val submit = SubmitProjectInfo()
+                submit.projectName = _projectName.value
+                submit.projectGithub = _projectGithub.value
+                submit.projectShortIntro = _projectShortIntro.value
+                submit.projectLongIntro = _projectLongIntro.value
+                submit.projectCategoryList = _projectCategoryList.value
+                submit.projectTechStackList = _projectTechStackList.value
+                submit.projectLanguageList = _projectLanguageList.value
+                submit.projectCooperationList = _projectCooperationList.value
+                submit.projectWebLink = _projectWebLink.value
+                submit.projectAppLink = _projectAppLink.value
+                submit.projectLink = _projectLink.value
+                submit.projectDeveloperList = _addProjectDeveloperList.value
 
-        fun submitProjectWithDevelopers() {
+                projectsRepository.submitProject(submit).onSuccess {
+                    _isSuccessSubmitProject.value = true
+                }.onFailure {
+                    _isSuccessSubmitProject.value = false
+                    Timber.d("failed to submit project $it")
+                }
+            }
         }
     }

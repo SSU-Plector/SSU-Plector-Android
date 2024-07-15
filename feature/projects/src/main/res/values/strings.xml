@@ -105,5 +105,6 @@
     <string name="dialog_cooperation_description">프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)</string>
     <string name="submit_project_add_dev">함께한 개발자 추가하러 가기</string>
     <string name="all_next">다음</string>
+    <string name="fail_submit_project">프로젝트 등록에 실패했습니다. 입력 값을 다시 확인해주세요.</string>
 
 </resources>
