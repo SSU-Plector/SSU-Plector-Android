@@ -1,5 +1,6 @@
 package com.zucchini.submit.project.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
@@ -7,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.domain.model.FindDeveloperInfo
 import com.zucchini.domain.model.SubmitProjectInfo
 import com.zucchini.feature.projects.databinding.ItemFindDevBinding
+import com.zucchini.submit.project.SubmitProjectViewModel
 import com.zucchini.view.ItemDiffCallback
 
 class FindDevAdapter(
-    private val submitProjectInfo: SubmitProjectInfo
+    private val viewModel: SubmitProjectViewModel
 ) : ListAdapter<FindDeveloperInfo, FindDevAdapter.FindDevViewHolder>(
     ItemDiffCallback<FindDeveloperInfo>(
         onItemsTheSame = { old, new -> old == new },
@@ -41,14 +43,12 @@ class FindDevAdapter(
                 tvDeveloperName.text = findDevInfo.developerName
                 tvDeveloperEmail.text = findDevInfo.developerEmail
 
-                cbFindDev.isChecked = submitProjectInfo.projectDeveloperList.contains(findDevInfo.developerId)
-
                 root.setOnClickListener {
                     cbFindDev.isChecked = !cbFindDev.isChecked
                     if (cbFindDev.isChecked) {
-                        submitProjectInfo.projectDeveloperList += findDevInfo.developerId
+                        viewModel.addDeveloperToProject(findDevInfo.developerId)
                     } else {
-                        submitProjectInfo.projectDeveloperList -= findDevInfo.developerId
+                        viewModel.removeDeveloperFromProject(findDevInfo.developerId)
                     }
                 }
             }

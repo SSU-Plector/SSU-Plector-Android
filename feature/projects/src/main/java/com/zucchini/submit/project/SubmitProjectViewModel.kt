@@ -1,9 +1,9 @@
 package com.zucchini.submit.project
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.FindDeveloperInfo
-import com.zucchini.domain.model.SubmitProjectInfo
 import com.zucchini.domain.repository.DevelopersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,9 +17,6 @@ class SubmitProjectViewModel
     constructor(
         private val developersRepository: DevelopersRepository,
     ) : ViewModel() {
-        private val _submitDevInfo = MutableStateFlow<SubmitProjectInfo?>(null)
-        val submitDevInfo = _submitDevInfo.asStateFlow()
-
         private val _projectName = MutableStateFlow("")
 
         private val _projectGithub = MutableStateFlow("")
@@ -85,8 +82,12 @@ class SubmitProjectViewModel
             _projectCooperationList.value = projectCooperationList
         }
 
-        fun updateDeveloperList(projectDeveloperList: List<Int>) {
-            _addProjectDeveloperList.value = projectDeveloperList
+        fun addDeveloperToProject(developerId: Int) {
+            _addProjectDeveloperList.value += developerId
+        }
+
+        fun removeDeveloperFromProject(developerId: Int) {
+            _addProjectDeveloperList.value -= developerId
         }
 
         fun searchDeveloperList(searchKeyword: String) {
@@ -95,5 +96,14 @@ class SubmitProjectViewModel
                     _searchDeveloperResultList.value = it
                 }
             }
+        }
+
+        fun submitProject() {
+            viewModelScope.launch {
+
+            }
+        }
+
+        fun submitProjectWithDevelopers() {
         }
     }

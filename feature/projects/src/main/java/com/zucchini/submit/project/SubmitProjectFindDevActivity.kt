@@ -27,10 +27,11 @@ class SubmitProjectFindDevActivity : AppCompatActivity() {
         initDevInfoAdapter()
         initBackButton()
         clickSearchKeyword()
+        clickSubmitButton()
     }
 
     private fun initDevInfoAdapter() {
-        devAdapter = FindDevAdapter(viewModel.submitDevInfo.value ?: SubmitProjectInfo())
+        devAdapter = FindDevAdapter(viewModel)
         binding.rvFindDev.adapter = devAdapter
         binding.rvFindDev.layoutManager = GridLayoutManager(this, 2)
     }
@@ -48,6 +49,12 @@ class SubmitProjectFindDevActivity : AppCompatActivity() {
     private fun initBackButton() {
         binding.ivBackButton.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun clickSubmitButton() {
+        binding.btnSubmit.setOnClickListener {
+            viewModel.submitProject()
         }
     }
 }
