@@ -90,12 +90,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                                 keywordMap[keywordKorean]?.keywordEnglish
                             }
 
-                        submitProjectInfo =
-                            SubmitProjectInfo(
-                                projectCategoryList = selectedEnglishItems,
-                            )
-                        viewModel.setSubmitDevInfo(submitProjectInfo)
-                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
+                        viewModel.updateProjectCategory(projectCategoryList = selectedEnglishItems)
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -122,12 +117,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                                 languageMap[keywordKorean]?.keywordEnglish
                             }
 
-                        submitProjectInfo =
-                            SubmitProjectInfo(
-                                projectLanguageList = selectedEnglishItems,
-                            )
-                        viewModel.setSubmitDevInfo(submitProjectInfo)
-                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
+                        viewModel.updateProjectLanguage(projectLanguageList = selectedEnglishItems)
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -147,12 +137,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                                 techStackMap[keywordKorean]?.keywordEnglish
                             }
 
-                        submitProjectInfo =
-                            SubmitProjectInfo(
-                                projectTechStackList = selectedEnglishItems,
-                            )
-                        viewModel.setSubmitDevInfo(submitProjectInfo)
-                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
+                        viewModel.updateProjectTechStack(projectTechStackList = selectedEnglishItems)
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -172,12 +157,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                                 cooperationToolMap[keywordKorean]?.keywordEnglish
                             }
 
-                        submitProjectInfo =
-                            SubmitProjectInfo(
-                                projectCooperationList = selectedEnglishItems,
-                            )
-                        viewModel.setSubmitDevInfo(submitProjectInfo)
-                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
+                        viewModel.updateProjectCooperation(projectCooperationList = selectedEnglishItems)
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -197,20 +177,18 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     private fun clickSubmitButton() {
         binding.btnSubmit.setOnSingleClickListener {
-            submitProjectInfo =
-                SubmitProjectInfo(
-                    projectName = binding.etProjectName.text.toString(),
-                    imagePath = imageUri.toString(),
-                    projectGithub = binding.etGithub.text.toString(),
-                    projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
-                    projectLongIntro = binding.etProjectIntroContentLong.text.toString(),
-                    projectWebLink = binding.etProjectWebLink.text.toString(),
-                    projectAppLink = binding.etProjectAppLink.text.toString(),
-                    projectLink = binding.etProjectInfoLink.text.toString(),
-                )
+            viewModel.updateProjectInfo(
+                projectName = binding.etProjectName.text.toString(),
+                imagePath = imageUri.toString(),
+                projectGithub = binding.etGithub.text.toString(),
+                projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
+                projectLongIntro = binding.etProjectIntroContentLong.text.toString(),
+                projectWebLink = binding.etProjectWebLink.text.toString(),
+                projectAppLink = binding.etProjectAppLink.text.toString(),
+                projectLink = binding.etProjectInfoLink.text.toString(),
+            )
 
-            Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
-            viewModel.setSubmitDevInfo(submitProjectInfo)
+            Log.d("SubmitProjectActivity", "clickSubmitButton: ${viewModel.projectLink.value}, ${viewModel.projectAppLink.value}, ${viewModel.projectWebLink.value}, ${viewModel.projectLongIntro.value}, ${viewModel.projectShortIntro.value}, ${viewModel.projectGithub.value}, ${viewModel.projectName.value}, ${viewModel.projectCategoryList.value}, ${viewModel.projectTechStackList.value}, ${viewModel.projectLanguageList.value}, ${viewModel.projectCooperationList.value}, ${viewModel.projectDeveloperList.value}")
             startActivity(navigationProvider.toFindDev())
         }
     }
