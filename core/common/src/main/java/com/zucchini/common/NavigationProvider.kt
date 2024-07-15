@@ -9,5 +9,6 @@ interface NavigationProvider {
 
     fun toLogin(): Intent
     fun toSubmitDev(): Intent
+    fun toFindDev(): Intent
     fun toMain(): Intent
 }

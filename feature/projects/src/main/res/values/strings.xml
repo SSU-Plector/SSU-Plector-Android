@@ -94,5 +94,8 @@
     <string name="logout_dialog_title">슈플렉터를 로그아웃 하시겠어요?</string>
     <string name="withdrawal_dialog_title">정말 슈플렉터를 탈퇴 하시겠어요?</string>
     <string name="withdrawal_dialog_description">회원탈퇴 후 유저 정보는 30일 동안 임시 보관되며, 이후 영구 삭제됩니다.</string>
+    <string name="tv_find_dev_title">프로젝트를 함께한 개발자의 이름을 검색해서 찾아보세요!</string>
+    <string name="tv_find_dev_description">슈플렉터에 등록되어 있는 개발자라면, 프로젝트를 함께 진행한 개발자로 등록할 수 있어요.</string>
+    <string name="searchbar_hint_find_dev">개발자 이름을 검색해주세요</string>
 
 </resources>

@@ -1,11 +1,13 @@
-package com.zucchini.submit
+package com.zucchini.submit.project
 
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import coil.load
+import com.zucchini.common.NavigationProvider
 import com.zucchini.data.ContentUriRequestBody
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
 import com.zucchini.domain.model.KeywordList
@@ -14,10 +16,15 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitProjectBinding
 import com.zucchini.view.setOnSingleClickListener
 import com.zucchini.view.showShortToast
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SubmitProjectActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitProjectBinding
+    private val viewModel: SubmitProjectViewModel by viewModels()
+    private lateinit var submitProjectInfo: SubmitProjectInfo
 
     private var imageUri = Uri.EMPTY
 
@@ -31,6 +38,9 @@ class SubmitProjectActivity : AppCompatActivity() {
                 showShortToast(getString(R.string.submit_image))
             }
         }
+
+    @Inject
+    lateinit var navigationProvider: NavigationProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,7 +71,8 @@ class SubmitProjectActivity : AppCompatActivity() {
     }
 
     private fun selectProjectCategory() {
-        val categoryKoreanList = KeywordList.categoryList.map { it.keywordKorean }
+        // 카테고리 키워드 리스트를 한글과 영어 키워드를 매핑하는 Map으로 준비
+        val keywordMap = KeywordList.categoryList.associateBy { it.keywordKorean }
 
         binding.tvSubmitProjectCategory.setOnClickListener {
             SelectCheckBoxCommonDialog
@@ -69,14 +80,24 @@ class SubmitProjectActivity : AppCompatActivity() {
                     title = "프로젝트 카테고리",
                     description = "프로젝트 카테고리를 선택해주세요. (최대 2개)",
                     confirmButtonText = getString(R.string.all_check),
-                    items = categoryKoreanList as ArrayList<String>,
+                    items = keywordMap.keys.toList() as ArrayList<String>, // 한글 리스트 전달
                 ).apply {
-                    setConfirmButtonClickListener {
-                        //
+                    setConfirmButtonClickListener { selectedItems ->
+                        // 선택한 한글 키워드를 영어 키워드로 변환
+                        val selectedEnglishItems = selectedItems.mapNotNull { keywordKorean ->
+                            keywordMap[keywordKorean]?.keywordEnglish
+                        }
+
+                        submitProjectInfo = SubmitProjectInfo(
+                            projectCategoryList = selectedEnglishItems
+                        )
+                        viewModel.setSubmitDevInfo(submitProjectInfo)
+                        Log.d("SubmitProjectActivity", "$selectedEnglishItems")
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
     }
+
 
     private fun selectStack() {
         val language = KeywordList.languageList.map { it.keywordKorean }
@@ -138,24 +159,20 @@ class SubmitProjectActivity : AppCompatActivity() {
 
     private fun clickSubmitButton() {
         binding.btnSubmit.setOnSingleClickListener {
-            val submitProjectInfo =
+            submitProjectInfo =
                 SubmitProjectInfo(
                     projectName = binding.etProjectName.text.toString(),
                     imagePath = imageUri.toString(),
                     projectGithub = binding.etGithub.text.toString(),
                     projectShortIntro = binding.etProjectIntroContentShort.text.toString(),
                     projectLongIntro = binding.etProjectIntroContentLong.text.toString(),
-                    // projectCategoryList =
-                    // projectLanguageList = // 언어 리스트,
-                    // projectTechStackList = // 기술 스택 리스트,
-                    // projectCooperationToolList = // 협업툴 리스트,
                     projectWebLink = binding.etProjectWebLink.text.toString(),
                     projectAppLink = binding.etProjectAppLink.text.toString(),
                     projectLink = binding.etProjectInfoLink.text.toString(),
-                    // developerList =
                 )
 
-            Log.d("SubmitProjectActivity", "submitProjectInfo: $submitProjectInfo")
+            viewModel.setSubmitDevInfo(submitProjectInfo)
+            startActivity(navigationProvider.toFindDev())
         }
     }
 }

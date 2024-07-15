@@ -16,8 +16,9 @@ import com.zucchini.view.setOnSingleClickListener
 class SelectCheckBoxCommonDialog : DialogFragment() {
     private lateinit var binding: DialogCommonSelectCheckboxButtonBinding
 
-    private var confirmButtonClickListener: (() -> Unit)? = null
+    private var confirmButtonClickListener: ((List<String>) -> Unit)? = null
     private var items: List<String> = listOf()
+    private val selectedItems = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +46,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
         }
     }
 
-    fun setConfirmButtonClickListener(confirmButtonClickListener: () -> Unit) {
+    fun setConfirmButtonClickListener(confirmButtonClickListener: (List<String>) -> Unit) {
         this.confirmButtonClickListener = confirmButtonClickListener
     }
 
@@ -61,13 +62,13 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
             tvConfirmButton.text = confirmButtonText
 
             rvDialogContents.layoutManager = LinearLayoutManager(context)
-            rvDialogContents.adapter = CheckBoxListAdapter(items)
+            rvDialogContents.adapter = CheckBoxListAdapter(items, selectedItems)
         }
     }
 
     private fun initButtonListener() {
         binding.tvConfirmButton.setOnSingleClickListener {
-            confirmButtonClickListener?.invoke()
+            confirmButtonClickListener?.invoke(selectedItems)
             dismiss()
         }
     }

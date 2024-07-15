@@ -19,7 +19,7 @@ import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
-import com.zucchini.submit.SubmitProjectActivity
+import com.zucchini.submit.project.SubmitProjectActivity
 import com.zucchini.view.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
