@@ -24,7 +24,6 @@ import javax.inject.Inject
 class SubmitProjectActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySubmitProjectBinding
     private val viewModel: SubmitProjectViewModel by viewModels()
-    private lateinit var submitProjectInfo: SubmitProjectInfo
 
     private var imageUri = Uri.EMPTY
 
@@ -187,8 +186,6 @@ class SubmitProjectActivity : AppCompatActivity() {
                 projectAppLink = binding.etProjectAppLink.text.toString(),
                 projectLink = binding.etProjectInfoLink.text.toString(),
             )
-
-            Log.d("SubmitProjectActivity", "clickSubmitButton: ${viewModel.projectLink.value}, ${viewModel.projectAppLink.value}, ${viewModel.projectWebLink.value}, ${viewModel.projectLongIntro.value}, ${viewModel.projectShortIntro.value}, ${viewModel.projectGithub.value}, ${viewModel.projectName.value}, ${viewModel.projectCategoryList.value}, ${viewModel.projectTechStackList.value}, ${viewModel.projectLanguageList.value}, ${viewModel.projectCooperationList.value}, ${viewModel.projectDeveloperList.value}")
             startActivity(navigationProvider.toFindDev())
         }
     }

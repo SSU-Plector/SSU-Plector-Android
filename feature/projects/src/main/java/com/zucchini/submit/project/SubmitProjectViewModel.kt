@@ -1,65 +1,53 @@
 package com.zucchini.submit.project
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.zucchini.domain.model.FindDeveloperInfo
 import com.zucchini.domain.model.SubmitProjectInfo
+import com.zucchini.domain.repository.DevelopersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SubmitProjectViewModel
     @Inject
-    constructor() : ViewModel() {
+    constructor(
+        private val developersRepository: DevelopersRepository,
+    ) : ViewModel() {
         private val _submitDevInfo = MutableStateFlow<SubmitProjectInfo?>(null)
         val submitDevInfo = _submitDevInfo.asStateFlow()
 
         private val _projectName = MutableStateFlow("")
-        val projectName = _projectName.asStateFlow()
 
         private val _projectGithub = MutableStateFlow("")
-        val projectGithub = _projectGithub.asStateFlow()
 
         private val _imagePath = MutableStateFlow("")
-        val imagePath = _imagePath.asStateFlow()
 
         private val _projectShortIntro = MutableStateFlow("")
-        val projectShortIntro = _projectShortIntro.asStateFlow()
 
         private val _projectLongIntro = MutableStateFlow("")
-        val projectLongIntro = _projectLongIntro.asStateFlow()
 
         private val _projectCategoryList = MutableStateFlow(emptyList<String>())
-        val projectCategoryList = _projectCategoryList.asStateFlow()
 
         private val _projectTechStackList = MutableStateFlow(emptyList<String>())
-        val projectTechStackList = _projectTechStackList.asStateFlow()
 
         private val _projectLanguageList = MutableStateFlow(emptyList<String>())
-        val projectLanguageList = _projectLanguageList.asStateFlow()
 
         private val _projectCooperationList = MutableStateFlow(emptyList<String>())
-        val projectCooperationList = _projectCooperationList.asStateFlow()
 
         private val _projectWebLink = MutableStateFlow("")
-        val projectWebLink = _projectWebLink.asStateFlow()
 
         private val _projectAppLink = MutableStateFlow("")
-        val projectAppLink = _projectAppLink.asStateFlow()
 
         private val _projectLink = MutableStateFlow("")
-        val projectLink = _projectLink.asStateFlow()
 
-        private val _projectDeveloperList = MutableStateFlow(emptyList<Int>())
-        val projectDeveloperList = _projectDeveloperList.asStateFlow()
+        private val _addProjectDeveloperList = MutableStateFlow(emptyList<Int>())
 
-        fun setSubmitDevInfo(submitProjectInfo: SubmitProjectInfo) {
-            _submitDevInfo.value = submitProjectInfo
-        }
-
-        fun setProjectName(projectName: String) {
-            _projectName.value = projectName
-        }
+        private val _searchDeveloperResultList = MutableStateFlow(emptyList<FindDeveloperInfo>())
+        val searchDeveloperResultList = _searchDeveloperResultList.asStateFlow()
 
         fun updateProjectInfo(
             projectName: String,
@@ -98,6 +86,14 @@ class SubmitProjectViewModel
         }
 
         fun updateDeveloperList(projectDeveloperList: List<Int>) {
-            _projectDeveloperList.value = projectDeveloperList
+            _addProjectDeveloperList.value = projectDeveloperList
+        }
+
+        fun searchDeveloperList(searchKeyword: String) {
+            viewModelScope.launch {
+                developersRepository.searchDevelopers(searchKeyword).onSuccess {
+                    _searchDeveloperResultList.value = it
+                }
+            }
         }
     }

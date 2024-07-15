@@ -2,6 +2,7 @@ package com.zucchini.domain.repository
 
 import com.zucchini.domain.model.DevelopersDetailModel
 import com.zucchini.domain.model.DevelopersListModel
+import com.zucchini.domain.model.FindDeveloperInfo
 import com.zucchini.domain.model.SubmitDevInfo
 
 interface DevelopersRepository {
@@ -9,4 +10,6 @@ interface DevelopersRepository {
     suspend fun getDevelopersDetailData(developerId: Int): Result<DevelopersDetailModel>
 
     suspend fun createDeveloperInfo(accessToken: String, email: String? = null, submitDevInfo: SubmitDevInfo): Result<Int>
+
+    suspend fun searchDevelopers(developerName: String): Result<List<FindDeveloperInfo>>
 }
