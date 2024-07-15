@@ -46,6 +46,9 @@ class SubmitProjectViewModel
         private val _searchDeveloperResultList = MutableStateFlow(emptyList<FindDeveloperInfo>())
         val searchDeveloperResultList = _searchDeveloperResultList.asStateFlow()
 
+    private val _isSuccessSubmitProject = MutableStateFlow(false)
+    val isSuccessSubmitProject = _isSuccessSubmitProject.asStateFlow()
+
         fun updateProjectInfo(
             projectName: String,
             projectGithub: String,
@@ -100,7 +103,7 @@ class SubmitProjectViewModel
 
         fun submitProject() {
             viewModelScope.launch {
-
+                Log.d( "SubmitProjectViewModel", "${_projectName.value}, ${_projectGithub.value}, ${_imagePath.value}, ${_projectShortIntro.value}, ${_projectLongIntro.value}, ${_projectWebLink.value}, ${_projectAppLink.value}, ${_projectLink.value}, ${_projectCategoryList.value}, ${_projectTechStackList.value}, ${_projectLanguageList.value}, ${_projectCooperationList.value}, ${_addProjectDeveloperList.value}")
             }
         }
 

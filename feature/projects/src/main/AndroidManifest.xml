@@ -3,11 +3,6 @@
 
     <application>
         <activity
-            android:name="com.zucchini.submit.project.SubmitProjectFindDevActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity
             android:name="com.zucchini.submit.project.SubmitProjectActivity"
             android:exported="false"
             android:screenOrientation="portrait"

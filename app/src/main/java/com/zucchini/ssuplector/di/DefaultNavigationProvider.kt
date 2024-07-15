@@ -6,7 +6,6 @@ import com.zucchini.auth.LoginActivity
 import com.zucchini.common.NavigationProvider
 import com.zucchini.projects.MainActivity
 import com.zucchini.submit.developer.SubmitDevActivity
-import com.zucchini.submit.project.SubmitProjectFindDevActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -30,8 +29,6 @@ class DefaultNavigationProvider
         override fun toLogin(): Intent = Intent(context, LoginActivity::class.java)
 
         override fun toSubmitDev(): Intent = Intent(context, SubmitDevActivity::class.java)
-
-        override fun toFindDev(): Intent = Intent(context, SubmitProjectFindDevActivity::class.java)
 
         override fun toMain(): Intent = Intent(context, MainActivity::class.java)
     }
