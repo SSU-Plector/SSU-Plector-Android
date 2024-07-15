@@ -19,6 +19,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
     private var confirmButtonClickListener: ((List<String>) -> Unit)? = null
     private var items: List<String> = listOf()
     private val selectedItems = mutableListOf<String>()
+    private var maxSelectionCount: Int = Int.MAX_VALUE
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +56,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
         val description = arguments?.getString(DESCRIPTION)
         val confirmButtonText = arguments?.getString(CONFIRM_BUTTON_TEXT, "")
         items = arguments?.getStringArrayList(ITEMS) ?: listOf()
+        maxSelectionCount = arguments?.getInt(MAX_SELECTION_COUNT, Int.MAX_VALUE) ?: Int.MAX_VALUE
 
         with(binding) {
             tvDialogTitle.text = title
@@ -62,7 +64,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
             tvConfirmButton.text = confirmButtonText
 
             rvDialogContents.layoutManager = LinearLayoutManager(context)
-            rvDialogContents.adapter = CheckBoxListAdapter(items, selectedItems)
+            rvDialogContents.adapter = CheckBoxListAdapter(items, selectedItems, maxSelectionCount)
         }
     }
 
@@ -90,12 +92,14 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
         const val DESCRIPTION = "description"
         const val CONFIRM_BUTTON_TEXT = "confirmButtonText"
         const val ITEMS = "items"
+        const val MAX_SELECTION_COUNT = "maxSelectionCount"
 
         fun newInstance(
             title: String,
             description: String? = null,
             confirmButtonText: String,
             items: ArrayList<String>,
+            maxSelectionCount: Int = Int.MAX_VALUE
         ): SelectCheckBoxCommonDialog =
             SelectCheckBoxCommonDialog().apply {
                 arguments =
@@ -104,6 +108,7 @@ class SelectCheckBoxCommonDialog : DialogFragment() {
                         putString(DESCRIPTION, description)
                         putString(CONFIRM_BUTTON_TEXT, confirmButtonText)
                         putStringArrayList(ITEMS, items)
+                        putInt(MAX_SELECTION_COUNT, maxSelectionCount)
                     }
             }
     }

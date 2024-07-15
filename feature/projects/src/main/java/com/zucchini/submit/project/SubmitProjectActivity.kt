@@ -81,28 +81,30 @@ class SubmitProjectActivity : AppCompatActivity() {
                     description = "프로젝트 카테고리를 선택해주세요. (최대 2개)",
                     confirmButtonText = getString(R.string.all_check),
                     items = keywordMap.keys.toList() as ArrayList<String>, // 한글 리스트 전달
+                    maxSelectionCount = 2,
                 ).apply {
                     setConfirmButtonClickListener { selectedItems ->
                         // 선택한 한글 키워드를 영어 키워드로 변환
-                        val selectedEnglishItems = selectedItems.mapNotNull { keywordKorean ->
-                            keywordMap[keywordKorean]?.keywordEnglish
-                        }
+                        val selectedEnglishItems =
+                            selectedItems.mapNotNull { keywordKorean ->
+                                keywordMap[keywordKorean]?.keywordEnglish
+                            }
 
-                        submitProjectInfo = SubmitProjectInfo(
-                            projectCategoryList = selectedEnglishItems
-                        )
+                        submitProjectInfo =
+                            SubmitProjectInfo(
+                                projectCategoryList = selectedEnglishItems,
+                            )
                         viewModel.setSubmitDevInfo(submitProjectInfo)
-                        Log.d("SubmitProjectActivity", "$selectedEnglishItems")
+                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
     }
 
-
     private fun selectStack() {
-        val language = KeywordList.languageList.map { it.keywordKorean }
-        val techStack = KeywordList.techStackList.map { it.keywordKorean }
-        val cooperationTool = KeywordList.cooperationList.map { it.keywordKorean }
+        val languageMap = KeywordList.languageList.associateBy { it.keywordKorean }
+        val techStackMap = KeywordList.techStackList.associateBy { it.keywordKorean }
+        val cooperationToolMap = KeywordList.cooperationList.associateBy { it.keywordKorean }
 
         binding.tvDevStackLanguage.setOnClickListener {
             SelectCheckBoxCommonDialog
@@ -110,10 +112,22 @@ class SubmitProjectActivity : AppCompatActivity() {
                     title = "사용 언어",
                     description = "프로젝트에서 사용한 언어를 선택해주세요.\n(최대 3개)",
                     confirmButtonText = getString(R.string.all_check),
-                    items = language as ArrayList<String>,
+                    items = languageMap.keys.toList() as ArrayList<String>,
+                    maxSelectionCount = 3,
                 ).apply {
-                    setConfirmButtonClickListener {
-                        //
+                    setConfirmButtonClickListener { selectedItems ->
+                        // 선택한 한글 키워드를 영어 키워드로 변환
+                        val selectedEnglishItems =
+                            selectedItems.mapNotNull { keywordKorean ->
+                                languageMap[keywordKorean]?.keywordEnglish
+                            }
+
+                        submitProjectInfo =
+                            SubmitProjectInfo(
+                                projectLanguageList = selectedEnglishItems,
+                            )
+                        viewModel.setSubmitDevInfo(submitProjectInfo)
+                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -123,10 +137,22 @@ class SubmitProjectActivity : AppCompatActivity() {
                     title = "사용 기술 스택",
                     description = "프로젝트에서 사용한 기술 스택을 선택해주세요.\n(최대 3개)",
                     confirmButtonText = getString(R.string.all_check),
-                    items = techStack as ArrayList<String>,
+                    items = techStackMap.keys.toList() as ArrayList<String>,
+                    maxSelectionCount = 3,
                 ).apply {
-                    setConfirmButtonClickListener {
-                        //
+                    setConfirmButtonClickListener { selectedItems ->
+                        // 선택한 한글 키워드를 영어 키워드로 변환
+                        val selectedEnglishItems =
+                            selectedItems.mapNotNull { keywordKorean ->
+                                techStackMap[keywordKorean]?.keywordEnglish
+                            }
+
+                        submitProjectInfo =
+                            SubmitProjectInfo(
+                                projectTechStackList = selectedEnglishItems,
+                            )
+                        viewModel.setSubmitDevInfo(submitProjectInfo)
+                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -136,10 +162,22 @@ class SubmitProjectActivity : AppCompatActivity() {
                     title = "사용 협업툴",
                     description = "프로젝트에서 사용한 협업툴을 선택해주세요.\n(최대 3개)",
                     confirmButtonText = getString(R.string.all_check),
-                    items = cooperationTool as ArrayList<String>,
+                    items = cooperationToolMap.keys.toList() as ArrayList<String>,
+                    maxSelectionCount = 3,
                 ).apply {
-                    setConfirmButtonClickListener {
-                        //
+                    setConfirmButtonClickListener { selectedItems ->
+                        // 선택한 한글 키워드를 영어 키워드로 변환
+                        val selectedEnglishItems =
+                            selectedItems.mapNotNull { keywordKorean ->
+                                cooperationToolMap[keywordKorean]?.keywordEnglish
+                            }
+
+                        submitProjectInfo =
+                            SubmitProjectInfo(
+                                projectCooperationList = selectedEnglishItems,
+                            )
+                        viewModel.setSubmitDevInfo(submitProjectInfo)
+                        Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
                     }
                 }.showAllowingStateLoss(supportFragmentManager, "SelectCheckBoxCommonDialog")
         }
@@ -171,6 +209,7 @@ class SubmitProjectActivity : AppCompatActivity() {
                     projectLink = binding.etProjectInfoLink.text.toString(),
                 )
 
+            Log.d("SubmitProjectActivity", viewModel.submitDevInfo.value.toString())
             viewModel.setSubmitDevInfo(submitProjectInfo)
             startActivity(navigationProvider.toFindDev())
         }

@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.zucchini.core.common.databinding.ItemDialogCheckboxBinding
-import com.zucchini.domain.model.Keyword
 
 class CheckBoxListAdapter(
     private val items: List<String>,
-    private val selectedItems: MutableList<String>
+    private val selectedItems: MutableList<String>,
+    private val maxSelectionCount: Int
 ) : RecyclerView.Adapter<CheckBoxListAdapter.ViewHolder>() {
 
     class ViewHolder(
@@ -31,9 +31,17 @@ class CheckBoxListAdapter(
         val item = items[position]
         holder.binding.cbDialogContent.text = item
 
+        // Initialize checkbox state
+        holder.binding.cbDialogContent.isChecked = selectedItems.contains(item)
+
         holder.binding.cbDialogContent.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                selectedItems.add(item)
+                // Check if the maximum selection count is not exceeded
+                if (selectedItems.size < maxSelectionCount) {
+                    selectedItems.add(item)
+                } else {
+                    holder.binding.cbDialogContent.isChecked = false
+                }
             } else {
                 selectedItems.remove(item)
             }
