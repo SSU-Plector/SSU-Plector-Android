@@ -1,6 +1,5 @@
 package com.zucchini.submit.project
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.FindDeveloperInfo
@@ -11,7 +10,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import okhttp3.MultipartBody
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -23,6 +21,8 @@ class SubmitProjectViewModel
         private val projectsRepository: ProjectsRepository,
     ) : ViewModel() {
         private val _projectName = MutableStateFlow("")
+
+        private val _imagePath = MutableStateFlow<String>("")
 
         private val _projectGithub = MutableStateFlow("")
 
@@ -70,9 +70,9 @@ class SubmitProjectViewModel
             _projectLink.value = projectLink
         }
 
-    fun updateImagePath(imagePath: MultipartBody.Part) {
-        //_imagePath.value = imagePath
-    }
+        fun updateImagePath(imagePath: String) {
+            _imagePath.value = imagePath
+        }
 
         fun updateProjectCategory(projectCategoryList: List<String> = emptyList()) {
             _projectCategoryList.value = projectCategoryList
@@ -122,12 +122,14 @@ class SubmitProjectViewModel
                 submit.projectLink = _projectLink.value
                 submit.projectDeveloperList = _addProjectDeveloperList.value
 
-                projectsRepository.submitProject(submit).onSuccess {
-                    _isSuccessSubmitProject.value = true
-                }.onFailure {
-                    _isSuccessSubmitProject.value = false
-                    Timber.d("failed to submit project $it")
-                }
+                projectsRepository
+                    .submitProject(submit, _imagePath.value)
+                    .onSuccess {
+                        _isSuccessSubmitProject.value = true
+                    }.onFailure {
+                        _isSuccessSubmitProject.value = false
+                        Timber.d("failed to submit project $it")
+                    }
             }
         }
     }
