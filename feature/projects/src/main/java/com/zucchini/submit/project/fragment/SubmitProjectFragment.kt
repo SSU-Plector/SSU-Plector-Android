@@ -1,27 +1,27 @@
 package com.zucchini.submit.project.fragment
 
-import android.net.Uri
+import android.Manifest
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import coil.load
-import com.zucchini.data.ContentUriRequestBody
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
 import com.zucchini.domain.model.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentSubmitProjectBinding
 import com.zucchini.submit.project.SubmitProjectActivity
 import com.zucchini.submit.project.SubmitProjectViewModel
-import com.zucchini.view.showShortToast
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import timber.log.Timber
-import java.io.File
 
 class SubmitProjectFragment : Fragment() {
     private var _binding: FragmentSubmitProjectBinding? = null
@@ -29,17 +29,18 @@ class SubmitProjectFragment : Fragment() {
 
     private val viewModel: SubmitProjectViewModel by activityViewModels()
 
-    private var imageUri = Uri.EMPTY
-
-    private val launcher =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            imageUri = uri
-            if (imageUri != null) {
-                binding.ivProjectSubmit.load(imageUri)
-                processSelectedImage(imageUri!!)
-            } else {
-                showShortToast(getString(R.string.submit_image))
+    // 권한 요청
+    private val requestPermissionLauncher: ActivityResultLauncher<String> =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                navigateToGallery()
             }
+        }
+
+    // 가져온 사진 보여주기
+    private val pickImageLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            handleImageResult(result)
         }
 
     override fun onCreateView(
@@ -56,15 +57,42 @@ class SubmitProjectFragment : Fragment() {
         return binding.root
     }
 
-    private fun initDialogClickListener() {
-        selectProjectCategory()
-        selectStack()
-    }
-
     private fun initImageSubmitView() {
         binding.tvProjectSubmitImage.setOnClickListener {
-            launcher.launch("image/*")
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                ) == PackageManager.PERMISSION_GRANTED
+            ) {
+                navigateToGallery()
+            } else {
+                requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
         }
+    }
+
+    private fun handleImageResult(result: ActivityResult) {
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            data?.data?.let { uri ->
+                // 이미지 URI를 사용하여 이미지를 표시하거나 추가 작업을 수행합니다.
+                binding.ivProjectSubmit.setImageURI(uri)
+                viewModel.updateImagePath(uri.path ?: "")
+                Log.d("Selected Image", "Selected Image URI: $uri")
+            }
+        } else {
+            Log.d("Image Failure", "Image selection failed or was canceled.")
+        }
+    }
+
+    private fun navigateToGallery() {
+        val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+        pickImageLauncher.launch(gallery)
+    }
+
+    private fun initDialogClickListener() {
+        selectProjectCategory()
+        selectStacks()
     }
 
     private fun selectProjectCategory() {
@@ -93,7 +121,7 @@ class SubmitProjectFragment : Fragment() {
         }
     }
 
-    private fun selectStack() {
+    private fun selectStacks() {
         val languageMap = KeywordList.languageList.associateBy { it.keywordKorean }
         val techStackMap = KeywordList.techStackList.associateBy { it.keywordKorean }
         val cooperationToolMap = KeywordList.cooperationList.associateBy { it.keywordKorean }
@@ -160,18 +188,6 @@ class SubmitProjectFragment : Fragment() {
         }
     }
 
-    private fun processSelectedImage(uri: Uri) {
-        val requestBody =
-            ContentUriRequestBody(
-                context = requireContext(),
-                uri = uri,
-            ).toFormData()
-
-        Timber.d("Image Uri: $uri")
-        Timber.d("Image Path: ${uri.path}")
-        Timber.d("Request Body: $requestBody")
-    }
-
     private fun clickSubmitButton() {
         binding.btnNext.setOnClickListener {
             viewModel.updateProjectInfo(
@@ -186,5 +202,4 @@ class SubmitProjectFragment : Fragment() {
             (activity as? SubmitProjectActivity)?.setCurrentItem(1)
         }
     }
-
 }
