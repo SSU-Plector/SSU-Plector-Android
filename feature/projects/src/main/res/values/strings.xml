@@ -74,6 +74,6 @@
     <string name="tv_file_upload">회의록 업로드</string>
     <string name="iv_meeting_result">요약 결과 확인하기</string>
     <string name="ai_pm_meeting_progress_title">회의 진행하기</string>
-    <string name="ai_pm_meeting_progress_description">회의 진행에 필요한 요소와 회의 시간을 선택하면 PM AI가 말하며 회의를 진행해줘요!</string>
+    <string name="ai_pm_meeting_progress_description">진행할 전체 회의 시간, 회의 참석 인원 수를 입력하면\nPM AI가 이를 고려하여 말하며 회의를 진행해줘요!\n회의에 꼭 필요한 주제도 선택해주세요!</string>
 
 </resources>
