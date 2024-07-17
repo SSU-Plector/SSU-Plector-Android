@@ -14,5 +14,8 @@ interface ProjectsRepository {
 
     suspend fun getProjectsDetailData(projectId: Int): Result<ProjectsDetailModel>
 
-    suspend fun submitProject(submitProjectInfo: SubmitProjectInfo): Result<Int>
+    suspend fun submitProject(
+        submitProjectInfo: SubmitProjectInfo,
+        imagePath: String,
+    ): Result<Int>
 }
