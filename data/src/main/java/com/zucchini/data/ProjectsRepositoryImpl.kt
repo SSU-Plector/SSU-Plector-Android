@@ -1,6 +1,6 @@
 package com.zucchini.data
 
-import android.util.Log
+import com.google.gson.Gson
 import com.sample.network.service.ProjectsService
 import com.zucchini.domain.model.ProjectsDetailModel
 import com.zucchini.domain.model.ProjectsListModel
@@ -12,6 +12,7 @@ import com.zucchini.mapper.toSubmitProjectRequest
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 import javax.inject.Inject
 
@@ -42,25 +43,25 @@ class ProjectsRepositoryImpl
                 projectsService.getProjectsDetailData(projectId).data.toProjectsDetailModel()
             }
 
-    override suspend fun submitProject(submitProjectInfo: SubmitProjectInfo, imagePath: String): Result<Int> =
-        runCatching {
-            var uploadImageFile: MultipartBody.Part = MultipartBody.Part.createFormData("image", "")
+        override suspend fun submitProject(
+            submitProjectInfo: SubmitProjectInfo,
+            imagePath: String,
+        ): Result<Int> =
+            runCatching {
+                // JSON 데이터를 문자열로 변환
+                val gson = Gson()
+                val json = gson.toJson(submitProjectInfo.toSubmitProjectRequest())
+                val jsonRequestBody = json.toRequestBody("application/json".toMediaTypeOrNull())
 
-            val file = File(imagePath)
-            if (file.exists()) {
-                val requestFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-                Log.e("ProjectsRepositoryImpl Exists", "requestFile: ${requestFile}")
-                uploadImageFile =  MultipartBody.Part.createFormData("image", file.name, requestFile)
-            } else {
-                Log.e("prepareFilePart", "File does not exist: $imagePath")
+                // JSON requestBody를 MultipartBody.Part로 변환
+                val jsonPart = MultipartBody.Part.createFormData("requestDTO", null, jsonRequestBody)
+
+                // 파일을 MultipartBody.Part로 변환
+                val file = File(imagePath)
+                val fileRequestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
+                val imagePart = MultipartBody.Part.createFormData("image", file.name, fileRequestBody)
+
+                // 서비스 호출
+                projectsService.submitProject(jsonPart, imagePart).data
             }
-
-            Log.e("ProjectsRepositoryImpl", "uploadImageFile: ${file}, ${imagePath}, ${uploadImageFile}")
-
-            projectsService
-                .submitProject(
-                    submitProjectInfo.toSubmitProjectRequest(),
-                    uploadImageFile
-                ).data
-        }
     }

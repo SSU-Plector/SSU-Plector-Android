@@ -2,8 +2,11 @@ package com.zucchini.submit.project.fragment
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -77,12 +80,27 @@ class SubmitProjectFragment : Fragment() {
             data?.data?.let { uri ->
                 // 이미지 URI를 사용하여 이미지를 표시하거나 추가 작업을 수행합니다.
                 binding.ivProjectSubmit.setImageURI(uri)
-                viewModel.updateImagePath(uri.path ?: "")
+                val uriToAbsolutePath = absolutelyPath(uri, requireContext())
+                viewModel.updateImagePath(uriToAbsolutePath)
                 Log.d("Selected Image", "Selected Image URI: $uri")
             }
         } else {
             Log.d("Image Failure", "Image selection failed or was canceled.")
         }
+    }
+
+    private fun absolutelyPath(
+        path: Uri?,
+        context: Context,
+    ): String {
+        val proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        val c: Cursor? = context.contentResolver.query(path!!, proj, null, null, null)
+        val index = c?.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        c?.moveToFirst()
+
+        val result = c?.getString(index!!)
+
+        return result!!
     }
 
     private fun navigateToGallery() {

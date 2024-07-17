@@ -1,5 +1,6 @@
 package com.zucchini.submit.project
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.FindDeveloperInfo
@@ -129,6 +130,7 @@ class SubmitProjectViewModel
                     }.onFailure {
                         _isSuccessSubmitProject.value = false
                         Timber.d("failed to submit project $it")
+                        Log.e("SubmitProjectViewModel", "failed to submit project", it)
                     }
             }
         }

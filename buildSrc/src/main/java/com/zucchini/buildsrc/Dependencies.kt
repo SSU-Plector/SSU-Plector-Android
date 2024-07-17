@@ -69,6 +69,7 @@ object ThirdPartyDependencies {
     const val okHttpBom = "com.squareup.okhttp3:okhttp-bom:${Versions.okHttpVersion}"
     const val okHttp = "com.squareup.okhttp3:okhttp"
     const val okHttpLoggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
+    const val gson = "com.google.code.gson:gson:${Versions.gsonVersion}"
 
     const val timber = "com.jakewharton.timber:timber:${Versions.timberVersion}"
 
@@ -102,7 +103,8 @@ object ClassPathPlugins {
 
 object ComposeDependencies {
     const val composeUi = "androidx.compose.ui:ui:${Versions.composeCompilerVersion}"
-    const val composeActivity = "androidx.activity:activity-compose:${Versions.activityComposeVersion}"
+    const val composeActivity =
+        "androidx.activity:activity-compose:${Versions.activityComposeVersion}"
     const val composeMaterial3 = "androidx.compose.material3:material3:${Versions.material3Version}"
     const val composeTooling = "androidx.compose.ui:ui-tooling:${Versions.composeToolingVersion}"
 }

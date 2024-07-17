@@ -46,6 +46,7 @@ object Versions {
     const val dotIndicatorVersion = "5.0"
     const val processPhoenixVersion = "2.1.2"
     const val recyclerViewVersion = "1.3.2"
+    const val gsonVersion = "2.11.0"
 
     val javaVersion = JavaVersion.VERSION_17
     const val jvmVersion = "17"
