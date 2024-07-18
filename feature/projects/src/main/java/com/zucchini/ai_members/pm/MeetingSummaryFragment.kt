@@ -1,4 +1,5 @@
 package com.zucchini.ai_members.pm
+
 import android.Manifest
 import android.app.Activity
 import android.content.Context
@@ -6,7 +7,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -21,7 +21,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMeetingSummaryBinding
+import com.zucchini.uistate.UiState
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.io.File
@@ -75,14 +77,16 @@ class MeetingSummaryFragment : Fragment() {
     }
 
     private fun checkAndRequestPermissions(): Boolean {
-        val readPermission = ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.READ_EXTERNAL_STORAGE
-        )
-        val writePermission = ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
+        val readPermission =
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+            )
+        val writePermission =
+            ContextCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            )
 
         val listPermissionsNeeded = mutableListOf<String>()
 
@@ -110,7 +114,10 @@ class MeetingSummaryFragment : Fragment() {
         binding.tvFileUpload.text = recordFile.name
     }
 
-    fun getRealPathFromUri(contentUri: Uri, context: Context): String? {
+    fun getRealPathFromUri(
+        contentUri: Uri,
+        context: Context,
+    ): String? {
         var cursor: Cursor? = null
         try {
             val proj = arrayOf(MediaStore.Audio.Media.DATA)
@@ -126,7 +133,6 @@ class MeetingSummaryFragment : Fragment() {
     }
 
     private fun handleActivityResult(result: ActivityResult) {
-
         // 파일 이름 뷰에 반환 업데이트
         viewUploadedFileName(result.data?.data.toString())
 
@@ -151,8 +157,23 @@ class MeetingSummaryFragment : Fragment() {
     }
 
     private fun collectMeetingSummaryResultText() {
-        viewModel.meetingSummaryResultText.flowWithLifecycle(lifecycle).onEach {
-            binding.aiPmSummaryMeetingResult.text = it
-        }.launchIn(lifecycleScope)
+        viewModel.meetingSummaryResultText
+            .flowWithLifecycle(lifecycle)
+            .onEach { uiState ->
+                when (uiState) {
+                    is UiState.Loading -> {
+                        // 로딩 중인 경우 로딩 화면 표시
+                        // delay(10000)
+                    }
+
+                    is UiState.Success -> {
+                        binding.aiPmSummaryMeetingResult.text = uiState.data
+                    }
+
+                    else -> {
+                        binding.aiPmSummaryMeetingResult.text = getString(R.string.fail_to_summary)
+                    }
+                }
+            }.launchIn(lifecycleScope)
     }
 }

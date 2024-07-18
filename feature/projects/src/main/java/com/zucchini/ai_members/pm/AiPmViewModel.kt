@@ -1,12 +1,12 @@
 package com.zucchini.ai_members.pm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.model.ai.ProgressMeeting
 import com.zucchini.domain.model.ai.ProgressMeetingInfo
 import com.zucchini.domain.model.ai.SetProgressMeeting
 import com.zucchini.domain.repository.AiRepository
+import com.zucchini.uistate.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,7 +27,7 @@ class AiPmViewModel
 
         private val _progressMeetingResultData = MutableStateFlow<ProgressMeeting?>(null)
 
-        private val _meetingSummaryResultText = MutableStateFlow<String>("")
+        private val _meetingSummaryResultText = MutableStateFlow(UiState.Initial as UiState<String>)
         val meetingSummaryResultText = _meetingSummaryResultText.asStateFlow()
 
         fun updateProgressMeetingCheckbox(
@@ -54,14 +54,20 @@ class AiPmViewModel
 
         fun sendMeetingRecordFile(recordFilePath: String) {
             viewModelScope.launch {
-                Log.d("AiPmViewModel", "sendMeetingRecordFile URI: $recordFilePath")
-                aiPmRepository
-                    .sendMeetingRecordFile(recordFilePath)
-                    .onSuccess {
-                        _meetingSummaryResultText.value = it
-                    }.onFailure {
-                        Timber.d(it)
-                    }
+                _meetingSummaryResultText.value = UiState.Loading
+                try {
+                    val result = aiPmRepository.sendMeetingRecordFile(recordFilePath)
+                    result
+                        .onSuccess {
+                            _meetingSummaryResultText.value = UiState.Success(it)
+                        }.onFailure {
+                            _meetingSummaryResultText.value = UiState.Failure(it.message ?: "Unknown error")
+                            Timber.d(it)
+                        }
+                } catch (e: Exception) {
+                    _meetingSummaryResultText.value = UiState.Failure(e.message ?: "Unknown error")
+                    Timber.e(e)
+                }
             }
         }
     }
