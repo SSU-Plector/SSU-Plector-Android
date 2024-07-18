@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.tabs.TabLayout
+import com.zucchini.ai_members.pm.progress.ProgressMeetingFragment
+import com.zucchini.ai_members.pm.summary.MeetingSummaryFragment
 import com.zucchini.feature.projects.databinding.ActivityAiPmBinding
 import dagger.hilt.android.AndroidEntryPoint
 

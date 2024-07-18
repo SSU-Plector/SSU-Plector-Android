@@ -1,4 +1,4 @@
-package com.zucchini.ai_members.pm
+package com.zucchini.ai_members.pm.summary
 
 import android.Manifest
 import android.app.Activity
@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.zucchini.ai_members.pm.AiPmViewModel
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMeetingSummaryBinding
 import com.zucchini.uistate.UiState

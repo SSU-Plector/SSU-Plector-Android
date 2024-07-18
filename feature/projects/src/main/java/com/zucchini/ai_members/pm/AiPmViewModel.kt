@@ -30,6 +30,9 @@ class AiPmViewModel
         private val _meetingSummaryResultText = MutableStateFlow(UiState.Initial as UiState<String>)
         val meetingSummaryResultText = _meetingSummaryResultText.asStateFlow()
 
+        private val _summarySuccess = MutableStateFlow(false)
+        val summarySuccess = _summarySuccess.asStateFlow()
+
         fun updateProgressMeetingCheckbox(
             setProgressMeeting: SetProgressMeeting,
             progressMeetingInfo: ProgressMeetingInfo,
@@ -60,9 +63,12 @@ class AiPmViewModel
                     result
                         .onSuccess {
                             _meetingSummaryResultText.value = UiState.Success(it)
+                            _summarySuccess.value = true
                         }.onFailure {
-                            _meetingSummaryResultText.value = UiState.Failure(it.message ?: "Unknown error")
+                            _meetingSummaryResultText.value =
+                                UiState.Failure(it.message ?: "Unknown error")
                             Timber.d(it)
+                            _summarySuccess.value = false
                         }
                 } catch (e: Exception) {
                     _meetingSummaryResultText.value = UiState.Failure(e.message ?: "Unknown error")
