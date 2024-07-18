@@ -28,6 +28,9 @@ constructor(
     private val _progressMeetingResultData = MutableStateFlow<ProgressMeeting?>(null)
     val progressMeetingResultData = _progressMeetingResultData.asStateFlow()
 
+    private val _meetingTotalTime = MutableStateFlow(0)
+    val meetingTotalTime = _meetingTotalTime.asStateFlow()
+
     private val _progressIntroduce = MutableStateFlow(0)
     val progressIntroduce = _progressIntroduce.asStateFlow()
 
@@ -62,6 +65,8 @@ constructor(
         setProgressMeeting: SetProgressMeeting,
         progressMeetingInfo: ProgressMeetingInfo,
     ) {
+        _meetingTotalTime.value = setProgressMeeting.meetingTime ?: 0
+        Log.d("AiPmViewModel", "meetingTotalTime: ${setProgressMeeting.meetingTime}")
         _progressMeetingInfo.value = setProgressMeeting
         _progressMeetingCheckbox.value = progressMeetingInfo
     }

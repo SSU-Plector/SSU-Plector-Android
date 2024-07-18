@@ -21,6 +21,7 @@ class StartProgressMeetingFragment : Fragment() {
 
     private val viewModel: AiPmViewModel by activityViewModels()
 
+    private var meetingTotalTime = 0
     private var introduce = 0
     private var iceBreaking = 0
     private var brainstorming = 0
@@ -46,6 +47,7 @@ class StartProgressMeetingFragment : Fragment() {
     private fun setMeetingIndex() {
         val formattedText = getString(
             R.string.tv_meeting_progress,
+            msToMinuteToString(meetingTotalTime),
             msToMinuteToString(introduce),
             msToMinuteToString(iceBreaking),
             msToMinuteToString(brainstorming),
@@ -89,6 +91,11 @@ class StartProgressMeetingFragment : Fragment() {
 
         viewModel.progressFeedback.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
             feedback = it
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+        viewModel.meetingTotalTime.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+            Log.d("StartProgressMeetingFragment", "meetingTotalTime: $it")
+            meetingTotalTime = it
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
