@@ -49,8 +49,10 @@ class AiPmViewModel
                         _progressMeetingCheckbox.value,
                     ).onSuccess {
                         _progressMeetingResultData.value = it
+                        _summarySuccess.value = true
                     }.onFailure {
                         Timber.d(it)
+                        _summarySuccess.value = false
                     }
             }
         }
@@ -63,12 +65,10 @@ class AiPmViewModel
                     result
                         .onSuccess {
                             _meetingSummaryResultText.value = UiState.Success(it)
-                            _summarySuccess.value = true
                         }.onFailure {
                             _meetingSummaryResultText.value =
                                 UiState.Failure(it.message ?: "Unknown error")
                             Timber.d(it)
-                            _summarySuccess.value = false
                         }
                 } catch (e: Exception) {
                     _meetingSummaryResultText.value = UiState.Failure(e.message ?: "Unknown error")

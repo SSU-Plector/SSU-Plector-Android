@@ -33,7 +33,7 @@ class ProgressMeetingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         clickListnerSubmitButton()
-        resultSummarySuccess()
+
     }
 
     private fun clickListnerSubmitButton() {
@@ -67,20 +67,6 @@ class ProgressMeetingFragment : Fragment() {
             participants = participantsInt,
         )
         viewModel.updateProgressMeetingCheckbox(setProgressMeetingInfo, progressMeetingCheckbox)
-    }
-
-    private fun resultSummarySuccess() {
-        viewModel.summarySuccess.onEach { success ->
-             if (success) {
-                 navigateToStartMeeting()
-            } else {
-                Log.e("MeetingSummaryFragment", "Meeting summary failed")
-            }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-    }
-
-    private fun navigateToStartMeeting() {
-
     }
 
     private fun minuteToMs(minute: Int) = minute * 60000
