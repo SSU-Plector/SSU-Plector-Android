@@ -62,31 +62,6 @@
         app:layout_constraintTop_toBottomOf="@+id/iv_file_upload" />
 
     <TextView
-        android:id="@+id/tv_upload_file_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_file_upload"
-        app:layout_constraintTop_toTopOf="@+id/iv_file_upload"
-        tools:text="음성 파일" />
-
-    <TextView
-        android:id="@+id/iv_meeting_result"
-        android:layout_width="150dp"
-        android:layout_height="30dp"
-        android:background="@drawable/submit_button_background"
-        android:fontFamily="@font/pretendardsemibold"
-        android:gravity="center"
-        android:text="@string/iv_meeting_result"
-        android:textColor="@color/olive_light_gray"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_file_upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_file_upload"
-        app:layout_constraintTop_toBottomOf="@+id/tv_upload_file_name" />
-
-    <TextView
         android:id="@+id/ai_pm_summary_meeting_result_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -99,7 +74,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_meeting_result" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_file_upload" />
 
     <TextView
         android:id="@+id/ai_pm_summary_meeting_result"
