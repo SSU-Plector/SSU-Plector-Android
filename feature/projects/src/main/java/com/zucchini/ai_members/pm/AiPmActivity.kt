@@ -12,6 +12,11 @@ class AiPmActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAiPmBinding
     private val viewModel: AiPmViewModel by viewModels()
 
+    override fun onResume() {
+        super.onResume()
+        initFragmentView()
+
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityAiPmBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -50,5 +55,12 @@ class AiPmActivity : AppCompatActivity() {
                 }
             },
         )
+    }
+
+    private fun initFragmentView() {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(binding.vpAiPm.id, MeetingSummaryFragment())
+            .commit()
     }
 }
