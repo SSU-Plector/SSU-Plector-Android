@@ -79,5 +79,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ai_pm_summary_meeting_result_title">요약 결과 확인하기</string>
     <string name="fail_to_summary">회의록이 요약되지 않았습니다. 음성파일을 다시 업로드 해주세요.</string>
+    <string name="ai_pm_title">프로젝트 매니저 AI</string>
+    <string name="ai_pm_description">오늘의 PM을 담당하게된 AI입니다!\n오늘의 회의는 아래와 같이 진행돼요.\n버튼을 클릭 시 제가 말하며 회의를 진행해요.\n각 회의 안건 별로 분배된 시간대로 타이머도 보여드릴게요.</string>
+    <string name="tv_meeting_progress_title">오늘의 회의 목차</string>
+    <string name="set_timer">00:00</string>
+    <string name="tv_meeting_progress">팀원 자기소개 진행 : %s분\n아이스브레이킹 : %s분\n브레인스토밍 : %s분\n주제 선정 : %s분\n진행상황 공유 : %s분\n역할 분담 : %s분\n트러블 슈팅 : %s분\n현 프로젝트에 대한 피드백 : %s분</string>
 
 </resources>

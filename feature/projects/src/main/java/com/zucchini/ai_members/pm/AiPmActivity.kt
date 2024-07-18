@@ -73,13 +73,14 @@ class AiPmActivity : AppCompatActivity() {
     }
 
     private fun resultSummarySuccess() {
-        viewModel.summarySuccess.onEach { success ->
-            if (success) {
-                navigateToStartMeeting()
-            } else {
-                Log.e("MeetingSummaryFragment", "Meeting summary failed")
-            }
-        }.launchIn(lifecycleScope)
+        viewModel.summarySuccess
+            .onEach { success ->
+                if (success) {
+                    navigateToStartMeeting()
+                } else {
+                    Log.e("MeetingSummaryFragment", "Meeting summary failed")
+                }
+            }.launchIn(lifecycleScope)
     }
 
     private fun navigateToStartMeeting() {
