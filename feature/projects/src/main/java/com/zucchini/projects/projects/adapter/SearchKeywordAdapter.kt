@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.Keyword
+import com.zucchini.domain.model.projects.Keyword
 import com.zucchini.feature.projects.databinding.ItemSearchKeywordBinding
 import com.zucchini.view.ItemDiffCallback
 

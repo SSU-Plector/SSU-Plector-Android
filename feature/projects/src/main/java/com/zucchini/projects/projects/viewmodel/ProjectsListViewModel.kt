@@ -2,8 +2,8 @@ package com.zucchini.projects.projects.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zucchini.domain.model.ProjectListInfoInList
-import com.zucchini.domain.model.SortOption
+import com.zucchini.domain.model.projects.ProjectListInfoInList
+import com.zucchini.domain.model.projects.SortOption
 import com.zucchini.domain.repository.ProjectsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

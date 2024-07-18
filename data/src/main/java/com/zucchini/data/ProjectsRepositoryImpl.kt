@@ -1,8 +1,8 @@
 package com.zucchini.data
 
 import com.sample.network.service.ProjectsService
-import com.zucchini.domain.model.ProjectsDetailModel
-import com.zucchini.domain.model.ProjectsListModel
+import com.zucchini.domain.model.projects.ProjectsDetailModel
+import com.zucchini.domain.model.projects.ProjectsListModel
 import com.zucchini.domain.repository.ProjectsRepository
 import com.zucchini.mapper.toProjectsDetailModel
 import com.zucchini.mapper.toProjectsListModel

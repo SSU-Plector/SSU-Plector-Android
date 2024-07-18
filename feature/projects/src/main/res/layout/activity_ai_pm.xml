@@ -35,18 +35,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!--
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar"
-            android:src="@drawable/ai_pm"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            />
-        -->
-
         <TextView
             android:id="@+id/ai_pm_summary_meeting_title"
             android:layout_width="match_parent"
@@ -178,6 +166,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="120"
+            android:inputType="number"
             android:textColor="@color/olive_black"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@+id/ai_pm_meeting_progress_total_time_title"
@@ -203,6 +192,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:hint="4"
+            android:inputType="number"
             android:textColor="@color/olive_black"
             android:textSize="13sp"
             app:layout_constraintStart_toStartOf="@+id/ai_pm_meeting_progress_participants_title"
@@ -462,10 +452,10 @@
             android:background="@drawable/submit_button_background"
             android:fontFamily="@font/pretendardbold"
             android:gravity="center"
-            android:textSize="15sp"
             android:text="PM의 회의진행 시작"
             android:textAlignment="center"
             android:textColor="@color/white"
+            android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

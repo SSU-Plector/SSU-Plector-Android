@@ -1,4 +1,4 @@
-package com.zucchini.domain.model
+package com.zucchini.domain.model.developers
 
 data class DevelopersListModel(
     val currentElement: Int,

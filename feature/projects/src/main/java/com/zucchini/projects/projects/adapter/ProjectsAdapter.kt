@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.zucchini.domain.model.ProjectListInfoInList
+import com.zucchini.domain.model.projects.ProjectListInfoInList
 import com.zucchini.feature.projects.databinding.ItemProjectsBinding
 import com.zucchini.projects.projects.ProjectDetailActivity
 import com.zucchini.view.ItemDiffCallback

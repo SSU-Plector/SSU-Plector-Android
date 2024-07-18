@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.load
 import com.zucchini.core.designsystem.R
-import com.zucchini.domain.model.ProjectsDetailModel
+import com.zucchini.domain.model.projects.ProjectsDetailModel
 import com.zucchini.feature.projects.databinding.ActivityProjectDetailBinding
 import com.zucchini.projects.projects.adapter.ProjectDetailDevAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectDetailViewModel
