@@ -15,8 +15,8 @@ class AiPmActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         initFragmentView()
-
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityAiPmBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
