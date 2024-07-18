@@ -1,7 +1,9 @@
 package com.zucchini.data
 
+import android.util.Log
 import com.sample.network.service.AiService
 import com.zucchini.domain.model.ai.ProgressMeeting
+import com.zucchini.domain.model.ai.ProgressMeetingInfo
 import com.zucchini.domain.model.ai.SetProgressMeeting
 import com.zucchini.domain.repository.AiRepository
 import com.zucchini.mapper.toMeetingProgress
@@ -13,14 +15,20 @@ class AiRepositoryImpl
     constructor(
         private val authService: AiService,
     ) : AiRepository {
-        override suspend fun getProgressMeetingData(setProgressMeeting: SetProgressMeeting): Result<ProgressMeeting> =
-            runCatching {
+
+        override suspend fun getProgressMeetingData(
+            setProgressMeeting: SetProgressMeeting?,
+            progressMeetingInfo: ProgressMeetingInfo,
+        ): Result<ProgressMeeting> {
+            return runCatching {
                 authService
                     .getMeetingProgress(
-                        setProgressMeeting.progressMeetingInfo.toMeetingProgressRequest(),
-                        setProgressMeeting.meetingTime,
-                        setProgressMeeting.participants,
+                        progressMeetingInfo.toMeetingProgressRequest(),
+                        setProgressMeeting?.meetingTime,
+                        setProgressMeeting?.participants,
                     ).data
                     .toMeetingProgress()
             }
+            Log.d("AiRepositoryImpl", "getProgressMeetingData: ${progressMeetingInfo.toMeetingProgressRequest()}")
+        }
     }

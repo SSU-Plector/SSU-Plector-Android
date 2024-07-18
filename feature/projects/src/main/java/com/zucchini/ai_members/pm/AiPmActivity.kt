@@ -3,7 +3,7 @@ package com.zucchini.ai_members.pm
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.zucchini.domain.model.ai.SetProgressMeeting
+import com.google.android.material.tabs.TabLayout
 import com.zucchini.feature.projects.databinding.ActivityAiPmBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,41 +17,38 @@ class AiPmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        updateProgressInfo()
-        clickProgressMeetingResult()
+        clickTabListner()
     }
 
-    private fun updateProgressInfo() {
-        val progressMeetingInfo =
-            SetProgressMeeting.ProgressMeetingInfo(
-                introduceMyself = binding.cbAiPmMeetingProgressIntroduceMyself.isChecked,
-                iceBreaking = binding.cbAiPmMeetingProgressIceBreaking.isChecked,
-                brainstorming = binding.cbAiPmMeetingProgressBrainsTorming.isChecked,
-                topicSelection = binding.cbAiPmMeetingProgressTopic.isChecked,
-                progressSharing = binding.cbAiPmMeetingProgressProgress.isChecked,
-                roleDivision = binding.cbAiPmMeetingProgressRole.isChecked,
-                troubleShooting = binding.cbAiPmMeetingProgressTroubleshooting.isChecked,
-                feedback = binding.cbAiPmMeetingProgressFeedback.isChecked,
-            )
-        val setProgressMeeting =
-            SetProgressMeeting(
-                meetingTime =
-                    binding.etProgressTotalTime.text
-                        .toString()
-                        .toInt(),
-                participants =
-                    binding.etProgressParticipants.text
-                        .toString()
-                        .toInt(),
-                progressMeetingInfo = progressMeetingInfo,
-            )
+    private fun clickTabListner() {
+        binding.tlAiPm.addOnTabSelectedListener(
+            object : TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    when (tab?.position) {
+                        0 -> {
+                            supportFragmentManager
+                                .beginTransaction()
+                                .replace(binding.vpAiPm.id, MeetingSummaryFragment())
+                                .commit()
+                        }
 
-        viewModel.updateProgressMeetingInfo(setProgressMeeting)
-    }
+                        1 -> {
+                            supportFragmentManager
+                                .beginTransaction()
+                                .replace(binding.vpAiPm.id, ProgressMeetingFragment())
+                                .commit()
+                        }
+                    }
+                }
 
-    private fun clickProgressMeetingResult() {
-        binding.btnSubmit.setOnClickListener {
-            viewModel.sendProgressMeetingInfo()
-        }
+                override fun onTabReselected(tab: TabLayout.Tab?) {
+                    // Handle tab reselect
+                }
+
+                override fun onTabUnselected(tab: TabLayout.Tab?) {
+                    // Handle tab unselect
+                }
+            },
+        )
     }
 }

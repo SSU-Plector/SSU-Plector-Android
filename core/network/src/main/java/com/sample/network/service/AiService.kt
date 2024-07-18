@@ -16,7 +16,7 @@ interface AiService {
     @GET("/api/assistant/pm/meeting")
     suspend fun getMeetingProgress(
         @Query("pmRequestDTO") setMeetingProgress: MeetingProgressRequest,
-        @Query("time") time : Int,
-        @Query("numberOfParticipants") participants : Int,
+        @Query("time") time : Int?,
+        @Query("numberOfParticipants") participants : Int?,
     ): BaseResponse<MeetingProgressResponse>
 }
