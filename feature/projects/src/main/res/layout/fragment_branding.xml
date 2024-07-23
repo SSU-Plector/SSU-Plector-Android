@@ -1,17 +1,111 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/ai_designer_branding_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="start"
+        android:text="@string/ai_designer_branding_title"
+        android:textColor="@color/olive_black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ai_designer_branding_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/pretendardregular"
+        android:gravity="start"
+        android:text="@string/ai_designer_branding_description"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_designer_branding_title" />
+
+    <EditText
+        android:id="@+id/et_branding_description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/projects_background_olive"
+        android:gravity="start"
+        android:hint="@string/et_branding_description_hint"
+        android:padding="10dp"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_designer_branding_description" />
+
+    <TextView
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/submit_button_background"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="center"
+        android:text="@string/btn_submit_branding"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_branding_description" />
+
+    <TextView
+        android:id="@+id/ai_designer_branding_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="start"
+        android:text="@string/ai_designer_branding_result_title"
+        android:textColor="@color/olive_black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
+
+    <TextView
+        android:id="@+id/ai_designer_branding_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="15dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/projects_background_olive"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="start"
+        android:textColor="@color/olive_black"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_designer_branding_result_title" />
+
+    <ProgressBar
+        android:id="@+id/loading_progressBar"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="블애ㅐ"/>
-
-
-
+        app:layout_constraintBottom_toBottomOf="@+id/ai_designer_branding_result"
+        app:layout_constraintStart_toStartOf="@+id/ai_designer_branding_result"
+        app:layout_constraintEnd_toEndOf="@+id/ai_designer_branding_result"
+        app:layout_constraintTop_toTopOf="@+id/ai_designer_branding_result" />
 </androidx.constraintlayout.widget.ConstraintLayout>

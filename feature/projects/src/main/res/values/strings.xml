@@ -86,5 +86,10 @@
     <string name="tv_meeting_progress">전체 회의 시간 : %s분\n팀원 자기소개 진행 : %s분\n아이스브레이킹 : %s분\n브레인스토밍 : %s분\n주제 선정 : %s분\n진행상황 공유 : %s분\n역할 분담 : %s분\n트러블 슈팅 : %s분\n현 프로젝트에 대한 피드백 : %s분</string>
     <string name="ai_designer_make_branding_title">브랜딩 만들기</string>
     <string name="ai_designer_make_image_title">이미지 생성하기</string>
+    <string name="ai_designer_branding_title">프로젝트 브랜딩 정하기</string>
+    <string name="ai_designer_branding_description">프로젝트에 대한 설명을 작성하고, 원하는 브랜딩을 알려주면 디자이너 AI가 브랜딩을 제작해줘요!</string>
+    <string name="ai_designer_branding_result_title">브랜딩 결과 확인하기</string>
+    <string name="et_branding_description_hint">브랜딩을 원하는 프로젝트에 대해 설명해주세요!</string>
+    <string name="btn_submit_branding">브랜딩 요청하기</string>
 
 </resources>
