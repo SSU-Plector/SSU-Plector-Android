@@ -29,4 +29,14 @@ interface AiService {
     suspend fun sendMeetingRecordFile(
         @Part file: MultipartBody.Part,
     ): BaseResponse<String>
+
+    @GET("/api/assistant/designer/branding")
+    suspend fun getBrandingData(
+        @Query("projectInfo") brandingTextRequest : String?,
+    ): BaseResponse<String>
+
+    @GET("/api/assistant/designer/makeImage")
+    suspend fun getProjectImageData(
+        @Query("imageInfo") imageTextRequest : String?,
+    ): BaseResponse<String>
 }

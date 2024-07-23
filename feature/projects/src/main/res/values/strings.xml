@@ -94,8 +94,10 @@
     <string name="ai_designer_image_result_title">이미지 확인하기</string>
     <string name="et_branding_description_hint">브랜딩을 원하는 프로젝트에 대해 설명해주세요!</string>
     <string name="et_image_description_hint">원하는 이미지에 대해 설명해주세요!</string>
-    <string name="btn_submit_branding">브랜딩 요청하기</string>
+    <string name="btn_submit_branding">브랜딩 요청하기&#8599;</string>
     <string name="btn_submit_image">이미지 요청하기</string>
     <string name="ai_designer_image_title">프로젝트 이미지 생성하기</string>
+    <string name="loading">Loading...</string>
+    <string name="fail_to_branding">브랜딩 생성에 실패했어요. 다시 시도해주세요.</string>
 
 </resources>

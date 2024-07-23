@@ -41,4 +41,14 @@ constructor(
             authService.sendMeetingRecordFile(body).data
         }
     }
+
+    override suspend fun getProjectBranding(projectInfoTextRequest: String?): Result<String> =
+        runCatching {
+            authService.getBrandingData(projectInfoTextRequest).data
+        }
+
+    override suspend fun getProjectImage(projectImageRequest: String?): Result<String> =
+        runCatching {
+            authService.getProjectImageData(projectImageRequest).data
+        }
 }
