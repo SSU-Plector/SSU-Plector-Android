@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.sample.network.datastore.NetworkPreference
-import com.zucchini.domain.model.SubmitDevInfo
+import com.zucchini.domain.model.submit.SubmitDevInfo
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivitySubmitDevBinding
 import com.zucchini.projects.MainActivity

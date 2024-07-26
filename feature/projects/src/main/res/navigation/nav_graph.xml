@@ -12,7 +12,11 @@
         android:name="com.zucchini.projects.projects.ProjectsFragment"
         android:label="Projects Fragment" />
     <fragment
+        android:id="@+id/ai_members_dest"
+        android:name="com.zucchini.ai_members.AiMembersFragment"
+        android:label="AI Members Fragment" />
+    <fragment
         android:id="@+id/mypage_dest"
-        android:name="com.zucchini.projects.mypage.MypageFragment"
+        android:name="com.zucchini.mypage.MypageFragment"
         android:label="MyPage Fragment" />
 </navigation>

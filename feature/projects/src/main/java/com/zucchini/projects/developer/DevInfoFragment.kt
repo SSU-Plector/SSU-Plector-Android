@@ -10,7 +10,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.zucchini.domain.model.KeywordList
+import com.zucchini.domain.model.projects.KeywordList
 import com.zucchini.feature.projects.databinding.FragmentDevInfoBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.developer.adapter.DeveloperInfoAdapter

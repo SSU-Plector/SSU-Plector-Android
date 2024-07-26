@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.zucchini.domain.model.ProjectsDetailModel
+import com.zucchini.domain.model.projects.ProjectsDetailModel
 import com.zucchini.feature.projects.databinding.ItemProjectDetailDevBinding
 import com.zucchini.projects.developer.DevDetailActivity
 import com.zucchini.view.ItemDiffCallback

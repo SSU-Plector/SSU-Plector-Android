@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import coil.load
 import com.zucchini.core.designsystem.R
-import com.zucchini.domain.model.ProjectsDetailModel
+import com.zucchini.domain.model.projects.ProjectsDetailModel
 import com.zucchini.feature.projects.databinding.ActivityProjectDetailBinding
 import com.zucchini.projects.projects.adapter.ProjectDetailDevAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectDetailViewModel
@@ -63,14 +63,13 @@ class ProjectDetailActivity : AppCompatActivity() {
             .flowWithLifecycle(lifecycle)
             .onEach {
                 adapter.submitList(it)
-            }
-            .launchIn(lifecycleScope)
+            }.launchIn(lifecycleScope)
 
-        viewModel.projectsDetail.flowWithLifecycle(lifecycle)
+        viewModel.projectsDetail
+            .flowWithLifecycle(lifecycle)
             .onEach {
                 bindProjectDetailView(it)
-            }
-            .launchIn(lifecycleScope)
+            }.launchIn(lifecycleScope)
     }
 
     private fun bindProjectDetailView(it: ProjectsDetailModel?) {
@@ -81,8 +80,9 @@ class ProjectDetailActivity : AppCompatActivity() {
             ) {
                 size(180, 180)
             }
-            val projectGithubLink = it?.githubLink
-                ?: getString(com.zucchini.feature.projects.R.string.github_default_link)
+            val projectGithubLink =
+                it?.githubLink
+                    ?: getString(com.zucchini.feature.projects.R.string.github_default_link)
 
             tvGithub.paintFlags = Paint.UNDERLINE_TEXT_FLAG
             tvAppLink.paintFlags = Paint.UNDERLINE_TEXT_FLAG
@@ -126,9 +126,7 @@ class ProjectDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun ActivityProjectDetailBinding.navigateToProjectGithubLink(
-        projectGithubLink: String?,
-    ) {
+    private fun ActivityProjectDetailBinding.navigateToProjectGithubLink(projectGithubLink: String?) {
         tvGithub.setOnClickListener {
             // TODO : Github 링크 형식이 올바르지 않는 경우는 어떻게 할지?
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectGithubLink))
@@ -136,27 +134,21 @@ class ProjectDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun ActivityProjectDetailBinding.navigateToProjectLandingPageLink(
-        projectLandingPageLink: String?,
-    ) {
+    private fun ActivityProjectDetailBinding.navigateToProjectLandingPageLink(projectLandingPageLink: String?) {
         tvLandingLink.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectLandingPageLink))
             startActivity(intent)
         }
     }
 
-    private fun ActivityProjectDetailBinding.navigateToProjectAppLink(
-        projectAppLink: String?,
-    ) {
+    private fun ActivityProjectDetailBinding.navigateToProjectAppLink(projectAppLink: String?) {
         tvAppLink.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectAppLink))
             startActivity(intent)
         }
     }
 
-    private fun ActivityProjectDetailBinding.navigateToProjectWebLink(
-        projectWebLink: String?,
-    ) {
+    private fun ActivityProjectDetailBinding.navigateToProjectWebLink(projectWebLink: String?) {
         tvWebLink.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectWebLink))
             startActivity(intent)

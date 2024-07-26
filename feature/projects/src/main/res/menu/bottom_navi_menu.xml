@@ -10,6 +10,11 @@
         android:icon="@drawable/projects_navi_24"
         android:title="@string/project" />
     <item
+        android:id="@+id/ai_members_dest"
+        android:fontFamily="@font/pretendardbold"
+        android:icon="@drawable/ai_members_bottom_navi_24"
+        android:title="@string/ai_members_dest" />
+    <item
         android:id="@+id/mypage_dest"
         android:fontFamily="@font/pretendardbold"
         android:icon="@drawable/apply_navi_24"

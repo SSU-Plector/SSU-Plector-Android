@@ -13,8 +13,8 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zucchini.core.designsystem.R
-import com.zucchini.domain.model.KeywordList
-import com.zucchini.domain.model.SortOption
+import com.zucchini.domain.model.projects.KeywordList
+import com.zucchini.domain.model.projects.SortOption
 import com.zucchini.feature.projects.databinding.FragmentProjectsBinding
 import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.projects.adapter.ProjectsAdapter

@@ -1,7 +1,7 @@
 package com.zucchini.mapper
 
 import com.sample.network.request.CreateDevelopersRequest
-import com.zucchini.domain.model.SubmitDevInfo
+import com.zucchini.domain.model.submit.SubmitDevInfo
 
 internal fun SubmitDevInfo.toCreateDevelopersRequest(): CreateDevelopersRequest {
     return CreateDevelopersRequest(

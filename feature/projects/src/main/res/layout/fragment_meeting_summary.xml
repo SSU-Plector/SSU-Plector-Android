@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/ai_pm_summary_meeting_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="start"
+        android:text="@string/ai_pm_summary_meeting_title"
+        android:textColor="@color/olive_black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/ai_pm_summary_meeting_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/pretendardregular"
+        android:gravity="start"
+        android:text="@string/ai_pm_summary_meeting_description"
+        android:textColor="@color/gray2"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_pm_summary_meeting_title" />
+
+    <ImageView
+        android:id="@+id/iv_file_upload"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/file_upload_icon_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_pm_summary_meeting_description" />
+
+    <TextView
+        android:id="@+id/tv_file_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/pretendardregular"
+        android:gravity="center"
+        android:text="@string/tv_file_upload"
+        android:textColor="@color/olive_black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/iv_file_upload"
+        app:layout_constraintStart_toStartOf="@+id/iv_file_upload"
+        app:layout_constraintTop_toBottomOf="@+id/iv_file_upload" />
+
+    <TextView
+        android:id="@+id/ai_pm_summary_meeting_result_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/pretendardbold"
+        android:gravity="start"
+        android:text="@string/ai_pm_summary_meeting_result_title"
+        android:textColor="@color/olive_black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_file_upload" />
+
+    <TextView
+        android:id="@+id/ai_pm_summary_meeting_result"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/projects_background_olive"
+        android:fontFamily="@font/pretendardregular"
+        android:gravity="start"
+        android:padding="10dp"
+        android:textColor="@color/olive_black"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ai_pm_summary_meeting_result_title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.zucchini.domain.model
+package com.zucchini.domain.model.projects
 
 enum class SortOption(val displayName: String) {
     RECENT("recent"),

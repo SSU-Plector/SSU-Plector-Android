@@ -1,4 +1,4 @@
-package com.zucchini.domain.model
+package com.zucchini.domain.model.submit
 
 data class SubmitDevInfo(
     val devGithub: String,
