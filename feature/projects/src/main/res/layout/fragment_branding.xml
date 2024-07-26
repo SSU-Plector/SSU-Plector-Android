@@ -12,11 +12,11 @@
             android:id="@+id/iv_ai_designer"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/ai_designer"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ai_designer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/ai_designer_branding_title"
@@ -28,10 +28,10 @@
             android:text="@string/ai_designer_branding_title"
             android:textColor="@color/olive_black"
             android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_ai_designer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_ai_designer"
-            app:layout_constraintTop_toTopOf="@+id/iv_ai_designer"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_ai_designer"/>
+            app:layout_constraintTop_toTopOf="@+id/iv_ai_designer" />
 
         <TextView
             android:id="@+id/ai_designer_branding_description"
@@ -58,9 +58,9 @@
             android:background="@drawable/projects_background_olive"
             android:gravity="start"
             android:hint="@string/et_branding_description_hint"
-            android:textColorHint="@color/gray2"
             android:padding="10dp"
             android:textColor="@color/olive_black"
+            android:textColorHint="@color/gray2"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,10 +74,10 @@
             android:layout_marginBottom="30dp"
             android:fontFamily="@font/pretendardbold"
             android:gravity="center"
-            android:text="@string/btn_submit_branding"
-            android:paddingEnd="30dp"
-            android:paddingStart="15dp"
             android:paddingVertical="10dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="30dp"
+            android:text="@string/btn_submit_branding"
             android:textAlignment="center"
             android:textColor="@color/olive_black"
             android:textSize="15sp"
@@ -88,30 +88,29 @@
             android:id="@+id/iv_ai_designer_result"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_submit"
-            android:src="@drawable/ai_designer"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="30dp"
+            android:src="@drawable/ai_designer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
 
         <TextView
             android:id="@+id/ai_designer_branding_result_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:fontFamily="@font/pretendardbold"
             android:gravity="start"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_ai_designer_result"
             android:text="@string/ai_designer_branding_result_title"
             android:textColor="@color/olive_black"
             android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_ai_designer_result"
             app:layout_constraintStart_toEndOf="@+id/iv_ai_designer_result"
             app:layout_constraintTop_toTopOf="@+id/iv_ai_designer_result" />
 
         <TextView
             android:id="@+id/ai_designer_branding_result"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
             android:layout_marginVertical="15dp"
@@ -126,6 +125,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ai_designer_branding_result_title"
             tools:text="@string/default_link" />
+
+        <ImageView
+            android:id="@+id/tv_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/pretendardregular"
+            android:gravity="start"
+            android:layout_marginHorizontal="10dp"
+            android:src="@drawable/file_copy_24"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ai_designer_branding_result_title"
+            app:layout_constraintStart_toEndOf="@+id/ai_designer_branding_result_title"
+            app:layout_constraintTop_toTopOf="@+id/ai_designer_branding_result_title" />
 
         <ProgressBar
             android:id="@+id/loading_progressBar"

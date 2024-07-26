@@ -1,19 +1,17 @@
 package com.zucchini.ai_members.designer.image
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import coil.load
 import com.zucchini.ai_members.designer.AiDesignerViewModel
 import com.zucchini.feature.projects.databinding.FragmentImageDesignBinding
-import com.zucchini.feature.projects.databinding.FragmentStartProgressMeetingBinding
 import com.zucchini.uistate.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -47,27 +45,35 @@ class ImageDesignFragment : Fragment() {
     }
 
     private fun collectImagePath() {
-        viewModel.projectImagePath.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach { uiState ->
-            when (uiState) {
-                is UiState.Initial -> {
-                    // 초기 화면
-                    binding.loadingProgressBar.isVisible = false
-                }
-                is UiState.Loading -> {
-                    binding.loadingProgressBar.isVisible = true
-                    binding.ivAiDesignerImageResult.isVisible = false
-                }
-                is UiState.Success -> {
-                    binding.loadingProgressBar.isVisible = false
-                    binding.ivAiDesignerImageResult.isVisible = true
-                    binding.ivAiDesignerImageResult.load(uiState.data) {
-                        crossfade(true)
+        viewModel.projectImagePath.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach { uiState ->
+                when (uiState) {
+                    is UiState.Initial -> {
+                        // 초기 화면
+                        binding.loadingProgressBar.isVisible = false
+                        binding.tvFileDownload.isVisible = false
+                    }
+
+                    is UiState.Loading -> {
+                        binding.loadingProgressBar.isVisible = true
+                        binding.ivAiDesignerImageResult.isVisible = false
+                        binding.tvFileDownload.isVisible = false
+                    }
+
+                    is UiState.Success -> {
+                        binding.loadingProgressBar.isVisible = false
+                        binding.ivAiDesignerImageResult.isVisible = true
+                        binding.tvFileDownload.isVisible = true
+                        binding.ivAiDesignerImageResult.load(uiState.data) {
+                            crossfade(true)
+                        }
+                    }
+
+                    is UiState.Failure -> {
+                        binding.tvFileDownload.isVisible = false
+                        binding.loadingProgressBar.isVisible = false
                     }
                 }
-                is UiState.Failure -> {
-                    binding.loadingProgressBar.isVisible = false
-                }
-            }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 }

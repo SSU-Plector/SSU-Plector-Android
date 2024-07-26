@@ -53,18 +53,22 @@ class BrandingFragment : Fragment() {
                     // 초기 화면
                     binding.aiDesignerBrandingResult.isVisible = false
                     binding.loadingProgressBar.isVisible = false
+                    binding.tvCopy.isVisible = false
                 }
                 is UiState.Loading -> {
+                    binding.tvCopy.isVisible = false
                     binding.aiDesignerBrandingResult.isVisible = false
                     binding.loadingProgressBar.isVisible = true
                     binding.aiDesignerBrandingResult.text = getString(R.string.loading)
                 }
                 is UiState.Success -> {
+                    binding.tvCopy.isVisible = true
                     binding.aiDesignerBrandingResult.isVisible = true
                     binding.loadingProgressBar.isVisible = false
                     binding.aiDesignerBrandingResult.text = uiState.data
                 }
                 is UiState.Failure -> {
+                    binding.tvCopy.isVisible = false
                     binding.aiDesignerBrandingResult.isVisible = false
                     binding.loadingProgressBar.isVisible = false
                     binding.aiDesignerBrandingResult.text = getString(R.string.fail_to_branding)
