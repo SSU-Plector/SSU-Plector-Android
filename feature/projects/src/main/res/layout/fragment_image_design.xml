@@ -64,14 +64,14 @@
         android:paddingStart="15dp"
         android:paddingVertical="10dp"
         android:textAlignment="center"
-        android:textColor="@color/olive_black"
+        android:textColor="@color/main_olive"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_image_description" />
 
     <TextView
         android:id="@+id/ai_designer_image_result_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
@@ -106,21 +106,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ai_designer_image_result_title" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tv_file_download"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/pretendardregular"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="@string/tv_file_download"
-        android:textColor="@color/olive_black"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        android:gravity="start"
+        android:layout_marginHorizontal="10dp"
+        android:src="@drawable/file_download_24"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ai_designer_image_result_title"
+        app:layout_constraintStart_toEndOf="@+id/ai_designer_image_result_title"
+        app:layout_constraintTop_toTopOf="@+id/ai_designer_image_result_title" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

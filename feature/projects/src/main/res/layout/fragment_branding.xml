@@ -79,7 +79,7 @@
             android:paddingEnd="30dp"
             android:text="@string/btn_submit_branding"
             android:textAlignment="center"
-            android:textColor="@color/olive_black"
+            android:textColor="@color/main_olive"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_branding_description" />
