@@ -6,6 +6,11 @@
 
     <application>
         <activity
+            android:name="com.zucchini.ai_members.matching.AiMatchingBotActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
             android:name="com.zucchini.ai_members.designer.AiDesignerActivity"
             android:exported="false"
             android:screenOrientation="portrait"

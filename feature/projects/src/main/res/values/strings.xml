@@ -100,5 +100,6 @@
     <string name="loading">Loading...</string>
     <string name="fail_to_branding">브랜딩 생성에 실패했어요. 다시 시도해주세요.</string>
     <string name="tv_copy">복사하기</string>
+    <string name="ai_matching_bot">개발자 매칭 봇</string>
 
 </resources>

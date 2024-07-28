@@ -42,5 +42,9 @@ class AiMembersFragment : Fragment() {
         binding.aiMembersDesignerButton.setOnClickListener {
             startActivity(navigationProvider.toAiDesignerMembers())
         }
+
+        binding.aiMembersMatchingButton.setOnClickListener {
+            startActivity(navigationProvider.toAiMatchingBot())
+        }
     }
 }
