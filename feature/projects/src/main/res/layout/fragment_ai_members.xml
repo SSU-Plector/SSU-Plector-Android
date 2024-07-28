@@ -44,7 +44,8 @@
     <ImageView
         android:id="@+id/ai_members_pm_button"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginTop="80dp"
         android:src="@drawable/ai_members_pm_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,11 +55,25 @@
     <ImageView
         android:id="@+id/ai_members_designer_button"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="100dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/ai_members_designer_button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ai_members_pm_button" />
+
+    <ImageView
+        android:id="@+id/ai_members_matching_button"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/ai_matching_bot_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ai_members_designer_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
