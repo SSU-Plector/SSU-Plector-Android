@@ -4,20 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/iv_ai_designer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ai_designer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/ai_designer_image_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
         android:fontFamily="@font/pretendardbold"
         android:gravity="start"
         android:text="@string/ai_designer_image_title"
         android:textColor="@color/olive_black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_ai_designer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/iv_ai_designer"
+        app:layout_constraintTop_toTopOf="@+id/iv_ai_designer" />
 
     <TextView
         android:id="@+id/ai_designer_branding_description"
@@ -69,19 +79,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_image_description" />
 
+    <ImageView
+        android:id="@+id/iv_ai_designer_result"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/ai_designer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_submit_image" />
+
     <TextView
         android:id="@+id/ai_designer_image_result_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="5dp"
         android:fontFamily="@font/pretendardbold"
         android:gravity="start"
         android:text="@string/ai_designer_image_result_title"
         android:textColor="@color/olive_black"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_submit_image" />
+        app:layout_constraintBottom_toBottomOf="@+id/iv_ai_designer_result"
+        app:layout_constraintStart_toEndOf="@+id/iv_ai_designer_result"
+        app:layout_constraintTop_toTopOf="@+id/iv_ai_designer_result" />
 
     <ImageView
         android:id="@+id/iv_ai_designer_image_result"

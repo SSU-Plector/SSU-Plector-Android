@@ -3,21 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/iv_ai_pm"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ai_pm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ai_pm_meeting_progress_title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
         android:fontFamily="@font/pretendardbold"
         android:gravity="start"
         android:text="@string/ai_pm_meeting_progress_title"
         android:textColor="@color/olive_black"
         android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_ai_pm"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/iv_ai_pm"
+        app:layout_constraintTop_toTopOf="@+id/iv_ai_pm" />
 
     <TextView
         android:id="@+id/ai_pm_meeting_progress_description"
