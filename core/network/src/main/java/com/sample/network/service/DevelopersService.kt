@@ -3,6 +3,7 @@ package com.sample.network.service
 import com.sample.network.model.BaseResponse
 import com.sample.network.reponse.DevelopersDetailResponse
 import com.sample.network.reponse.DevelopersListResponse
+import com.sample.network.reponse.SearchDeveloperResultResponse
 import com.sample.network.request.CreateDevelopersRequest
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -31,4 +32,9 @@ interface DevelopersService {
         @Query("email") email: String? = null,
         @Body request: CreateDevelopersRequest,
     ): BaseResponse<Int>
+
+    @GET("/api/developers/search")
+    suspend fun searchDevelopers(
+        @Query("developerName") developerName: String,
+    ): BaseResponse<List<SearchDeveloperResultResponse>>
 }

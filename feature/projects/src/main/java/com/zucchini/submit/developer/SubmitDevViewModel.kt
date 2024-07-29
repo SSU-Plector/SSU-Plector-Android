@@ -1,4 +1,4 @@
-package com.zucchini.submit
+package com.zucchini.submit.developer
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

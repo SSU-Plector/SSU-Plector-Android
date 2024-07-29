@@ -14,6 +14,7 @@ import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.sample.network.datastore.NetworkPreference
 import com.zucchini.common.NavigationProvider
+import com.zucchini.dialog.TwoButtonCommonDialog
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMypageBinding
 import com.zucchini.projects.developer.DevDetailActivity
@@ -117,13 +118,34 @@ class MypageFragment : Fragment() {
 
     private fun clickLogout() {
         binding.tvLogout.setOnClickListener {
-            viewModel.logout()
+
+        }
+
+        binding.tvLogout.setOnClickListener {
+            TwoButtonCommonDialog.newInstance(
+                title = getString(R.string.logout_dialog_title),
+                confirmButtonText = getString(R.string.all_check),
+                dismissButtonText = getString(R.string.all_cancel),
+            ).apply {
+                setConfirmButtonClickListener {
+                    viewModel.logout()
+                }
+            }.showAllowingStateLoss(childFragmentManager)
         }
     }
 
     private fun clickWithdrawal() {
         binding.tvWithdrawal.setOnClickListener {
-            viewModel.withdrawal()
+            TwoButtonCommonDialog.newInstance(
+                title = getString(R.string.withdrawal_dialog_title),
+                description = getString(R.string.withdrawal_dialog_description),
+                confirmButtonText = getString(R.string.all_withdrawal),
+                dismissButtonText = getString(R.string.all_cancel),
+            ).apply {
+                setConfirmButtonClickListener {
+                    viewModel.withdrawal()
+                }
+            }.showAllowingStateLoss(childFragmentManager)
         }
     }
 }

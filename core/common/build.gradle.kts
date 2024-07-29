@@ -28,6 +28,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
 }
 
@@ -38,6 +39,8 @@ dependencies {
         implementation(coreKtx)
         implementation(appCompat)
         implementation(pagingRuntime)
+        implementation(constraintLayout)
+        implementation(recyclerView)
     }
 
     KotlinDependencies.run {

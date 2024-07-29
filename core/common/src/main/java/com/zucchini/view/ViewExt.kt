@@ -50,6 +50,9 @@ fun Context.showShortToast(message: String) {
     ).show()
 }
 
+fun Fragment.showShortToast(message: String) {
+    context?.showShortToast(message)
+}
 fun Fragment.hideKeyboard() {
     view?.let { activity?.hideKeyboard(it) }
 }

@@ -7,7 +7,7 @@ import com.zucchini.ai_members.pm.AiPmActivity
 import com.zucchini.auth.LoginActivity
 import com.zucchini.common.NavigationProvider
 import com.zucchini.projects.MainActivity
-import com.zucchini.submit.SubmitDevActivity
+import com.zucchini.submit.developer.SubmitDevActivity
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -30,9 +30,8 @@ class DefaultNavigationProvider
 
         override fun toLogin(): Intent = Intent(context, LoginActivity::class.java)
 
-        override fun toSubmitDev(): Intent = Intent(context, SubmitDevActivity::class.java)
-
         override fun toMain(): Intent = Intent(context, MainActivity::class.java)
+        override fun toSubmitDev(): Intent = Intent(context, SubmitDevActivity::class.java)
 
         override fun toAiPmMember(): Intent = Intent(context, AiPmActivity::class.java)
 
