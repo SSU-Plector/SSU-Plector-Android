@@ -28,9 +28,16 @@ constructor(
         runCatching {
             authService
                 .getMeetingProgress(
-                    progressMeetingInfo.toMeetingProgressRequest(),
-                    setProgressMeeting?.meetingTime,
-                    setProgressMeeting?.participants,
+                    introduceMyself = progressMeetingInfo.introduceMyself,
+                    iceBreaking = progressMeetingInfo.iceBreaking,
+                    brainstorming = progressMeetingInfo.brainstorming,
+                    topicSelection = progressMeetingInfo.topicSelection,
+                    progressSharing = progressMeetingInfo.progressSharing,
+                    roleDivision = progressMeetingInfo.roleDivision,
+                    troubleShooting = progressMeetingInfo.troubleShooting,
+                    feedback = progressMeetingInfo.feedback,
+                    time = setProgressMeeting?.meetingTime,
+                    participants = setProgressMeeting?.participants,
                 ).data
                 .toMeetingProgress()
         }

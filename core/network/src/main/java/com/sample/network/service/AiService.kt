@@ -21,7 +21,14 @@ interface AiService {
 
     @GET("/api/assistant/pm/meeting")
     suspend fun getMeetingProgress(
-        @Query("pmRequestDTO") setMeetingProgress: MeetingProgressRequest,
+        @Query("introduceMyself") introduceMyself : Boolean,
+        @Query("iceBreaking") iceBreaking : Boolean,
+        @Query("brainstorming") brainstorming : Boolean,
+        @Query("topicSelection") topicSelection : Boolean,
+        @Query("progressSharing") progressSharing : Boolean,
+        @Query("roleDivision") roleDivision : Boolean,
+        @Query("troubleShooting") troubleShooting : Boolean,
+        @Query("feedback") feedback : Boolean,
         @Query("time") time : Int?,
         @Query("numberOfParticipants") participants : Int?,
     ): BaseResponse<MeetingProgressResponse>
