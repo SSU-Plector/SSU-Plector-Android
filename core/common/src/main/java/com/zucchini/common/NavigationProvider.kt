@@ -13,4 +13,5 @@ interface NavigationProvider {
 
     fun toAiPmMember(): Intent
     fun toAiDesignerMembers(): Intent
+    fun toAiMatchingBot(): Intent
 }

@@ -38,9 +38,22 @@ class AiMembersFragment : Fragment() {
         binding.aiMembersPmButton.setOnClickListener {
             startActivity(navigationProvider.toAiPmMember())
         }
+        binding.tvAiPmDescription.setOnClickListener {
+            startActivity(navigationProvider.toAiPmMember())
+        }
 
         binding.aiMembersDesignerButton.setOnClickListener {
             startActivity(navigationProvider.toAiDesignerMembers())
+        }
+        binding.tvAiDesignerText.setOnClickListener {
+            startActivity(navigationProvider.toAiDesignerMembers())
+        }
+
+        binding.aiMembersMatchingButton.setOnClickListener {
+            startActivity(navigationProvider.toAiMatchingBot())
+        }
+        binding.tvAiMatchingText.setOnClickListener {
+            startActivity(navigationProvider.toAiMatchingBot())
         }
     }
 }

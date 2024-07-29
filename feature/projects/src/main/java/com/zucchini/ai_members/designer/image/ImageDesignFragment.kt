@@ -13,6 +13,7 @@ import coil.load
 import com.zucchini.ai_members.designer.AiDesignerViewModel
 import com.zucchini.feature.projects.databinding.FragmentImageDesignBinding
 import com.zucchini.uistate.UiState
+import com.zucchini.view.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -40,6 +41,7 @@ class ImageDesignFragment : Fragment() {
         val requestProjectInfo = binding.etImageDescription.text.toString()
 
         binding.btnSubmitImage.setOnClickListener {
+            hideKeyboard()
             viewModel.getProjectImage(requestProjectInfo)
         }
     }
