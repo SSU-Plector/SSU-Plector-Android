@@ -15,6 +15,7 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentBrandingBinding
 import com.zucchini.feature.projects.databinding.FragmentStartProgressMeetingBinding
 import com.zucchini.uistate.UiState
+import com.zucchini.view.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -42,6 +43,7 @@ class BrandingFragment : Fragment() {
         val requestProjectInfo = binding.etBrandingDescription.text.toString()
 
         binding.btnSubmit.setOnClickListener {
+            hideKeyboard()
             viewModel.getProjectBranding(requestProjectInfo)
         }
     }
