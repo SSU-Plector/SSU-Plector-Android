@@ -7,7 +7,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.zucchini.domain.model.DeveloperDetailInfoInListModel
+import com.zucchini.domain.model.developers.DeveloperDetailInfoInListModel
 import com.zucchini.feature.projects.databinding.ItemDeveloperBinding
 import com.zucchini.projects.developer.DevDetailActivity
 import com.zucchini.view.ItemDiffCallback

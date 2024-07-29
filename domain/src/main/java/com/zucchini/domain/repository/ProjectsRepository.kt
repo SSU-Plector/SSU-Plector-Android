@@ -1,5 +1,7 @@
 package com.zucchini.domain.repository
 
+import com.zucchini.domain.model.projects.ProjectsDetailModel
+import com.zucchini.domain.model.projects.ProjectsListModel
 import com.zucchini.domain.model.ProjectsDetailModel
 import com.zucchini.domain.model.ProjectsListModel
 import com.zucchini.domain.model.SubmitProjectInfo

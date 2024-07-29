@@ -7,6 +7,16 @@
 
     <application>
         <activity
+            android:name="com.zucchini.ai_members.designer.AiDesignerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.zucchini.ai_members.pm.AiPmActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
             android:name="com.zucchini.submit.project.SubmitProjectActivity"
             android:exported="false"
             android:screenOrientation="portrait"

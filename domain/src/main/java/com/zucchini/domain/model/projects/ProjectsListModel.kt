@@ -1,4 +1,4 @@
-package com.zucchini.domain.model
+package com.zucchini.domain.model.projects
 
 data class ProjectsListModel(
     val currentElement: Int,

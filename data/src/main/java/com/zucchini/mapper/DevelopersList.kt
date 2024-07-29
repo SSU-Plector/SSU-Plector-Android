@@ -1,8 +1,8 @@
 package com.zucchini.mapper
 
 import com.sample.network.reponse.DevelopersListResponse
-import com.zucchini.domain.model.DeveloperDetailInfoInListModel
-import com.zucchini.domain.model.DevelopersListModel
+import com.zucchini.domain.model.developers.DeveloperDetailInfoInListModel
+import com.zucchini.domain.model.developers.DevelopersListModel
 
 internal fun DevelopersListResponse.toDevelopersListModel(): DevelopersListModel {
     val developerDetailListInList = developerResponseDTOListInList.map { dto ->

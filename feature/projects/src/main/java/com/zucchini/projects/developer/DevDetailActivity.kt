@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import com.zucchini.core.designsystem.R
-import com.zucchini.domain.model.DevelopersDetailModel
+import com.zucchini.domain.model.developers.DevelopersDetailModel
 import com.zucchini.feature.projects.databinding.ActivityDevDetailBinding
 import com.zucchini.projects.developer.adapter.DevDetailProjectAdapter
 import com.zucchini.projects.developer.viewmodel.DevDetailViewModel

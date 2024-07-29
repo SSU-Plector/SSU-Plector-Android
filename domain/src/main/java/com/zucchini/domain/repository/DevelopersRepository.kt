@@ -1,5 +1,8 @@
 package com.zucchini.domain.repository
 
+import com.zucchini.domain.model.developers.DevelopersDetailModel
+import com.zucchini.domain.model.developers.DevelopersListModel
+import com.zucchini.domain.model.submit.SubmitDevInfo
 import com.zucchini.domain.model.DevelopersDetailModel
 import com.zucchini.domain.model.DevelopersListModel
 import com.zucchini.domain.model.FindDeveloperInfo

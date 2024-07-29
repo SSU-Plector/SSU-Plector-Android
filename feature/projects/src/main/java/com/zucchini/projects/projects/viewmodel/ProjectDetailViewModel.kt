@@ -2,7 +2,7 @@ package com.zucchini.projects.projects.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.zucchini.domain.model.ProjectsDetailModel
+import com.zucchini.domain.model.projects.ProjectsDetailModel
 import com.zucchini.domain.repository.ProjectsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kakao.sdk.user.UserApiClient
 import com.sample.network.datastore.NetworkPreference
-import com.zucchini.domain.model.SubmitDevInfo
+import com.zucchini.domain.model.submit.SubmitDevInfo
 import com.zucchini.domain.repository.DevelopersRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
