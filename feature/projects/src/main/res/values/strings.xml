@@ -144,5 +144,13 @@
     <string name="fail_submit_project">프로젝트 등록에 실패했습니다. 입력 값을 다시 확인해주세요.</string>
     <string name="success_sumbit_project">프로젝트가 등록습니다.</string>
     <string name="ai_matching_bot">개발자 매칭 봇</string>
+    <string name="cb_project_experience">프로젝트 경험이 있는 팀원을 찾고 있어요</string>
+    <string name="min">최소</string>
+    <string name="max">최대</string>
+    <string name="tv_student_id_title">원하는 학번의 범위를 선택해주세요.</string>
+    <string name="student_id">학번</string>
+    <string name="et_matching_description">원하는 개발자에 대해서 자유롭게 알려주세요!\n의견을 반영하여 가장 적합한 개발자를 추천해드릴게요.</string>
+    <string name="btn_matching_result_next">매칭 결과 확인하기</string>
+    <string name="tv_matching_dev_stack_title">찾고자 하는 개발자의 스택을 선택해주세요.</string>
 
 </resources>
