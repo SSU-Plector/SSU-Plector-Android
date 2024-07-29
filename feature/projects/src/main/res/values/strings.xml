@@ -164,4 +164,7 @@
     <string name="dev_tech_dialog_title">기술 스택</string>
     <string name="dev_tech_dialog_description">개발자에게 필요한 기술 스택을 선택해주세요.\n(최대 3개)</string>
     <string name="setStudentIdRange">유효한 범위의 값을 선택해주세요.</string>
+    <string name="fail_to_matching">개발자 매칭 추천에 실패하였습니다.</string>
+    <string name="ai_matching_result_title">개발자 매칭 추천 결과</string>
+    <string name="ai_matching_result_description">입력해주신 조건을 기반으로 추천된 개발자 리스트입니다.\n각 개발자를 클릭하여 개발자 상세보기로 상세 정보를 확인할 수 있어요</string>
 </resources>

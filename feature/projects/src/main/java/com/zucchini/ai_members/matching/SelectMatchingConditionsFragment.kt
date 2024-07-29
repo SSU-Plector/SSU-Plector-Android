@@ -7,13 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.NumberPicker
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
 import com.zucchini.domain.model.projects.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentSelectMatchingConditionsBinding
+import com.zucchini.uistate.UiState
 import com.zucchini.view.hideKeyboard
 import com.zucchini.view.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class SelectMatchingConditionsFragment : Fragment() {
@@ -156,6 +161,7 @@ class SelectMatchingConditionsFragment : Fragment() {
             viewModel.getMatchingResult()
         }
     }
+
     companion object {
         val MINTOTAL = 11
         val MAXTOTAL = 24

@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMatchingResultBinding
 import com.zucchini.feature.projects.databinding.FragmentSelectMatchingConditionsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @AndroidEntryPoint
 class MatchingResultFragment : Fragment() {
@@ -24,6 +28,14 @@ class MatchingResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMatchingResultBinding.inflate(inflater, container, false)
+
+        collectMatchingResult()
         return binding.root
+    }
+
+    private fun collectMatchingResult() {
+        viewModel.matchedDeveloperList.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
+
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 }
