@@ -43,37 +43,112 @@
 
     <ImageView
         android:id="@+id/ai_members_pm_button"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginHorizontal="20dp"
+        android:layout_width="90dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="80dp"
-        android:src="@drawable/ai_members_pm_button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ai_pm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
 
+    <TextView
+        android:id="@+id/tv_ai_pm_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendardbold"
+        android:text="@string/ai_pm"
+        android:textColor="@color/olive_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/ai_members_pm_button"
+        app:layout_constraintTop_toTopOf="@+id/ai_members_pm_button" />
+
+    <TextView
+        android:id="@+id/tv_ai_pm_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="@string/tv_ai_pm_description"
+        android:textColor="@color/gray2"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ai_members_pm_button"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ai_pm_text" />
+
     <ImageView
         android:id="@+id/ai_members_designer_button"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="130dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/ai_members_designer_button"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/ai_designer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ai_members_pm_button" />
 
+    <TextView
+        android:id="@+id/tv_ai_designer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendardbold"
+        android:text="@string/ai_designer"
+        android:textColor="@color/olive_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/ai_members_designer_button"
+        app:layout_constraintTop_toTopOf="@+id/ai_members_designer_button" />
+
+    <TextView
+        android:id="@+id/tv_ai_designer_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="@string/tv_ai_designer_description"
+        android:textColor="@color/gray2"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ai_members_designer_button"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ai_designer_text" />
+
     <ImageView
         android:id="@+id/ai_members_matching_button"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="80dp"
-        android:src="@drawable/ai_matching_bot_button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/matching_bot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ai_members_designer_button" />
+
+    <TextView
+        android:id="@+id/tv_ai_matching_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/pretendardbold"
+        android:text="@string/ai_matching_bot"
+        android:textColor="@color/olive_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/ai_members_matching_button"
+        app:layout_constraintTop_toTopOf="@+id/ai_members_matching_button" />
+
+    <TextView
+        android:id="@+id/tv_ai_matching_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/pretendardregular"
+        android:text="@string/tv_ai_matching_description"
+        android:textColor="@color/gray2"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ai_members_matching_button"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ai_matching_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
