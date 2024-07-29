@@ -1,10 +1,13 @@
 package com.zucchini.data
 
 import com.sample.network.service.AiService
+import com.zucchini.domain.model.ai.DeveloperMatchingInfo
+import com.zucchini.domain.model.ai.MatchingResult
 import com.zucchini.domain.model.ai.ProgressMeeting
 import com.zucchini.domain.model.ai.ProgressMeetingInfo
 import com.zucchini.domain.model.ai.SetProgressMeeting
 import com.zucchini.domain.repository.AiRepository
+import com.zucchini.mapper.toMatchingResult
 import com.zucchini.mapper.toMeetingProgress
 import com.zucchini.mapper.toMeetingProgressRequest
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -50,5 +53,21 @@ constructor(
     override suspend fun getProjectImage(projectImageRequest: String?): Result<String> =
         runCatching {
             authService.getProjectImageData(projectImageRequest).data
+        }
+
+    override suspend fun getDevelopersMatchingResult(
+        matchingInfo: DeveloperMatchingInfo,
+        developerInfo: String
+    ): Result<List<MatchingResult>> =
+        runCatching {
+            authService.getDevelopersMatching(
+                part = matchingInfo.part ?: "",
+                languageList = matchingInfo.languageList,
+                techStackList = matchingInfo.techStackList,
+                projectExperience = matchingInfo.projectExperience,
+                studentNumberMin = matchingInfo.studentNumberMin ?: 11,
+                studentNumberMax = matchingInfo.studentNumberMax ?: 11,
+                developerInfo = developerInfo,
+            ).data.toMatchingResult()
         }
 }

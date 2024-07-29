@@ -34,7 +34,6 @@ class SelectMatchingConditionsFragment : Fragment() {
         selectStacks()
         clickResultButton()
         clickProjectExperience()
-        updateAdditionalConditions()
 
         return binding.root
     }
@@ -153,7 +152,8 @@ class SelectMatchingConditionsFragment : Fragment() {
         if(binding.npMinStudentId.value > binding.npMaxStudentId.value) {
             showShortToast(getString(R.string.setStudentIdRange))
         } else {
-            // TODO : result API
+            updateAdditionalConditions()
+            viewModel.getMatchingResult()
         }
     }
     companion object {

@@ -158,10 +158,10 @@
     <string name="dev_language">주 언어&#8599;</string>
     <string name="dev_tech_stack">기술 스택&#8599;</string>
     <string name="tvDevPart_dialog_title">개발 파트</string>
-    <string name="tvDevPart_dialog_description">원하는 개발자의 개발 파트를 선택해주세요. (최대 1개)</string>
+    <string name="tvDevPart_dialog_description">원하는 개발자의 개발 파트를 선택해주세요.\n(최대 1개)</string>
     <string name="dev_language_dialog_title">주 언어</string>
-    <string name="dev_language_dialog_description">어떤 언어를 주력으로 하는 개발자가 필요한지 알려주세요. (최대 3개)</string>
+    <string name="dev_language_dialog_description">어떤 언어를 주력으로 하는 개발자가 필요한지 알려주세요.\n(최대 3개)</string>
     <string name="dev_tech_dialog_title">기술 스택</string>
-    <string name="dev_tech_dialog_description">개발자에게 필요한 기술 스택을 선택해주세요. (최대 3개)</string>
+    <string name="dev_tech_dialog_description">개발자에게 필요한 기술 스택을 선택해주세요.\n(최대 3개)</string>
     <string name="setStudentIdRange">유효한 범위의 값을 선택해주세요.</string>
 </resources>
