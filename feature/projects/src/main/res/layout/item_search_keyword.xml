@@ -16,7 +16,7 @@
         android:minWidth="0dp"
         android:minHeight="0dp"
         android:paddingHorizontal="15dp"
-        android:paddingVertical="10dp"
+        android:paddingVertical="9dp"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
