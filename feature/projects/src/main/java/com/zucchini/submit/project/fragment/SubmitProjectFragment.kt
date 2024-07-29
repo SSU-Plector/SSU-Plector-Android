@@ -20,7 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.zucchini.dialog.SelectCheckBoxCommonDialog
-import com.zucchini.domain.model.KeywordList
+import com.zucchini.domain.model.projects.KeywordList
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentSubmitProjectBinding
 import com.zucchini.submit.project.SubmitProjectActivity

@@ -1,10 +1,7 @@
 package com.zucchini.data
 
 import com.sample.network.service.DevelopersService
-import com.zucchini.domain.model.DevelopersDetailModel
-import com.zucchini.domain.model.DevelopersListModel
 import com.zucchini.domain.model.FindDeveloperInfo
-import com.zucchini.domain.model.SubmitDevInfo
 import com.zucchini.domain.model.developers.DevelopersDetailModel
 import com.zucchini.domain.model.developers.DevelopersListModel
 import com.zucchini.domain.model.submit.SubmitDevInfo
