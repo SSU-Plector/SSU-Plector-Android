@@ -29,5 +29,5 @@ data class SubmitProjectRequest(
     @SerialName("webLink")
     val webLink: String,
     @SerialName("projectDevloperList")
-    val projectDeveloperList: List<Int>
+    val projectDevloperList: List<Int>
 )

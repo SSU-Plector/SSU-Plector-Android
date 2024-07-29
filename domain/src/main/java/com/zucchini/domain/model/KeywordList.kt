@@ -34,12 +34,12 @@ object KeywordList {
     )
 
     val cooperationList = arrayListOf(
-        Keyword(keywordEnglish = "COOPERATION", keywordKorean = "Notion"),
-        Keyword(keywordEnglish = "INDIVIDUAL", keywordKorean = "Github"),
-        Keyword(keywordEnglish = "COOPERATION", keywordKorean = "Slack"),
-        Keyword(keywordEnglish = "INDIVIDUAL", keywordKorean = "Jira"),
-        Keyword(keywordEnglish = "COOPERATION", keywordKorean = "Trello"),
-        Keyword(keywordEnglish = "INDIVIDUAL", keywordKorean = "Figma"),
+        Keyword(keywordEnglish = "NOTION", keywordKorean = "Notion"),
+        Keyword(keywordEnglish = "GITHUB", keywordKorean = "Github"),
+        Keyword(keywordEnglish = "SLACK", keywordKorean = "Slack"),
+        Keyword(keywordEnglish = "JIRA", keywordKorean = "Jira"),
+        Keyword(keywordEnglish = "TRELLO", keywordKorean = "Trello"),
+        Keyword(keywordEnglish = "FIGMA", keywordKorean = "Figma"),
     )
 
     val techStackList = arrayListOf(

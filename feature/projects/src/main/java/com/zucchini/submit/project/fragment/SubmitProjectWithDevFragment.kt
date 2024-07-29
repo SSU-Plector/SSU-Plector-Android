@@ -15,10 +15,12 @@ import com.zucchini.feature.projects.databinding.FragmentSubmitProjectWithDevBin
 import com.zucchini.submit.project.SubmitProjectViewModel
 import com.zucchini.submit.project.adapter.FindDevAdapter
 import com.zucchini.view.showShortToast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class SubmitProjectWithDevFragment : Fragment() {
     private var _binding: FragmentSubmitProjectWithDevBinding? = null
     private val binding: FragmentSubmitProjectWithDevBinding get() = _binding!!
@@ -64,7 +66,11 @@ class SubmitProjectWithDevFragment : Fragment() {
             viewModel.submitProject()
             viewModel.isSuccessSubmitProject.flowWithLifecycle(lifecycle).onEach { isSuccess ->
                 if (isSuccess) {
-                    startActivity(navigationProvider.toMain())
+                    showShortToast(getString(R.string.success_sumbit_project))
+                    navigationProvider.toMain().also {
+                        startActivity(it)
+                        requireActivity().finish()
+                    }
                 } else {
                     showShortToast(getString(R.string.fail_submit_project))
                 }

@@ -15,9 +15,9 @@ internal fun SubmitProjectInfo.toSubmitProjectRequest(): SubmitProjectRequest {
         appLink = projectAppLink,
         category = projectCategoryList.get(0),
         languageList = projectLanguageList,
-        devToolList = projectTechStackList,
+        devToolList = projectCooperationList,
         techStackList = projectTechStackList,
-        projectDeveloperList = projectDeveloperList
+        projectDevloperList = projectDeveloperList
     )
 }
 
