@@ -14,6 +14,7 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentSubmitProjectWithDevBinding
 import com.zucchini.submit.project.SubmitProjectViewModel
 import com.zucchini.submit.project.adapter.FindDevAdapter
+import com.zucchini.view.hideKeyboard
 import com.zucchini.view.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -41,8 +42,15 @@ class SubmitProjectWithDevFragment : Fragment() {
         initDevInfoAdapter()
         clickSearchKeyword()
         clickSubmitButton()
+        hideKeyboardClickListener()
 
         return binding.root
+    }
+
+    private fun hideKeyboardClickListener() {
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
     }
 
     private fun initDevInfoAdapter() {

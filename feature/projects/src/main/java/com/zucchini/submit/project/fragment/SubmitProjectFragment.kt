@@ -25,6 +25,7 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentSubmitProjectBinding
 import com.zucchini.submit.project.SubmitProjectActivity
 import com.zucchini.submit.project.SubmitProjectViewModel
+import com.zucchini.view.hideKeyboard
 
 class SubmitProjectFragment : Fragment() {
     private var _binding: FragmentSubmitProjectBinding? = null
@@ -56,8 +57,15 @@ class SubmitProjectFragment : Fragment() {
         initImageSubmitView()
         initDialogClickListener()
         clickSubmitButton()
+        hideKeyboardClickListener()
 
         return binding.root
+    }
+
+    private fun hideKeyboardClickListener() {
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
     }
 
     private fun initImageSubmitView() {
