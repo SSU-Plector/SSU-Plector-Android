@@ -152,5 +152,16 @@
     <string name="et_matching_description">원하는 개발자에 대해서 자유롭게 알려주세요!\n의견을 반영하여 가장 적합한 개발자를 추천해드릴게요.</string>
     <string name="btn_matching_result_next">매칭 결과 확인하기</string>
     <string name="tv_matching_dev_stack_title">찾고자 하는 개발자의 스택을 선택해주세요.</string>
-
+    <string name="ai_matching_title">개발자 추천</string>
+    <string name="ai_matching_description">원하는 개발자의 조건을 선택 및 입력을 하면, 개발자 매칭 봇이 가장 적합한 개발자를 추천해드려요.</string>
+    <string name="dev_part">개발 파트&#8599;</string>
+    <string name="dev_language">주 언어&#8599;</string>
+    <string name="dev_tech_stack">기술 스택&#8599;</string>
+    <string name="tvDevPart_dialog_title">개발 파트</string>
+    <string name="tvDevPart_dialog_description">원하는 개발자의 개발 파트를 선택해주세요. (최대 1개)</string>
+    <string name="dev_language_dialog_title">주 언어</string>
+    <string name="dev_language_dialog_description">어떤 언어를 주력으로 하는 개발자가 필요한지 알려주세요. (최대 3개)</string>
+    <string name="dev_tech_dialog_title">기술 스택</string>
+    <string name="dev_tech_dialog_description">개발자에게 필요한 기술 스택을 선택해주세요. (최대 3개)</string>
+    <string name="setStudentIdRange">유효한 범위의 값을 선택해주세요.</string>
 </resources>
