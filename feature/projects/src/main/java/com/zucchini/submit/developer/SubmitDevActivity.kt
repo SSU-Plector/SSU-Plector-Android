@@ -1,4 +1,4 @@
-package com.zucchini.submit
+package com.zucchini.submit.developer
 
 import android.content.Intent
 import android.os.Bundle

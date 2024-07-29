@@ -10,7 +10,7 @@ import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.ActivityLoginBinding
 import com.zucchini.projects.MainActivity
 import com.zucchini.projects.adapter.IntroducePagerAdapter
-import com.zucchini.submit.SubmitDevActivity
+import com.zucchini.submit.developer.SubmitDevActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

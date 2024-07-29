@@ -56,6 +56,7 @@ dependencies {
         implementation(okHttpLoggingInterceptor)
         implementation(retrofitJsonConverter)
         implementation(timber)
+        implementation(gson)
     }
 
     TestDependencies.run {

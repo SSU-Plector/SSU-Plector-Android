@@ -3,7 +3,13 @@ package com.sample.network.service
 import com.sample.network.model.BaseResponse
 import com.sample.network.reponse.ProjectsDetailResponse
 import com.sample.network.reponse.ProjectsListResponse
+import com.sample.network.request.SubmitProjectRequest
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.GET
+import retrofit2.http.Multipart
+import retrofit2.http.POST
+import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -20,4 +26,11 @@ interface ProjectsService {
     suspend fun getProjectsDetailData(
         @Path("projectId") projectId: Int,
     ): BaseResponse<ProjectsDetailResponse>
+
+    @Multipart
+    @POST("api/projects")
+    suspend fun submitProject(
+        @Part requestDTO: MultipartBody.Part,
+        @Part image: MultipartBody.Part,
+    ): BaseResponse<Int>
 }

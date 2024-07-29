@@ -1,6 +1,7 @@
 package com.zucchini.data
 
 import com.sample.network.service.DevelopersService
+import com.zucchini.domain.model.FindDeveloperInfo
 import com.zucchini.domain.model.developers.DevelopersDetailModel
 import com.zucchini.domain.model.developers.DevelopersListModel
 import com.zucchini.domain.model.submit.SubmitDevInfo
@@ -8,6 +9,7 @@ import com.zucchini.domain.repository.DevelopersRepository
 import com.zucchini.mapper.toCreateDevelopersRequest
 import com.zucchini.mapper.toDevelopersDetailModel
 import com.zucchini.mapper.toDevelopersListModel
+import com.zucchini.mapper.toSearchDeveloperResult
 import javax.inject.Inject
 
 class DevelopersRepositoryImpl @Inject constructor(
@@ -46,6 +48,12 @@ class DevelopersRepositoryImpl @Inject constructor(
                 email,
                 submitDevInfo.toCreateDevelopersRequest(),
             ).data
+        }
+    }
+
+    override suspend fun searchDevelopers(developerName: String): Result<List<FindDeveloperInfo>> {
+        return runCatching {
+            developersService.searchDevelopers(developerName).data.toSearchDeveloperResult()
         }
     }
 }

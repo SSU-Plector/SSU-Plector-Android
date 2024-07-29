@@ -1,7 +1,6 @@
 package com.zucchini.projects.projects
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +19,7 @@ import com.zucchini.projects.adapter.PageIndicatorAdapter
 import com.zucchini.projects.projects.adapter.ProjectsAdapter
 import com.zucchini.projects.projects.adapter.SearchKeywordAdapter
 import com.zucchini.projects.projects.viewmodel.ProjectsListViewModel
+import com.zucchini.submit.project.SubmitProjectActivity
 import com.zucchini.view.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -152,14 +152,13 @@ class ProjectsFragment : Fragment() {
         binding.rvSearchKeyword.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSearchKeyword.adapter = searchKeywordAdapter
-        searchKeywordAdapter.submitList(KeywordList.searchKeyword)
+        searchKeywordAdapter.submitList(KeywordList.categoryList)
     }
 
 
     private fun initSubmitProjectButton() {
         binding.floatingActionButton.setOnClickListener {
-            val projectFormUri = getString(com.zucchini.feature.projects.R.string.project_form)
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(projectFormUri))
+            val intent = Intent(context, SubmitProjectActivity::class.java)
             startActivity(intent)
         }
     }
