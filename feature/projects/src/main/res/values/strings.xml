@@ -94,7 +94,6 @@
     <string name="ai_pm_description">오늘의 PM을 담당하게된 AI입니다!\n오늘의 회의는 아래와 같이 진행돼요.\n버튼을 클릭 시 제가 말하며 회의를 진행해요.\n각 회의 안건 별로 분배된 시간대로 타이머도 보여드릴게요.</string>
     <string name="tv_meeting_progress_title">오늘의 회의 목차</string>
     <string name="set_timer">00:00</string>
-    <string name="tv_meeting_progress">전체 회의 시간 : %s분\n팀원 자기소개 진행 : %s분\n아이스브레이킹 : %s분\n브레인스토밍 : %s분\n주제 선정 : %s분\n진행상황 공유 : %s분\n역할 분담 : %s분\n트러블 슈팅 : %s분\n현 프로젝트에 대한 피드백 : %s분</string>
     <string name="ai_designer_make_branding_title">브랜딩 만들기</string>
     <string name="ai_designer_make_image_title">이미지 생성하기</string>
     <string name="ai_designer_branding_title">프로젝트 브랜딩 정하기</string>
@@ -170,4 +169,15 @@
     <string name="tv_ai_pm_description">프로젝트 매니저(PM) AI 팀원은 회의록 요약과 회의 진행을 할 수 있어요.</string>
     <string name="tv_ai_designer_description">디자이너 AI 팀원은 프로젝트의 브랜딩과 필요한 이미지 및 캐릭터들을 만들 수 있어요.</string>
     <string name="tv_ai_matching_description">개발자 매칭 봇은 원하는 조건의 개발자 또는 프로젝트에 맞는 개발자를 추천해드립니다.</string>
+    <string name="click_meeting_start">회의 시작하기&#8599;</string>
+    <string name="minute">%s분</string>
+    <string name="tv_total_time">- 전체 회의 시간</string>
+    <string name="tv_introduce_time">- 자기소개 시간</string>
+    <string name="tv_icebreaking_time">- 아이스브레이킹 진행</string>
+    <string name="tv_brainstorming_time">- 브레인스토밍 진행</string>
+    <string name="tv_topic_time">- 주제 선정</string>
+    <string name="tv_current_progress_time">- 진행 상황 공유</string>
+    <string name="tv_trouble_shooting_time">- 트러블 슈팅</string>
+    <string name="tv_feedback_time">- 프로젝트에 대한 피드백 진행</string>
+    <string name="done">완료!</string>
 </resources>

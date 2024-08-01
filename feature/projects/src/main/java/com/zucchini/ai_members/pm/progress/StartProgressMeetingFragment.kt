@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -21,15 +22,12 @@ class StartProgressMeetingFragment : Fragment() {
 
     private val viewModel: AiPmViewModel by activityViewModels()
 
-    private var meetingTotalTime = 0
-    private var introduce = 0
-    private var iceBreaking = 0
-    private var brainstorming = 0
-    private var topicSelection = 0
-    private var sharing = 0
-    private var roleDivision = 0
-    private var troubleShooting = 0
-    private var feedback = 0
+    private val meetingList = emptyList<StartMeeting>()
+
+    data class StartMeeting(
+        val progressName:String,
+        val progressTime:Int,
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,66 +36,110 @@ class StartProgressMeetingFragment : Fragment() {
     ): View {
         _binding = FragmentStartProgressMeetingBinding.inflate(inflater, container, false)
 
-        collectProgressMinutes()
-        setMeetingIndex()
+        collectProgressMeetingInfo()
+        clickStartMeetingProgress()
 
         return binding.root
     }
 
-    private fun setMeetingIndex() {
-        val formattedText = getString(
-            R.string.tv_meeting_progress,
-            msToMinuteToString(meetingTotalTime),
-            msToMinuteToString(introduce),
-            msToMinuteToString(iceBreaking),
-            msToMinuteToString(brainstorming),
-            msToMinuteToString(topicSelection),
-            msToMinuteToString(sharing),
-            msToMinuteToString(roleDivision),
-            msToMinuteToString(troubleShooting),
-            msToMinuteToString(feedback),
-        )
-        binding.tvMeetingProgress.text = formattedText
+    private fun collectProgressMeetingInfo() {
+        viewModel.progressMeetingResultData.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+            .onEach {
+
+                Log.d("ProgressMeetingFragment", "collectProgressMeetingInfo: $it")
+
+                binding.tvTotalTimeMinute.text =
+                    getString(R.string.minute, msToMinuteToString(viewModel.meetingTotalTime.value))
+
+                if (it?.introduceMyself!! < 0) {
+                    binding.tvIntroduceMinute.isVisible = false
+                    binding.tvIntroduceTime.isVisible = false
+                } else {
+                    binding.tvIntroduceMinute.isVisible = true
+                    binding.tvIntroduceTime.isVisible = true
+                    binding.tvIntroduceMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.introduceMyself))
+                }
+
+                if (it?.iceBreaking!! < 0) {
+                    binding.tvIcebreakingMinute.isVisible = false
+                    binding.tvIcebreakingTime.isVisible = false
+                } else {
+                    binding.tvIcebreakingMinute.isVisible = true
+                    binding.tvIcebreakingTime.isVisible = true
+                    binding.tvIcebreakingMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.iceBreaking))
+                }
+
+                if (it?.brainstorming!! < 0) {
+                    binding.tvBrainstormingMinute.isVisible = false
+                    binding.tvBrainstormingTime.isVisible = false
+                } else {
+                    binding.tvBrainstormingMinute.isVisible = true
+                    binding.tvBrainstormingTime.isVisible = true
+                    binding.tvBrainstormingMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.brainstorming))
+                }
+
+                if (it?.topicSelection!! < 0) {
+                    binding.tvTopicMinute.isVisible = false
+                    binding.tvTopicTime.isVisible = false
+                } else {
+                    binding.tvTopicMinute.isVisible = true
+                    binding.tvTopicTime.isVisible = true
+                    binding.tvTopicMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.topicSelection))
+                }
+
+                if (it?.progressSharing!! < 0) {
+                    binding.tvCurrentProgressMinute.isVisible = false
+                    binding.tvCurrentProgressTime.isVisible = false
+                } else {
+                    binding.tvCurrentProgressMinute.isVisible = true
+                    binding.tvCurrentProgressTime.isVisible = true
+                    binding.tvCurrentProgressMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.progressSharing))
+                }
+
+                if (it?.roleDivision!! < 0) {
+                    binding.tvRoleMinute.isVisible = false
+                    binding.tvRoleTime.isVisible = false
+                } else {
+                    binding.tvRoleMinute.isVisible = true
+                    binding.tvRoleTime.isVisible = true
+                    binding.tvRoleMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.roleDivision))
+                }
+
+                if (it?.troubleShooting!! < 0) {
+                    binding.tvTroubleShootingMinute.isVisible = false
+                    binding.tvTroubleShootingTime.isVisible = false
+                } else {
+                    binding.tvTroubleShootingMinute.isVisible = true
+                    binding.tvTroubleShootingTime.isVisible = true
+                    binding.tvTroubleShootingMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.troubleShooting))
+                }
+
+                if (it?.feedback !!< 0) {
+                    binding.tvFeedbackMinute.isVisible = false
+                    binding.tvFeedbackTime.isVisible = false
+                } else {
+                    binding.tvFeedbackMinute.isVisible = true
+                    binding.tvFeedbackTime.isVisible = true
+                    binding.tvFeedbackMinute.text =
+                        getString(R.string.minute, msToMinuteToString(it?.feedback))
+                }
+            }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun collectProgressMinutes() {
-        viewModel.progressIntroduce.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            introduce = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    private fun msToMinuteToString(ms: Int?): String = (ms?.div(60000)).toString()
 
-        viewModel.progressIceBreaking.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            iceBreaking = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    private fun clickStartMeetingProgress() {
+        binding.tvStartMeeting.setOnClickListener {
 
-        viewModel.progressBrainstorming.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            brainstorming = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.progressTopicSelection.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            topicSelection = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.progressSharing.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            sharing = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.progressRoleDivision.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            roleDivision = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.progressTroubleShooting.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            troubleShooting = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.progressFeedback.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            feedback = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewModel.meetingTotalTime.flowWithLifecycle(viewLifecycleOwner.lifecycle).onEach {
-            Log.d("StartProgressMeetingFragment", "meetingTotalTime: $it")
-            meetingTotalTime = it
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
+            // 타이머 시작
+            // 프로그레스바 set
+        }
     }
-
-    private fun msToMinuteToString(ms: Int): String = (ms / 60000).toString()
 }

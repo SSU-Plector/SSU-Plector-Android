@@ -1,0 +1,24 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 프로그래스바의 바탕 색깔 -->
+    <item android:id="@android:id/background">
+        <shape>
+            <solid android:color="@color/gray2" />
+            <corners android:radius="6dp" />
+        </shape>
+    </item>
+
+    <!-- 프로그래스바의 진행률 색깔 선택 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <gradient
+                    android:angle="0"
+                    android:centerX="0.25"
+                    android:endColor="@color/main_olive"
+                    android:startColor="@color/main_olive" />
+                <corners
+                    android:radius="6dp"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>
