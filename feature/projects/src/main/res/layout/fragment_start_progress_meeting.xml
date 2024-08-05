@@ -363,12 +363,9 @@
             android:text="@string/done"
             android:textColor="@color/main_olive"
             android:textSize="18dp"
-            android:layout_marginBottom="30dp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pb_timer" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

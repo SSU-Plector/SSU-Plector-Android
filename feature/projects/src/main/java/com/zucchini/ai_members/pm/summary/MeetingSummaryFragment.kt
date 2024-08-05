@@ -17,6 +17,7 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -25,6 +26,7 @@ import com.zucchini.ai_members.pm.AiPmViewModel
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentMeetingSummaryBinding
 import com.zucchini.uistate.UiState
+import com.zucchini.view.showShortToast
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.io.File
@@ -163,16 +165,22 @@ class MeetingSummaryFragment : Fragment() {
             .onEach { uiState ->
                 when (uiState) {
                     is UiState.Loading -> {
-                        // 로딩 중인 경우 로딩 화면 표시
-                        // delay(10000)
+                        binding.clAiPmLoading.isVisible = true
                     }
 
                     is UiState.Success -> {
+                        binding.clAiPmLoading.isVisible = false
                         binding.aiPmSummaryMeetingResult.text = uiState.data
                     }
 
-                    else -> {
+                    is UiState.Failure -> {
+                        binding.clAiPmLoading.isVisible = false
                         binding.aiPmSummaryMeetingResult.text = getString(R.string.fail_to_summary)
+                        showShortToast(uiState.errorMessage)
+                    }
+
+                    else -> {
+                        binding.clAiPmLoading.isVisible = false
                     }
                 }
             }.launchIn(lifecycleScope)

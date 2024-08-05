@@ -197,4 +197,5 @@
     <string name="speakFeedback">지금부터 %1$s 동안 프로젝트에 대한 피드백을 진행해주세요.</string>
     <string name="roleDivisionTitle">역할 분담 진행</string>
     <string name="speakRoleDivision">지금부터 %1$s 동안 역할 분담을 진행해주세요.</string>
+    <string name="fail_to_progress">회의 진행에 문제가 생겼어요. 다시 시도해주세요.</string>
 </resources>

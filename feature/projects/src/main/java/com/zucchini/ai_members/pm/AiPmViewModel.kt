@@ -25,7 +25,7 @@ constructor(
 
     private val _progressMeetingCheckbox = MutableStateFlow(ProgressMeetingInfo())
 
-    private val _progressMeetingResultData = MutableStateFlow<ProgressMeeting?>(null)
+    private val _progressMeetingResultData = MutableStateFlow(UiState.Initial as UiState<ProgressMeeting>)
     val progressMeetingResultData = _progressMeetingResultData.asStateFlow()
 
     private val _meetingTotalTime = MutableStateFlow(0)
@@ -73,12 +73,14 @@ constructor(
 
     fun sendProgressMeetingInfo() {
         viewModelScope.launch {
+            _progressMeetingResultData.value = UiState.Loading
+
             aiPmRepository
                 .getProgressMeetingData(
                     _progressMeetingInfo.value,
                     _progressMeetingCheckbox.value,
                 ).onSuccess {
-                    _progressMeetingResultData.value = it
+                    _progressMeetingResultData.value = UiState.Success(it)
                     _summarySuccess.value = true
 
                     Log.d("AiPmViewModel", "progressMeetingResultData: $it, progressIntroduce: ${it.introduceMyself}")
@@ -94,6 +96,7 @@ constructor(
                 }.onFailure {
                     Timber.d(it)
                     _summarySuccess.value = false
+                    UiState.Failure(it.message ?: "Error")
                 }
         }
     }

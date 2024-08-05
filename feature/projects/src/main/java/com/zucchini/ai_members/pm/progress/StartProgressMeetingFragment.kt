@@ -14,6 +14,7 @@ import com.zucchini.ai_members.pm.AiPmViewModel
 import com.zucchini.domain.model.ai.ProgressMeeting
 import com.zucchini.feature.projects.R
 import com.zucchini.feature.projects.databinding.FragmentStartProgressMeetingBinding
+import com.zucchini.uistate.UiState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -65,7 +66,20 @@ class StartProgressMeetingFragment : Fragment() {
     private fun collectProgressMeetingInfo() {
         viewModel.progressMeetingResultData.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach {
-                setMeetingIndex(it)
+                when (it) {
+                    is UiState.Initial -> {
+                        // 초기 화면
+                    }
+                    is UiState.Loading -> {
+                        // 로딩 화면
+                    }
+                    is UiState.Success -> {
+                        setMeetingIndex(it.data)
+                    }
+                    is UiState.Failure -> {
+                        // 에러 화면
+                    }
+                }
             }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
