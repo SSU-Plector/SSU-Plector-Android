@@ -1,7 +1,6 @@
 package com.zucchini.ai_members.pm.progress
 
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.view.LayoutInflater
 import android.view.View
@@ -62,6 +61,7 @@ class StartProgressMeetingFragment : Fragment() {
     private fun startSpeaking(speaking: String) {
         ttsObj?.speak(speaking, TextToSpeech.QUEUE_FLUSH, null, null)
     }
+
     private fun collectProgressMeetingInfo() {
         viewModel.progressMeetingResultData.flowWithLifecycle(viewLifecycleOwner.lifecycle)
             .onEach {
@@ -70,100 +70,165 @@ class StartProgressMeetingFragment : Fragment() {
     }
 
     private fun setMeetingIndex(it: ProgressMeeting?) {
-        binding.tvTotalTimeMinute.text =
-            getString(R.string.minute, msToMinuteToString(viewModel.meetingTotalTime.value))
+        val totalTime = msToMinuteToString(viewModel.meetingTotalTime.value)
+        binding.tvTotalTimeMinute.text = totalTime
 
         if (it?.introduceMyself!! < 0) {
             binding.tvIntroduceMinute.isVisible = false
             binding.tvIntroduceTime.isVisible = false
         } else {
+            val introduceTime = msToMinuteToString(it.introduceMyself)
+
             binding.tvIntroduceMinute.isVisible = true
             binding.tvIntroduceTime.isVisible = true
-            binding.tvIntroduceMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.introduceMyself))
+            binding.tvIntroduceMinute.text = introduceTime
 
-            meetingList.add(StartMeeting("introduceMyself", it.introduceMyself!!, "자기소개를 진행해주세요."))
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.introduceTitle), it.introduceMyself!!,
+                    getString(R.string.speakIntroduce, introduceTime)
+                )
+            )
         }
 
         if (it.iceBreaking!! < 0) {
             binding.tvIcebreakingMinute.isVisible = false
             binding.tvIcebreakingTime.isVisible = false
         } else {
+            val iceBreakingTime = msToMinuteToString(it.iceBreaking)
+
             binding.tvIcebreakingMinute.isVisible = true
             binding.tvIcebreakingTime.isVisible = true
-            binding.tvIcebreakingMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.iceBreaking))
-            meetingList.add(StartMeeting("iceBreaking", it.iceBreaking!!))
+            binding.tvIcebreakingMinute.text = iceBreakingTime
+
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.iceBreakingTitle),
+                    it.iceBreaking!!,
+                    getString(R.string.speakIceBreaking, iceBreakingTime)
+                )
+            )
         }
 
         if (it.brainstorming!! < 0) {
             binding.tvBrainstormingMinute.isVisible = false
             binding.tvBrainstormingTime.isVisible = false
         } else {
+            val brainstormingTime = msToMinuteToString(it.brainstorming)
+
             binding.tvBrainstormingMinute.isVisible = true
             binding.tvBrainstormingTime.isVisible = true
-            binding.tvBrainstormingMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.brainstorming))
-            meetingList.add(StartMeeting("brainstorming", it.brainstorming!!))
+            binding.tvBrainstormingMinute.text = brainstormingTime
+
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.brainstormingTitle),
+                    it.brainstorming!!,
+                    getString(R.string.speakBrainstorming, brainstormingTime)
+                )
+            )
         }
 
         if (it.topicSelection!! < 0) {
             binding.tvTopicMinute.isVisible = false
             binding.tvTopicTime.isVisible = false
         } else {
+            val topicTime = msToMinuteToString(it.topicSelection)
+
             binding.tvTopicMinute.isVisible = true
             binding.tvTopicTime.isVisible = true
-            binding.tvTopicMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.topicSelection))
-            meetingList.add(StartMeeting("topicSelection", it.topicSelection!!))
+            binding.tvTopicMinute.text = topicTime
+
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.topicTitle),
+                    it.topicSelection!!,
+                    getString(R.string.speakTopic, topicTime)
+                )
+            )
         }
 
         if (it.progressSharing!! < 0) {
             binding.tvCurrentProgressMinute.isVisible = false
             binding.tvCurrentProgressTime.isVisible = false
         } else {
+            val progressSharingTime = msToMinuteToString(it.progressSharing)
+
             binding.tvCurrentProgressMinute.isVisible = true
             binding.tvCurrentProgressTime.isVisible = true
-            binding.tvCurrentProgressMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.progressSharing))
-            meetingList.add(StartMeeting("progressSharing", it.progressSharing!!))
+            binding.tvCurrentProgressMinute.text = progressSharingTime
+
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.currentProgressTitle),
+                    it.progressSharing!!,
+                    getString(R.string.speakCurrentProgress, progressSharingTime)
+                )
+            )
         }
 
         if (it.roleDivision!! < 0) {
             binding.tvRoleMinute.isVisible = false
             binding.tvRoleTime.isVisible = false
         } else {
+            val roleDivisionTime = msToMinuteToString(it.roleDivision)
+
             binding.tvRoleMinute.isVisible = true
             binding.tvRoleTime.isVisible = true
-            binding.tvRoleMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.roleDivision))
-            meetingList.add(StartMeeting("roleDivision", it.roleDivision!!))
+            binding.tvRoleMinute.text = roleDivisionTime
+
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.roleDivisionTitle),
+                    it.roleDivision!!,
+                    getString(R.string.speakRoleDivision, roleDivisionTime)
+                )
+            )
         }
 
         if (it.troubleShooting!! < 0) {
             binding.tvTroubleShootingMinute.isVisible = false
             binding.tvTroubleShootingTime.isVisible = false
         } else {
+            val troubleShootingTime = msToMinuteToString(it.troubleShooting)
+
             binding.tvTroubleShootingMinute.isVisible = true
             binding.tvTroubleShootingTime.isVisible = true
-            binding.tvTroubleShootingMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.troubleShooting))
-            meetingList.add(StartMeeting("troubleShooting", it.troubleShooting!!))
+            binding.tvTroubleShootingMinute.text = troubleShootingTime
+
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.troubleShootingTitle),
+                    it.troubleShooting!!,
+                    getString(R.string.speakTroubleShooting, troubleShootingTime)
+                )
+            )
         }
 
         if (it.feedback!! < 0) {
             binding.tvFeedbackMinute.isVisible = false
             binding.tvFeedbackTime.isVisible = false
         } else {
+            val feedbackTime = msToMinuteToString(it.feedback)
+
             binding.tvFeedbackMinute.isVisible = true
             binding.tvFeedbackTime.isVisible = true
-            binding.tvFeedbackMinute.text =
-                getString(R.string.minute, msToMinuteToString(it.feedback))
-            meetingList.add(StartMeeting("feedback", it.feedback!!))
+            binding.tvFeedbackMinute.text = feedbackTime
+            meetingList.add(
+                StartMeeting(
+                    getString(R.string.feedbackTitle),
+                    it.feedback!!,
+                    getString(R.string.speakFeedback, feedbackTime)
+                )
+            )
         }
     }
 
-    private fun msToMinuteToString(ms: Int?): String = (ms?.div(60000)).toString()
+    private fun msToMinuteToString(ms: Int?): String {
+        if (ms == null) return "0분"
+        val minutes = (ms / 60000)
+        return String.format("%02d분", minutes)
+    }
 
     private fun clickStartMeetingProgress() {
         binding.tvStartMeeting.setOnClickListener {
@@ -180,16 +245,17 @@ class StartProgressMeetingFragment : Fragment() {
             startSpeaking(meetingList[currentIndex].speaking)
             // 현재 회의 항목을 UI에 반영
             binding.tvCurrentMeetingProgress.text = currentMeeting.progressName
-            binding.pbTimer.max = currentMeeting.progressTime * 1000 // 밀리초 단위로 설정
+            binding.pbTimer.max = currentMeeting.progressTime // 밀리초 단위로 설정
             binding.pbTimer.progress = 0
 
             // 타이머 시작
             viewLifecycleOwner.lifecycleScope.launch {
-                for (timeRemaining in currentMeeting.progressTime downTo 0) {
+                for (timeRemaining in currentMeeting.progressTime / 1000 downTo 0) {
                     if (!isActive) return@launch // 코루틴이 활성 상태인지 확인
 
-                    binding.tvTimer.text = intToTimerString(timeRemaining * 1000) // 밀리초로 변환하여 전달
-                    binding.pbTimer.progress = (currentMeeting.progressTime - timeRemaining) * 1000
+                    val timeRemainingMs = timeRemaining * 1000
+                    binding.tvTimer.text = intToTimerString(timeRemainingMs)
+                    binding.pbTimer.progress = currentMeeting.progressTime - timeRemainingMs
                     delay(1000L) // 1초 대기
                 }
 
@@ -212,7 +278,7 @@ class StartProgressMeetingFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if(ttsObj!=null){
+        if (ttsObj != null) {
             ttsObj?.stop()
             ttsObj?.shutdown()
             ttsObj = null

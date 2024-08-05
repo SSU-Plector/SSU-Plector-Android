@@ -181,4 +181,20 @@
     <string name="tv_feedback_time">- 프로젝트에 대한 피드백 진행</string>
     <string name="done">완료!</string>
     <string name="_00_00">00:00</string>
+    <string name="speakIntroduce">지금부터 %1$s 동안 자기소개를 진행해주세요.</string>
+    <string name="introduceTitle">자기소개 진행</string>
+    <string name="iceBreakingTitle">아이스브레이킹 진행</string>
+    <string name="speakIceBreaking">지금부터 %1$s 동안 아이스브레이킹을 진행해주세요.</string>
+    <string name="brainstormingTitle">브레인스토밍 진행</string>
+    <string name="speakBrainstorming">지금부터 %1$s 동안 브레인스토밍을 진행해주세요.</string>
+    <string name="topicTitle">주제 선정 진행</string>
+    <string name="speakTopic">지금부터 %1$s 동안 주제 선정을 진행해주세요.</string>
+    <string name="currentProgressTitle">진행 상황 공유 진행</string>
+    <string name="speakCurrentProgress">지금부터 %1$s 동안 진행 상황 공유를 진행해주세요.</string>
+    <string name="troubleShootingTitle">트러블 슈팅 진행</string>
+    <string name="speakTroubleShooting">지금부터 %1$s 동안 트러블 슈팅을 진행해주세요.</string>
+    <string name="feedbackTitle">프로젝트에 대한 피드백 진행</string>
+    <string name="speakFeedback">지금부터 %1$s 동안 프로젝트에 대한 피드백을 진행해주세요.</string>
+    <string name="roleDivisionTitle">역할 분담 진행</string>
+    <string name="speakRoleDivision">지금부터 %1$s 동안 역할 분담을 진행해주세요.</string>
 </resources>
