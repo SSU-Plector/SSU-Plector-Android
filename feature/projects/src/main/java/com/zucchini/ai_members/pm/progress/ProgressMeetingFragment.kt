@@ -10,6 +10,7 @@ import com.zucchini.ai_members.pm.AiPmViewModel
 import com.zucchini.domain.model.ai.ProgressMeetingInfo
 import com.zucchini.domain.model.ai.SetProgressMeeting
 import com.zucchini.feature.projects.databinding.FragmentProgressMeetingBinding
+import com.zucchini.view.hideKeyboard
 
 class ProgressMeetingFragment : Fragment() {
     private var _binding: FragmentProgressMeetingBinding? = null
@@ -23,6 +24,7 @@ class ProgressMeetingFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentProgressMeetingBinding.inflate(inflater, container, false)
+        clickHideKeyboard()
         return binding.root
     }
 
@@ -49,6 +51,7 @@ class ProgressMeetingFragment : Fragment() {
         val meetingTimeInt = if (meetingTime.isEmpty()) 0 else meetingTime.toInt()
         val participantsInt = if (participants.isEmpty()) 0 else participants.toInt()
 
+
         val progressMeetingCheckbox =
             ProgressMeetingInfo(
                 introduceMyself = binding.cbAiPmMeetingProgressIntroduceMyself.isChecked,
@@ -67,6 +70,12 @@ class ProgressMeetingFragment : Fragment() {
                 participants = participantsInt,
             )
         viewModel.updateProgressMeetingCheckbox(setProgressMeetingInfo, progressMeetingCheckbox)
+    }
+
+    private fun clickHideKeyboard() {
+        binding.root.setOnClickListener {
+            hideKeyboard()
+        }
     }
 
     private fun minuteToMs(minute: Int) = minute * 60000
