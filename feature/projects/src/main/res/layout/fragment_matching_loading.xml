@@ -19,7 +19,7 @@
         android:id="@+id/tv_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="프로젝트에 적합한 개발자를 생각 중이에요..."
+        android:text="매칭 중이에요 ..."
         android:textSize="20sp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"

@@ -7,8 +7,8 @@
         android:id="@+id/iv_ai_pm"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/ai_pm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,9 +32,9 @@
         android:id="@+id/ai_pm_meeting_progress_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="15dp"
+        android:layout_marginEnd="25dp"
         android:fontFamily="@font/pretendardregular"
         android:gravity="start"
         android:text="@string/ai_pm_meeting_progress_description"
@@ -48,13 +48,13 @@
         android:id="@+id/ai_pm_meeting_progress_total_time_title"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/pretendardregular"
         android:gravity="start"
         android:text="전체 회의 진행 시간(분)"
         android:textColor="@color/olive_black"
-        android:textSize="13sp"
+        android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ai_pm_meeting_progress_description" />
 
@@ -79,7 +79,7 @@
         android:gravity="start"
         android:text="회의 참석 인원"
         android:textColor="@color/olive_black"
-        android:textSize="13sp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ai_pm_meeting_progress_total_time_title"
         app:layout_constraintTop_toBottomOf="@+id/ai_pm_meeting_progress_description" />
@@ -100,7 +100,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_introduceMyself"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_progress_total_time">
@@ -120,7 +120,7 @@
             android:gravity="start"
             android:text="자기소개"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_introduceMyself"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_introduceMyself"
@@ -132,7 +132,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_iceBreaking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
         app:layout_constraintStart_toEndOf="@+id/cl_ai_pm_meeting_progress_introduceMyself"
         app:layout_constraintTop_toTopOf="@+id/cl_ai_pm_meeting_progress_introduceMyself">
 
@@ -151,7 +151,7 @@
             android:gravity="start"
             android:text="아이스브레이킹"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_iceBreaking"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_iceBreaking"
@@ -162,7 +162,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_brainsTorming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
         app:layout_constraintStart_toEndOf="@+id/cl_ai_pm_meeting_progress_iceBreaking"
         app:layout_constraintTop_toTopOf="@+id/cl_ai_pm_meeting_progress_iceBreaking">
 
@@ -181,7 +181,7 @@
             android:gravity="start"
             android:text="브레인스토밍"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_brainsTorming"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_brainsTorming"
@@ -192,7 +192,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_topic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_ai_pm_meeting_progress_introduceMyself">
@@ -212,7 +212,7 @@
             android:gravity="start"
             android:text="프로젝트 주제 선정"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_topic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_topic"
@@ -242,7 +242,7 @@
             android:gravity="start"
             android:text="진행상황 공유"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_progress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_progress"
@@ -253,7 +253,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_role"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
         app:layout_constraintStart_toEndOf="@+id/cl_ai_pm_meeting_progress_troubleshooting"
         app:layout_constraintTop_toTopOf="@+id/cl_ai_pm_meeting_progress_troubleshooting">
 
@@ -272,7 +272,7 @@
             android:gravity="start"
             android:text="역할 분배"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_role"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_role"
@@ -283,7 +283,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_feedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="25dp"
         app:layout_constraintStart_toEndOf="@+id/cl_ai_pm_meeting_progress_role"
         app:layout_constraintTop_toTopOf="@+id/cl_ai_pm_meeting_progress_role">
 
@@ -302,7 +302,7 @@
             android:gravity="start"
             android:text="피드백"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_feedback"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_feedback"
@@ -313,7 +313,7 @@
         android:id="@+id/cl_ai_pm_meeting_progress_troubleshooting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_ai_pm_meeting_progress_topic">
@@ -333,7 +333,7 @@
             android:gravity="start"
             android:text="트러블슈팅 공유"
             android:textColor="@color/olive_black"
-            android:textSize="13sp"
+            android:textSize="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/cb_ai_pm_meeting_progress_troubleshooting"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cb_ai_pm_meeting_progress_troubleshooting"
@@ -345,7 +345,6 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/submit_button_background"
         android:fontFamily="@font/pretendardbold"
@@ -356,8 +355,7 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_ai_pm_meeting_progress_troubleshooting" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
