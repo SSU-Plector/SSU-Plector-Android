@@ -187,7 +187,7 @@
             android:background="@drawable/contents_background"
             android:fontFamily="@font/pretendardregular"
             android:gravity="center"
-            android:padding="5dp"
+            android:padding="15dp"
             android:paddingHorizontal="2dp"
             android:textColor="@color/olive_black"
             android:textSize="12sp"
@@ -433,7 +433,7 @@
                 android:fontFamily="@font/pretendardbold"
                 android:text="웹 링크"
                 android:textColor="@color/olive_black"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -443,7 +443,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/pretendardregular"
-                android:textColor="@color/olive_black"
+                android:textColor="@color/gray3"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -460,7 +460,7 @@
                 android:fontFamily="@font/pretendardbold"
                 android:text="앱 다운로드 링크"
                 android:textColor="@color/olive_black"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_web_link" />
 
@@ -470,7 +470,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/pretendardregular"
-                android:textColor="@color/olive_black"
+                android:textColor="@color/gray3"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -486,7 +486,7 @@
                 android:fontFamily="@font/pretendardbold"
                 android:text="프로젝트 소개 페이지"
                 android:textColor="@color/olive_black"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_app_link" />
 
@@ -496,7 +496,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:fontFamily="@font/pretendardregular"
-                android:textColor="@color/olive_black"
+                android:textColor="@color/gray3"
                 android:textSize="10sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -518,6 +518,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_project_link" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_introduce_dev"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"

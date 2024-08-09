@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -63,6 +64,8 @@ class ProjectDetailActivity : AppCompatActivity() {
             .flowWithLifecycle(lifecycle)
             .onEach {
                 adapter.submitList(it)
+                binding.clIntroduceDev.isVisible = it.isNotEmpty()
+                binding.tvIntroduceDevTitle.isVisible = it.isNotEmpty()
             }.launchIn(lifecycleScope)
 
         viewModel.projectsDetail
