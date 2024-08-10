@@ -1,7 +1,5 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -66,13 +64,14 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/dialog_button_background_main_olive"
+        android:background="@drawable/stack_background"
         android:fontFamily="@font/pretendardbold"
         android:gravity="center"
         android:padding="12dp"
         android:text="@string/dev_part"
         android:textColor="@color/olive_black"
         android:textSize="11sp"
+        app:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_matching_dev_stack_title" />
 
@@ -83,13 +82,14 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/dialog_button_background_main_olive"
+        android:background="@drawable/stack_background"
         android:fontFamily="@font/pretendardbold"
         android:gravity="center"
         android:padding="12dp"
         android:text="@string/dev_language"
         android:textColor="@color/olive_black"
         android:textSize="11sp"
+        app:elevation="10dp"
         app:layout_constraintStart_toEndOf="@+id/tv_dev_part"
         app:layout_constraintTop_toBottomOf="@+id/tv_matching_dev_stack_title" />
 
@@ -100,13 +100,14 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:background="@drawable/dialog_button_background_main_olive"
+        android:background="@drawable/stack_background"
         android:fontFamily="@font/pretendardbold"
         android:gravity="center"
         android:padding="12dp"
         android:text="@string/dev_tech_stack"
         android:textColor="@color/olive_black"
         android:textSize="11sp"
+        app:elevation="10dp"
         app:layout_constraintStart_toEndOf="@+id/tv_dev_language"
         app:layout_constraintTop_toBottomOf="@+id/tv_matching_dev_stack_title" />
 
@@ -128,12 +129,12 @@
         android:id="@+id/tv_min_student_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/pretendardmedium"
         android:gravity="center"
         android:padding="12dp"
-        android:layout_marginStart="25dp"
         android:text="@string/min"
-        android:fontFamily="@font/pretendardmedium"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,8 +145,8 @@
         android:layout_width="45dp"
         android:layout_height="100dp"
         android:gravity="center_horizontal"
-        app:layout_constraintStart_toEndOf="@+id/tv_min_student_id"
         app:layout_constraintBottom_toBottomOf="@+id/tv_min_student_id"
+        app:layout_constraintStart_toEndOf="@+id/tv_min_student_id"
         app:layout_constraintTop_toTopOf="@+id/tv_min_student_id" />
 
     <TextView
@@ -153,10 +154,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/pretendardmedium"
         android:gravity="center"
         android:padding="12dp"
         android:text="@string/student_id"
-        android:fontFamily="@font/pretendardmedium"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/np_min_student_id"
@@ -166,12 +167,12 @@
         android:id="@+id/tv_max_student_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/pretendardmedium"
         android:gravity="center"
         android:padding="12dp"
-        android:layout_marginStart="20dp"
         android:text="@string/max"
-        android:fontFamily="@font/pretendardmedium"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/tv_student_id1"
@@ -182,8 +183,8 @@
         android:layout_width="45dp"
         android:layout_height="100dp"
         android:gravity="center_horizontal"
-        app:layout_constraintStart_toEndOf="@+id/tv_max_student_id"
         app:layout_constraintBottom_toBottomOf="@+id/tv_max_student_id"
+        app:layout_constraintStart_toEndOf="@+id/tv_max_student_id"
         app:layout_constraintTop_toTopOf="@+id/tv_max_student_id" />
 
     <TextView
@@ -191,10 +192,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/pretendardmedium"
         android:gravity="center"
         android:padding="12dp"
         android:text="@string/student_id"
-        android:fontFamily="@font/pretendardmedium"
         android:textColor="@color/olive_black"
         android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/np_max_student_id"
@@ -240,13 +241,13 @@
         android:background="@drawable/submit_button_background"
         android:fontFamily="@font/pretendardbold"
         android:gravity="center"
+        android:text="@string/btn_matching_result_next"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="15sp"
-        android:text = "@string/btn_matching_result_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

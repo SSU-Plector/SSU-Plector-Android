@@ -38,10 +38,9 @@ class ImageDesignFragment : Fragment() {
     }
 
     private fun sendProjectImageRequest() {
-        val requestProjectInfo = binding.etImageDescription.text.toString()
-
         binding.btnSubmitImage.setOnClickListener {
             hideKeyboard()
+            val requestProjectInfo = binding.etImageDescription.text.toString()
             viewModel.getProjectImage(requestProjectInfo)
         }
     }

@@ -1,6 +1,7 @@
 package com.zucchini.ai_members.designer.branding
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,10 +41,9 @@ class BrandingFragment : Fragment() {
     }
 
     private fun sendProjectBrandingInfoRequest() {
-        val requestProjectInfo = binding.etBrandingDescription.text.toString()
-
         binding.btnSubmit.setOnClickListener {
             hideKeyboard()
+            val requestProjectInfo = binding.etBrandingDescription.text.toString()
             viewModel.getProjectBranding(requestProjectInfo)
         }
     }
