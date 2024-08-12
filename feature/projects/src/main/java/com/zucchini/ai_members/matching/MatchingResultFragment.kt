@@ -41,10 +41,21 @@ class MatchingResultFragment : Fragment() {
 
             binding.tvDeveloperName1.text = it.getOrNull(0)?.name
             binding.tvDeveloperEmail1.text = it.getOrNull(0)?.email
+            binding.tvDeveloper1Part1.text = it.getOrNull(0)?.part1
+            binding.tvDeveloper1Part2.text = it.getOrNull(0)?.part2
+            binding.tvDeveloperDescription1.text = it.getOrNull(0)?.description
+
             binding.tvDeveloperName2.text = it.getOrNull(1)?.name
             binding.tvDeveloperEmail2.text = it.getOrNull(1)?.email
+            binding.tvDeveloper2Part1.text = it.getOrNull(1)?.part1
+            binding.tvDeveloper2Part2.text = it.getOrNull(1)?.part2
+            binding.tvDeveloperDescription2.text = it.getOrNull(1)?.description
+
             binding.tvDeveloperName3.text = it.getOrNull(2)?.name
             binding.tvDeveloperEmail3.text = it.getOrNull(2)?.email
+            binding.tvDeveloper3Part1.text = it.getOrNull(2)?.part1
+            binding.tvDeveloper3Part2.text = it.getOrNull(2)?.part2
+            binding.tvDeveloperDescription3.text = it.getOrNull(2)?.description
 
             val devInfo1 = it.getOrNull(0)?.id
             val devInfo2 = it.getOrNull(1)?.id

@@ -1,5 +1,6 @@
 package com.zucchini.ai_members.designer
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.zucchini.domain.repository.AiRepository

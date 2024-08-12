@@ -1,6 +1,7 @@
 package com.zucchini.submit.project.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -80,7 +81,7 @@ class SubmitProjectWithDevFragment : Fragment() {
                         requireActivity().finish()
                     }
                 } else {
-                    showShortToast(getString(R.string.fail_submit_project))
+                    Log.d("SubmitProjectWithDevFragment", "Failed to submit project")
                 }
             }.launchIn(lifecycleScope)
         }

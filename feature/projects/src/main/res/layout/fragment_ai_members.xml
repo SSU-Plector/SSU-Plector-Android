@@ -30,23 +30,33 @@
 
     <TextView
         android:id="@+id/ai_members_description"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/ai_members_description"
         android:textColor="@color/olive_black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/ai_members_pm_button"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/pretendardbold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/main_olive"
+        app:layout_constraintTop_toBottomOf="@+id/ai_members_description"
+        />
     <ImageView
         android:id="@+id/ai_members_pm_button"
         android:layout_width="90dp"
         android:layout_height="120dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="90dp"
         android:src="@drawable/ai_pm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_top_app_bar" />
@@ -84,7 +94,7 @@
         android:layout_width="130dp"
         android:layout_height="120dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="100dp"
         android:src="@drawable/ai_designer"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +131,7 @@
         android:layout_width="130dp"
         android:layout_height="100dp"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="50dp"
         android:src="@drawable/matching_bot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ai_members_designer_button" />
@@ -130,7 +140,7 @@
         android:id="@+id/tv_ai_matching_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/pretendardbold"
         android:text="@string/ai_matching_bot"
         android:textColor="@color/olive_black"

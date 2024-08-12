@@ -38,10 +38,9 @@ class ImageDesignFragment : Fragment() {
     }
 
     private fun sendProjectImageRequest() {
-        val requestProjectInfo = binding.etImageDescription.text.toString()
-
         binding.btnSubmitImage.setOnClickListener {
             hideKeyboard()
+            val requestProjectInfo = binding.etImageDescription.text.toString()
             viewModel.getProjectImage(requestProjectInfo)
         }
     }
@@ -53,26 +52,22 @@ class ImageDesignFragment : Fragment() {
                     is UiState.Initial -> {
                         // 초기 화면
                         binding.loadingProgressBar.isVisible = false
-                        binding.tvFileDownload.isVisible = false
                     }
 
                     is UiState.Loading -> {
                         binding.loadingProgressBar.isVisible = true
                         binding.ivAiDesignerImageResult.isVisible = false
-                        binding.tvFileDownload.isVisible = false
                     }
 
                     is UiState.Success -> {
                         binding.loadingProgressBar.isVisible = false
                         binding.ivAiDesignerImageResult.isVisible = true
-                        binding.tvFileDownload.isVisible = true
                         binding.ivAiDesignerImageResult.load(uiState.data) {
                             crossfade(true)
                         }
                     }
 
                     is UiState.Failure -> {
-                        binding.tvFileDownload.isVisible = false
                         binding.loadingProgressBar.isVisible = false
                     }
                 }

@@ -1,6 +1,7 @@
 package com.zucchini.ai_members.designer.branding
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -40,10 +41,9 @@ class BrandingFragment : Fragment() {
     }
 
     private fun sendProjectBrandingInfoRequest() {
-        val requestProjectInfo = binding.etBrandingDescription.text.toString()
-
         binding.btnSubmit.setOnClickListener {
             hideKeyboard()
+            val requestProjectInfo = binding.etBrandingDescription.text.toString()
             viewModel.getProjectBranding(requestProjectInfo)
         }
     }
@@ -55,22 +55,18 @@ class BrandingFragment : Fragment() {
                     // 초기 화면
                     binding.aiDesignerBrandingResult.isVisible = false
                     binding.loadingProgressBar.isVisible = false
-                    binding.tvCopy.isVisible = false
                 }
                 is UiState.Loading -> {
-                    binding.tvCopy.isVisible = false
                     binding.aiDesignerBrandingResult.isVisible = false
                     binding.loadingProgressBar.isVisible = true
                     binding.aiDesignerBrandingResult.text = getString(R.string.loading)
                 }
                 is UiState.Success -> {
-                    binding.tvCopy.isVisible = true
                     binding.aiDesignerBrandingResult.isVisible = true
                     binding.loadingProgressBar.isVisible = false
                     binding.aiDesignerBrandingResult.text = uiState.data
                 }
                 is UiState.Failure -> {
-                    binding.tvCopy.isVisible = false
                     binding.aiDesignerBrandingResult.isVisible = false
                     binding.loadingProgressBar.isVisible = false
                     binding.aiDesignerBrandingResult.text = getString(R.string.fail_to_branding)

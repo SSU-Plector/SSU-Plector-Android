@@ -9,8 +9,8 @@
         android:id="@+id/iv_bot"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/matching_bot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,8 +34,8 @@
         android:id="@+id/ai_matching_result_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="@font/pretendardregular"
         android:gravity="start"
@@ -48,12 +48,13 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_matching_result_dev_info1"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:background="@drawable/dialog_button_background_main_olive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/stack_background"
         android:paddingHorizontal="15dp"
         android:paddingVertical="20dp"
-        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ai_matching_result_description">
@@ -67,7 +68,7 @@
             android:fontFamily="@font/pretendardbold"
             android:gravity="start"
             android:textColor="@color/olive_black"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
@@ -76,32 +77,82 @@
             android:id="@+id/tv_developer_email1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
-            android:maxLines="2"
-            android:textColor="@color/white"
+            android:maxLines="1"
+            android:textColor="@color/gray3"
             android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/tv_developer1_part1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer1_part1"
+            tools:text="yuri1231231231ssss23@naver.com" />
+
+        <TextView
+            android:id="@+id/tv_developer1_part1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textColor="@color/main_olive"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_developer_name1"
+            app:layout_constraintStart_toEndOf="@+id/tv_developer_name1"
+            app:layout_constraintTop_toTopOf="@id/tv_developer_name1"
+            tools:text="service" />
+
+        <TextView
+            android:id="@+id/tv_developer1_part2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textColor="@color/main_olive"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_developer_name1"
+            app:layout_constraintStart_toEndOf="@+id/tv_developer1_part1"
+            app:layout_constraintTop_toTopOf="@id/tv_developer_name1"
+            tools:text="service" />
+
+        <TextView
+            android:id="@+id/tv_developer_description1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:maxLines="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_developer_name"
-            tools:text="yuri1231231231ssss23@naver.com" />
+            app:layout_constraintStart_toStartOf="@+id/tv_developer1_part1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer_email1"
+            tools:text="ssssssssssssssssssssssssddddddddddddddddsssdddddddssssssssssssssssssssssssssssssssssss" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/v_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info1" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_matching_result_dev_info2"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:background="@drawable/dialog_button_background_main_olive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/stack_background"
         android:paddingHorizontal="15dp"
         android:paddingVertical="20dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info1">
+        app:layout_constraintTop_toBottomOf="@+id/v_divider1">
 
 
         <TextView
@@ -112,7 +163,7 @@
             android:fontFamily="@font/pretendardbold"
             android:gravity="start"
             android:textColor="@color/olive_black"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
@@ -121,32 +172,83 @@
             android:id="@+id/tv_developer_email2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:ellipsize="end"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
-            android:maxLines="2"
-            android:textColor="@color/white"
+            android:maxLines="1"
+            android:textColor="@color/gray3"
             android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/tv_developer2_part1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer2_part1"
+            tools:text="yuri1231231231ssss23@naver.com" />
+
+        <TextView
+            android:id="@+id/tv_developer2_part1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textColor="@color/main_olive"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_developer_name2"
+            app:layout_constraintStart_toEndOf="@+id/tv_developer_name2"
+            app:layout_constraintTop_toTopOf="@id/tv_developer_name2"
+            tools:text="service" />
+
+        <TextView
+            android:id="@+id/tv_developer2_part2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textColor="@color/main_olive"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_developer2_part1"
+            app:layout_constraintStart_toEndOf="@+id/tv_developer2_part1"
+            app:layout_constraintTop_toTopOf="@id/tv_developer2_part1"
+            tools:text="service" />
+
+
+        <TextView
+            android:id="@+id/tv_developer_description2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:maxLines="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_developer_name"
-            tools:text="yuri1231231231ssss23@naver.com" />
+            app:layout_constraintStart_toStartOf="@+id/tv_developer2_part1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer_email2"
+            tools:text="ssssssssssssssssssssssssddddddddddddddddsssdddddddssssssssssssssssssssssssssssssssssss" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <View
+        android:id="@+id/v_divider2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/gray1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_matching_result_dev_info3"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:background="@drawable/dialog_button_background_main_olive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/stack_background"
         android:paddingHorizontal="15dp"
         android:paddingVertical="20dp"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info2">
+        app:layout_constraintTop_toBottomOf="@+id/v_divider2">
 
 
         <TextView
@@ -157,7 +259,7 @@
             android:fontFamily="@font/pretendardbold"
             android:gravity="start"
             android:textColor="@color/olive_black"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Name" />
@@ -166,19 +268,56 @@
             android:id="@+id/tv_developer_email3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="2dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginVertical="5dp"
             android:ellipsize="end"
             android:fontFamily="@font/pretendardmedium"
             android:gravity="center"
-            android:maxLines="2"
-            android:textColor="@color/white"
+            android:maxLines="1"
+            android:textColor="@color/gray3"
             android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="@id/tv_developer3_part1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer3_part1"
+            tools:text="yuri1231231231ssss23@naver.com" />
+
+        <TextView
+            android:id="@+id/tv_developer3_part1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textColor="@color/main_olive"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_developer_name3"
+            app:layout_constraintStart_toEndOf="@+id/tv_developer_name3"
+            app:layout_constraintTop_toTopOf="@id/tv_developer_name3"
+            tools:text="service" />
+
+        <TextView
+            android:id="@+id/tv_developer3_part2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:fontFamily="@font/pretendardsemibold"
+            android:textColor="@color/main_olive"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_developer3_part1"
+            app:layout_constraintStart_toEndOf="@+id/tv_developer3_part1"
+            app:layout_constraintTop_toTopOf="@id/tv_developer3_part1"
+            tools:text="service" />
+
+        <TextView
+            android:id="@+id/tv_developer_description3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:maxLines="3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_developer_name"
-            tools:text="yuri1231231231ssss23@naver.com" />
+            app:layout_constraintStart_toStartOf="@+id/tv_developer3_part1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_developer_email3"
+            tools:text="ssssssssssssssssssssssssddddddddddddddddsssdddddddssssssssssssssssssssssssssssssssssss" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
