@@ -166,21 +166,25 @@ class MeetingSummaryFragment : Fragment() {
                 when (uiState) {
                     is UiState.Loading -> {
                         binding.clAiPmLoading.isVisible = true
+                        binding.aiPmSummaryMeetingResult.isVisible = false
                     }
 
                     is UiState.Success -> {
                         binding.clAiPmLoading.isVisible = false
                         binding.aiPmSummaryMeetingResult.text = uiState.data
+                        binding.aiPmSummaryMeetingResult.isVisible = true
                     }
 
                     is UiState.Failure -> {
                         binding.clAiPmLoading.isVisible = false
+                        binding.aiPmSummaryMeetingResult.isVisible = false
                         binding.aiPmSummaryMeetingResult.text = getString(R.string.fail_to_summary)
                         showShortToast(uiState.errorMessage)
                     }
 
                     else -> {
                         binding.clAiPmLoading.isVisible = false
+                        binding.aiPmSummaryMeetingResult.isVisible = false
                     }
                 }
             }.launchIn(lifecycleScope)
