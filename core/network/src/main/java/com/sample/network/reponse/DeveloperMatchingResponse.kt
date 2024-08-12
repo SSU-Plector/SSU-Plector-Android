@@ -11,4 +11,10 @@ data class DeveloperMatchingResponse(
     val name: String?,
     @SerialName("email")
     val email: String?,
+    @SerialName("part1")
+    val part1: String?,
+    @SerialName("part2")
+    val part2: String?,
+    @SerialName("shortIntro")
+    val shortIntro: String?,
 )

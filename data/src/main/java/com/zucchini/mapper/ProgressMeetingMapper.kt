@@ -41,5 +41,8 @@ internal fun List<DeveloperMatchingResponse>.toMatchingResult(): List<MatchingRe
             id = matchingResult.id ?: -1,
             name = matchingResult.name ?: "",
             email = matchingResult.email ?: "",
+            part1 = matchingResult.part1 ?: "",
+            part2 = matchingResult.part2 ?: "",
+            description = matchingResult.shortIntro ?: "",
         )
     }
