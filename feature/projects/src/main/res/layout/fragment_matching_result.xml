@@ -9,8 +9,8 @@
         android:id="@+id/iv_bot"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
         android:src="@drawable/matching_bot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -34,8 +34,8 @@
         android:id="@+id/ai_matching_result_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:fontFamily="@font/pretendardregular"
         android:gravity="start"
@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="60dp"
+        android:background="@drawable/stack_background"
         android:paddingHorizontal="15dp"
         android:paddingVertical="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,12 +134,12 @@
         android:id="@+id/v_divider1"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info1"
-        android:background="@color/gray1"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:background="@color/gray1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info1" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_matching_result_dev_info2"
@@ -146,6 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/stack_background"
         android:paddingHorizontal="15dp"
         android:paddingVertical="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -228,12 +230,12 @@
         android:id="@+id/v_divider2"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info2"
-        android:background="@color/gray1"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:background="@color/gray1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_matching_result_dev_info3"
@@ -241,6 +243,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="20dp"
+        android:background="@drawable/stack_background"
         android:paddingHorizontal="15dp"
         android:paddingVertical="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -317,15 +320,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_matching_result_dev_info3"
-        android:background="@color/gray1"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
