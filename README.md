@@ -39,7 +39,7 @@
 
 | PM AI | 회의록 요약 | 회의 진행 |
 |:---:|:---:|:---:|
-| 3 |<img width="200px" src="https://github.com/user-attachments/assets/f1a3dbd0-ad49-424e-a713-1d55de699ba5"/> | <img width="200px" src="https://github.com/user-attachments/assets/839f01fd-01c9-4a21-b67d-e736dcfc07d2"/> |
+| 3 |<img width="200px" src="https://github.com/user-attachments/assets/f1a3dbd0-ad49-424e-a713-1d55de699ba5"/> | <img width="200px" src="https://github.com/user-attachments/assets/d811988d-985a-470d-9a1c-a468b254687d"/> |
 
 | 디자이너 AI | 브랜딩 생성 | 로고 및 캐릭터 생성 |
 |:---:|:---:|:---:|
